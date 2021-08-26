@@ -11,7 +11,7 @@ Please go under edit and edit this file as needed for your project
 ### Member 7 - 
 ### Member 8 - 
 
-#### Brief Description of Project -  Implement Inventory Control System for the client 'CASANOVA' which is an apparel manufacturing company in Sri Lanka.
+#### Brief Description of Project -  Implement Inventory Control System for the client 'CASANOVA' which is an apparel manufacturing company                                        in Sri Lanka.
 #### Technologies used - MERN Stack
 
 Note - The student's github account should be given in brackets e.g. (IT20212232), this ideally should be your student id 
