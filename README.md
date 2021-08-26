@@ -3,7 +3,7 @@ Please go under edit and edit this file as needed for your project
 # Project Name - Inventory Control System for Casanova
 # Batch - Batch 08
 ### Group Leader - IT20198640 - Mr. Fernando W.T.P.R (IT20198640)
-### Member 2 - 
+### Member 2 - IT20185220 - Mr. Hewage H.K.P (IT20185220)
 ### Member 3 - 
 ### Member 4 - 
 ### Member 5 - 
