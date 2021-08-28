@@ -7,7 +7,7 @@ Please go under edit and edit this file as needed for your project
 ### Member 3 - 
 ### Member 4 - 
 ### Member 5 - IT20109462 - Mr. Liyanage D.K (IT20109462)
-### Member 6 - 
+### Member 6 - IT20109530 - Miss. Malluwawadu K.T (IT20109530)
 ### Member 7 - 
 ### Member 8 - 
 
