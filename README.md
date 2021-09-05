@@ -9,7 +9,7 @@ Please go under edit and edit this file as needed for your project
 ### Member 5 - IT20109462 - Mr. Liyanage D.K (IT20109462)
 ### Member 6 - IT20109530 - Miss. Malluwawadu K.T (IT20109530)
 ### Member 7 - 
-### Member 8 - 
+### Member 8 - IT20067342 - Mr. Jayasuriya J.A.D.A.S (IT20067342)
 
 #### Brief Description of Project -  Implement Inventory Control System for the client 'CASANOVA' which is an apparel manufacturing company                                        in Sri Lanka.
 #### Technologies used - MERN Stack
