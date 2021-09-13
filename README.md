@@ -8,7 +8,7 @@ Please go under edit and edit this file as needed for your project
 ### Member 4 - IT20244484 - Mr. Dhanushanka A.K.L(IT20244484)
 ### Member 5 - IT20109462 - Mr. Liyanage D.K (IT20109462)
 ### Member 6 - IT20109530 - Miss. Malluwawadu K.T (IT20109530)
-### Member 7 - 
+### Member 7 - IT20041052 - Mr. Senanayake S.M.H.S (IT20041052)
 ### Member 8 - IT20067342 - Mr. Jayasuriya J.A.D.A.S (IT20067342)
 
 #### Brief Description of Project -  Implement Inventory Control System for the client 'CASANOVA' which is an apparel manufacturing company                                        in Sri Lanka.
