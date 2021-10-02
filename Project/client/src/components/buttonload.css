@@ -1,0 +1,7 @@
+.buttonload {
+  background-color: #434a74; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px /* Set a font size */
+}
