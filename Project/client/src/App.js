@@ -16,6 +16,24 @@ import AllMain from './components/AllMain'
 import TMSSchedule from './components/TMSSchedule'
 
 
+//accounts
+
+import Adashboard from './components/Adashboard';
+import AccountCreate from './components/AccountCreate';
+import AccountEdit from './components/AccountEdit';
+import AccountHome from './components/AccountHome';
+import AccountNavBar from './components/AccountNavBar';
+import AccountDetails from './components/AccountDetails';
+import AccountJournal from './components/AccountJournal';
+import AccountReport from './components/AccountReport';
+import AccountplanHome from './components/AccountplanHome';
+import AccountplanCreate from './components/AccountplanCreate';
+import AccountplanEdit from './components/AccountplanEdit';
+import AccountplanDetails from './components/AccountplanDetails';
+import mainhome from './components/mainhome';
+
+
+
 
 
 export default class App extends Component {
@@ -52,6 +70,31 @@ export default class App extends Component {
      <Route path='/AddVehicle' component={AddVehicle}></Route>
      <Route path='/vehicleDash/EditVehicle/:id' component={EditVehicle}></Route>
      
+	 
+	 
+	 //accounts
+	 
+	  <AccountNavBar/>
+	 
+	  <Route path="/accountHome"  component={AccountHome}></Route>
+         <Route path="/add" component={AccountCreate}></Route>
+         <Route path="/edit/:id" component={AccountEdit}></Route>
+         <Route path="/post/:id" component={AccountDetails}></Route>
+         <Route path="/Accountdashboard"  component={Adashboard}></Route>
+         <Route path="/journal"  component={AccountJournal}></Route>
+         <Route path="/reporte"  component={AccountReport}></Route>
+         <Route path="/accountPlanHome"  component={AccountplanHome}></Route>
+         <Route path="/addAccountPlan"  component={AccountplanCreate}></Route>
+         <Route path="/editAccountPlan/:id"  component={AccountplanEdit}></Route>
+         <Route path="/AccountplanDetails/:id" component={AccountplanDetails}></Route>
+
+
+	 
+	 
+	 
+	 
+	 
+	 
       </BrowserRouter>
     )
   }
