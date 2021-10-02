@@ -62,11 +62,17 @@ handlesearch=(e)=>{
 
   render() {
     return (
-      <div class="container">
-          <div class="row justify-content-evenly">
+
+      <div id="wrapper" className="toggled">
+      <div id="page-content-wrapper">
+      <div className="container-fluid">
+
+
+     
+          <div className="row justify-content-evenly">
               <div  class="col-9">
           <h1 style={{backgroundColor:'black', color:'white', padding:'5px',textAlign:'center',opacity:".50"}}>Driver Management</h1>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                      <button className="btn btn-warning " ><a href="/TMSDash" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-home"></i>Home</a></button>
                     </div> 
         <div className="col-lg-3 mt-2 mb-2">
@@ -123,6 +129,8 @@ handlesearch=(e)=>{
       
         
         
+      </div>
+      </div>
       </div>
     )}
   

@@ -1,162 +1,167 @@
-import React, { useState } from "react";
-import axios from "axios";
-import Swal from 'sweetalert2' 
+import React, { Component } from 'react'
+import axios from 'axios'
 
 
 
-function AddDriver() {
+import Swal from 'sweetalert2';
 
-    const [name, setName] = useState("");
-    const [age, setAge] = useState("");
-    const [nic, setNIC] = useState("");
-    const [address, setAddress] = useState(0);
+export default class AddDriver extends Component {
 
-    const [nameErr, setNameErr] = useState({});
-    const [ageErr, setAgeErr] = useState({});
-    const [nicErr, setNICErr] = useState({});
-    const [addressErr, setAddressErr] = useState({});
+    
+   constructor(props){
+       super(props);
+       this.state={
+           name:"",
+           age:"",
+           nic:"",
+           address:"",
+           nameError:"",
+           ageError:"",
+           nicError:"",
+           addressError:""
+          
+       }
+   }
+   handleInputChange=(e)=>{
+       const {name,value}=e.target;
+
+       this.setState({
+           ...this.state,
+           [name]:value
+       })
+   }
+   validate= ()=>{
+       let nameError="";
+       let ageError="";
+       let nicError="";
+       let addressError="";
+
+       if(!this.state.name){
+           nameError="*Name is Required!"
+       }
+       if(!this.state.nic){
+           nicError="* NIC is Required!"
+       }
+       else if (!this.state.nic.includes('[0-9]{10}')){
+        nicError= 'Please Enter valid Nic'
+    }
+
+    
 
 
-    function sendData(e) {
-        e.preventDefault();
-        const isValid = formValidation();
+       if(!this.state.address){
+        addressError="* Address is Required!"
+    }
+    if(!this.state.age){
+        ageError="* Age is Required"
+    }
 
-        const newDriver = {
-            name,
-           age,
-           nic,
-           address
-        }
-
-        console.log(newDriver);
-
-        if (isValid) {
-
-            axios.post("http://localhost:8000/driver/save", newDriver).then(() => {
-                Swal.fire("ADDED!","New Driver Added Successfully!","success")
-            }).catch((err) => {
-                alert("error")
-            })
-
-            setName("");
-            setAge("");
-            setNIC("");
-            setAddress(0);
-        }
-
+    if(nameError||ageError||nicError||addressError){
+        this.setState({nameError,ageError,nicError,addressError});
+        return false;
 
     }
 
-    const formValidation = () => {
-        const nameErr = {};
-        const ageErr = {};
-        const nicErr = {};
-        const addressErr = {};
-        let isValid = true;
+    return true;
 
-      
+   }
 
-        if (name.trim().length == 0) {
-            nameErr.nameEmpty = "*Name is empty please enter*";
-            isValid = false;
-        }
-        if (!age.toString().trim()) {
-            ageErr.ageEmpty = "*Age is empty*";
-            isValid = false;
-        }
-     
-        if (nic.trim().length < 9) {
-            nicErr.nicShort = "*NIC is too short*";
-            isValid = false;
-        }
-
-        if (nic.trim().length == 0) {
-            nicErr.nicErrEmpty = "*NIC is empty please enter*";
-            isValid = false;
-        }
+   
+   onSubmit=(e)=>{
+    
+       e.preventDefault();
+       const isValid= this.validate();
+       const {name,age,nic,address}= this.state;
 
        
-        if (address.trim().length == 0) {
-            addressErr.addressEmpty = "*Address is empty please enter*";
-            isValid = false;
-        }
+      
+       const data={
+           name:name,
+           age:age,
+           nic:nic,
+           address:address
+       }
+    
+       if(isValid){
+       console.log(data)
 
-
-        setNameErr(nameErr);
-        setAgeErr(ageErr);
-        setNICErr(nicErr);
-        setAddress(addressErr);
-        return isValid;
+       axios.post("/driver/save",data).then((res)=>{
+           if(res.data.success){
+               this.setState({
+                name:"",
+                age:"",
+                nic:"",
+                address:""
+               })
+               Swal.fire('Added', 'Driver Added successfully', 'success')
+            
+           }
+       })
     }
+   }
 
-    return (
-        <div style={{
-         
-        }}>
-            <div className="container">
-            <h1 className="h3 mb-3 font-weight-normal">ADD NEW Driver</h1>
-                <span className="border">
-                    <div className="shadow p-3 mb-5 bg-white rounded">
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                     <button className="btn btn-warning " ><a href="/TMSDash" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-list"></i>Driver List</a></button>
-                    </div> 
-                        <form onSubmit={sendData}>
-                            <div class="form-group">
-                                <label for="name">Driver Name</label>
-                                <input type="text" className="form-control" id="name" placeholder="Enter Driver Name"
-                                    onChange={(e) => {
-                                        setName(e.target.value);
-                                    }} />
-                                {Object.keys(nameErr).map((key) => {
-                                    return <div style={{ color: "red" }}>{nameErr[key]}</div>
-                                })}
-                            </div>
+   
+   
+   
+   
+   
+   
+    render() {
+        return (
+            
+            <div className= 'col-md-8 mt-8-4 mx-auto'>
+              <h1 className="h3 mb-3 font-weight-normal">ADD NEW DRIVER</h1>
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                     <button className="btn btn-warning " ><a href="/DriHome" style= {{textDecoration:'none', color:'black'}}><i className="fas fa-list"></i>See Driver List</a></button>
+                    </div>     
+               <form className="form-group" style={{marginBottom:'15px'}}> 
+                <div>
+                   <lable style={{marginBottom:'15px'}}>Driver Name</lable>
+                    <input type='text' placeholder='Enter Name' className = 'form-control'
+                    name="name" value={this.state.name  } onChange={this.handleInputChange} required/>
 
-                            <div className="form-group">
-                                <label for="category">Age</label>
-                                <input type="number" className="form-control" id="age" placeholder="Enter Driver Age"
-                                    onChange={(e) => {
-                                        setAge(e.target.value);
-                                    }} />
-                                {Object.keys(ageErr).map((key) => {
-                                    return <div style={{ color: "red" }}>{ageErr[key]}</div>
-                                })}
-                            </div>
+                    <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.nameError}
+                   </div>
 
-                            <div className="form-group">
-                                <label for="description">Driver NIC</label>
-                                <textarea className="form-control" id="nic" rows="3" placeholder="Enter Driver NIC"
-                                    onChange={(e) => {
-                                        setNIC(e.target.value);
-                                    }}></textarea>
-                                {Object.keys(nicErr).map((key) => {
-                                    return <div style={{ color: "red" }}>{nicErr[key]}</div>
-                                })}
-                            </div>
+                
 
-                            <div className="form-group">
-                                <label for="price">Driver Address</label>
-                                <input type="text" className="form-control" id="address" placeholder="Enter Driver Address"
-                                    onChange={(e) => {
-                                        setAddress(e.target.value);
-                                    }} />
-                                {Object.keys(addressErr).map((key) => {
-                                    return <div style={{ color: "red" }}>{addressErr[key]}</div>
-                                })}
-                            </div>
+                    <lable style={{marginBottom:'15px'}}>Driver Age</lable>
+                    <input type='text' placeholder='Enter Age' className = 'form-control'
+                    name="age" value={this.state.age} onChange={this.handleInputChange} required/> 
 
-                            <div className="form-group form-check">
-                                <input type="checkbox" className="form-check-input" id="exampleCheck1" required="true" />
-                                <label className="form-check-label" for="exampleCheck1">I've Checked everything is correct</label>
-                            </div>
-                            <button  className='btn btn-success ' type="submit" style={{marginTop:'15px'}} > <i className="fas fa-plus-circle"></i>&nbsp;Add Driver</button>
-                        </form>
-                    </div>
-                </span>
+                    <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.ageError}
+                   </div>
 
+
+
+                    <lable style={{marginBottom:'15px'}}>Driver NIC</lable>
+                    <input type='text' placeholder='Enter NIC' className = 'form-control'
+                    name="nic" value={this.state.nic} onChange={this.handleInputChange} required/> 
+
+                    <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.nicError}
+                   </div>
+                
+                    <lable style={{marginBottom:'15px'}}>Driver Address</lable>
+                    <textarea  cols='30' rows='5' placeholder='Address' className='form-control'            
+                     name="address" value={this.state.address} onChange={this.handleInputChange} required/> 
+                       <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.addressError}
+                   </div>
+                     <br/>
+                    
+                    <button  className='btn btn-success ' type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}> <i className="fas fa-save"></i>&nbsp;Save</button>
+                    &nbsp;
+                       
+                </div>
+                </form>
             </div>
-        </div>
-    )
+            
+
+  
+        )
+    }
 }
 
-export default AddDriver

@@ -13,6 +13,8 @@ import VehicleSchedule from './components/VehicleSchedule'
 import Vehischedule from './components/Vehischedule'
 import TMSDash from './components/TMSDash'
 import AllMain from './components/AllMain'
+import TMSSchedule from './components/TMSSchedule'
+
 
 
 
@@ -30,6 +32,7 @@ export default class App extends Component {
        
 			<Route path="/vehicleDash"  component={DriNav}></Route>
 			<Route path="/VehicleSchedule"  component={DriNav}></Route>
+      <Route path='/TMSSchedule' component={TMSSchedule}></Route>
      
       
       

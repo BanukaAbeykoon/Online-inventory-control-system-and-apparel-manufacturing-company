@@ -61,15 +61,17 @@ export default class Driverschedule extends Component {
       render() {
         return (
 
-          <div>
-
+          <div id="wrapper" className="toggled">
+          <div id="page-content-wrapper">
+          <div className="container-fluid">
+    
           
 
-          <div className="container">
+         
           
              
-          <div className="row justify-content-center ">
-              <div  className="col-9 ">
+          <div className="row justify-content-start ">
+              <div  className="col-8 ">
               <h1 style={{backgroundColor:'black', color:'white', padding:'5px',textAlign:'center',opacity:".50"}}>Driver Schedule</h1>
          
           <div className="d-grid gap-2 d-md-flex justify-content-md-end" role="group" aria-label="Basic example">
@@ -134,7 +136,9 @@ export default class Driverschedule extends Component {
 </div>
 
           </div>
-         
+
+          </div>
+      
     
     
   

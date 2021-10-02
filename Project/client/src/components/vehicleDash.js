@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import swal from 'sweetalert2'
 import './vehicleDash.css'
-import Nav from './DriNav' 
+
 
 export default class vehicleDash extends Component {
     constructor(props){
@@ -34,6 +34,8 @@ export default class vehicleDash extends Component {
       })
     }
 
+
+    //search
     filterData(vehicle,searchresult){
       const result = vehicle.filter((vehicle)=>
         vehicle.regno.toLowerCase().includes(searchresult)||
@@ -43,6 +45,8 @@ export default class vehicleDash extends Component {
       )
       this.setState({vehicle:result})
     }
+
+    //search
 
     handlesearch=(e)=>{
       const searchresult= e.currentTarget.value
@@ -55,7 +59,13 @@ export default class vehicleDash extends Component {
 
     render() {
         return (
-          <div className= "container">
+          
+          
+          <div id="wrapper" className="toggled">
+      <div id="page-content-wrapper">
+      <div className="container-fluid">
+
+
             <div class="row justify-content-evenly">
               <div  class="col-9">
               <h1 style={{backgroundColor:'black', color:'white', padding:'5px',textAlign:'center' ,opacity:".50"}}>Vehicle Management </h1>
@@ -93,11 +103,11 @@ export default class vehicleDash extends Component {
                         <td>{vehicle.manuyear}</td>
                         <td>
                           <a className="btn btn-primary" href={`/vehicleDash/EditVehicle/${vehicle._id}`}>
-                            <i className="fas fa-edit"></i>&nbsp;Edit&nbsp;</a>
+                            <i className="fas fa-edit"></i>Edit</a>
                         </td>
                         <td>
                       <a className="btn btn-primary" href={`/vehicleDash/Vehischedule/${vehicle._id}`}>
-                        <i className="fas fa-list"></i>&nbsp;Schedule</a>
+                        <i className="fas fa-list"></i>Schedule</a>
                     </td>
                        
                         <td>
@@ -109,7 +119,7 @@ export default class vehicleDash extends Component {
                 </tbody>
             </table>
     
-            <button className="btn btn-success"><a href= "/AddVehicle" style={{textDecoration:'none',color:'white'}}>Add New Vehicle</a></button>
+            <button className="btn btn-success"><a href= "/AddVehicle" style={{textDecoration:'none',color:'white'}}><i className="fas fa-plus-circle"></i>Add Vehicle</a></button>
             
               </div>
             
@@ -118,6 +128,8 @@ export default class vehicleDash extends Component {
               
             </div>
           
+          </div>
+          </div>
           </div>
         )}
 }

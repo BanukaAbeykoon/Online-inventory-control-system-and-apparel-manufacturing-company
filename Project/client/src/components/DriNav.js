@@ -15,7 +15,7 @@ class DriNav extends Component {
                  
 
 
-                <img src="%PUBLIC_URL%../../../cas.png.jpeg" class="rounded-circle" width="200" height="200"  alt=""/>
+                <img src="cas.png.jpeg" class="rounded-circle" width="200" height="200"  alt=""/>
                 <br/>
                 <br/>  
         <li>
@@ -64,7 +64,7 @@ class DriNav extends Component {
                 <li>
                 <div className="dropdown">
                         <button className="dropbtn">
-                        <i class="fas fa-cubes"></i>
+                        <i class="fas fa-shipping-fast"></i>
                         &nbsp;
                           Transport Management</button>
                         <div className="dropdown-content">
@@ -72,6 +72,7 @@ class DriNav extends Component {
                         <a href="/vehicleDash">Vehicle Management </a>
                         <a href="/Driverschedule">Driver  Schedule</a>
                         <a href="/VehicleSchedule">Vehicle Schedule</a>
+                        <a href="/TMSSchedule">Schedules</a>
                     </div>
                     </div>
                 </li>

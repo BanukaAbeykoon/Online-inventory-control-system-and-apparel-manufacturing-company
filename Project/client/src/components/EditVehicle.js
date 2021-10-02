@@ -72,6 +72,11 @@ export default class EditVehicle extends Component {
             <div>
                 <hr/>
 
+                <div id="wrapper" className="toggled">
+      <div id="page-content-wrapper">
+      <div className="container-fluid">
+
+
                 <div className= 'col-md-8 mt-8-4 mx-auto'>
               <h1 className="h3 mb-3 font-weight-normal">UPDATE VEHICLE</h1>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -105,6 +110,10 @@ export default class EditVehicle extends Component {
                 </form>
             </div>
             
+            </div>
+
+            </div>
+            </div>
             </div>
             
            

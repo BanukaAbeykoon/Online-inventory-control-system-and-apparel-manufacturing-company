@@ -77,6 +77,10 @@ export default class Editdriver extends Component {
 
             <div>
                 <hr/>
+                <div id="wrapper" className="toggled">
+                <div id="page-content-wrapper">
+                <div className="container-fluid">
+
 
                     <div className= 'col-md-8 mt-8-4 mx-auto'>
               <h1 className="h3 mb-3 font-weight-normal">EDIT DRIVER</h1>
@@ -111,6 +115,10 @@ export default class Editdriver extends Component {
                 </form>
             </div>
 
+            </div>
+
+            </div>
+            </div>
             </div>
             
             

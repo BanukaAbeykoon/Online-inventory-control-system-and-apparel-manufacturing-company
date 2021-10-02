@@ -69,6 +69,11 @@ export default class Vehischedule extends Component {
         return (
            <div>
                <hr/>
+               <div id="wrapper" className="toggled">
+                 <div id="page-content-wrapper">
+                 <div className="container-fluid">
+
+               
                 <div className= 'col-md-8 mt-8-4 mx-auto'>
               <h1 className="h3 mb-3 font-weight-normal">Vehicle Schedule</h1>
               <div className="d-grid gap-2 d-md-flex justify-content-md-end" role="group" aria-label="Basic example">
@@ -95,6 +100,9 @@ export default class Vehischedule extends Component {
                 </div>
                 </form>
             </div>
+           </div>
+           </div>
+           </div>
            </div>
         )
     }

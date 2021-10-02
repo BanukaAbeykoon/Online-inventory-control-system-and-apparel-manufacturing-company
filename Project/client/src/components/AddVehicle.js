@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2';
-import { TimerOptions, setErrors } from './../TMSvalidation/TMError';
+
 
 
 export default class AddVehicle extends Component {
@@ -13,7 +13,10 @@ export default class AddVehicle extends Component {
             engno:"",
             brandname:"",
             manuyear:"",
-            errors:{}
+           regnoError:"",
+           engnoError:"",
+           brandnameError:"",
+           manuyearError:""
 
         }
     }
@@ -24,24 +27,54 @@ export default class AddVehicle extends Component {
             ...this.state,
             [name]:value
         })
+   
+   
+   
+    }
+    
+ 
+
+    validate=()=>{
+        let regnoError="";
+        let engnoError="";
+        let brandnameError="";
+        let manuyearError="";
+
+        if(!this.state.regno){
+            regnoError= '*Register Number is Required!'
+        }
+        else if (!this.state.regno.includes('-')){
+            regnoError= '*Please enter valid Register Number!'
+        }
+
+        if(!this.state.engno){
+            engnoError="*Engine Number is Required! "
+        }
+        if(!this.state.brandname){
+            brandnameError="*Brand Name is Required!"
+        }
+
+        if(!this.state.manuyear){
+            manuyearError="*Manufacture year   is Required!"
+        }
+
+
+        if(regnoError||engnoError||brandnameError||manuyearError){
+            this.setState({regnoError,engnoError,brandnameError,manuyearError});
+            return false;
+        }
+        return true;
     }
 
-    validate=(regno,engno,brandname,manuyear)=>{
-
-        const errors = setErrors(regno,engno,brandname,manuyear);
-        
-        this.setState({errors: errors});
-        
-        return Object.values(errors).every((err) => err === "");
-        
-        };
+  
 
     onSubmit=(e)=>{
         e.preventDefault();
 
-        
+        const isValid= this.validate();
         const{regno,engno,brandname,manuyear}=this.state;
-        if( this.validate=(regno,engno,brandname,manuyear)){
+
+     
         
         const data={
             regno:regno,
@@ -49,6 +82,11 @@ export default class AddVehicle extends Component {
             brandname:brandname,
             manuyear:manuyear
         }
+
+        if(isValid){
+
+        
+          
         console.log(data)
 
         axios.post("http://localhost:8000/vehicle/save",data).then((res)=>{
@@ -57,14 +95,18 @@ export default class AddVehicle extends Component {
                     regno:"",
                     engno:"",
                     brandname:"",
-                    manuyear:""
+                    manuyear:"",
+                    regnoError:"",
+                    engnoError:"",
+                    brandnameError:"",
+                    manuyearError:""
                 })
             }
             Swal.fire("Added!","Vehicle Added Successfully","success")
         })
 
     }
-    }
+    };
 
 
 
@@ -82,12 +124,11 @@ export default class AddVehicle extends Component {
                 <div>
                    <lable style={{marginBottom:'15px'}}>Registration NO</lable>
                     <input type='text' placeholder='Enter No' className = 'form-control'
-                    name="regno" value={this.state.regno} onChange={this.handleInputChange}/> 
+                    name="regno" value={this.state.regno} onChange={this.handleInputChange} required/> 
 
-                    {this.state.errors.customer && (
-                    <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.customer}</div>
-                    )}
-
+                    <div className="text-danger" style={{fontSize:12 ,color:"red"}}>
+                           {this.state.regnoError}
+                   </div>
                 </div>
                 
                 
@@ -95,7 +136,11 @@ export default class AddVehicle extends Component {
 
                     <lable style={{marginBottom:'15px'}}>Engine NO</lable>
                     <input type='text' placeholder='Enter NO' className = 'form-control'
-                    name="engno" value={this.state.engno} onChange={this.handleInputChange}/> 
+                    name="engno" value={this.state.engno} onChange={this.handleInputChange} required/> 
+                   
+                   <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.engnoError}
+                   </div>
                 </div>
                    
 
@@ -103,14 +148,27 @@ export default class AddVehicle extends Component {
                 <div>
                      <lable style={{marginBottom:'15px'}}> Brand Name</lable>
                     <input type='text' placeholder='Enter Name' className = 'form-control'
-                    name="brandname" value={this.state.brandname} onChange={this.handleInputChange}/> 
+                    name="brandname" value={this.state.brandname} onChange={this.handleInputChange} required/> 
+
+                    <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.brandnameError}
+                   </div>
+
                 </div>
                    
 
                 <div>
                       <lable style={{marginBottom:'15px'}}>Year of Manufacture</lable>
                     <textarea  cols='30' rows='5' placeholder='Enter Date' className='form-control'            
-                     name="manuyear" value={this.state.manuyear} onChange={this.handleInputChange}/> <br/>
+                     name="manuyear" value={this.state.manuyear} onChange={this.handleInputChange} required/> 
+                        <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.manuyearError}
+                   </div>
+                     
+                     <br/>
+
+                  
+                    
                 </div>
                   
                    <div> 
