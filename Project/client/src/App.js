@@ -106,7 +106,7 @@ export default class App extends Component {
         {/*Factory create--inventory*/}
         <Route path="/pmHome" component={pmHome}></Route>
         <Route path="/rawfacHome" component={RawFactoryHome}></Route>
-        <div class="container-fluid">
+        < class="container-fluid">
           <Route path="/PMDashboard" component={PMDashboard}></Route>
           <Route path="/add" component={CreateFactory}></Route>
           <Route path="/edit/:id" component={EditFactory}></Route>
@@ -121,7 +121,7 @@ export default class App extends Component {
           <Route path="/clientneworder" component={neworder}></Route>
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
-        </div>
+        
       </BrowserRouter>
     );
   }
