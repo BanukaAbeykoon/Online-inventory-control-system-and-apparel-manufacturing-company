@@ -5,17 +5,34 @@ const app = express()
 const cors = require('cors')
 
 
+
+
 //import routes
 const driverroutes= require('./routes/drivers')
 const vehicleroutes= require('./routes/vehicles')
+
+
+
+
+
+//accounts import rotes
+const accountroutes=require('./routes/accounts');
+const accountplanroutes=require('./routes/accountplans');
+
+
 
 //middleware
 app.use(bodyparser.json()) 
 app.use(cors())
 
+//transport  routes midleware
 app.use(driverroutes)
 app.use(vehicleroutes)
 
+
+//accounts routes midleware
+app.use(accountroutes);
+app.use(accountplanroutes);
 
 
 const PORT = 8000;
