@@ -1,18 +1,18 @@
 Please go under edit and edit this file as needed for your project
 
-# Project Name - 
-# Batch - 
-### Group Leader - IT20212232 - Mr. Asiri Gamage (IT20212232)
-### Member 2 - 
-### Member 3 - 
-### Member 4 - 
-### Member 5 - 
-### Member 6 - 
-### Member 7 - 
-### Member 8 - 
+# Project Name - Inventory Control System for Casanova
+# Batch - Batch 08
+### Group Leader - IT20198640 - Mr. Fernando W.T.P.R (IT20198640)
+### Member 2 - IT20185220 - Mr. Hewage H.K.P (IT20185220)
+### Member 3 - IT20203658 - Mr. Abeykoon A.M.K.B(IT20203658)
+### Member 4 - IT20244484 - Mr. Dhanushanka A.K.L(IT20244484)
+### Member 5 - IT20109462 - Mr. Liyanage D.K (IT20109462)
+### Member 6 - IT20109530 - Miss. Malluwawadu K.T (IT20109530)
+### Member 7 - IT20041052 - Mr. Senanayake S.M.H.S (IT20041052)
+### Member 8 - IT20067342 - Mr. Jayasuriya J.A.D.A.S (IT20067342)
 
-#### Brief Description of Project - 
-#### Technologies used - 
+#### Brief Description of Project -  Implement Inventory Control System for the client 'CASANOVA' which is an apparel manufacturing company                                        in Sri Lanka.
+#### Technologies used - MERN Stack
 
 Note - The student's github account should be given in brackets e.g. (IT20212232), this ideally should be your student id 
 
