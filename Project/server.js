@@ -1,7 +1,15 @@
+//Import expres package & mongoose package by require
 const express  = require ('express')
 const mongoose = require('mongoose')
+
+//coming to server json format, so convert to js format
 const bodyparser = require('body-parser')
+
+//To run server create constant variable app
+//Invoke express
 const app = express()
+
+//To reject browser security while two domain working
 const cors = require('cors')
 
 
@@ -21,6 +29,12 @@ const accountplanroutes=require('./routes/accountplans');
 
 
 
+//import production routes
+const inventoryRoutes = require("./routes/inventory");
+const factoryRoutes = require("./routes/factory");
+const orderRoutes = require("./routes/orders");
+
+
 //middleware
 app.use(bodyparser.json()) 
 app.use(cors())
@@ -33,6 +47,12 @@ app.use(vehicleroutes)
 //accounts routes midleware
 app.use(accountroutes);
 app.use(accountplanroutes);
+
+
+//production routes midleware
+app.use(inventoryRoutes);
+app.use(factoryRoutes);
+app.use(orderRoutes);
 
 
 const PORT = 8000;
