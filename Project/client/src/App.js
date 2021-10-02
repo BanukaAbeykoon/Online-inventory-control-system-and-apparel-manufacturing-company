@@ -33,8 +33,22 @@ import AccountplanDetails from './components/AccountplanDetails';
 import mainhome from './components/mainhome';
 
 
-
-
+//Production
+import CreateFactory from "./components/CreateFactory";
+import EditFactory from "./components/EditFactory";
+import pmHome from "./components/pmHome";
+import PMNavBar from "./components/PMNavBar";
+import FactoryDetails from "./components/FactoryDetails";
+import PMDashboard from "./components/PMDashboard";
+import AllMain from "./components/AllMain";
+import RawFactoryHome from "./components/RawFactoryHome";
+import CreateRawFactory from "./components/CreateRawFactory";
+import EditRawFactory from "./components/EditRawFactory";
+import RawFactoryDetails from "./components/RawFactoryDetails";
+import searchFactory from "./components/searchFactory";
+import neworder from "./components/neworder";
+import neworderdetail from "./components/neworderdetail";
+import MagicTool from "./components/MagicTool";
 
 export default class App extends Component {
   render() {
@@ -90,7 +104,29 @@ export default class App extends Component {
 
 
 	 
+	 //Production
 	 
+		{window.location.pathname !== "/" && <PMNavBar />}
+        <Route path="/" exact component={AllMain}></Route>
+
+        {/*Factory create--inventory*/}
+        <Route path="/pmHome" component={pmHome}></Route>
+        <Route path="/rawfacHome" component={RawFactoryHome}></Route>
+        <div class="container-fluid">
+          <Route path="/PMDashboard" component={PMDashboard}></Route>
+          <Route path="/add" component={CreateFactory}></Route>
+          <Route path="/edit/:id" component={EditFactory}></Route>
+          <Route path="/inventory/:id" component={FactoryDetails}></Route>
+
+          {/*Raw Materials Send--Factory*/}
+
+          <Route path="/searchfac" component={searchFactory}></Route>
+          <Route path="/createrawfac" component={CreateRawFactory}></Route>
+          <Route path="/editrawfac/:id" component={EditRawFactory}></Route>
+          <Route path="/factory/:id" component={RawFactoryDetails}></Route>
+          <Route path="/clientneworder" component={neworder}></Route>
+          <Route path="/order/:id" component={neworderdetail}></Route>
+          <Route path="/magictool" component={MagicTool}></Route>
 	 
 	 
 	 
