@@ -43,14 +43,14 @@ import mainhome from "./components/mainhome";
 
 
 
-
-
 import CreateFactory from "./components/CreateFactory";
 import EditFactory from "./components/EditFactory";
 import pmHome from "./components/pmHome";
 import PMNavBar from "./components/PMNavBar";
 import FactoryDetails from "./components/FactoryDetails";
 import PMDashboard from "./components/PMDashboard";
+
+
 
 import RawFactoryHome from "./components/RawFactoryHome";
 import CreateRawFactory from "./components/CreateRawFactory";
@@ -174,8 +174,7 @@ export default class App extends Component {
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
 
-          </div>
-	 
+        </div>
 	 
 	 
 
@@ -194,7 +193,7 @@ export default class App extends Component {
           </div>
 
 	 
-	 
+	       
 	 
 
 
