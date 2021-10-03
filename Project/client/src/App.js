@@ -183,8 +183,8 @@ export default class App extends Component {
          <Route path="/ph" exact component={packingHome}></Route>
            <div className="comtainer-fluid">
               
-          <Route path="/add" component={CreatePacking}></Route>
-          <Route path="/edit/:id" component={EditPacking}></Route>
+          <Route path="/addph" component={CreatePacking}></Route>
+          <Route path="/editph/:id" component={EditPacking}></Route>
     
           <Route path="/packing/:id" component={PackingDetails}></Route>
            <Route path="/RMDashbord" exact component={RMDashbord}></Route>
