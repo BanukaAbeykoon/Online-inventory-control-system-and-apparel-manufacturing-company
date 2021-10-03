@@ -92,7 +92,10 @@ export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Route path="/" exact component={AllMain}></Route>
+
+      {window.location.pathname !== "/" && <AccountNavBar />}
+      <Route path="/" exact component={AllMain}></Route>
+       
 
      
         <Route path="/TMSSchedule" component={TMSSchedule}></Route>
@@ -118,7 +121,7 @@ export default class App extends Component {
         ></Route>
 
 
-        <AccountNavBar />
+        
 
      
 
@@ -145,9 +148,7 @@ export default class App extends Component {
 
 
 
-        {window.location.pathname !== "/" && <PMNavBar />}
 
-        <Route path="/" exact component={AllMain}></Route>
 
         {/*Factory create--inventory*/}
         <Route path="/pmHome" component={pmHome}></Route>
@@ -172,16 +173,15 @@ export default class App extends Component {
 	 
 	 
 
-	  <NavBar/>
           
-         <Route path="/ph" exact component={packingHome}></Route>
+       
            <div className="comtainer-fluid">
               
-          <Route path="/addph" component={CreatePacking}></Route>
-          <Route path="/editph/:id" component={EditPacking}></Route>
+            <Route path="/addph" component={CreatePacking}></Route>
+            <Route path="/editph/:id" component={EditPacking}></Route>
     
-          <Route path="/packing/:id" component={PackingDetails}></Route>
-           <Route path="/RMDashbord" exact component={RMDashbord}></Route>
+            <Route path="/packing/:id" component={PackingDetails}></Route>
+            <Route path="/RMDashbord" exact component={RMDashbord}></Route>
             <Route path="/packingHome" exact component={packingHome}></Route>
             <Route path="/RMReport" component={RMReport}></Route>
           </div>
@@ -191,7 +191,7 @@ export default class App extends Component {
 	 
 
 
-	  <ShipmentNavBar />
+	  
 
         <Route path="/ShipmentHome" component={ShipmentHome}></Route>
         <div className="container">
