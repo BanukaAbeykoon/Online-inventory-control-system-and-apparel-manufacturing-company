@@ -19,6 +19,8 @@ import TMSSchedule from "./components/TMSSchedule";
 
 
 
+
+
 import Adashboard from "./components/Adashboard";
 import AccountCreate from "./components/AccountCreate";
 import AccountEdit from "./components/AccountEdit";
@@ -40,12 +42,16 @@ import mainhome from "./components/mainhome";
 
 
 
+
 import CreateFactory from "./components/CreateFactory";
 import EditFactory from "./components/EditFactory";
 import pmHome from "./components/pmHome";
 import PMNavBar from "./components/PMNavBar";
 import FactoryDetails from "./components/FactoryDetails";
 import PMDashboard from "./components/PMDashboard";
+
+
+
 import RawFactoryHome from "./components/RawFactoryHome";
 import CreateRawFactory from "./components/CreateRawFactory";
 import EditRawFactory from "./components/EditRawFactory";
@@ -54,6 +60,7 @@ import searchFactory from "./components/searchFactory";
 import neworder from "./components/neworder";
 import neworderdetail from "./components/neworderdetail";
 import MagicTool from "./components/MagicTool";
+
 
 
 import CreatePacking from './components/CreatePacking';
@@ -75,6 +82,7 @@ import CreateLSmaterial from "./components/CreateLSmaterial";
 import EditLSmaterial from "./components/EditLSmaterial";
 import HomeLSmaterial from "./components/HomeLSmaterial";
 import DetailsLSmaterial from "./components/DetailsLSmaterial";
+
 
 
 
@@ -115,12 +123,11 @@ export default class App extends Component {
           component={EditVehicle}
         ></Route>
 
-      
 
+        <AccountNavBar />
 
+     
 
-
-<AccountNavBar />
 
 
         <Route path="/accountHome" component={AccountHome}></Route>
@@ -139,14 +146,13 @@ export default class App extends Component {
         ></Route>
 
 	 
-
-	 
 		
 
 
 
 
-{window.location.pathname !== "/" && <PMNavBar />}
+        {window.location.pathname !== "/" && <PMNavBar />}
+
         <Route path="/" exact component={AllMain}></Route>
 
         {/*Factory create--inventory*/}
@@ -167,8 +173,8 @@ export default class App extends Component {
           <Route path="/clientneworder" component={neworder}></Route>
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
-	 
-	      </div>
+
+        </div>
 	 
 	 
 
@@ -184,12 +190,13 @@ export default class App extends Component {
            <Route path="/RMDashbord" exact component={RMDashbord}></Route>
             <Route path="/packingHome" exact component={packingHome}></Route>
             <Route path="/RMReport" component={RMReport}></Route>
-          
+          </div>
 
 	 
-	        </div>
+	       
 	 
-	 
+
+
 	  <ShipmentNavBar />
 
         <Route path="/ShipmentHome" component={ShipmentHome}></Route>
@@ -213,10 +220,6 @@ export default class App extends Component {
 
 
 	 
-	 
-	 
-	 
-
 
       </BrowserRouter>
     );
