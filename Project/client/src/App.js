@@ -94,13 +94,7 @@ export default class App extends Component {
       <BrowserRouter>
         <Route path="/" exact component={AllMain}></Route>
 
-        <Route path="/TMSDash" component={DriNav}></Route>
-
-        <Route path="/DriHome" component={DriNav}></Route>
-        <Route path="/Driverschedule" component={DriNav}></Route>
-
-        <Route path="/vehicleDash" component={DriNav}></Route>
-        <Route path="/VehicleSchedule" component={DriNav}></Route>
+     
         <Route path="/TMSSchedule" component={TMSSchedule}></Route>
 
         <Route path="/TMSDash" component={TMSDash}></Route>
