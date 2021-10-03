@@ -71,7 +71,13 @@ import neworderdetail from "./components/neworderdetail";
 import MagicTool from "./components/MagicTool";
 
 
-
+import CreatePacking from './components/CreatePacking';
+import EditPacking from "./components/EditPacking";
+import packingHome from "./components/packingHome";
+import NavBar from "./components/RMNavBar";
+import RMDashbord from './components/RMDashbord';
+import PackingDetails from './components/PackingDetails';
+import RMReport from './components/RMReport';
 
 
 export default class App extends Component {
@@ -161,6 +167,25 @@ export default class App extends Component {
           <Route path="/clientneworder" component={neworder}></Route>
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
+	 
+	 
+	 
+	 
+	  <NavBar/>
+          
+         <Route path="/ph" exact component={packingHome}></Route>
+           <div className="comtainer-fluid">
+              
+          <Route path="/add" component={CreatePacking}></Route>
+          <Route path="/edit/:id" component={EditPacking}></Route>
+    
+          <Route path="/packing/:id" component={PackingDetails}></Route>
+           <Route path="/RMDashbord" exact component={RMDashbord}></Route>
+            <Route path="/packingHome" exact component={packingHome}></Route>
+            <Route path="/RMReport" component={RMReport}></Route>
+          
+        </div>
+	 
 	 
 	 
 	 
