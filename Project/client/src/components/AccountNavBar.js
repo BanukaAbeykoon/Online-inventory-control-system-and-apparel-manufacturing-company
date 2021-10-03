@@ -118,7 +118,7 @@ class AccountNavBar extends Component {
                 <div className="dropdown-content">
                   
                   <a href="/RMDashbord">Dashboard</a>
-                  <a href="/">Packing Form</a>
+                  <a href="/packingHome">Packing Form</a>
                   <a href="#">Transport Form</a>
                   <a href="/RMReport">Reporting</a>
                 </div>
@@ -200,13 +200,13 @@ class AccountNavBar extends Component {
                   <li className="nav-item">
                     <a className="nav-link" href="#">
                       <img
-                        src="%PUBLIC_URL%../../my.png"
+                        src="%PUBLIC_URL%../../user.png"
                         class="rounded-circle"
                         width="40"
                         height="40"
                         alt=""
                       />
-                      &nbsp; Hewage H.K.P &nbsp; &nbsp; &nbsp;{" "}
+                      &nbsp; Manager &nbsp; &nbsp; &nbsp;{" "}
                     </a>
                   </li>
                 </div>
