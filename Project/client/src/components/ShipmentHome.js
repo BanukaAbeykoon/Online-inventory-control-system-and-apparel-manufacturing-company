@@ -137,7 +137,7 @@ export default class ShipmentHome extends Component {
                     <td>
                       <a
                         className="btn btn-warning"
-                        href={`/edit/${shipment._id}`}
+                        href={`/editSh/${shipment._id}`}
                       >
                         <i className="fas fa-edit"></i>&nbsp;Edit
                       </a>
@@ -156,7 +156,7 @@ export default class ShipmentHome extends Component {
             </table>
 
             <button className="btn btn-success">
-              <a href="/add" style={{ textdecoration: "none", color: "white" }}>
+              <a href="/addSh" style={{ textdecoration: "none", color: "white" }}>
                 Create New Shipment
               </a>
             </button>
