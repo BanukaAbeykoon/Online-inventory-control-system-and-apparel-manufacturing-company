@@ -79,6 +79,21 @@ import RMDashbord from './components/RMDashbord';
 import PackingDetails from './components/PackingDetails';
 import RMReport from './components/RMReport';
 
+import ShipmentCreate from "./components/ShipmentCreate";
+import ShipmentEdit from './components/ShipmentEdit';
+import ShipmentHome from "./components/ShipmentHome";
+import ShipmentNavBar from "./components/ShipmentNavBar";
+import ShipmentDetails from "./components/ShipmentDetails";
+import SHdashboard from './components/SHdashboard';
+
+import CreateLSmaterial from "./components/CreateLSmaterial";
+import EditLSmaterial from "./components/EditLSmaterial";
+import HomeLSmaterial from "./components/HomeLSmaterial";
+import DetailsLSmaterial from "./components/DetailsLSmaterial";
+
+
+
+
 
 export default class App extends Component {
   render() {
@@ -171,6 +186,7 @@ export default class App extends Component {
 	 
 	 
 	 
+
 	  <NavBar/>
           
          <Route path="/ph" exact component={packingHome}></Route>
@@ -184,12 +200,38 @@ export default class App extends Component {
             <Route path="/packingHome" exact component={packingHome}></Route>
             <Route path="/RMReport" component={RMReport}></Route>
           
+
+	 
+	 
+	 
+	 
+	  <ShipmentNavBar />
+
+        <Route path="/ShipmentHome" component={ShipmentHome}></Route>
+        <div className="container">
+          <Route path="/add" component={ShipmentCreate}></Route>
+          <Route path="/edit/:id" component={ShipmentEdit}></Route>
+          <Route path="/shipment/:id" component={ShipmentDetails}></Route>
+          <Route path="/SHdashboard" component={SHdashboard}></Route>
+
+          <Route path="/CreateLSmaterial" component={CreateLSmaterial}></Route>
+          <Route path="/HomeLSmaterial" component={HomeLSmaterial}></Route>
+          <Route path="/EditLSmaterial/:id" component={EditLSmaterial}></Route>
+          <Route path="/DetailsLSmaterial" component={DetailsLSmaterial}></Route>
+
         </div>
 	 
 	 
 	 
 	 
 	 
+
+
+	 
+	 
+	 
+	 
+
 
       </BrowserRouter>
     );
