@@ -48,6 +48,7 @@ import neworder from "./components/neworder";
 import neworderdetail from "./components/neworderdetail";
 import MagicTool from "./components/MagicTool";
 
+
 export default class App extends Component {
   render() {
     return (
@@ -100,13 +101,15 @@ export default class App extends Component {
           component={AccountplanDetails}
         ></Route>
 
+
+
         {window.location.pathname !== "/" && <PMNavBar />}
         <Route path="/" exact component={AllMain}></Route>
 
         {/*Factory create--inventory*/}
         <Route path="/pmHome" component={pmHome}></Route>
         <Route path="/rawfacHome" component={RawFactoryHome}></Route>
-        < class="container-fluid">
+        <div class="container-fluid">
           <Route path="/PMDashboard" component={PMDashboard}></Route>
           <Route path="/add" component={CreateFactory}></Route>
           <Route path="/edit/:id" component={EditFactory}></Route>
@@ -121,7 +124,6 @@ export default class App extends Component {
           <Route path="/clientneworder" component={neworder}></Route>
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
-        
       </BrowserRouter>
     );
   }
