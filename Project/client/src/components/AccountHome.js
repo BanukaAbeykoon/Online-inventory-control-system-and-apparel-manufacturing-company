@@ -178,7 +178,7 @@ export default class AccountHome extends Component {
                 <tr key={index}>
                   <th scope="row">{index+1}</th>
                   <td>
-                      <a href={`/post/${account._id}`} style={{textDecoration:'none'}}>
+                      <a href={`/postAcc/${account._id}`} style={{textDecoration:'none'}}>
                       {account.orderId} 
                       </a>
                       </td>

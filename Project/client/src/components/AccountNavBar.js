@@ -34,23 +34,48 @@ class AccountNavBar extends Component {
                     Meterial</a>
                 </li>
             <li>
-              <a href="#">
-                <i class="fab fa-product-hunt"></i>
-                &nbsp; Production
-              </a>
+              <div className="dropdown">
+                <button className="dropbtn">
+                  <i class="fas fa-cubes"></i>
+                  &nbsp; Production
+                </button>
+                <div className="dropdown-content">
+                  <a href="/PMDashboard">Production Dashboard</a>
+                  <a href="/clientneworder">Client New Orders</a>
+                  <a href="/searchfac">Search Factory</a>
+                  <a href="/magictool">Magic Tool</a>
+                  <a href="/rawfacHome">Raw Factory Dashboard</a>
+                  <a href="/pmHome">Register Factory Dashboard</a>
+                </div>
+              </div>
             </li>
+
+
             <li>
-              <a href="#">
-                <i class="fas fa-file-import"></i>
-                &nbsp; Import Management
-              </a>
+              <div className="dropdown">
+                <button className="dropbtn">
+                  <i class="fas fa-cubes"></i>
+                  &nbsp; Import Management
+                </button>
+                <div className="dropdown-content">
+                  <a href="/SHdashboard">Import Dashboard</a>
+                  <a href="/ShipmentHome">ShipmentHome</a>
+                  <a href="/HomeLSmaterial">LMO Card</a>
+                </div>
+              </div>
             </li>
+            
+            
+            
+            
             <li>
+
               <a href="#">
                 <i class="fas fa-tasks"></i>
                 &nbsp; Quality Check
               </a>
             </li>
+            <li>
             <div className="dropdown">
                 <button className="dropbtn">
                   <i class="fas fa-cubes"></i>
@@ -64,18 +89,48 @@ class AccountNavBar extends Component {
                   <a href="/accountPlanHome"> &nbsp;&nbsp;&nbsp;&nbsp;Planning </a>
                 </div>
               </div>
-            <li>
+              </li>
+              <li>
+                <div className="dropdown">
+                        <button className="dropbtn">
+                        <i class="fas fa-shipping-fast"></i>
+                        &nbsp;
+                          Transport Management</button>
+                        <div className="dropdown-content">
+                        <a href="/DriHome">Driver Management </a>
+                        <a href="/vehicleDash">Vehicle Management </a>
+                        <a href="/Driverschedule">Driver  Schedule</a>
+                        <a href="/VehicleSchedule">Vehicle Schedule</a>
+                        <a href="/TMSSchedule">Schedules</a>
+                    </div>
+                    </div>
+                </li>
+
+
+                <li>
               <a href="#">
-                <i class="fas fa-truck"></i>
-                &nbsp; Transport
+                
+                <div className="dropdown">
+                <button className="dropbtn">
+                  <i class="fas fa-tshirt"></i>
+                  &nbsp; Ready Made
+                </button>
+                <div className="dropdown-content">
+                  
+                  <a href="/RMDashbord">Dashboard</a>
+                  <a href="/">Packing Form</a>
+                  <a href="#">Transport Form</a>
+                  <a href="/RMReport">Reporting</a>
+                </div>
+              </div>
+              
               </a>
             </li>
-            <li>
-              <a href="#">
-                <i class="fas fa-tshirt"></i>
-                &nbsp; Ready Made
-              </a>
-            </li>
+           
+           
+           
+           
+           
             <li>
               <a href="#">
                 <i class="fas fa-users-cog"></i>
