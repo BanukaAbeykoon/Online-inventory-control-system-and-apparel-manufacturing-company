@@ -35,6 +35,12 @@ const factoryRoutes = require("./routes/factory");
 const orderRoutes = require("./routes/orders");
 
 
+//import Shipment routes
+const shipmentroutes = require('./routes/shipments');
+const lessmaterialRoutes = require('./routes/lmocard');
+
+
+
 //middleware
 app.use(bodyparser.json()) 
 app.use(cors())
@@ -53,6 +59,12 @@ app.use(accountplanroutes);
 app.use(inventoryRoutes);
 app.use(factoryRoutes);
 app.use(orderRoutes);
+
+
+
+//routes shipment middleware
+app.use(shipmentroutes);
+app.use(lessmaterialRoutes);
 
 
 const PORT = 8000;
