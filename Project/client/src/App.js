@@ -133,7 +133,7 @@ export default class App extends Component {
         <Route path="/accountHome" component={AccountHome}></Route>
         <Route path="/addAcc" component={AccountCreate}></Route>
         <Route path="/editAcc/:id" component={AccountEdit}></Route>
-        <Route path="/post/:id" component={AccountDetails}></Route>
+        <Route path="/postAcc/:id" component={AccountDetails}></Route>
         <Route path="/Accountdashboard" component={Adashboard}></Route>
         <Route path="/journal" component={AccountJournal}></Route>
         <Route path="/reporte" component={AccountReport}></Route>

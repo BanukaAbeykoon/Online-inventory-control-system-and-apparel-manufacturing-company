@@ -197,7 +197,7 @@ class mainhome extends Component {
                   With supporting text below as a natural lead-in to additional
                   content.
                 </p>
-                <a href="/RMDashbord" class="btn btn-primary">
+                <a href="/Accountdashboard" class="btn btn-primary">
                   Account Management
                 </a>
               </div>
