@@ -201,8 +201,8 @@ export default class App extends Component {
 
         <Route path="/ShipmentHome" component={ShipmentHome}></Route>
         <div className="container">
-          <Route path="/add" component={ShipmentCreate}></Route>
-          <Route path="/edit/:id" component={ShipmentEdit}></Route>
+          <Route path="/addSh" component={ShipmentCreate}></Route>
+          <Route path="/editSh/:id" component={ShipmentEdit}></Route>
           <Route path="/shipment/:id" component={ShipmentDetails}></Route>
           <Route path="/SHdashboard" component={SHdashboard}></Route>
 
