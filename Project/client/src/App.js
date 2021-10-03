@@ -155,8 +155,8 @@ export default class App extends Component {
         <Route path="/rawfacHome" component={RawFactoryHome}></Route>
         <div class="container-fluid">
           <Route path="/PMDashboard" component={PMDashboard}></Route>
-          <Route path="/add" component={CreateFactory}></Route>
-          <Route path="/edit/:id" component={EditFactory}></Route>
+          <Route path="/pmadd" component={CreateFactory}></Route>
+          <Route path="/pmedit/:id" component={EditFactory}></Route>
           <Route path="/inventory/:id" component={FactoryDetails}></Route>
 
           {/*Raw Materials Send--Factory*/}
