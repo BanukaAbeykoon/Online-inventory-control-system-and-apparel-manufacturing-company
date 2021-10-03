@@ -21,20 +21,24 @@ import TMSSchedule from "./components/TMSSchedule";
 
 
 
+import Adashboard from "./components/Adashboard";
+import AccountCreate from "./components/AccountCreate";
+import AccountEdit from "./components/AccountEdit";
+import AccountHome from "./components/AccountHome";
+import AccountNavBar from "./components/AccountNavBar";
+import AccountDetails from "./components/AccountDetails";
+import AccountJournal from "./components/AccountJournal";
+import AccountReport from "./components/AccountReport";
+import AccountplanHome from "./components/AccountplanHome";
+import AccountplanCreate from "./components/AccountplanCreate";
+import AccountplanEdit from "./components/AccountplanEdit";
+import AccountplanDetails from "./components/AccountplanDetails";
+import mainhome from "./components/mainhome";
 
-import Adashboard from './components/Adashboard';
-import AccountCreate from './components/AccountCreate';
-import AccountEdit from './components/AccountEdit';
-import AccountHome from './components/AccountHome';
-import AccountNavBar from './components/AccountNavBar';
-import AccountDetails from './components/AccountDetails';
-import AccountJournal from './components/AccountJournal';
-import AccountReport from './components/AccountReport';
-import AccountplanHome from './components/AccountplanHome';
-import AccountplanCreate from './components/AccountplanCreate';
-import AccountplanEdit from './components/AccountplanEdit';
-import AccountplanDetails from './components/AccountplanDetails';
-import mainhome from './components/mainhome';
+
+
+
+
 
 
 
@@ -56,6 +60,29 @@ import searchFactory from "./components/searchFactory";
 import neworder from "./components/neworder";
 import neworderdetail from "./components/neworderdetail";
 import MagicTool from "./components/MagicTool";
+
+
+
+import CreatePacking from './components/CreatePacking';
+import EditPacking from "./components/EditPacking";
+import packingHome from "./components/packingHome";
+import NavBar from "./components/RMNavBar";
+import RMDashbord from './components/RMDashbord';
+import PackingDetails from './components/PackingDetails';
+import RMReport from './components/RMReport';
+
+import ShipmentCreate from "./components/ShipmentCreate";
+import ShipmentEdit from './components/ShipmentEdit';
+import ShipmentHome from "./components/ShipmentHome";
+import ShipmentNavBar from "./components/ShipmentNavBar";
+import ShipmentDetails from "./components/ShipmentDetails";
+import SHdashboard from './components/SHdashboard';
+
+import CreateLSmaterial from "./components/CreateLSmaterial";
+import EditLSmaterial from "./components/EditLSmaterial";
+import HomeLSmaterial from "./components/HomeLSmaterial";
+import DetailsLSmaterial from "./components/DetailsLSmaterial";
+
 
 
 
@@ -96,12 +123,11 @@ export default class App extends Component {
           component={EditVehicle}
         ></Route>
 
-      
 
+        <AccountNavBar />
 
+     
 
-
-<AccountNavBar />
 
 
         <Route path="/accountHome" component={AccountHome}></Route>
@@ -120,14 +146,13 @@ export default class App extends Component {
         ></Route>
 
 	 
-
-	 
 		
 
 
 
 
-{window.location.pathname !== "/" && <PMNavBar />}
+        {window.location.pathname !== "/" && <PMNavBar />}
+
         <Route path="/" exact component={AllMain}></Route>
 
         {/*Factory create--inventory*/}
@@ -148,11 +173,55 @@ export default class App extends Component {
           <Route path="/clientneworder" component={neworder}></Route>
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
+
+          </div>
 	 
 	 
 	 
+
+	  <NavBar/>
+          
+         <Route path="/ph" exact component={packingHome}></Route>
+           <div className="comtainer-fluid">
+              
+          <Route path="/add" component={CreatePacking}></Route>
+          <Route path="/edit/:id" component={EditPacking}></Route>
+    
+          <Route path="/packing/:id" component={PackingDetails}></Route>
+           <Route path="/RMDashbord" exact component={RMDashbord}></Route>
+            <Route path="/packingHome" exact component={packingHome}></Route>
+            <Route path="/RMReport" component={RMReport}></Route>
+          </div>
+
 	 
+	 
+	 
+
+
+	  <ShipmentNavBar />
+
+        <Route path="/ShipmentHome" component={ShipmentHome}></Route>
+        <div className="container">
+          <Route path="/add" component={ShipmentCreate}></Route>
+          <Route path="/edit/:id" component={ShipmentEdit}></Route>
+          <Route path="/shipment/:id" component={ShipmentDetails}></Route>
+          <Route path="/SHdashboard" component={SHdashboard}></Route>
+
+          <Route path="/CreateLSmaterial" component={CreateLSmaterial}></Route>
+          <Route path="/HomeLSmaterial" component={HomeLSmaterial}></Route>
+          <Route path="/EditLSmaterial/:id" component={EditLSmaterial}></Route>
+          <Route path="/DetailsLSmaterial" component={DetailsLSmaterial}></Route>
+
         </div>
+	 
+	 
+	 
+	 
+	 
+
+
+	 
+
       </BrowserRouter>
     );
   }
