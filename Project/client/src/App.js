@@ -35,19 +35,6 @@ import mainhome from "./components/mainhome";
 
 
 
-import Adashboard from './components/Adashboard';
-import AccountCreate from './components/AccountCreate';
-import AccountEdit from './components/AccountEdit';
-import AccountHome from './components/AccountHome';
-import AccountNavBar from './components/AccountNavBar';
-import AccountDetails from './components/AccountDetails';
-import AccountJournal from './components/AccountJournal';
-import AccountReport from './components/AccountReport';
-import AccountplanHome from './components/AccountplanHome';
-import AccountplanCreate from './components/AccountplanCreate';
-import AccountplanEdit from './components/AccountplanEdit';
-import AccountplanDetails from './components/AccountplanDetails';
-import mainhome from './components/mainhome';
 
 
 
@@ -60,7 +47,6 @@ import pmHome from "./components/pmHome";
 import PMNavBar from "./components/PMNavBar";
 import FactoryDetails from "./components/FactoryDetails";
 import PMDashboard from "./components/PMDashboard";
-import AllMain from "./components/AllMain";
 import RawFactoryHome from "./components/RawFactoryHome";
 import CreateRawFactory from "./components/CreateRawFactory";
 import EditRawFactory from "./components/EditRawFactory";
@@ -182,7 +168,7 @@ export default class App extends Component {
           <Route path="/clientneworder" component={neworder}></Route>
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
-	 
+	      </div>
 	 
 	 
 	 
@@ -199,7 +185,7 @@ export default class App extends Component {
            <Route path="/RMDashbord" exact component={RMDashbord}></Route>
             <Route path="/packingHome" exact component={packingHome}></Route>
             <Route path="/RMReport" component={RMReport}></Route>
-          
+          </div>
 
 	 
 	 
