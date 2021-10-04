@@ -92,7 +92,7 @@ import MaterialEdit from './components/MaterialEdit';
 import LmoMatCreate from './components/LmoMatCreate';
 import MaterialDash from './components/MaterialDash';
 import MaterialDetails from './components/MaterialDetails';
-import MatSideNav from './components/MatSideNav';
+
 import LmoMatMain from './components/LmoMatMain';
 import LmoMatEdit from './components/LmoMatEdit';
 import MatMain from './components/MatMain';
