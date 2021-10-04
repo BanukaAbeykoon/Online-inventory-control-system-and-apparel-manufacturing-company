@@ -192,7 +192,7 @@ export default class App extends Component {
 	 
 
           
-       
+        <Route path="/packingHome" exact component={packingHome}></Route>
            <div className="comtainer-fluid">
               
             <Route path="/addph" component={CreatePacking}></Route>
@@ -200,7 +200,7 @@ export default class App extends Component {
     
             <Route path="/packing/:id" component={PackingDetails}></Route>
             <Route path="/RMDashbord" exact component={RMDashbord}></Route>
-            <Route path="/packingHome" exact component={packingHome}></Route>
+          
             <Route path="/RMReport" component={RMReport}></Route>
           </div>
 
