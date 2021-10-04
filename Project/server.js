@@ -39,6 +39,10 @@ const orderRoutes = require("./routes/orders");
 const shipmentroutes = require('./routes/shipments');
 const lessmaterialRoutes = require('./routes/lmocard');
 
+//import material routes
+const materialroutes = require('./routes/materials');
+const lmomatroutes = require('./routes/lmomats');
+const matreportroutes = require('./routes/matreports');
 
 
 //middleware
@@ -65,6 +69,11 @@ app.use(orderRoutes);
 //routes shipment middleware
 app.use(shipmentroutes);
 app.use(lessmaterialRoutes);
+
+//route material midleware
+app.use(materialroutes);
+app.use(lmomatroutes);
+app.use(matreportroutes);
 
 
 const PORT = 8000;
