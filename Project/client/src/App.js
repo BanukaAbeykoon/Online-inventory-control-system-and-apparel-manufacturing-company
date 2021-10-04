@@ -123,12 +123,7 @@ export default class App extends Component {
           component={EditVehicle}
         ></Route>
 
-
         <AccountNavBar />
-
-     
-
-
 
         <Route path="/accountHome" component={AccountHome}></Route>
         <Route path="/add" component={AccountCreate}></Route>
@@ -144,12 +139,6 @@ export default class App extends Component {
           path="/AccountplanDetails/:id"
           component={AccountplanDetails}
         ></Route>
-
-	 
-		
-
-
-
 
         {window.location.pathname !== "/" && <PMNavBar />}
 
@@ -173,32 +162,21 @@ export default class App extends Component {
           <Route path="/clientneworder" component={neworder}></Route>
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
+        </div>
 
-          </div>
-	 
-	 
-	 
+        <NavBar />
 
-	  <NavBar/>
-          
-         <Route path="/ph" exact component={packingHome}></Route>
-           <div className="comtainer-fluid">
-              
+        <div className="comtainer-fluid">
           <Route path="/addph" component={CreatePacking}></Route>
           <Route path="/editph/:id" component={EditPacking}></Route>
-    
+
           <Route path="/packing/:id" component={PackingDetails}></Route>
-           <Route path="/RMDashbord" exact component={RMDashbord}></Route>
-            <Route path="/packingHome" exact component={packingHome}></Route>
-            <Route path="/RMReport" component={RMReport}></Route>
-          </div>
+          <Route path="/RMDashbord"  component={RMDashbord}></Route>
+          <Route path="/packingHome"  component={packingHome}></Route>
+          <Route path="/RMReport" component={RMReport}></Route>
+        </div>
 
-	 
-	 
-	 
-
-
-	  <ShipmentNavBar />
+        <ShipmentNavBar />
 
         <Route path="/ShipmentHome" component={ShipmentHome}></Route>
         <div className="container">
@@ -210,18 +188,11 @@ export default class App extends Component {
           <Route path="/CreateLSmaterial" component={CreateLSmaterial}></Route>
           <Route path="/HomeLSmaterial" component={HomeLSmaterial}></Route>
           <Route path="/EditLSmaterial/:id" component={EditLSmaterial}></Route>
-          <Route path="/DetailsLSmaterial" component={DetailsLSmaterial}></Route>
-
+          <Route
+            path="/DetailsLSmaterial"
+            component={DetailsLSmaterial}
+          ></Route>
         </div>
-	 
-	 
-	 
-	 
-	 
-
-
-	 
-
       </BrowserRouter>
     );
   }
