@@ -139,11 +139,6 @@ export default class App extends Component {
         ></Route>
 
 
-        
-
-     
-
-
 
         <Route path="/accountHome" component={AccountHome}></Route>
         <Route path="/addAcc" component={AccountCreate}></Route>
@@ -159,11 +154,6 @@ export default class App extends Component {
           path="/AccountplanDetails/:id"
           component={AccountplanDetails}
         ></Route>
-
-	 
-		
-
-
 
 
 
@@ -186,8 +176,10 @@ export default class App extends Component {
           <Route path="/clientneworder" component={neworder}></Route>
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
-
         </div>
+
+
+        
 	 
 	 
 
@@ -209,7 +201,7 @@ export default class App extends Component {
 	 
 
 
-	  
+
 
         <Route path="/ShipmentHome" component={ShipmentHome}></Route>
         <div className="container">
@@ -221,9 +213,13 @@ export default class App extends Component {
           <Route path="/CreateLSmaterial" component={CreateLSmaterial}></Route>
           <Route path="/HomeLSmaterial" component={HomeLSmaterial}></Route>
           <Route path="/EditLSmaterial/:id" component={EditLSmaterial}></Route>
-          <Route path="/DetailsLSmaterial" component={DetailsLSmaterial}></Route>
-
+          <Route
+            path="/DetailsLSmaterial"
+            component={DetailsLSmaterial}
+          ></Route>
         </div>
+
+
 		
 		
 		
@@ -264,6 +260,7 @@ export default class App extends Component {
 
 
 	 
+
 
       </BrowserRouter>
     );
