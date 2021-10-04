@@ -87,6 +87,24 @@ import DetailsLSmaterial from "./components/DetailsLSmaterial";
 
 
 
+import MaterialCreate from './components/MaterialCreate';
+import MaterialEdit from './components/MaterialEdit';
+import LmoMatCreate from './components/LmoMatCreate';
+import MaterialDash from './components/MaterialDash';
+import MaterialDetails from './components/MaterialDetails';
+import MatSideNav from './components/MatSideNav';
+import LmoMatMain from './components/LmoMatMain';
+import LmoMatEdit from './components/LmoMatEdit';
+import MatMain from './components/MatMain';
+import MatReportMain from './components/MatReportMain';
+import MatReportEdit from './components/MatReportEdit';
+import MatReportAdd from './components/MatReportAdd';
+import MatNotification from './components/MatNotification';
+import MatDistribution from './components/MatDistribution';
+import ReportDetails from './components/ReportDetails';
+
+
+
 
 export default class App extends Component {
   render() {
@@ -206,6 +224,38 @@ export default class App extends Component {
           <Route path="/DetailsLSmaterial" component={DetailsLSmaterial}></Route>
 
         </div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		      <div className="page-content-wrapper">
+        
+         
+        <Route path="/matDash" exact component={MatMain}></Route>
+        <Route path="/matRet" component={MaterialDash}></Route>
+        <Route path="/matadd" component={MaterialCreate}></Route>
+        <Route path="/matedit/:id" component={MaterialEdit}></Route>
+        <Route path="/matpost/:id" component={MaterialDetails}></Route>
+        <Route path="/lmo" component={LmoMatMain}></Route>
+        <Route path="/lmoadd" component={LmoMatCreate}></Route>
+        <Route path="/lmoedit/:id" component={LmoMatEdit}></Route>
+        <Route path="/matreport" component={MatReportMain}></Route>
+        <Route path="/matreportedit/:id" component={MatReportEdit}></Route>
+        <Route path="/matreportadd" component={MatReportAdd}></Route>
+        <Route path="/matreportone/:id" component={ReportDetails}></Route>
+        <Route path="/matNotification" component={MatNotification}></Route>
+        <Route path="/matDistribution" component={MatDistribution}></Route>
+        
+       
+
+    
+       
+       </div>
 	 
 	 
 	 
