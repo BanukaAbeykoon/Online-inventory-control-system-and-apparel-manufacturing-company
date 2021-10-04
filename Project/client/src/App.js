@@ -110,12 +110,9 @@ export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        {window.location.pathname !== "/" && <AccountNavBar />}
+        <Route path="/" exact component={AllMain}></Route>
 
-      {window.location.pathname !== "/" && <AccountNavBar />}
-      <Route path="/" exact component={AllMain}></Route>
-       
-
-     
         <Route path="/TMSSchedule" component={TMSSchedule}></Route>
 
         <Route path="/TMSDash" component={TMSDash}></Route>
@@ -138,8 +135,6 @@ export default class App extends Component {
           component={EditVehicle}
         ></Route>
 
-
-
         <Route path="/accountHome" component={AccountHome}></Route>
         <Route path="/addAcc" component={AccountCreate}></Route>
         <Route path="/editAcc/:id" component={AccountEdit}></Route>
@@ -154,9 +149,6 @@ export default class App extends Component {
           path="/AccountplanDetails/:id"
           component={AccountplanDetails}
         ></Route>
-
-
-
 
         {/*Factory create--inventory*/}
         <Route path="/pmHome" component={pmHome}></Route>
@@ -179,26 +171,21 @@ export default class App extends Component {
         </div>
 
 
-        
-	 
-	 
 
-          
-        <Route path="/packingHome" exact component={packingHome}></Route>
-           <div className="comtainer-fluid">
-              
-            <Route path="/addph" component={CreatePacking}></Route>
-            <Route path="/editph/:id" component={EditPacking}></Route>
-    
-            <Route path="/packing/:id" component={PackingDetails}></Route>
-            <Route path="/RMDashbord" exact component={RMDashbord}></Route>
-          
-            <Route path="/RMReport" component={RMReport}></Route>
-          </div>
 
-	 
-	       
-	 
+
+
+        <div className="comtainer-fluid">
+          <Route path="/addph" component={CreatePacking}></Route>
+          <Route path="/editph/:id" component={EditPacking}></Route>
+
+          <Route path="/packing/:id" component={PackingDetails}></Route>
+          <Route path="/RMDashbord" exact component={RMDashbord}></Route>
+          <Route path="/packingHome" exact component={packingHome}></Route>
+          <Route path="/RMReport" component={RMReport}></Route>
+        </div>
+
+
 
 
 
@@ -219,49 +206,22 @@ export default class App extends Component {
           ></Route>
         </div>
 
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		      <div className="page-content-wrapper">
-        
-         
-        <Route path="/matDash" exact component={MatMain}></Route>
-        <Route path="/matRet" component={MaterialDash}></Route>
-        <Route path="/matadd" component={MaterialCreate}></Route>
-        <Route path="/matedit/:id" component={MaterialEdit}></Route>
-        <Route path="/matpost/:id" component={MaterialDetails}></Route>
-        <Route path="/lmo" component={LmoMatMain}></Route>
-        <Route path="/lmoadd" component={LmoMatCreate}></Route>
-        <Route path="/lmoedit/:id" component={LmoMatEdit}></Route>
-        <Route path="/matreport" component={MatReportMain}></Route>
-        <Route path="/matreportedit/:id" component={MatReportEdit}></Route>
-        <Route path="/matreportadd" component={MatReportAdd}></Route>
-        <Route path="/matreportone/:id" component={ReportDetails}></Route>
-        <Route path="/matNotification" component={MatNotification}></Route>
-        <Route path="/matDistribution" component={MatDistribution}></Route>
-        
-       
-
-    
-       
-       </div>
-	 
-	 
-	 
-	 
-	 
-
-
-	 
-
-
+        <div className="page-content-wrapper">
+          <Route path="/matDash" exact component={MatMain}></Route>
+          <Route path="/matRet" component={MaterialDash}></Route>
+          <Route path="/matadd" component={MaterialCreate}></Route>
+          <Route path="/matedit/:id" component={MaterialEdit}></Route>
+          <Route path="/matpost/:id" component={MaterialDetails}></Route>
+          <Route path="/lmo" component={LmoMatMain}></Route>
+          <Route path="/lmoadd" component={LmoMatCreate}></Route>
+          <Route path="/lmoedit/:id" component={LmoMatEdit}></Route>
+          <Route path="/matreport" component={MatReportMain}></Route>
+          <Route path="/matreportedit/:id" component={MatReportEdit}></Route>
+          <Route path="/matreportadd" component={MatReportAdd}></Route>
+          <Route path="/matreportone/:id" component={ReportDetails}></Route>
+          <Route path="/matNotification" component={MatNotification}></Route>
+          <Route path="/matDistribution" component={MatDistribution}></Route>
+        </div>
       </BrowserRouter>
     );
   }
