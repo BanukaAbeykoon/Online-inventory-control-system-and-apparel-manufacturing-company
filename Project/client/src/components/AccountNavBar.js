@@ -24,15 +24,28 @@ class AccountNavBar extends Component {
                 <i class="fas fa-sort-amount-up-alt"></i>
                 &nbsp; Order Mangment
               </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fas fa-sort-amount-up-alt"></i>
-
-                    &nbsp;
-                    
-                    Meterial</a>
+           
+           </li>
+            
+            
+              <li>
+                    <div className="dropdown">
+                        <button className="dropbtn">
+                        <i class="fas fa-cubes"></i>
+                        &nbsp;
+                          Material Stock</button>
+                        <div className="dropdown-content">
+                        <a href="/matDash">Stock Dashboard</a>
+                        <a href="/matRet">Material Card</a>
+                        <a href="/lmo">LMO Card</a>
+                        <a href="/matreport">Reporting</a>
+                    </div>
+                    </div>
                 </li>
+            
+            
+            
+            
             <li>
               <div className="dropdown">
                 <button className="dropbtn">
