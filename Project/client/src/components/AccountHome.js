@@ -178,7 +178,7 @@ export default class AccountHome extends Component {
                 <tr key={index}>
                   <th scope="row">{index+1}</th>
                   <td>
-                      <a href={`/post/${account._id}`} style={{textDecoration:'none'}}>
+                      <a href={`/postAcc/${account._id}`} style={{textDecoration:'none'}}>
                       {account.orderId} 
                       </a>
                       </td>
@@ -190,7 +190,7 @@ export default class AccountHome extends Component {
                   <td>{account.other}</td>
                   <td>Rs {Number( account.sjournal)-(Number(account.pjournal)+Number(account.gjournal)) }</td>
 
-                  <td><a className = "btn btn-warning" href = {`/edit/${account._id}`}>
+                  <td><a className = "btn btn-warning" href = {`/editAcc/${account._id}`}>
                       <i className = "fas fa-edit"></i>&nbsp;Edit
                     </a>
                     &nbsp;
@@ -209,7 +209,7 @@ export default class AccountHome extends Component {
         
 
            
-            <button className="btn btn-success"><a href= "/add" style={{textDecoration:'none', color:'white'}}>
+            <button className="btn btn-success"><a href= "/addAcc" style={{textDecoration:'none', color:'white'}}>
             
               Create new </a> &nbsp;
               <i class="far fa-plus-square"></i>

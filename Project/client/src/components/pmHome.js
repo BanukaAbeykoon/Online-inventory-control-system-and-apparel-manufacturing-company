@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import swal from 'sweetalert2';
+import swal from "sweetalert2";
 
 //import inventory from '../../backend/models/inventory';
 
@@ -33,7 +33,7 @@ export default class pmHome extends Component {
   onDelete = (id) => {
     axios.delete(`/inventory/delete/${id}`).then((res) => {
       //alert("Delete Factory successfully");
-      swal.fire("Deleted","Factory Deleted Successfully","warning")
+      swal.fire("Deleted", "Factory Deleted Successfully", "warning");
       this.retrieveInventory();
     });
   };
@@ -64,9 +64,12 @@ export default class pmHome extends Component {
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
           <div className="container-fluid">
-
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <a href="/PMDashboard" class="btn btn-primary me-md-2" type="button">
+              <a
+                href="/PMDashboard"
+                class="btn btn-primary me-md-2"
+                type="button"
+              >
                 Production Dashboard
               </a>
             </div>
@@ -126,7 +129,7 @@ export default class pmHome extends Component {
                       <td>
                         <a
                           className="btn btn-warning"
-                          href={`/edit/${inventory._id}`}
+                          href={`/pmedit/${inventory._id}`}
                         >
                           <i className="fas fa-edit"></i>&nbsp;Edit
                         </a>
@@ -148,7 +151,7 @@ export default class pmHome extends Component {
           <br />
           <button className="btn btn-primary btn-lg">
             <a
-              href="/add"
+              href="/pmadd"
               style={{
                 textDecoration: "none",
                 color: "white",
@@ -166,4 +169,3 @@ export default class pmHome extends Component {
     );
   }
 }
-        

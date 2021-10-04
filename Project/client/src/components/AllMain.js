@@ -17,12 +17,12 @@ class mainhome extends Component {
         <hr />
 
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="card">
               <img
                 src="%PUBLIC_URL%../../om.jpg "
                 width="200"
-                height="200"
+                height="275"
                 position="absolute"
                 class="card-img-top"
                 alt="..."
@@ -39,14 +39,15 @@ class mainhome extends Component {
               </div>
             </div>
             <br />
+            <br />
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="card">
               <img
                 src="%PUBLIC_URL%../../rm.jpg "
                 width="200"
-                height="200"
+                height="275"
                 position="absolute"
                 class="card-img-top"
                 alt="..."
@@ -62,14 +63,16 @@ class mainhome extends Component {
                 </a>
               </div>
             </div>
+            <br />
+            <br />
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="card">
               <img
                 src="%PUBLIC_URL%../../im.jpg "
                 width="200"
-                height="200"
+                height="275"
                 position="absolute"
                 class="card-img-top"
                 alt="..."
@@ -85,14 +88,16 @@ class mainhome extends Component {
                 </a>
               </div>
             </div>
+            <br />
+            <br />
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="card">
               <img
                 src="%PUBLIC_URL%../../pm.jpg "
                 width="200"
-                height="200"
+                height="275"
                 position="absolute"
                 class="card-img-top"
                 alt="..."
@@ -108,14 +113,16 @@ class mainhome extends Component {
                 </a>
               </div>
             </div>
+            <br />
+            <br />
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="card">
               <img
                 src="%PUBLIC_URL%../../qm.jpg "
                 width="200"
-                height="200"
+                height="275"
                 position="absolute"
                 class="card-img-top"
                 alt="..."
@@ -131,14 +138,16 @@ class mainhome extends Component {
                 </a>
               </div>
             </div>
+            <br />
+            <br />
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="card">
               <img
                 src="%PUBLIC_URL%../../ready.jpg "
                 width="200"
-                height="200"
+                height="275"
                 position="absolute"
                 class="card-img-top"
                 alt="..."
@@ -155,14 +164,15 @@ class mainhome extends Component {
               </div>
             </div>
             <br />
+            <br />
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="card">
               <img
                 src="%PUBLIC_URL%../../tm.jpg "
                 width="200"
-                height="200"
+                height="275"
                 position="absolute"
                 class="card-img-top"
                 alt="..."
@@ -173,20 +183,21 @@ class mainhome extends Component {
                   With supporting text below as a natural lead-in to additional
                   content.
                 </p>
-                <a href="/RMDashbord" class="btn btn-primary">
+                <a href="/TMSDash" class="btn btn-primary">
                   Transport Management
                 </a>
               </div>
             </div>
             <br />
+            <br />
           </div>
 
-          <div class="col-sm-4">
+          <div class="col-sm-6">
             <div class="card">
               <img
                 src="%PUBLIC_URL%../../am.jpeg "
                 width="200"
-                height="200"
+                height="275"
                 position="absolute"
                 class="card-img-top"
                 alt="..."
@@ -197,11 +208,12 @@ class mainhome extends Component {
                   With supporting text below as a natural lead-in to additional
                   content.
                 </p>
-                <a href="/RMDashbord" class="btn btn-primary">
+                <a href="/Accountdashboard" class="btn btn-primary">
                   Account Management
                 </a>
               </div>
             </div>
+            <br />
             <br />
           </div>
 
