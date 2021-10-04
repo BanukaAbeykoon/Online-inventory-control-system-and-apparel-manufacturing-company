@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
+import axios from "axios";
 import swal from "sweetalert2";
 
 export default class packingHome extends Component {
@@ -16,10 +16,10 @@ export default class packingHome extends Component {
   }
 
   retrievePosts() {
-    axios.get("http://localhost:8000/packing/").then(res => {
-      if (res.data.success){
+    axios.get("http://localhost:8000/packing/").then((res) => {
+      if (res.data.success) {
         this.setState({
-          packing:res.data.existingPosts,
+          packing: res.data.existingPosts,
         });
 
         console.log(this.state.packing);
@@ -27,42 +27,39 @@ export default class packingHome extends Component {
     });
   }
 
-onDelete =(id) =>{
+  onDelete = (id) => {
     axios.delete(`http://localhost:8000/packing/delete/${id}`).then((res) => {
-      swal.fire('Deleted','Delete Successfully','delete ');
-   //   alert("Delete Successfully")
+      swal.fire("Deleted", "Delete Successfully", "delete ");
+      //   alert("Delete Successfully")
       this.retrievePosts();
-    })
-}
+    });
+  };
 
-
-filterData(packing,searchKey){
-
-    const result = packing.filter((packing) =>
-        packing.customer.toLowerCase().includes(searchKey)||
-        packing.orderId.toLowerCase().includes(searchKey)||
-        packing.category.toLowerCase().includes(searchKey)||
-        packing.payment.toLowerCase().includes(searchKey)||
-        packing.orderId.toLowerCase().includes(searchKey)||
-        packing.quantity.toLowerCase().includes(searchKey)||
-        packing.weight.toLowerCase().includes(searchKey)||
-        packing.dueDate.toLowerCase().includes(searchKey)||
+  filterData(packing, searchKey) {
+    const result = packing.filter(
+      (packing) =>
+        packing.customer.toLowerCase().includes(searchKey) ||
+        packing.orderId.toLowerCase().includes(searchKey) ||
+        packing.category.toLowerCase().includes(searchKey) ||
+        packing.payment.toLowerCase().includes(searchKey) ||
+        packing.orderId.toLowerCase().includes(searchKey) ||
+        packing.quantity.toLowerCase().includes(searchKey) ||
+        packing.weight.toLowerCase().includes(searchKey) ||
+        packing.dueDate.toLowerCase().includes(searchKey) ||
         packing.address.toLowerCase().includes(searchKey)
-    )
-    this.setState({packing:result})
-}
+    );
+    this.setState({ packing: result });
+  }
 
-handleSearchArea = (e) =>{
-
-    const searchKey= e.currentTarget.value;
+  handleSearchArea = (e) => {
+    const searchKey = e.currentTarget.value;
 
     axios.get("http://localhost:8000/packing").then((res) => {
-      if (res.data.success) 
-      {
+      if (res.data.success) {
         this.filterData(res.data.existingPosts, searchKey);
       }
     });
-}
+  };
 
   render() {
     return (
