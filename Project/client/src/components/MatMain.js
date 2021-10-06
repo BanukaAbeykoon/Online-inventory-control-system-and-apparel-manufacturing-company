@@ -24,7 +24,7 @@ export default class MatMain extends Component {
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="">Home</a>
+        <a class="nav-link" href="/">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href=""> &#62; Stock DashBoard  <span class="sr-only">(current)</span> </a>
@@ -113,7 +113,7 @@ export default class MatMain extends Component {
 <div class="col-sm-6">
     <div class="card bg-light">
       <div class="card-body">
-        <h2 class="card-title">REPORTS</h2>
+        <h2 class="card-title">REPORTING</h2>
         <p class="card-text"></p>
         <a href="/matreport" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
       </div>
@@ -124,9 +124,9 @@ export default class MatMain extends Component {
   <div class="col-sm-6">
     <div class="card bg-light">
       <div class="card-body">
-        <h2 class="card-title">DISTRIBUTION</h2>
+        <h2 class="card-title">INSIGHTS</h2>
         <p class="card-text"></p>
-        <a href="/matDistribution" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
+        <a href="/matins" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
       </div>
     </div>
     

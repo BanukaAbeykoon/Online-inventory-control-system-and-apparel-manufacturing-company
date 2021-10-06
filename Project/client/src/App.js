@@ -100,7 +100,7 @@ import MatReportMain from './components/MatReportMain';
 import MatReportEdit from './components/MatReportEdit';
 import MatReportAdd from './components/MatReportAdd';
 import MatNotification from './components/MatNotification';
-import MatDistribution from './components/MatDistribution';
+import MatIns from "./components/MatIns";
 import ReportDetails from './components/ReportDetails';
 
 import orderCreate from './components/orderCreate';
@@ -111,16 +111,24 @@ import orderDetails from './components/orderDetails'
 
 
 
+import EditPostQC from "./components/EditPostQC";
+import HomeQC from "./components/HomeQC";
+import PostDetailsQC from "./components/PostDetailsQC";
+import QualityDash from "./components/QualityDash";
+
+import DefectCard from "./components/DefectCard";
+import CreatepostQC from "./components/CreatepostQC";
+
+
+
+
 export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
+        {window.location.pathname !== "/" && <AccountNavBar />}
+        <Route path="/" exact component={AllMain}></Route>
 
-      {window.location.pathname !== "/" && <AccountNavBar />}
-      <Route path="/" exact component={AllMain}></Route>
-       
-
-     
         <Route path="/TMSSchedule" component={TMSSchedule}></Route>
 
         <Route path="/TMSDash" component={TMSDash}></Route>
@@ -143,13 +151,6 @@ export default class App extends Component {
           component={EditVehicle}
         ></Route>
 
-
-        
-
-     
-
-
-
         <Route path="/accountHome" component={AccountHome}></Route>
         <Route path="/addAcc" component={AccountCreate}></Route>
         <Route path="/editAcc/:id" component={AccountEdit}></Route>
@@ -164,14 +165,6 @@ export default class App extends Component {
           path="/AccountplanDetails/:id"
           component={AccountplanDetails}
         ></Route>
-
-	 
-		
-
-
-
-
-
 
         {/*Factory create--inventory*/}
         <Route path="/pmHome" component={pmHome}></Route>
@@ -191,30 +184,27 @@ export default class App extends Component {
           <Route path="/clientneworder" component={neworder}></Route>
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
-
         </div>
-	 
-	 
-
-          
-        <Route path="/packingHome" exact component={packingHome}></Route>
-           <div className="comtainer-fluid">
-              
-            <Route path="/addph" component={CreatePacking}></Route>
-            <Route path="/editph/:id" component={EditPacking}></Route>
-    
-            <Route path="/packing/:id" component={PackingDetails}></Route>
-            <Route path="/RMDashbord" exact component={RMDashbord}></Route>
-          
-            <Route path="/RMReport" component={RMReport}></Route>
-          </div>
-
-	 
-	       
-	 
 
 
-	  
+
+
+
+
+        <div className="comtainer-fluid">
+          <Route path="/addph" component={CreatePacking}></Route>
+          <Route path="/editph/:id" component={EditPacking}></Route>
+
+          <Route path="/packing/:id" component={PackingDetails}></Route>
+          <Route path="/RMDashbord" exact component={RMDashbord}></Route>
+          <Route path="/packingHome" exact component={packingHome}></Route>
+          <Route path="/RMReport" component={RMReport}></Route>
+        </div>
+
+
+
+
+
 
         <Route path="/ShipmentHome" component={ShipmentHome}></Route>
         <div className="container">
@@ -226,15 +216,47 @@ export default class App extends Component {
           <Route path="/CreateLSmaterial" component={CreateLSmaterial}></Route>
           <Route path="/HomeLSmaterial" component={HomeLSmaterial}></Route>
           <Route path="/EditLSmaterial/:id" component={EditLSmaterial}></Route>
-          <Route path="/DetailsLSmaterial" component={DetailsLSmaterial}></Route>
+          <Route
+            path="/DetailsLSmaterial"
+            component={DetailsLSmaterial}
+          ></Route>
+        </div>
 
+        <div className="page-content-wrapper">
+          <Route path="/matDash" exact component={MatMain}></Route>
+          <Route path="/matRet" component={MaterialDash}></Route>
+          <Route path="/matadd" component={MaterialCreate}></Route>
+          <Route path="/matedit/:id" component={MaterialEdit}></Route>
+          <Route path="/matpost/:id" component={MaterialDetails}></Route>
+          <Route path="/lmo" component={LmoMatMain}></Route>
+          <Route path="/lmoadd" component={LmoMatCreate}></Route>
+          <Route path="/lmoedit/:id" component={LmoMatEdit}></Route>
+          <Route path="/matreport" component={MatReportMain}></Route>
+          <Route path="/matreportedit/:id" component={MatReportEdit}></Route>
+          <Route path="/matreportadd" component={MatReportAdd}></Route>
+          <Route path="/matreportone/:id" component={ReportDetails}></Route>
+          <Route path="/matNotification" component={MatNotification}></Route>
+          <Route path="/matins" component={MatIns}></Route>
+          
         </div>
 		
 		
 		
 		
 		
+		<div className="page-content-wrapper">
+     
+         <Route path="/qcDash" exact component={HomeQC}></Route>
+         <Route path="/add" component={CreatepostQC}></Route>
+         <Route path="/edit/:id" component={EditPostQC}></Route>
+         <Route path="/post/:id" component={PostDetailsQC}></Route>
+         <Route path="/dash" component={QualityDash}></Route>
+         <Route path="/defect" component={DefectCard}></Route>
+         <Route path="/rep" component={PostDetailsQC}></Route>
+
+      </div>
 		
+
 		
 		
 		
@@ -269,9 +291,6 @@ export default class App extends Component {
 	 
 	 
 	 
-	 
-
-
 	 
 
       </BrowserRouter>

@@ -79,16 +79,23 @@ class AccountNavBar extends Component {
             </li>
             
             
-            
+            <li>
+                    <div className="dropdown">
+                        <button className="dropbtn">
+                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    &nbsp;
+                      Quality Check</button>
+                        <div className="dropdown-content">
+                        <a href="/dash">Dashboard</a>
+                        <a href="/qcDash">Testing</a>
+                        <a href="/rep">Monitoring</a>
+                        <a href="/defect">Reporting</a>
+                    </div>
+                    </div>
+                </li>
             
             <li>
-
-              <a href="#">
-                <i class="fas fa-tasks"></i>
-                &nbsp; Quality Check
-              </a>
-            </li>
-            <li>
+              
             <div className="dropdown">
                 <button className="dropbtn">
                   <i class="fas fa-cubes"></i>
@@ -106,11 +113,12 @@ class AccountNavBar extends Component {
               <li>
                 <div className="dropdown">
                         <button className="dropbtn">
-                        <a href="/TMSDash">
+                        
                         <i class="fas fa-shipping-fast"></i>
                         &nbsp;
-                          Transport Management </a></button>
+                          Transport Management </button>
                         <div className="dropdown-content">
+                        <a href="/TMSDash">Dashboard</a>
                         <a href="/DriHome">Driver Management </a>
                         <a href="/vehicleDash">Vehicle Management </a>
                         <a href="/Driverschedule">Driver  Schedule</a>
@@ -146,7 +154,7 @@ class AccountNavBar extends Component {
            
            
             <li>
-              <a href="#">
+              <a href="/">
                 <i class="fas fa-users-cog"></i>
                 &nbsp; Admin
               </a>
@@ -196,18 +204,20 @@ class AccountNavBar extends Component {
                 </li>
 
                 <div class="position-absolute top-50 end-0 translate-middle-y">
+                <a  href="/matNotification"> 
                   <button
                     type="button"
                     class="btn btn-primary position-relative"
                   >
-                    <i class="fas fa-bell"></i>
+                <i class="fas fa-bell"></i>
                     <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
                       <span class="visually-hidden">New alerts</span>
                     </span>
                   </button>
+                  </a>
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                  &nbsp; &nbsp;
                 </div>
 
                 <div class="position-absolute top-50 end-0 translate-middle-y">

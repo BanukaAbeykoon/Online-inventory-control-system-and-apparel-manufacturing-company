@@ -74,7 +74,7 @@ class RMNavBar extends Component {
                 <div className="dropdown-content">
                   
                   <a href="/RMDashbord">Dashboard</a>
-                  <a href="/">Packing Form</a>
+                  <a href="/packingHome">Packing Form</a>
                   <a href="#">Transport Form</a>
                   <a href="/RMReport">Reporting</a>
                 </div>
