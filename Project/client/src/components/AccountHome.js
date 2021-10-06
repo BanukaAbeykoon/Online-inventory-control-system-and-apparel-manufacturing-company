@@ -85,7 +85,8 @@ export default class AccountHome extends Component {
       <div className="container-fluid">
 
 
-
+      <h4>ALL Account Details</h4>
+      <hr/>
 
       <div className="p-3 mb-2 bg-dark text-light rounded-3">
           <div class="form-check">
@@ -130,7 +131,7 @@ export default class AccountHome extends Component {
           <div className="row">
 
             <div className="col-lg-9 mt-2 mb-2">
-              <h4>ALL Account Details</h4>
+             
             </div>
             <div className=" col-lg-3 mt-2 mb-2">
             

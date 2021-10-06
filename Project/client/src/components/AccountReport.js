@@ -72,6 +72,7 @@ export default class AccountReport extends Component {
       
                   <div className="col-lg-9 mt-2 mb-2">
                     <h4>Account Reports</h4>
+                    <hr/>
                   </div>
                   <div className=" col-lg-3 mt-2 mb-2">
                   
