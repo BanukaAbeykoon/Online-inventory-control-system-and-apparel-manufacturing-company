@@ -22,7 +22,7 @@ class AccountNavBar extends Component {
             <li>
                     <div className="dropdown">
                         <button className="dropbtn">
-                        <i class="fas fa-cubes"></i>
+                        <i class="fas fa-sort-amount-up-alt"></i>
                         &nbsp;
                            Customer </button>
                         <div className="dropdown-content">
@@ -45,6 +45,7 @@ class AccountNavBar extends Component {
                         <a href="/matRet">Material Card</a>
                         <a href="/lmo">LMO Card</a>
                         <a href="/matreport">Reporting</a>
+                        <a href="/matins">Insights</a>
                     </div>
                     </div>
                 </li>
@@ -55,7 +56,7 @@ class AccountNavBar extends Component {
             <li>
               <div className="dropdown">
                 <button className="dropbtn">
-                  <i class="fas fa-cubes"></i>
+                <i class="fab fa-product-hunt"></i>
                   &nbsp; Production
                 </button>
                 <div className="dropdown-content">
@@ -73,8 +74,8 @@ class AccountNavBar extends Component {
             <li>
               <div className="dropdown">
                 <button className="dropbtn">
-                  <i class="fas fa-cubes"></i>
-                  &nbsp; Import Management
+                <i class="fas fa-file-import"></i>
+                  &nbsp; Import
                 </button>
                 <div className="dropdown-content">
                   <a href="/SHdashboard">Import Dashboard</a>
@@ -88,7 +89,7 @@ class AccountNavBar extends Component {
             <li>
                     <div className="dropdown">
                         <button className="dropbtn">
-                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                        <i class="fas fa-tasks"></i>
                     &nbsp;
                       Quality Check</button>
                         <div className="dropdown-content">
@@ -104,8 +105,8 @@ class AccountNavBar extends Component {
               
             <div className="dropdown">
                 <button className="dropbtn">
-                  <i class="fas fa-cubes"></i>
-                  &nbsp; Account Management
+                <i class="fas fa-file-invoice-dollar"></i>
+                  &nbsp; Accounts
                 </button>
                 <div className="dropdown-content">
                 <a href="/Accountdashboard"> &nbsp;&nbsp;&nbsp;&nbsp;Dashboard</a>
@@ -120,9 +121,9 @@ class AccountNavBar extends Component {
                 <div className="dropdown">
                         <button className="dropbtn">
                         
-                        <i class="fas fa-shipping-fast"></i>
+                        <i class="fas fa-truck"></i>
                         &nbsp;
-                          Transport Management </button>
+                          Transport </button>
                         <div className="dropdown-content">
                         <a href="/TMSDash">Dashboard</a>
                         <a href="/DriHome">Driver Management </a>
@@ -140,7 +141,7 @@ class AccountNavBar extends Component {
                 
                 <div className="dropdown">
                 <button className="dropbtn">
-                  <i class="fas fa-tshirt"></i>
+                <i class="fas fa-tshirt"></i>
                   &nbsp; Ready Made
                 </button>
                 <div className="dropdown-content">
