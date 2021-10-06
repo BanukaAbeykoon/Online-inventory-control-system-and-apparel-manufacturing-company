@@ -70,6 +70,8 @@ import NavBar from "./components/RMNavBar";
 import RMDashbord from './components/RMDashbord';
 import PackingDetails from './components/PackingDetails';
 import RMReport from './components/RMReport';
+import packingtrasport from "./components/packingtrasport";
+
 
 import ShipmentCreate from "./components/ShipmentCreate";
 import ShipmentEdit from './components/ShipmentEdit';
@@ -197,11 +199,6 @@ export default class App extends Component {
           <Route path="/magictool" component={MagicTool}></Route>
         </div>
 
-
-
-
-
-
         <div className="comtainer-fluid">
           <Route path="/addph" component={CreatePacking}></Route>
           <Route path="/editph/:id" component={EditPacking}></Route>
@@ -210,12 +207,8 @@ export default class App extends Component {
           <Route path="/RMDashbord" exact component={RMDashbord}></Route>
           <Route path="/packingHome" exact component={packingHome}></Route>
           <Route path="/RMReport" component={RMReport}></Route>
+          <Route path="/packingtrasport" component={packingtrasport}></Route>
         </div>
-
-
-
-
-
 
         <Route path="/ShipmentHome" component={ShipmentHome}></Route>
         <div className="container">
@@ -233,63 +226,39 @@ export default class App extends Component {
           ></Route>
         </div>
 
-   
-		
-		
-		
-		
-		
-		<div className="page-content-wrapper">
-     
-         <Route path="/qcDash" exact component={HomeQC}></Route>
-         <Route path="/add" component={CreatepostQC}></Route>
-         <Route path="/edit/:id" component={EditPostQC}></Route>
-         <Route path="/post/:id" component={PostDetailsQC}></Route>
-         <Route path="/dash" component={QualityDash}></Route>
-         <Route path="/defect" component={DefectCard}></Route>
-         <Route path="/rep" component={PostDetailsQC}></Route>
+        <div className="page-content-wrapper">
+          <Route path="/qcDash" exact component={HomeQC}></Route>
+          <Route path="/add" component={CreatepostQC}></Route>
+          <Route path="/edit/:id" component={EditPostQC}></Route>
+          <Route path="/post/:id" component={PostDetailsQC}></Route>
+          <Route path="/dash" component={QualityDash}></Route>
+          <Route path="/defect" component={DefectCard}></Route>
+          <Route path="/rep" component={PostDetailsQC}></Route>
+        </div>
 
-      </div>
-		
+        <div className="page-content-wrapper">
+          <Route path="/matDash" exact component={MatMain}></Route>
+          <Route path="/matRet" component={MaterialDash}></Route>
+          <Route path="/matadd" component={MaterialCreate}></Route>
+          <Route path="/matedit/:id" component={MaterialEdit}></Route>
+          <Route path="/matpost/:id" component={MaterialDetails}></Route>
+          <Route path="/lmo" component={LmoMatMain}></Route>
+          <Route path="/lmoadd" component={LmoMatCreate}></Route>
+          <Route path="/lmoedit/:id" component={LmoMatEdit}></Route>
+          <Route path="/matreport" component={MatReportMain}></Route>
+          <Route path="/matreportedit/:id" component={MatReportEdit}></Route>
+          <Route path="/matreportadd" component={MatReportAdd}></Route>
+          <Route path="/matreportone/:id" component={ReportDetails}></Route>
+          <Route path="/matNotification" component={MatNotification}></Route>
+          <Route path="/matins" component={MatIns}></Route>
+        </div>
 
-		
-		
-		
-		      <div className="page-content-wrapper">
-        
-         
-        <Route path="/matDash" exact component={MatMain}></Route>
-        <Route path="/matRet" component={MaterialDash}></Route>
-        <Route path="/matadd" component={MaterialCreate}></Route>
-        <Route path="/matedit/:id" component={MaterialEdit}></Route>
-        <Route path="/matpost/:id" component={MaterialDetails}></Route>
-        <Route path="/lmo" component={LmoMatMain}></Route>
-        <Route path="/lmoadd" component={LmoMatCreate}></Route>
-        <Route path="/lmoedit/:id" component={LmoMatEdit}></Route>
-        <Route path="/matreport" component={MatReportMain}></Route>
-        <Route path="/matreportedit/:id" component={MatReportEdit}></Route>
-        <Route path="/matreportadd" component={MatReportAdd}></Route>
-        <Route path="/matreportone/:id" component={ReportDetails}></Route>
-        <Route path="/matNotification" component={MatNotification}></Route>
-        <Route path="/matins" component={MatIns}></Route>
-      
-        
-        
-    
-       </div>
-
-    <div className="page-content-wrapper">
-
-       <Route path="/orderHome" exact component={orderHome}></Route>
-        <Route path="/addOrder" component={orderCreate}></Route>
-        <Route path="/editOrder/:id" component={orderEdit}></Route>
-        <Route path="/order/:id" component={orderDetails}></Route>
-	   </div>
-	 
-	 
-	 
-	 
-
+        <div className="page-content-wrapper">
+          <Route path="/orderHome" exact component={orderHome}></Route>
+          <Route path="/addOrder" component={orderCreate}></Route>
+          <Route path="/editOrder/:id" component={orderEdit}></Route>
+          <Route path="/order/:id" component={orderDetails}></Route>
+        </div>
       </BrowserRouter>
     );
   }
