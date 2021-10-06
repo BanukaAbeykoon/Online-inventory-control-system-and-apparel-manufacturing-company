@@ -79,16 +79,23 @@ class AccountNavBar extends Component {
             </li>
             
             
-            
+            <li>
+                    <div className="dropdown">
+                        <button className="dropbtn">
+                        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                    &nbsp;
+                      Quality Check</button>
+                        <div className="dropdown-content">
+                        <a href="/dash">Dashboard</a>
+                        <a href="/qcDash">Testing</a>
+                        <a href="/rep">Monitoring</a>
+                        <a href="/defect">Reporting</a>
+                    </div>
+                    </div>
+                </li>
             
             <li>
-
-              <a href="#">
-                <i class="fas fa-tasks"></i>
-                &nbsp; Quality Check
-              </a>
-            </li>
-            <li>
+              
             <div className="dropdown">
                 <button className="dropbtn">
                   <i class="fas fa-cubes"></i>
