@@ -114,6 +114,10 @@ export default class AddVehicle extends Component {
 
     render() {
         return (
+
+            <div id="wrapper" className="toggled">
+            <div id="page-content-wrapper">
+            <div className="container-fluid">
             
             <div className= 'col-md-8 mt-8-4 mx-auto'>
               <h1 className="h3 mb-3 font-weight-normal">ADD NEW VEHICLE</h1>
@@ -177,6 +181,10 @@ export default class AddVehicle extends Component {
                        
                 </div>
                 </form>
+            </div>
+
+            </div>
+            </div>
             </div>
             
 
