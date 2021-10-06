@@ -102,11 +102,13 @@ import MatReportAdd from './components/MatReportAdd';
 import MatNotification from './components/MatNotification';
 import MatIns from "./components/MatIns";
 import ReportDetails from './components/ReportDetails';
+import MatDistribution from './components/MatDistribution'
 
 import orderCreate from './components/orderCreate';
 import orderEdit from "./components/orderEdit";
 import orderHome from "./components/orderHome";
 import orderDetails from './components/orderDetails'
+
 
 
 

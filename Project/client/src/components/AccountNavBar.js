@@ -20,12 +20,18 @@ class AccountNavBar extends Component {
             <br />
             <br />
             <li>
-              <a href="#">
-                <i class="fas fa-sort-amount-up-alt"></i>
-                &nbsp; Order Mangment
-              </a>
-           
-           </li>
+                    <div className="dropdown">
+                        <button className="dropbtn">
+                        <i class="fas fa-cubes"></i>
+                        &nbsp;
+                           Customer </button>
+                        <div className="dropdown-content">
+                        <a href="#"> sample1</a>
+                        <a href="#">sample2</a>
+                
+                    </div>
+                    </div>
+                </li>
             
             
               <li>
