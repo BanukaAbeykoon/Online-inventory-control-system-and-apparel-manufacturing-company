@@ -103,6 +103,11 @@ import MatNotification from './components/MatNotification';
 import MatIns from "./components/MatIns";
 import ReportDetails from './components/ReportDetails';
 
+import orderCreate from './components/orderCreate';
+import orderEdit from "./components/orderEdit";
+import orderHome from "./components/orderHome";
+import orderDetails from './components/orderDetails'
+
 
 
 
@@ -251,6 +256,43 @@ export default class App extends Component {
 
       </div>
 		
+
+		
+		
+		
+		      <div className="page-content-wrapper">
+        
+         
+        <Route path="/matDash" exact component={MatMain}></Route>
+        <Route path="/matRet" component={MaterialDash}></Route>
+        <Route path="/matadd" component={MaterialCreate}></Route>
+        <Route path="/matedit/:id" component={MaterialEdit}></Route>
+        <Route path="/matpost/:id" component={MaterialDetails}></Route>
+        <Route path="/lmo" component={LmoMatMain}></Route>
+        <Route path="/lmoadd" component={LmoMatCreate}></Route>
+        <Route path="/lmoedit/:id" component={LmoMatEdit}></Route>
+        <Route path="/matreport" component={MatReportMain}></Route>
+        <Route path="/matreportedit/:id" component={MatReportEdit}></Route>
+        <Route path="/matreportadd" component={MatReportAdd}></Route>
+        <Route path="/matreportone/:id" component={ReportDetails}></Route>
+        <Route path="/matNotification" component={MatNotification}></Route>
+        <Route path="/matDistribution" component={MatDistribution}></Route>
+        
+    
+       </div>
+
+    <div className="page-content-wrapper">
+
+       <Route path="/orderHome" exact component={orderHome}></Route>
+        <Route path="/addOrder" component={orderCreate}></Route>
+        <Route path="/editOrder/:id" component={orderEdit}></Route>
+        <Route path="/order/:id" component={orderDetails}></Route>
+	   </div>
+	 
+	 
+	 
+	 
+
       </BrowserRouter>
     );
   }

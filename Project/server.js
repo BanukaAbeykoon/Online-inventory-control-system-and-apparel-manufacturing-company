@@ -26,7 +26,7 @@ const accountplanroutes = require("./routes/accountplans");
 //import production routes
 const inventoryRoutes = require("./routes/inventory");
 const factoryRoutes = require("./routes/factory");
-const orderRoutes = require("./routes/orders");
+//const orderRoutes = require("./routes/orders");
 
 //import Shipment routes
 const shipmentroutes = require("./routes/shipments");
@@ -37,8 +37,14 @@ const materialroutes = require("./routes/materials");
 const lmomatroutes = require("./routes/lmomats");
 const matreportroutes = require("./routes/matreports");
 
+
+//import order routes
+const orderRoutes = require('./routes/order');
+
+
 //import qualitycheck routes
 const postRoutes = require('./routes/postsqc');
+
 
 //middleware
 app.use(bodyparser.json());
@@ -68,6 +74,9 @@ app.use(lessmaterialRoutes);
 app.use(materialroutes);
 app.use(lmomatroutes);
 app.use(matreportroutes);
+
+//route order middleware
+app.use(orderRoutes);
 
 
 //route qualitycheck midleware
