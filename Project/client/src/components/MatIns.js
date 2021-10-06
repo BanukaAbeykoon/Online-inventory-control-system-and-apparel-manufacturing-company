@@ -72,7 +72,7 @@ export default class MatIns extends Component {
       
       <hr/>
                 
-            <div className="container">
+            <div className="container p-3 mb-2 bg-info text-dark rounded-3">
               <div className="row">
              
       
@@ -86,22 +86,25 @@ export default class MatIns extends Component {
      
       
       
-      
+              <center>
               <div class="btn-group" role="group" aria-label="Basic example">
              
-  <button type="button" class="btn btn-info" href="/matDash">INVENTORY SUMMARY</button>
+              <a href="/matRet"><button type="button" class="btn btn-info">1</button></a>
   
-  <button type="button" class="btn btn-primary" href="/matDash">Middle</button>
-  <button type="button" class="btn btn-info">Right</button>
+              <a href="/matRet"><button type="button" class="btn btn-primary" >2</button></a>
+              <a href="/matRet"><button type="button" class="btn btn-info">3</button></a>
 </div>
+</center>
            
       
       
       
               </div>
 
-<br/>
-
+<hr/>
+<center>
+<h1><b>INVENTORY SUMMARY</b></h1>
+</center>
   
               <ReactHTMLTableToExcel
               
@@ -110,7 +113,6 @@ export default class MatIns extends Component {
                         table="tableee"
                         filename="tablexls"
                         sheet="tablexls"
-                        
                         buttonText="Download Report" />
 
 
