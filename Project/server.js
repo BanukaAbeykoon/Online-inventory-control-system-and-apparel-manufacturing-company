@@ -37,6 +37,9 @@ const materialroutes = require("./routes/materials");
 const lmomatroutes = require("./routes/lmomats");
 const matreportroutes = require("./routes/matreports");
 
+//import qualitycheck routes
+const postRoutes = require('./routes/postsqc');
+
 //middleware
 app.use(bodyparser.json());
 app.use(cors());
@@ -65,6 +68,10 @@ app.use(lessmaterialRoutes);
 app.use(materialroutes);
 app.use(lmomatroutes);
 app.use(matreportroutes);
+
+
+//route qualitycheck midleware
+app.use(postRoutes);
 
 const PORT = 8000;
 const DB_URL =
