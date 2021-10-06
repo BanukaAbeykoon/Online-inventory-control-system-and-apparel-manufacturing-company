@@ -113,7 +113,7 @@ export default class MatMain extends Component {
 <div class="col-sm-6">
     <div class="card bg-light">
       <div class="card-body">
-        <h2 class="card-title">REPORTS</h2>
+        <h2 class="card-title">REPORTING</h2>
         <p class="card-text"></p>
         <a href="/matreport" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
       </div>
@@ -124,7 +124,7 @@ export default class MatMain extends Component {
   <div class="col-sm-6">
     <div class="card bg-light">
       <div class="card-body">
-        <h2 class="card-title">DISTRIBUTION</h2>
+        <h2 class="card-title">INSIGHTS</h2>
         <p class="card-text"></p>
         <a href="/matDistribution" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
       </div>
