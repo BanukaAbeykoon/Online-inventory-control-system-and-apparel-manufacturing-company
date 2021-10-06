@@ -106,6 +106,17 @@ import ReportDetails from './components/ReportDetails';
 
 
 
+import EditPostQC from "./components/EditPostQC";
+import HomeQC from "./components/HomeQC";
+import PostDetailsQC from "./components/PostDetailsQC";
+import QualityDash from "./components/QualityDash";
+
+import DefectCard from "./components/DefectCard";
+import CreatepostQC from "./components/CreatepostQC";
+
+
+
+
 export default class App extends Component {
   render() {
     return (
@@ -223,6 +234,23 @@ export default class App extends Component {
           <Route path="/matins" component={MatIns}></Route>
           
         </div>
+		
+		
+		
+		
+		
+		<div className="page-content-wrapper">
+     
+         <Route path="/qcDash" exact component={HomeQC}></Route>
+         <Route path="/add" component={CreatepostQC}></Route>
+         <Route path="/edit/:id" component={EditPostQC}></Route>
+         <Route path="/post/:id" component={PostDetailsQC}></Route>
+         <Route path="/dash" component={QualityDash}></Route>
+         <Route path="/defect" component={DefectCard}></Route>
+         <Route path="/rep" component={PostDetailsQC}></Route>
+
+      </div>
+		
       </BrowserRouter>
     );
   }
