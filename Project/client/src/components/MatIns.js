@@ -60,7 +60,7 @@ export default class MatIns extends Component {
               <a class="nav-link" href="/matDash">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href=""> &#62; Insights  <span class="sr-only">(current)</span> </a>
+              <a class="nav-link" href="/matins"> &#62; Insights  <span class="sr-only">(current)</span> </a>
             </li>
          
           </ul>
@@ -88,8 +88,10 @@ export default class MatIns extends Component {
       
       
               <div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-info">INVENTORY SUMMARY</button>
-  <button type="button" class="btn btn-primary">Middle</button>
+             
+  <button type="button" class="btn btn-info" href="/matDash">INVENTORY SUMMARY</button>
+  
+  <button type="button" class="btn btn-primary" href="/matDash">Middle</button>
   <button type="button" class="btn btn-info">Right</button>
 </div>
            
