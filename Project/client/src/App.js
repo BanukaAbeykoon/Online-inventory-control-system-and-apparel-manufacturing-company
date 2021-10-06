@@ -103,6 +103,11 @@ import MatNotification from './components/MatNotification';
 import MatDistribution from './components/MatDistribution';
 import ReportDetails from './components/ReportDetails';
 
+import orderCreate from './components/orderCreate';
+import orderEdit from "./components/orderEdit";
+import orderHome from "./components/orderHome";
+import orderDetails from './components/orderDetails'
+
 
 
 
@@ -251,12 +256,16 @@ export default class App extends Component {
         <Route path="/matNotification" component={MatNotification}></Route>
         <Route path="/matDistribution" component={MatDistribution}></Route>
         
-       
-
     
-       
        </div>
-	 
+
+    <div className="page-content-wrapper">
+
+       <Route path="/orderHome" exact component={orderHome}></Route>
+        <Route path="/addOrder" component={orderCreate}></Route>
+        <Route path="/editOrder/:id" component={orderEdit}></Route>
+        <Route path="/order/:id" component={orderDetails}></Route>
+	   </div>
 	 
 	 
 	 
