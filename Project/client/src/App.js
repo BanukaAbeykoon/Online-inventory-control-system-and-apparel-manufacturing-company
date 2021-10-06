@@ -118,6 +118,7 @@ import QualityDash from "./components/QualityDash";
 
 import DefectCard from "./components/DefectCard";
 import CreatepostQC from "./components/CreatepostQC";
+import { Router } from "express";
 
 
 
@@ -276,7 +277,8 @@ export default class App extends Component {
         <Route path="/matreportadd" component={MatReportAdd}></Route>
         <Route path="/matreportone/:id" component={ReportDetails}></Route>
         <Route path="/matNotification" component={MatNotification}></Route>
-        <Route path="/matDistribution" component={MatDistribution}></Route>
+        <Route path="/matins" component={MatIns}></Route>
+        
         
     
        </div>
