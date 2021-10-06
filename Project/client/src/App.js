@@ -92,7 +92,6 @@ import MaterialEdit from './components/MaterialEdit';
 import LmoMatCreate from './components/LmoMatCreate';
 import MaterialDash from './components/MaterialDash';
 import MaterialDetails from './components/MaterialDetails';
-
 import LmoMatMain from './components/LmoMatMain';
 import LmoMatEdit from './components/LmoMatEdit';
 import MatMain from './components/MatMain';
@@ -102,6 +101,14 @@ import MatReportAdd from './components/MatReportAdd';
 import MatNotification from './components/MatNotification';
 import MatIns from "./components/MatIns";
 import ReportDetails from './components/ReportDetails';
+
+
+
+
+
+
+
+
 
 
 import orderCreate from './components/orderCreate';
@@ -120,6 +127,7 @@ import QualityDash from "./components/QualityDash";
 
 import DefectCard from "./components/DefectCard";
 import CreatepostQC from "./components/CreatepostQC";
+
 
 
 
@@ -264,6 +272,7 @@ export default class App extends Component {
         <Route path="/matreportone/:id" component={ReportDetails}></Route>
         <Route path="/matNotification" component={MatNotification}></Route>
         <Route path="/matins" component={MatIns}></Route>
+      
         
         
     
