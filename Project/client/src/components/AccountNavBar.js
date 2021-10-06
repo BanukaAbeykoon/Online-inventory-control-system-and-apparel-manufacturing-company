@@ -146,7 +146,7 @@ class AccountNavBar extends Component {
            
            
             <li>
-              <a href="#">
+              <a href="/">
                 <i class="fas fa-users-cog"></i>
                 &nbsp; Admin
               </a>
