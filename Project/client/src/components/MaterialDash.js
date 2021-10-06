@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import './styleSideNav.css';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'
+
 
 
 
@@ -188,7 +189,7 @@ handleSearchArea = (e) =>{
          <br/>
 
            
-         
+      
 
 
          <div class="p-3 mb-2 bg-info text-dark rounded-3">
@@ -244,6 +245,7 @@ handleSearchArea = (e) =>{
             ))}
             </tbody>          
          </table>
+         
          </div>
 
    
