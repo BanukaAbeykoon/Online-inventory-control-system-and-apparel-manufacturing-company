@@ -23,4 +23,8 @@
 // });
 
 
+
+module.exports = mongoose.model('orders', orderSchema)
+
 // module.exports = mongoose.model('orders',orderSchema)
+
