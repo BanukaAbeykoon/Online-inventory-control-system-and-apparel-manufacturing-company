@@ -126,7 +126,7 @@ export default class MatMain extends Component {
       <div class="card-body">
         <h2 class="card-title">INSIGHTS</h2>
         <p class="card-text"></p>
-        <a href="/matDistribution" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
+        <a href="/matins" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
       </div>
     </div>
     

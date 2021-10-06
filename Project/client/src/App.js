@@ -100,7 +100,7 @@ import MatReportMain from './components/MatReportMain';
 import MatReportEdit from './components/MatReportEdit';
 import MatReportAdd from './components/MatReportAdd';
 import MatNotification from './components/MatNotification';
-import MatDistribution from './components/MatDistribution';
+import MatIns from "./components/MatIns";
 import ReportDetails from './components/ReportDetails';
 
 
@@ -220,7 +220,8 @@ export default class App extends Component {
           <Route path="/matreportadd" component={MatReportAdd}></Route>
           <Route path="/matreportone/:id" component={ReportDetails}></Route>
           <Route path="/matNotification" component={MatNotification}></Route>
-          <Route path="/matDistribution" component={MatDistribution}></Route>
+          <Route path="/matins" component={MatIns}></Route>
+          
         </div>
       </BrowserRouter>
     );
