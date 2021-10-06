@@ -42,7 +42,7 @@ export default class AddDriver extends Component {
        if(!this.state.nic){
            nicError="* NIC is Required!"
        }
-       else if (!this.state.nic.includes('[0-9]{10}')){
+       else if (!this.state.nic.match('[0-9+]{10}[vV|xX]$')){
         nicError= 'Please Enter valid Nic'
     }
 
@@ -108,6 +108,10 @@ export default class AddDriver extends Component {
    
     render() {
         return (
+
+            <div id="wrapper" className="toggled">
+            <div id="page-content-wrapper">
+            <div className="container-fluid">
             
             <div className= 'col-md-8 mt-8-4 mx-auto'>
               <h1 className="h3 mb-3 font-weight-normal">ADD NEW DRIVER</h1>
@@ -157,6 +161,10 @@ export default class AddDriver extends Component {
                        
                 </div>
                 </form>
+            </div>
+
+            </div>
+            </div>
             </div>
             
 

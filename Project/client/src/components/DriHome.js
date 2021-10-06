@@ -69,7 +69,7 @@ handlesearch=(e)=>{
 
 
      
-          <div className="row justify-content-evenly">
+          <div className="row justify-content-center">
               <div  class="col-9">
           <h1 style={{backgroundColor:'black', color:'white', padding:'5px',textAlign:'center',opacity:".50"}}>Driver Management</h1>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -105,11 +105,11 @@ handlesearch=(e)=>{
                     <td>{driver.address}</td>
                     <td>
                       <a className="btn btn-primary" href={`/DriHome/Editdriver/${driver._id}`}>
-                        <i className="fas fa-edit"></i>&nbsp;Edit</a>
+                        <i className="fas fa-edit"></i>Edit</a>
                     </td>
                     <td>
                       <a className="btn btn-primary" href={`/DriHome/schedule/${driver._id}`}>
-                        <i className="fas fa-list"></i>&nbsp;Schedule</a>
+                        <i className="fas fa-list"></i>Schedule</a>
                     </td>
                    
                     <td>
