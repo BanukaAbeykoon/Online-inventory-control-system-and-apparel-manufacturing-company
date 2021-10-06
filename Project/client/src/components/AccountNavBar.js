@@ -196,15 +196,17 @@ class AccountNavBar extends Component {
                 </li>
 
                 <div class="position-absolute top-50 end-0 translate-middle-y">
+                <a  href="/matNotification"> 
                   <button
                     type="button"
                     class="btn btn-primary position-relative"
                   >
-                    <i class="fas fa-bell"></i>
+                <i class="fas fa-bell"></i>
                     <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
                       <span class="visually-hidden">New alerts</span>
                     </span>
                   </button>
+                  </a>
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
