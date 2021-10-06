@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import './styleSideNav.css';
 import Swal from 'sweetalert2'
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+
 
 export default class MatIns extends Component {
 
@@ -85,27 +87,46 @@ export default class MatIns extends Component {
       
       
       
-      
+              <div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-info">INVENTORY SUMMARY</button>
+  <button type="button" class="btn btn-primary">Middle</button>
+  <button type="button" class="btn btn-info">Right</button>
+</div>
+           
       
       
       
               </div>
-            
+
+<br/>
+
+  
+              <ReactHTMLTableToExcel
+              
+                        id="test-table-xls-button"
+                        className="btn btn-warning"
+                        table="tableee"
+                        filename="tablexls"
+                        sheet="tablexls"
+                        
+                        buttonText="Download Report" />
+
+
       
              
-      
+    <br/>
       
                  
             
       
       
                <div class="p-3 mb-2 bg-info text-dark rounded-3">
-               <table className="table table-hover  table table-bordered border-info table table-info table-striped" style={{marginTop:'5px'}}>
+               <table id="tableee" className="table table-hover  table table-bordered border-info table table-info table-striped" style={{marginTop:'5px'}}>
                  <thead>
                    <tr>
                      <th scope="col">#</th>
                      <th scope="col">Material ID</th>
-                     <th scope="col">Material Name</th>
+                     
                      <th scope="col">Supplier ID</th>
                      
                      
@@ -114,8 +135,9 @@ export default class MatIns extends Component {
                      <th scope="col">Qty</th>
                      <th scope="col">Category</th>
                      <th scope="col">Total</th>
+                   
                      
-                     <th scope="col">Action</th>
+                     
       
                    </tr>
                  </thead>
@@ -128,22 +150,18 @@ export default class MatIns extends Component {
                             {material.matID}
                             
                             </td>
-                          <td>{material.matName}</td>
+                        
                           <td>{material.supID}</td>
                         
                          
                           <td>{material.shipID}</td>
-                          <td>Rs.{material.price}</td>
+                          <td>Rs.{material.price}.00</td>
                           <td>{material.qty}</td>
                           <td>{material.category}</td>
-                          <td>Rs.{material.price*material.qty}</td>
-                         
-                          <td>
+                          <td>Rs.{material.price*material.qty}.00</td>
                           
-                            <a className="btn btn-danger" href="#" onClick={() =>this.onDelete(material._id)}>
-                              <i className="far fa-trash-alt"></i>&nbsp;Delete
-                            </a>
-                          </td>
+                         
+                         
       
                         </tr>
       
