@@ -144,6 +144,8 @@ onDelete = (id) =>{
               sheet="tablexls"
               buttonText="Download Excell" />
 
+              &nbsp;
+
 <button
                   type="button"
                   style={{ backgroundColor: "#00000", padding: "7px" }}
