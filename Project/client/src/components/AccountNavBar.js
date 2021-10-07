@@ -45,6 +45,7 @@ class AccountNavBar extends Component {
                         <a href="/matRet">Material Card</a>
                         <a href="/lmo">LMO Card</a>
                         <a href="/matreport">Reporting</a>
+                        <a href="/matdis">Distribution</a>
                         <a href="/matins">Insights</a>
                     </div>
                     </div>

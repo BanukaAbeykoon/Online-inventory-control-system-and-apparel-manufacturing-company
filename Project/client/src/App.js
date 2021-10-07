@@ -101,6 +101,8 @@ import MatReportAdd from './components/MatReportAdd';
 import MatNotification from './components/MatNotification';
 import MatIns from "./components/MatIns";
 import ReportDetails from './components/ReportDetails';
+import MatInsTwo from './components/MatInsTwo';
+import MatDis from "./components/MatDis";
 
 
 
@@ -139,6 +141,8 @@ export default class App extends Component {
       <BrowserRouter>
         {window.location.pathname !== "/" && <AccountNavBar />}
         <Route path="/" exact component={AllMain}></Route>
+
+       
 
         <Route path="/TMSSchedule" component={TMSSchedule}></Route>
 
@@ -272,6 +276,9 @@ export default class App extends Component {
         <Route path="/matreportone/:id" component={ReportDetails}></Route>
         <Route path="/matNotification" component={MatNotification}></Route>
         <Route path="/matins" component={MatIns}></Route>
+        <Route path="/matinstwo" component={MatInsTwo}></Route>
+        <Route path="/matdis" component={MatDis}></Route>
+        
       
         
         

@@ -89,7 +89,7 @@ handleSearchArea = (e) =>{
 
 
           
-              <nav class="navbar navbar-expand-lg navbar-info bg-light">
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -193,6 +193,7 @@ handleSearchArea = (e) =>{
 
 
          <div class="p-3 mb-2 bg-info text-dark rounded-3">
+        
          <table className="table table-hover  table table-bordered border-info table table-info table-striped" style={{marginTop:'5px'}}>
            <thead>
              <tr>
@@ -246,11 +247,11 @@ handleSearchArea = (e) =>{
             </tbody>          
          </table>
          
-         </div>
+       
 
    
 
-         
+         </div>
         </div>
         </div>
         </div>
