@@ -116,7 +116,7 @@ export default class MaterialEdit extends Component {
            
         
             
-              <nav class="navbar navbar-expand-lg navbar-info bg-light">
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -142,6 +142,13 @@ export default class MaterialEdit extends Component {
 
              
 <hr/>
+
+
+
+
+
+
+
 <div class="p-3 mb-2 bg-info text-dark rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
                 <h1 className="h3 mb-3 font-weight-normal">Edit Material Card</h1>

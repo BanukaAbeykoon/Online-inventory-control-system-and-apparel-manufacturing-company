@@ -114,7 +114,7 @@ export default class MatReportAdd extends Component {
 
 
             
-              <nav class="navbar navbar-expand-lg navbar-info bg-light">
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -136,12 +136,17 @@ export default class MatReportAdd extends Component {
 
 <hr/>
 
-<div class="card text-dark bg-info mb-3">
-  <div class="card-header">INSTRUCTIONS</div>
+<div class="card">
   <div class="card-body">
-    <h5 class="card-title">Reporting</h5>
-    <p class="card-text">There are rules and regualtions for Reporting.They are given below.</p>
+    <h5 class="card-title">INSTRUCTIONS</h5>
+
+    <div class="spinner-grow text-info" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+    <p class="card-text">Imagine having just the right number of products for a certain SKU, given demand -- but your team is working with old data and, based on that data, projects that your inventory will fall short of demand in a month. It is obvious what your team would do: begin the process of acquiring more inventory to make up the difference. Now there will be excess inventory, and you will be in an Overstock situation.</p>
+    <p class="card-text"><small class="text-muted">Latest Regulations</small></p>
   </div>
+  <img src="%PUBLIC_URL%../../lmo1.png" class="card-img-bottom" alt="..."/>
 </div>
              
 

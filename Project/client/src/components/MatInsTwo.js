@@ -3,7 +3,6 @@ import axios from 'axios';
 import './styleSideNav.css';
 import Swal from 'sweetalert2'
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
-import jsPDF from 'jspdf';
 
 
 export default class MatIns extends Component {
@@ -39,17 +38,6 @@ export default class MatIns extends Component {
       }
 
 
-      generatePDF() {
-        const doc = new jsPDF("landscape","pt",[1000,1600]);
-        doc.html(document.querySelector("#tableee"),{
-          callback: function(pdf){
-            var pageCount = doc.internal.getNumberOfPages();
-            pdf.deletePage(pageCount);
-            pdf.save("report.pdf");
-          }
-        })
-   }
-
 
     render() {
         return (
@@ -79,25 +67,10 @@ export default class MatIns extends Component {
         </div>
       </nav> 
       
-      <div class="card">
-  <div class="card-body">
-    <h5 class="card-title">INSTRUCTIONS</h5>
-
-    <div class="spinner-grow text-info" role="status">
-  <span class="visually-hidden">Loading...</span>
-</div>
-    <p class="card-text">Imagine having just the right number of products for a certain SKU, given demand -- but your team is working with old data and, based on that data, projects that your inventory will fall short of demand in a month. It is obvious what your team would do: begin the process of acquiring more inventory to make up the difference. Now there will be excess inventory, and you will be in an Overstock situation.</p>
-    <p class="card-text"><small class="text-muted">Latest Regulations</small></p>
-  </div>
-  <img src="%PUBLIC_URL%../../lmo1.png" class="card-img-bottom" alt="..."/>
-</div>
       
       
       
-
-
-
-
+      <hr/>
                 
             <div className="container p-3 mb-2 bg-info text-dark rounded-3">
               <div className="row">
@@ -109,7 +82,7 @@ export default class MatIns extends Component {
       
       
       
-              <hr/>
+      
      
       
       
@@ -118,8 +91,7 @@ export default class MatIns extends Component {
              
               <a href="/matins"><button type="button" class="btn btn-primary">INVENTORY</button></a>
               &nbsp;
-  
-              <a href="/matinstwo"><button type="button" class="btn btn-primary" >MATERIAL</button></a>
+              <a href="/matRet"><button type="button" class="btn btn-primary" >MATERIAL</button></a>
               
 </div>
 </center>
@@ -131,7 +103,7 @@ export default class MatIns extends Component {
 
 <hr/>
 <center>
-<h1><b>INVENTORY SUMMARY</b></h1>
+<h1><b>MATERIAL SUMMARY</b></h1>
 </center>
   
 
@@ -141,40 +113,32 @@ export default class MatIns extends Component {
                         id="test-table-xls-button"
                         className="btn btn-warning"
                         table="tableee"
-                        filename="Inventory Summary"
+                        filename="Material Summary"
                         sheet="tablexls"
-                        buttonText="Download Report" />
+                        buttonText="Download Report"/>
 
 
       
- 
+             
+
       
-                
-    <button className="btn btn-success"><a href= "#" onClick={()=>this.generatePDF()} style={{textDecoration:'none', color:'white'}}>
-                  
-                  Download Report </a> &nbsp;
-                  <i class="fas fa-download"></i>
-    
-                </button>
-               
-                
-            
-      
-               <div class="p-3 mb-2 bg-info text-dark rounded-3">
+                <div class="p-3 mb-2 bg-info text-dark rounded-3">
                <table id="tableee" className="table table-hover  table table-bordered border-info table table-info table-striped" style={{marginTop:'5px'}}>
                  <thead>
                    <tr>
                      <th scope="col">#</th>
                      <th scope="col">Material ID</th>
+                     <th scope="col">Material Name</th>
                      
-                     <th scope="col">Supplier ID</th>
+                    
                      
-                     <th scope="col">Arrival</th>
-                     <th scope="col">Shipment ID</th>
-                     <th scope="col">Price</th>
+                     
+                   
+                     
                      <th scope="col">Qty</th>
                      <th scope="col">Category</th>
-                     <th scope="col">Total</th>
+                     <th scope="col">Description</th>
+                    
                    
                      
                      
@@ -188,17 +152,20 @@ export default class MatIns extends Component {
                           <td>
                             
                             {material.matID}
+                          
                             
                             </td>
+                            <td>{material.matName}</td>
                         
-                          <td>{material.supID}</td>
+                          
                         
-                         <td>{material.arrDate}</td>
-                          <td>{material.shipID}</td>
-                          <td>Rs.{material.price}.00</td>
+                         
+                   
+                          
                           <td>{material.qty}</td>
                           <td>{material.category}</td>
-                          <td>Rs.{material.price*material.qty}.00</td>
+                          <td>{material.description}</td>
+                        
                           
                          
                          
