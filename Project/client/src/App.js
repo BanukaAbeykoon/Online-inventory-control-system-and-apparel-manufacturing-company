@@ -34,6 +34,8 @@ import AccountplanCreate from "./components/AccountplanCreate";
 import AccountplanEdit from "./components/AccountplanEdit";
 import AccountplanDetails from "./components/AccountplanDetails";
 import mainhome from "./components/mainhome";
+import AccountSaleJournal from "./components/AccountSaleJournal";
+import AccountPurchaseJournal from "./components/AccountPurchaseJournal";
 
 
 
@@ -131,6 +133,7 @@ import QualityDash from "./components/QualityDash";
 
 import DefectCard from "./components/DefectCard";
 import CreatepostQC from "./components/CreatepostQC";
+import orderDashboard from "./components/orderDashboard";
 
 
 
@@ -141,7 +144,8 @@ export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        {window.location.pathname !== "/" && <AccountNavBar />}
+        {window.location.pathname !== "/"  && <AccountNavBar />}
+        
         <Route path="/" exact component={AllMain}></Route>
 
        
@@ -178,10 +182,12 @@ export default class App extends Component {
         <Route path="/accountPlanHome" component={AccountplanHome}></Route>
         <Route path="/addAccountPlan" component={AccountplanCreate}></Route>
         <Route path="/editAccountPlan/:id" component={AccountplanEdit}></Route>
-        <Route
-          path="/AccountplanDetails/:id"
-          component={AccountplanDetails}
-        ></Route>
+        <Route path="/AccountplanDetails/:id" component={AccountplanDetails}></Route>
+        <Route path="/salejournal" component={AccountSaleJournal}></Route>
+        <Route path="/purchasejournal" component={AccountPurchaseJournal}></Route>
+
+
+
 
         {/*Factory create--inventory*/}
         <Route path="/pmHome" component={pmHome}></Route>
@@ -280,7 +286,8 @@ export default class App extends Component {
        </div>
 
     <div className="page-content-wrapper">
-
+    
+    <Route path="/orderDashboard" exact component={orderDashboard}></Route>
        <Route path="/orderHome" exact component={orderHome}></Route>
         <Route path="/addOrder" component={orderCreate}></Route>
         <Route path="/editOrder/:id" component={orderEdit}></Route>
