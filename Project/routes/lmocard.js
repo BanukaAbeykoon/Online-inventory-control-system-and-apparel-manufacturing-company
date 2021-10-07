@@ -37,7 +37,8 @@ router.get("/lmocard", (req, res) => {
 
 //get a specific post
 
-router.get("/lmocard/:id",(req, res) => {
+router.get("/lmocard/:id",(req,res) =>{
+
   let lmoid = req.params.id;
 
   Lmo.findById(lmoid,(err,lmocard) => {
@@ -73,7 +74,7 @@ router.put("/lmocard/updatelmocard/:id", (req, res) => {
 
 //Delete post
 
-router.delete("/lmocard/deleteslmocard/:id", (req, res) => {
+router.delete('/lmocard/deleteslmocard/:id', (req, res) => {
   Lmo.findByIdAndRemove(req.params.id).exec((err, deleteslmocard) => {
     if (err)
       return res.status(400).json({

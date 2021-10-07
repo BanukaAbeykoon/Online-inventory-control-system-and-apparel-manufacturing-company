@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
+import swal from "sweetalert2";
+
 
 export default class HomeLSmaterial extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      lmocard: [],
+      lmocard: []
     };
   }
 
@@ -29,7 +31,7 @@ export default class HomeLSmaterial extends Component {
   onDelete = (id) => {
     axios.delete(`/lmocard/deleteslmocard/${id}`).then((res) => {
       alert("Deleted Successfully");
-      this.retrievePosts();
+      this.retrievelmocard();
     });
   };
 
@@ -86,7 +88,7 @@ export default class HomeLSmaterial extends Component {
                   <th scope="col">SupllierName</th>
                   <th scope="col">LessmaterialID</th>
                   <th scope="col">LessmaterialName</th>
-                  <th scope="col">Qunatity</th>
+                  <th scope="col">Quantity</th>
                   <th scope="col">UnitPrice</th>
                   <th scope="col">Date</th>
                   <th scope="col">Action</th>
@@ -108,7 +110,7 @@ export default class HomeLSmaterial extends Component {
                     <td>{lmocard.supllierName}</td>
                     <td>{lmocard.lessmaterialID}</td>
                     <td>{lmocard.lessmaterialName}</td>
-                    <td>{lmocard.qunatity}</td>
+                    <td>{lmocard.quantity}</td>
                     <td>{lmocard.unitPrice}</td>
                     <td>{lmocard.date}</td>
 

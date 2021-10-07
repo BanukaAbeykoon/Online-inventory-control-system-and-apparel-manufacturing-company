@@ -23,7 +23,7 @@ class SHdashboard extends Component {
                     With supporting text below as a natural lead-in to
                     additional content.
                   </p>
-                  <a href="/" class="btn btn-primary">
+                  <a href="/ShipmentHome" class="btn btn-primary">
                     Regular shipment
                   </a>
                 </div>

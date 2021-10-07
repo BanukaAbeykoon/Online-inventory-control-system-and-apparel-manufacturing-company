@@ -1,7 +1,44 @@
 import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert2";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
+
+const generatePDF = (shipment) => {
+  const doc = new jsPDF();
+  const tableColumn = [
+    "shipmentID",
+    "supplierID",
+    "materialID",
+    "materialName",
+    "quantity ",
+    "unitPrice",
+    "date",
+  ];
+  const tableRows = [];
+
+ 
+  shipment.map((shipment) => {
+    const shipmentdata = [
+      shipment.shipmentID,
+      shipment.supplierID,
+      shipment.materialID,
+      shipment.materialName,
+      shipment.quantity,
+      shipment.unitPrice,
+      shipment.date,
+    ];
+    tableRows.push(shipmentdata);
+  });
+  doc.text("Casanova Inventory", 70, 8).setFontSize(13);
+  doc.text("Shipment Detail Report", 14, 16).setFontSize(13);
+  doc.autoTable(tableColumn, tableRows, {
+    styles: { fontSize: 8 },
+    startY: 35,
+  });
+  doc.save("shipment details.pdf");
+};
 export default class ShipmentHome extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +66,7 @@ export default class ShipmentHome extends Component {
 
   onDelete = (id) => {
     axios.delete(`/shipment/deleteshipment/${id}`).then((res) => {
-      swal.fire("Deleted", "deleted Successfilly", "success");
+      swal.fire("Deleted", "deleted Successfully", "success");
       this.retrieveShipment();
     });
   };
@@ -81,6 +118,8 @@ export default class ShipmentHome extends Component {
     });
   };
 
+
+
   render() {
     return (
       <div id="wrapper" className="toggled">
@@ -100,6 +139,16 @@ export default class ShipmentHome extends Component {
                 ></input>
               </div>
             </div>
+            <div>
+              <button
+                type="button"
+                style={{ backgroundColor: "#2E4661", padding: "10px" }}
+                class="btn btn-secondary btn-sm"
+                onClick={() => generatePDF(this.state.shipment)}
+              >
+                Generate Report of shipments
+              </button>
+            </div>
             <table className="table">
               <thead>
                 <tr>
@@ -117,9 +166,9 @@ export default class ShipmentHome extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.shipment.map((shipment,index) => (
+                {this.state.shipment.map((shipment, index) => (
                   <tr key={index}>
-                    <th scope="row">{index+1}</th>
+                    <th scope="row">{index + 1}</th>
                     <td>
                       <a
                         href={`/shipment/${shipment._id}`}
@@ -158,7 +207,10 @@ export default class ShipmentHome extends Component {
             </table>
 
             <button className="btn btn-success">
-              <a href="/addSh" style={{ textdecoration: "none", color: "white" }}>
+              <a
+                href="/addSh"
+                style={{ textdecoration: "none", color: "white" }}
+              >
                 Create New Shipment
               </a>
             </button>

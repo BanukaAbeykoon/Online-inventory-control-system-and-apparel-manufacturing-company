@@ -85,32 +85,32 @@ export default class CreateLSmaterial extends Component {
       <div className="container">
         <div className="col-md-8 mt-4 mx-auto">
           <p>
-            <a href="/pmHome">All Factories</a>
+            <a href="/pmHome">All Shipments</a>
           </p>
           <hr />
 
-          <h1 className="h3 mb-3 front-weight-normal">Add New Factory</h1>
+          <h1 className="h3 mb-3 front-weight-normal">Add New shipment</h1>
           <form>
             <form className="needs-validation" noValidate>
               <div className="form-group" style={{ marginBottom: "15px" }}>
-                <label style={{ marginBottom: "5px" }}>Factory Name</label>
+                <label style={{ marginBottom: "5px" }}>Ship ID</label>
                 <input
                   type="text"
                   className="form-control"
                   name="shipID"
-                  placeholder="Enter Factory Name"
+                  placeholder="Enter Shipment ID"
                   value={this.state.shipID}
                   onChange={this.handleInputChange}
                 />
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
-                <label style={{ marginBottom: "5px" }}>Factory Telephone</label>
+                <label style={{ marginBottom: "5px" }}>Supplier ID</label>
                 <input
-                  type="number"
+                  type="text"
                   className="form-control"
                   name="supplierID"
-                  placeholder="Enter Factory Telephone"
+                  placeholder="Enter Supplier ID"
                   value={this.state.supplierID}
                   onChange={this.handleInputChange}
                 />
@@ -118,12 +118,12 @@ export default class CreateLSmaterial extends Component {
 
               <div class="form-group">
                 <div className="form-group" style={{ marginBottom: "15px" }}>
-                  <label style={{ marginBottom: "5px" }}>Factory Email</label>
+                  <label style={{ marginBottom: "5px" }}>Email</label>
                   <input
                     type="email"
                     className="form-control"
                     name="supllierName"
-                    placeholder="Enter Factory Email"
+                    placeholder="Enter Supplier email"
                     value={this.state.supllierName}
                     onChange={this.handleInputChange}
                   />
@@ -131,65 +131,63 @@ export default class CreateLSmaterial extends Component {
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
-                <label style={{ marginBottom: "5px" }}>Factory Website</label>
+                <label style={{ marginBottom: "5px" }}>lessmaterialID</label>
                 <input
                   type="text"
                   className="form-control"
                   name="lessmaterialID"
-                  placeholder="Enter Factory Website"
+                  placeholder="Enter Lessmaterial ID"
                   value={this.state.lessmaterialID}
                   onChange={this.handleInputChange}
                 />
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
-                <label style={{ marginBottom: "5px" }}>CEO Name</label>
+                <label style={{ marginBottom: "5px" }}>lessmaterialName</label>
                 <input
                   type="text"
                   className="form-control"
                   name="lessmaterialName"
-                  placeholder="Factory CEO Name"
+                  placeholder="Enter Lessmaterial name"
                   value={this.state.lessmaterialName}
                   onChange={this.handleInputChange}
                 />
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
-                <label style={{ marginBottom: "5px" }}>FCO Name</label>
+                <label style={{ marginBottom: "5px" }}>Quantity</label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control"
                   name="quantity"
-                  placeholder="Factory FCO Name"
+                  placeholder="Enter Quantity"
                   value={this.state.quantity}
                   onChange={this.handleInputChange}
                 />
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
-                <label style={{ marginBottom: "5px" }}>Product</label>
+                <label style={{ marginBottom: "5px" }}>Unit Price</label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control"
                   name="unitPrice"
-                  placeholder="Enter Production"
+                  placeholder="Enter Unit Price"
                   value={this.state.unitPrice}
                   onChange={this.handleInputChange}
                 />
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
-                <label style={{ marginBottom: "5px" }}>Units</label>
+                <label style={{ marginBottom: "5px" }}>Date</label>
                 <input
-                  type="Number"
+                  type="date"
                   className="form-control"
                   name="date"
-                  placeholder="Enter Number of Units "
+                  placeholder="Enter Date"
                   value={this.state.date}
                   onChange={this.handleInputChange}
                 />
-
-                
               </div>
 
               <button
