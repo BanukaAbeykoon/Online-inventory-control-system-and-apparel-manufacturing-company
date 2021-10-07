@@ -100,7 +100,7 @@ export default class HomeLSmaterial extends Component {
                     <th scope="row">{index + 1}</th>
                     <td>
                       <a
-                        href={`/lmocard/${lmocard._id}`}
+                        href={`/DetailsLSmaterial/${lmocard._id}`}
                         style={{ textDecoration: "none" }}
                       >
                         {lmocard.shipID}
