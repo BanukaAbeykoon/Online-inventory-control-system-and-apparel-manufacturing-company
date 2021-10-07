@@ -11,13 +11,10 @@
     "bootstrap": "^5.1.1",
     "chart.js": "^3.5.1",
     "concurrently": "^6.2.1",
-<<<<<<< HEAD
     "jspdf": "^2.4.0",
     "jspdf-autotable": "^3.5.20",
-=======
     "html2canvas": "^1.3.2",
-    "jspdf": "^2.4.0",
->>>>>>> 2096b7df452da563fe731d02fbb00462e33e1d54
+    
     "react": "^17.0.2",
     "react-chartjs-2": "^3.0.5",
     "react-dom": "^17.0.2",
