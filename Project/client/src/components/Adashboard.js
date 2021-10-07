@@ -88,7 +88,10 @@ class Adashboard extends Component {
                   alt="..."
                 />
                 
+                <div class="shadow bg-white rounded">
                 <div class="card-body">
+                
+
                   <h5 class="card-title">Journal Details</h5>
                   <p class="card-text">
                     
@@ -97,6 +100,7 @@ class Adashboard extends Component {
                   Go Journal Details
                   </a>
                 </div>
+              </div>
               </div>
             </div>
             <div class="col-sm-4">
@@ -108,6 +112,8 @@ class Adashboard extends Component {
                   class="card-img-top"
                   alt="..."
                 />
+              
+              <div class="shadow bg-white rounded">
                 <div class="card-body">
                   <h5 class="card-title">P&L Details</h5>
                   <p class="card-text">
@@ -119,6 +125,7 @@ class Adashboard extends Component {
                 </div>
               </div>
             </div>
+            </div>
             <div class="col-sm-4">
               <div class="card">
                 <img
@@ -128,6 +135,8 @@ class Adashboard extends Component {
                   class="card-img-top"
                   alt="..."
                 />
+
+                <div class="shadow bg-white rounded">
                 <div class="card-body">
                   <h5 class="card-title">Reporting</h5>
                   <p class="card-text">
@@ -139,7 +148,7 @@ class Adashboard extends Component {
                 </div>
               </div>
             </div>
-
+            </div>
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
@@ -156,7 +165,7 @@ class Adashboard extends Component {
                   class="card-img-top"
                   alt="..."
                 />
-                
+                <div class="shadow bg-white rounded">
                 <div class="card-body">
                 <h5 class="card-title">Future Decision </h5>
                   
@@ -164,9 +173,12 @@ class Adashboard extends Component {
                    Go Future Decision 
                   </a>
                 </div>
+                </div>
               </div>
             </div>
-
+           
+            
+           
 
 
 

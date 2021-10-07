@@ -17,7 +17,7 @@ export default class MatMain extends Component {
 
 
         
-              <nav class="navbar navbar-expand-lg navbar-info bg-light">
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -90,19 +90,22 @@ export default class MatMain extends Component {
     
    
       <div class="card-body">
-      
+      <center>
         <h2 class="card-title">MATERIAL CARD</h2>
         <p class="card-text"></p>
         <a href="/matRet" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
+        </center>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card bg-light">
       <div class="card-body">
+      <center>
         <h2 class="card-title">LMO CARD</h2>
         <p class="card-text"></p>
         <a href="/lmo" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
+        </center>
       </div>
     </div>
     <br/>
@@ -113,9 +116,11 @@ export default class MatMain extends Component {
 <div class="col-sm-6">
     <div class="card bg-light">
       <div class="card-body">
+      <center>
         <h2 class="card-title">REPORTING</h2>
         <p class="card-text"></p>
         <a href="/matreport" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
+        </center>
       </div>
     </div>
     
@@ -124,16 +129,37 @@ export default class MatMain extends Component {
   <div class="col-sm-6">
     <div class="card bg-light">
       <div class="card-body">
+      <center>
         <h2 class="card-title">INSIGHTS</h2>
         <p class="card-text"></p>
         <a href="/matins" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
+        </center>
       </div>
     </div>
+
+
+
+    
     
   </div>
 
   
+
+  
 </div>
+<br/>
+
+<div class="card bg-light">
+  
+      <div class="card-body">
+      <center>
+        <h2 class="card-title">DISTRIBUTION CARD</h2>
+        <p class="card-text"></p>
+        <a href="/matdis" class="btn btn-info"><i class="fas fa-arrow-alt-circle-right"></i></a>
+        </center>
+      </div>
+    
+    </div>
 </div>
 
 

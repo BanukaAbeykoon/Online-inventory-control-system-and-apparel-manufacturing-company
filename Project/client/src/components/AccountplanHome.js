@@ -90,6 +90,7 @@ export default class AccountplanHome extends Component {
 
 <div className="col-lg-9 mt-2 mb-2">
   <h4> Future Accounts Plans</h4>
+  <hr/>
 </div>
 <div className=" col-lg-3 mt-2 mb-2">
 
@@ -187,15 +188,15 @@ export default class AccountplanHome extends Component {
 {this.state.accountplan.map((accountplan,index)=>(
             <div class="col-sm-4">
               <div class="card" style={{width:"18rem"}}>
-              {/* <img
-                  src="%PUBLIC_URL%../../fut.png"
-                  width="400"
-                  height="400"
+               <img
+                  src="%PUBLIC_URL%../../fut3.png"
+                  width="100"
+                  height="200"
                   class="card-img-top"
                   alt="..."
-                /> */}
+                /> 
                 
-                
+                <div class="shadow bg-white rounded">
                 <div class="card-body" >
 
                
@@ -221,6 +222,7 @@ export default class AccountplanHome extends Component {
 
      
                 </div>
+              </div>
               </div>
               <br/>
             </div>
