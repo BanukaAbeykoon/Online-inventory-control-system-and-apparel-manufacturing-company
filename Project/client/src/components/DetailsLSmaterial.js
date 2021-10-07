@@ -35,7 +35,7 @@ export default class DetailsLSmaterial extends Component {
       unitPrice,
       date ,
     } = this.state.lmocard;
-
+    /* details */
     return (
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">

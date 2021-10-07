@@ -85,7 +85,7 @@ export default class CreateLSmaterial extends Component {
       <div className="container">
         <div className="col-md-8 mt-4 mx-auto">
           <p>
-            <a href="/pmHome">All Factories</a>
+            <a href="/pmHome">All Shipments</a>
           </p>
           <hr />
 
@@ -107,7 +107,7 @@ export default class CreateLSmaterial extends Component {
               <div className="form-group" style={{ marginBottom: "15px" }}>
                 <label style={{ marginBottom: "5px" }}>Supplier ID</label>
                 <input
-                  type="number"
+                  type="text"
                   className="form-control"
                   name="supplierID"
                   placeholder="Enter Supplier ID"
@@ -188,8 +188,6 @@ export default class CreateLSmaterial extends Component {
                   value={this.state.date}
                   onChange={this.handleInputChange}
                 />
-
-                
               </div>
 
               <button
