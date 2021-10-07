@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class orderHome extends Component {
+export default class AccountSaleJournal extends Component {
   constructor(props) {
     super(props);
 
@@ -88,7 +88,7 @@ handleSearchArea = (e) =>{
               <th scope="col">unit price</th>
               <th scope="col">Quantity</th>
               <th scope="col">Total</th>
-              <th scope="col">Action</th>
+             
             </tr>
           </thead>
           <tbody>
@@ -104,21 +104,13 @@ handleSearchArea = (e) =>{
                 <td>{order.unprice}</td>
                 <td>{order.qty}</td>
                 <td>{Number(order.unprice) * Number(order.qty)}</td>
-                <td>
-                  <a className="btn btn-warning" href={`/editOrder/${order._id}`}>
-                    <i className="fas fa-edit"></i>&nbsp;Edit
-                  </a>
-                  &nbsp;
-                  <a className="btn btn-danger" href="#" onClick={() =>this.onDelete(order._id)}>
-                    <i className="far fa-trash-alt"></i>&nbsp;Delete
-                  </a>
-                </td>
+             
               </tr>
             ))}
           </tbody>
         </table>
 
-        <button className="btn btn-success"><a href="/addOrder" style={{textDecoration:'none',color:'white'}}>Create New Post</a></button>
+       
               </div>
               </div>
 

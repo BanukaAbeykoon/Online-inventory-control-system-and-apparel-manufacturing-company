@@ -6,9 +6,10 @@ export default class orderCreate extends Component {
     constructor(props){
         super(props);
         this.state={
-            topic:"",
-            description:"",
-            postCategory:""
+            orderID:"",
+            product:"",
+            unprice:"",
+            qty:""
         }
     }
 
@@ -24,21 +25,23 @@ export default class orderCreate extends Component {
     onSubmit = (e) =>{
 
         e.preventDefault();
-        const {topic,description,postCategory} = this.state;
+        const {orderID,product,unprice,qty} = this.state;
 
         const data ={
-            topic:topic,
-            description:description,
-            postCategory:postCategory
+            orderID:orderID,
+            product:product,
+            unprice:unprice,
+            qty:qty
         }
         console.log(data)
 
         axios.post("http://localhost:8000/order/save", data).then((res) => {
           if (res.data.success) {
             this.setState({
-              topic: "",
-              description: "",
-              postCategory: "",
+              orderID: "",
+              product: "",
+              unprice: "",
+              qty:""
             });
           }
           alert("Added")
@@ -54,9 +57,9 @@ export default class orderCreate extends Component {
                     <label style={{marginBottom:'5px'}} >Order ID</label>
                     <input type="text"
                     className="form-control"
-                    name="topic"
+                    name="orderID"
                     placeholder="Enter OrderID"
-                    value={this.state.topic}
+                    value={this.state.orderID}
                     onChange={this.handleInputChange}/>            
             </div>
 
@@ -64,21 +67,35 @@ export default class orderCreate extends Component {
                 <label style={{marginBottom:'5px'}}>Product </label>
                 <input type="text"
                  className="form-control"
-                 name="description"
+                 name="product"
                  placeholder="Enter Product"
-                 value={this.state.description}
+                 value={this.state.product}
                  onChange={this.handleInputChange}/>
             </div>
 
             <div className="form-group" style={{marginBottom:'15px'}}>
-                <label style={{marginBottom:'5px'}}>Quantity</label>
-                <input type="text"
+                <label style={{marginBottom:'5px'}}>Unit Price</label>
+                <input type="number"
                  className="form-control"
-                 name="postCategory"
+                 name="unprice"
                  placeholder="Enter Quantity"
-                 value={this.state.postCategory}
+                 value={this.state.unprice}
                  onChange={this.handleInputChange}/>
             </div>
+
+            
+            <div className="form-group" style={{marginBottom:'15px'}}>
+                <label style={{marginBottom:'5px'}}>Quantity</label>
+                <input type="number"
+                 className="form-control"
+                 name="qty"
+                 placeholder="Enter Quantity"
+                 value={this.state.qty}
+                 onChange={this.handleInputChange}/>
+            </div>
+
+
+
             <button className="btn btn-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
                 <i className="far fa-check-square"></i>
                 &nbsp; save

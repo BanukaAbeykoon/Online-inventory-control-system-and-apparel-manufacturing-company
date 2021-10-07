@@ -35,7 +35,7 @@ class mainhome extends Component {
                   With supporting text below as a natural lead-in to additional
                   content.
                 </p>
-                <a href="/orderHome" class="btn btn-primary">
+                <a href="/orderDashboard" class="btn btn-primary">
                   Order Management
                 </a>
               </div>

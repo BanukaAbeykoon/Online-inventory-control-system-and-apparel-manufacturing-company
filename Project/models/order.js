@@ -2,17 +2,21 @@
 const mongoose = require('mongoose');
 
 const cusOrder = new mongoose.Schema({
-  topic:{
+  orderID:{
     type:String,
     required:true
   },
-  description:{
+  product:{
     type:String,
     required:true 
   },
-  postCategory:{
+  unprice:{
+    type:String,
+    required:true 
+  },
+  qty:{
     type:String,
     required:true
   }
 });
-module.exports = mongoose.model('customerOrder',cusOrder);
+module.exports = mongoose.model('cusOrd',cusOrder);
