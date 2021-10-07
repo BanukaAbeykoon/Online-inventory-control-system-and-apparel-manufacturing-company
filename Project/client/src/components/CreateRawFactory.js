@@ -60,8 +60,28 @@ export default class CreateRawFactory extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const {orderid,rawproduct,matone,matoneqty,mattwo,mattwoqty,matthree,matthreeqty,} = this.state;
-    if(this.validate(orderid,rawproduct,matone,matoneqty,mattwo,mattwoqty,matthree,matthreeqty,)){
+    const {
+      orderid,
+      rawproduct,
+      matone,
+      matoneqty,
+      mattwo,
+      mattwoqty,
+      matthree,
+      matthreeqty,
+    } = this.state;
+    if (
+      this.validate(
+        orderid,
+        rawproduct,
+        matone,
+        matoneqty,
+        mattwo,
+        mattwoqty,
+        matthree,
+        matthreeqty
+      )
+    ) {
       const data = {
         orderid: orderid,
         rawproduct: rawproduct,
@@ -73,13 +93,16 @@ export default class CreateRawFactory extends Component {
         matthreeqty: matthreeqty,
       };
 
-
       console.log(data);
 
       axios.post("/factory/create", data).then((res) => {
         if (res.data.success) {
           //alert("Create Successfully !!!");
-          swal.fire("Added", "Raw Mateials Send Factory Successfull", "success");
+          swal.fire(
+            "Added",
+            "Raw Mateials Send Factory Successfull",
+            "success"
+          );
           //this.retrieveInventory();
 
           this.setState({
@@ -94,7 +117,46 @@ export default class CreateRawFactory extends Component {
           });
         }
       });
-    }  
+    }
+  };
+
+  btnDemo = (e) => {
+    e.preventDefault();
+
+    const {
+      orderid,
+      rawproduct,
+      matone,
+      matoneqty,
+      mattwo,
+      mattwoqty,
+      matthree,
+      matthreeqty,
+    } = this.state;
+
+    const data = {
+      orderid: orderid,
+      rawproduct: rawproduct,
+      matone: matone,
+      matoneqty: matoneqty,
+      mattwo: mattwo,
+      mattwoqty: mattwoqty,
+      matthree: matthree,
+      matthreeqty: matthreeqty,
+    };
+
+    console.log(data);
+
+    this.setState({
+      orderid: "Aida",
+      rawproduct: "Bugg",
+      matone: "Trainig class manager",
+      matoneqty: "aida123",
+      mattwo: "aida123",
+      mattwoqty: "0814532671",
+      matthree: "aida@gmail.com",
+      matthreeqty: 43563,
+    });
   };
 
   render() {
@@ -269,6 +331,23 @@ export default class CreateRawFactory extends Component {
             >
               <i className="far fa-check-square"></i>
               &nbsp; Send To factory
+            </button>
+
+            <button
+              type="submit"
+              className="btn btn-dark"
+              style={{
+                marginTop: "15px",
+                marginBottom: "20px",
+                marginLeft: "900px",
+                width: "140px",
+                backgroundColor: "#2E4661",
+                borderRadius: "10px",
+                padding: "10px 0px 10px 0px",
+              }}
+              onClick={this.btnDemo}
+            >
+              Demo
             </button>
           </form>
         </div>

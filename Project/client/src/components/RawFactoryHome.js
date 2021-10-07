@@ -1,6 +1,45 @@
 import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert2";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+
+const generatePDF = (factory) => {
+  const doc = new jsPDF();
+  const tableColumn = [
+    "Orderid",
+    "Rawproduct",
+    "Matone",
+    "Matoneqty",
+    "Mattwo",
+    "Mattwoqty",
+    "Matthree",
+    "Matthreeqty",
+  ];
+  const tableRows = [];
+
+  factory.map((factory) => {
+    const factorydata = [
+      factory.orderid,
+      factory.rawproduct,
+      factory.matone,
+      factory.matoneqty,
+      factory.mattwo,
+      factory.mattwoqty,
+      factory.matthree,
+      factory.matthreeqty,
+    ];
+    tableRows.push(factorydata);
+  });
+  doc.text("WOOF PET CARE", 70, 8).setFontSize(13);
+  doc.text("Employee Detail Report", 14, 16).setFontSize(13);
+  doc.autoTable(tableColumn, tableRows, {
+    styles: { fontSize: 8 },
+    startY: 35,
+  });
+  doc.save("Factory details.pdf");
+};
+
 
 
 export default class RawFactoryHome extends Component {
@@ -64,16 +103,25 @@ export default class RawFactoryHome extends Component {
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
           <div className="container-fluid">
-    
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <a href="/PMDashboard" class="btn btn-primary me-md-2" type="button">Production Dashboard</a>
-                  </div>        
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <a
+                href="/PMDashboard"
+                class="btn btn-primary me-md-2"
+                type="button"
+              >
+                Production Dashboard
+              </a>
+            </div>
 
-            <br /><br />
+            <br />
+            <br />
 
             <div className="row">
               <div className="col-lg-9 mt-2 mb-2">
-                <center><h4>Raw Factory Dashboard</h4></center><br/>
+                <center>
+                  <h4>Raw Factory Dashboard</h4>
+                </center>
+                <br />
               </div>
               <div className=" col-lg-3 mt-2 mb-2">
                 <input
@@ -83,6 +131,17 @@ export default class RawFactoryHome extends Component {
                   name="searchQuery"
                   onChange={this.handleSearchArea}
                 ></input>
+              </div>
+
+              <div>
+                <button
+                  type="button"
+                  style={{ backgroundColor: "#2E4661", padding: "10px" }}
+                  class="btn btn-secondary btn-sm"
+                  onClick={() => generatePDF(this.state.factory)}
+                >
+                  Generate Report of Employees
+                </button>
               </div>
 
               <table className="table">
