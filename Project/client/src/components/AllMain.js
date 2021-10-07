@@ -15,6 +15,7 @@ class mainhome extends Component {
           </center>{" "}
         </h2>
         <hr />
+        <br />
 
         <div class="row">
           <div class="col-sm-6">
@@ -27,16 +28,18 @@ class mainhome extends Component {
                 class="card-img-top"
                 alt="..."
               />
+               <div class="shadow bg-white rounded">
               <div class="card-body">
                 <h5 class="card-title">Order Management</h5>
                 <p class="card-text">
                   With supporting text below as a natural lead-in to additional
                   content.
                 </p>
-                <a href="/orderHome" class="btn btn-primary">
+                <a href="/orderDashboard" class="btn btn-primary">
                   Order Management
                 </a>
               </div>
+            </div>
             </div>
             <br />
             <br />
@@ -52,6 +55,7 @@ class mainhome extends Component {
                 class="card-img-top"
                 alt="..."
               />
+              <div class="shadow bg-white rounded">
               <div class="card-body">
                 <h5 class="card-title">Raw Meterial Stock Management</h5>
                 <p class="card-text">
@@ -62,6 +66,7 @@ class mainhome extends Component {
                   Raw Stock Management
                 </a>
               </div>
+            </div>
             </div>
             <br />
             <br />
@@ -77,6 +82,7 @@ class mainhome extends Component {
                 class="card-img-top"
                 alt="..."
               />
+              <div class="shadow bg-white rounded">
               <div class="card-body">
                 <h5 class="card-title">Import Management</h5>
                 <p class="card-text">
@@ -87,6 +93,7 @@ class mainhome extends Component {
                   Import Management
                 </a>
               </div>
+            </div>
             </div>
             <br />
             <br />
@@ -102,6 +109,7 @@ class mainhome extends Component {
                 class="card-img-top"
                 alt="..."
               />
+              <div class="shadow bg-white rounded">
               <div class="card-body">
                 <h5 class="card-title">Production Management</h5>
                 <p class="card-text">
@@ -112,6 +120,7 @@ class mainhome extends Component {
                   Production Management
                 </a>
               </div>
+            </div>
             </div>
             <br />
             <br />
@@ -127,6 +136,7 @@ class mainhome extends Component {
                 class="card-img-top"
                 alt="..."
               />
+              <div class="shadow bg-white rounded">
               <div class="card-body">
                 <h5 class="card-title">Quality Check Management</h5>
                 <p class="card-text">
@@ -137,6 +147,7 @@ class mainhome extends Component {
                   Quality Management
                 </a>
               </div>
+            </div>
             </div>
             <br />
             <br />
@@ -152,6 +163,7 @@ class mainhome extends Component {
                 class="card-img-top"
                 alt="..."
               />
+              <div class="shadow bg-white rounded">
               <div class="card-body">
                 <h5 class="card-title">Ready-Made Management</h5>
                 <p class="card-text">
@@ -162,6 +174,7 @@ class mainhome extends Component {
                   Ready-Made Management
                 </a>
               </div>
+            </div>
             </div>
             <br />
             <br />
@@ -177,6 +190,7 @@ class mainhome extends Component {
                 class="card-img-top"
                 alt="..."
               />
+              <div class="shadow bg-white rounded">
               <div class="card-body">
                 <h5 class="card-title">Transport Management</h5>
                 <p class="card-text">
@@ -187,6 +201,7 @@ class mainhome extends Component {
                   Transport Management
                 </a>
               </div>
+            </div>
             </div>
             <br />
             <br />
@@ -202,6 +217,7 @@ class mainhome extends Component {
                 class="card-img-top"
                 alt="..."
               />
+              <div class="shadow bg-white rounded">
               <div class="card-body">
                 <h5 class="card-title">Account Management</h5>
                 <p class="card-text">
@@ -211,6 +227,7 @@ class mainhome extends Component {
                 <a href="/Accountdashboard" class="btn btn-primary">
                   Account Management
                 </a>
+              </div>
               </div>
             </div>
             <br />

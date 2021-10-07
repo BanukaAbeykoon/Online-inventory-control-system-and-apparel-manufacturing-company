@@ -18,7 +18,7 @@ export default class AccountJournal extends Component {
                         With supporting text below as a natural lead-in to
                         additional content.
                       </p>
-                      <a href="/journal" class="btn btn-primary">
+                      <a href="/salejournal" class="btn btn-primary">
                       Go Sale Journal
                       </a>
                     </div>
@@ -33,7 +33,7 @@ export default class AccountJournal extends Component {
                         With supporting text below as a natural lead-in to
                         additional content.
                       </p>
-                      <a href="/accountHome" class="btn btn-primary">
+                      <a href="/purchasejournal" class="btn btn-primary">
                       Go Purchase Journal
                       </a>
                     </div>

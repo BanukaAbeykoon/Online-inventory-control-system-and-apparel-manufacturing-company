@@ -1,5 +1,44 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import jsPDF from 'jspdf';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
+import "jspdf-autotable";
+
+
+
+
+
+const generatePDF = (account) => {
+  const doc = new jsPDF();
+  const tableColumn = [
+    "Order ID", "Customer Name", "Customer Status", "Purchase Journal", "Sale Journal","General Journal","Other","Profit",
+  ];
+  const tableRows = [];
+
+  account.map((account) => {
+    const accountdata = [
+      account.orderId,
+      account.cusName,
+      account.cusStatus,
+      account.pjournal,
+      account.sjournal,
+      account.gjournal,
+      account.other,
+      Number( account.sjournal)-(Number(account.pjournal)+Number(account.gjournal)) ,
+    ];
+    tableRows.push(accountdata);
+  });
+  doc.text("WOOF PET CARE", 70, 8).setFontSize(13);
+  doc.text("Employee Detail Report", 14, 16).setFontSize(13);
+  doc.autoTable(tableColumn, tableRows, {
+    styles: { fontSize: 8 },
+    startY: 35,
+  });
+  doc.save("account details.pdf");
+};
+
+
+
 
 export default class AccountReport extends Component {
 
@@ -57,7 +96,8 @@ export default class AccountReport extends Component {
         });
     
      }
-    
+
+     
 
 
 
@@ -67,28 +107,99 @@ export default class AccountReport extends Component {
             <div id="page-content-wrapper">
             <div className="container-fluid">
       
-             
-                <div className="row">
+              
       
                   <div className="col-lg-9 mt-2 mb-2">
                     <h4>Account Reports</h4>
+                    <hr/>
                   </div>
-                  <div className=" col-lg-3 mt-2 mb-2">
-                  
-                    <input
-      
-                    className="form-control"
-                    type="search"
-                    placeholder="Search..."
-                    name="searchQuery"
-                    onChange={this.handleSearchArea}>
-                      
-      
-                    </input>
-                   
-      
-                  </div>
-                </div>
+
+
+
+                  <div className="p-3 mb-2 bg-dark text-light rounded-3">
+          <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="" onChange={this.handleSearchArea}/>
+  
+  <label class="form-check-label" for="exampleRadios2">
+    ALL
+  </label>
+</div>
+
+          <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="special" onChange={this.handleSearchArea} />
+  <label class="form-check-label" for="exampleRadios1">
+   Special Customer
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="normal" onChange={this.handleSearchArea}/>
+  <label class="form-check-label" for="exampleRadios2">
+  Normal Customer
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="new" onChange={this.handleSearchArea}/>
+  <label class="form-check-label" for="exampleRadios3">
+    New Customer
+  </label>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+                 
+          <div className="row">
+
+<div className="col-lg-9 mt-2 mb-2">
+ 
+</div>
+<div className=" col-lg-3 mt-2 mb-2">
+
+  <input
+
+  className="form-control"
+  type="search"
+  placeholder="Search..."
+  name="searchQuery"
+  onChange={this.handleSearchArea}>
+    
+
+  </input>
+ 
+
+</div>
+</div>
+
+
+                
+                <ReactHTMLTableToExcel
+                        id="test-table-xls-button"
+                        className="btn btn-danger"
+                        table="reportTB"
+                        filename="tablexls"
+                        sheet="tablexls"
+                       
+                        buttonText="Download as Excel file"
+                         />
+
+                 &nbsp; &nbsp; &nbsp;
+
+                 <button
+                  type="button"
+                  style={{  padding: "10px" }}
+                  class="btn btn-success btn-sm"
+                  onClick={() => generatePDF(this.state.account)}
+                >
+                  Download as PDF file
+                </button>     
       
             
       
@@ -96,7 +207,7 @@ export default class AccountReport extends Component {
              
                
       
-                <table className ="table"> 
+                <table id ="reportTB" className ="table"> 
                   <thead>
       
                     <tr>
@@ -137,16 +248,12 @@ export default class AccountReport extends Component {
                   </tbody>
             
                   </table>
+                  
       
               
       
                  
-                  <button className="btn btn-success"><a href= "#" style={{textDecoration:'none', color:'white'}}>
-                  
-                    Download Report </a> &nbsp;
-                    <i class="fas fa-download"></i>
-      
-                  </button>
+                
                  
                   
       
