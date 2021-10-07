@@ -4,6 +4,33 @@ import './styleSideNav.css';
 import Swal from 'sweetalert2'
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+
+
+
+const generatePDF = material => {
+  const doc = new jsPDF();
+  const tableColumn = ["MATID", "SUPID", "ARRIVAL DATE", "SHIPID", "PRICE", "QTY", "CATEGORY","TOTAL"];
+  const tableRows = [];
+
+  material.map(material => {
+    const materialdata = [
+      material.matID,
+      material.supID,
+      material.arrDate,
+      material.shipID,
+      material.price,
+      material.qty,
+      material.category,
+      material.price*material.qty,
+ ];
+    tableRows.push(materialdata);
+  })
+  doc.text("CASANOVA", 70,8).setFontSize(13);
+  doc.text("INVENTORY SUMMURY", 14, 16).setFontSize(13); 
+  doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 8, }, startY: 35 });
+  doc.save("INVENTORYSUMMARY.pdf");
+}
 
 
 export default class MatIns extends Component {
@@ -39,16 +66,7 @@ export default class MatIns extends Component {
       }
 
 
-      generatePDF() {
-        const doc = new jsPDF("landscape","pt",[1000,1600]);
-        doc.html(document.querySelector("#tableee"),{
-          callback: function(pdf){
-            var pageCount = doc.internal.getNumberOfPages();
-            pdf.deletePage(pageCount);
-            pdf.save("report.pdf");
-          }
-        })
-   }
+   
 
 
     render() {
@@ -109,7 +127,7 @@ export default class MatIns extends Component {
       
       
       
-              <hr/>
+             
      
       
       
@@ -135,6 +153,8 @@ export default class MatIns extends Component {
 </center>
   
 
+<div>
+  
 &nbsp;&nbsp;&nbsp;&nbsp;
               <ReactHTMLTableToExcel
               
@@ -143,20 +163,23 @@ export default class MatIns extends Component {
                         table="tableee"
                         filename="Inventory Summary"
                         sheet="tablexls"
-                        buttonText="Download Report" />
+                        buttonText="Download Excell" />
 
 
       
  
       
                 
-    <button className="btn btn-success"><a href= "#" onClick={()=>this.generatePDF()} style={{textDecoration:'none', color:'white'}}>
-                  
-                  Download Report </a> &nbsp;
-                  <i class="fas fa-download"></i>
-    
+              
+                <button
+                  type="button"
+                  style={{ backgroundColor: "#00000", padding: "7px" }}
+                  class="btn btn-secondary btn-sm"
+                  onClick={() => generatePDF(this.state.material)}
+                >
+                  Download PDF
                 </button>
-               
+                </div>
                 
             
       

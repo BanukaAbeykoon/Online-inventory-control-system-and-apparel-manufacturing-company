@@ -118,7 +118,41 @@ export default class MaterialCreate extends Component {
 }
 
 
+btnDemo = (e) => {
+  e.preventDefault();
 
+  const {  matID, matName, supID, supName, arrDate, shipID, price, qty, category, description} = this.state;
+
+  const data = {
+    matID: matID,
+    matName: matName,
+    supID: supID,
+    supName: supName,
+    arrDate: arrDate,
+    shipID: shipID,
+    price: price,
+    qty: qty,
+    category: category,
+    description: description,
+  }
+
+  console.log(data)
+
+  this.setState(
+      {
+        matID: "Aida",
+        matName: "Bugg",
+        supID: "Trainig class manager",
+        supName: "aida123",
+        arrDate: "aida123",
+        shipID: "0814532671",
+        price: "aida@gmail.com",
+        qty: "1/53,Malabe,Colombo",
+        category: "1/53,Malabe,Colombo",
+        description: "1/53,Malabe,Colombo",
+      }
+  )
+}
 
       
 
@@ -177,7 +211,7 @@ export default class MaterialCreate extends Component {
                 <h1 className="h3 mb-3 font-weight-normal">Add New Material</h1>
 
 
-
+              
 
                
                 <form className="needs-validation" noValidate>
@@ -286,14 +320,19 @@ export default class MaterialCreate extends Component {
                         value={this.state.description}
                         onChange={this.handleInputChange}/>
                         </div>
-
+                    <div>
                         <button className="btn btn-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
                             <i className="far fa-check-square"></i>
                             &nbsp; Add Material
                         </button>
-
+                        <br/>
+                        <br/>
+                        <button type="submit" className="btn btn-danger"  onClick={this.btnDemo}>DEMO</button>
+                        </div>
                     </form>  
+                   
                     </div>
+                    
                     </div>
                     </div>
                     </div>  
