@@ -153,7 +153,7 @@ export default class CreateRawFactory extends Component {
       matone: "Trainig class manager",
       matoneqty: "aida123",
       mattwo: "aida123",
-      mattwoqty: "0814532671",
+      mattwoqty: "4422",
       matthree: "trouse",
       matthreeqty: 43563,
     });

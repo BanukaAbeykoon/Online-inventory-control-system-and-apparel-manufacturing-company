@@ -4,6 +4,7 @@ import swal from "sweetalert2";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
+
 const generatePDF = (factory) => {
   const doc = new jsPDF();
   const tableColumn = [
