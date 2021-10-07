@@ -26,8 +26,8 @@ class AccountNavBar extends Component {
                         &nbsp;
                            Customer </button>
                         <div className="dropdown-content">
-                        <a href="#"> sample1</a>
-                        <a href="#">sample2</a>
+                        <a href="/orderHome"> Customer Orders</a>
+                        <a href="#">sample1</a>
                 
                     </div>
                     </div>
@@ -149,7 +149,7 @@ class AccountNavBar extends Component {
                   
                   <a href="/RMDashbord">Dashboard</a>
                   <a href="/packingHome">Packing Form</a>
-                  <a href="#">Transport Form</a>
+                  <a href="/packingtrasport">Transport Form</a>
                   <a href="/RMReport">Reporting</a>
                 </div>
               </div>
