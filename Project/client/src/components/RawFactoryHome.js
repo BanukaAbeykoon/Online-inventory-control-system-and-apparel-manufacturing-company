@@ -3,7 +3,7 @@ import axios from "axios";
 import swal from "sweetalert2";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 const generatePDF = (factory) => {
   const doc = new jsPDF();
@@ -137,7 +137,11 @@ export default class RawFactoryHome extends Component {
               <div>
                 <button
                   type="button"
-                  style={{ backgroundColor: "#2E4661", padding: "10px" }}
+                  style={{
+                    backgroundColor: "#2E4661",
+                    padding: "10px",
+                    float: "left",
+                  }}
                   class="btn btn-secondary btn-sm"
                   onClick={() => generatePDF(this.state.factory)}
                 >
@@ -145,7 +149,20 @@ export default class RawFactoryHome extends Component {
                 </button>
               </div>
 
-              <table className="table">
+              {/*Excell Report Generate*/}
+
+              <div style={{ float: "right" }}>
+                <ReactHTMLTableToExcel
+                  id="test-table-xls-button"
+                  className="btn btn-warning"
+                  table="excelreport"
+                  filename="Inventory Summary"
+                  sheet="tablexls"
+                  buttonText="Download Excell"
+                />
+              </div>
+
+              <table id="excelreport" className="table">
                 <thead>
                   <tr>
                     <th scoop="col">#</th>
