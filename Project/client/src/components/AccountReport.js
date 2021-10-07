@@ -11,7 +11,7 @@ import "jspdf-autotable";
 const generatePDF = (account) => {
   const doc = new jsPDF();
   const tableColumn = [
-    "Order ID", "Customer Name", "Customer Status", "Purchase Journal", "Sale Journal","General Journal","Other","Profit",
+    "Order ID", "Customer Name", "Customer Status", "Purchase Journal(Rs)", "Sale Journal(Rs)","General Journal(Rs)","Other","Profit(Rs)",
   ];
   const tableRows = [];
 
@@ -28,8 +28,8 @@ const generatePDF = (account) => {
     ];
     tableRows.push(accountdata);
   });
-  doc.text("WOOF PET CARE", 70, 8).setFontSize(13);
-  doc.text("Employee Detail Report", 14, 16).setFontSize(13);
+  doc.text("CASANOVA", 70, 8).setFontSize(13);
+  doc.text("Account Detail Report", 14, 16).setFontSize(13);
   doc.autoTable(tableColumn, tableRows, {
     styles: { fontSize: 8 },
     startY: 35,
