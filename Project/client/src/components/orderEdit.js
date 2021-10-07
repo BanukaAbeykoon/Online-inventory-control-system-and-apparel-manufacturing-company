@@ -5,9 +5,10 @@ export default class orderEdit extends Component {
   constructor(props){
     super(props);
     this.state = {
-      topic:"",
-      description:"",
-      postCategory:""
+      orderID:"",
+      product:"",
+      unprice:"",
+      qty:""
     }
   }
 
@@ -24,13 +25,14 @@ export default class orderEdit extends Component {
 
     e.preventDefault();
     const id = this.props.match.params.id;
-    const {topic,description,postCategory} = this.state;
+    const {orderID,product,unprice,qty} = this.state;
 
     const data ={
-      topic:topic,
-      description:description,
-      postCategory:postCategory
-    }
+      orderID:orderID,
+      product:product,
+      unprice:unprice,
+      qty:qty
+  }
         console.log(data)
 
     axios.put(`http://localhost:8000/order/updateorder/${id}`,data).then((res) =>{
@@ -38,9 +40,10 @@ export default class orderEdit extends Component {
         alert("Post Updated Successfully");
         this.setState(
             {
-                topic:"",
-                description:"",
-                postCategory:""
+              orderID: "",
+              product: "",
+              unprice: "",
+              qty:""
             }
         )
       }
@@ -53,9 +56,11 @@ export default class orderEdit extends Component {
     axios.get(`http://localhost:8000/order/${id}`).then((res) =>{
       if (res.data.success) {
         this.setState({
-          topic:res.data.order.topic,
-          description:res.data.order.description,
-          postCategory:res.data.order.postCategory
+          orderID:res.data.order.orderID,
+          product:res.data.order.product,
+          unprice:res.data.order.unprice,
+          qty:res.data.order.qty
+
         });
         console.log(this.state.order);
       }
@@ -72,9 +77,9 @@ export default class orderEdit extends Component {
             <input type="text"
               readOnly
               className="form-control"
-              name="topic"
+              name="orderID"
               placeholder="Enter Order ID"
-              value={this.state.topic}
+              value={this.state.orderID}
               onChange={this.handleInputChange}/>
           </div>
 
@@ -82,21 +87,32 @@ export default class orderEdit extends Component {
             <label style={{ marginBottom:'5px'}}>Product</label>
             <input type="text"
               className="form-control"
-              name="description"
+              name="product"
               placeholder="Enter Product"
-              value={this.state.description}
+              value={this.state.product}
               onChange={this.handleInputChange}/>
           </div>
 
           <div className="form-group" style={{ marginBottom:'15px'}}>
-            <label style={{ marginBottom:'5px'}}>Quantity</label>
+            <label style={{ marginBottom:'5px'}}>unit price</label>
             <input type="text"
               className="form-control"
-              name="postCategory"
+              name="unprice"
               placeholder="Enter Quantity"
-              value={this.state.postCategory}
+              value={this.state.unprice}
               onChange={this.handleInputChange}/>
           </div>
+
+          <div className="form-group" style={{ marginBottom:'15px'}}>
+            <label style={{ marginBottom:'5px'}}> Quantity </label>
+            <input type="text"
+              className="form-control"
+              name="qty"
+              placeholder="Enter Quantity"
+              value={this.state.qty}
+              onChange={this.handleInputChange}/>
+          </div>
+
           <button className="btn btn-success" type="submit" style={{ marginTop:'15px'}} onClick={this.onSubmit}>
             <i className="far fa-check-square"></i>
             &nbsp; Update Order

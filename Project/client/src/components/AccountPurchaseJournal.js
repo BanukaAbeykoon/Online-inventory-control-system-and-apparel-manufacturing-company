@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert2";
 
-export default class ShipmentHome extends Component {
+export default class AccountPurchaseJournal extends Component {
   constructor(props) {
     super(props);
 
@@ -34,31 +34,7 @@ export default class ShipmentHome extends Component {
     });
   };
 
- /* filterData(shipment, searchKey) {
-    const result = shipment.filter(
-      (shipment) =>
-        shipment.shipmentID.toLowerCase().includes(searchKey) ||
-        shipment.supplierID.toLowerCase().includes(searchKey) ||
-        shipment.supllierName.toLowerCase().includes(searchKey) ||
-        shipment.materialID.toLowerCase().includes(searchKey) ||
-        shipment.materialName.toLowerCase().includes(searchKey) ||
-        shipment.quantity.toLowerCase().includes(searchKey) ||
-        shipment.unitPrice.toLowerCase().includes(searchKey) ||
-        shipment.date.toLowerCase().includes(searchKey)
-    );
-
-    this.setState({ shipment: result });
-  }
-
-  handleSearchArea = (e) => {
-    const searchKey = e.currentTarget.value;
-
-    axios.get("/shipment").then((res) => {
-      if (res.data.success) {
-        this.filterData(res.data.existingshipment, searchKey);
-      }
-    });
-  };*/
+ 
 
   filterData(shipment, searchKey) {
     const result = shipment.filter(
@@ -113,7 +89,8 @@ export default class ShipmentHome extends Component {
                   <th scope="col">UnitPrice</th>
                   <th scope="col">Date</th>
                   <th scope="col">Total</th>
-                  <th scope="col">Action</th>
+
+                 
                 </tr>
               </thead>
               <tbody>
@@ -136,32 +113,13 @@ export default class ShipmentHome extends Component {
                     <td>Rs {shipment.unitPrice}</td>
                     <td>{shipment.date}</td>
                     <td>Rs {Number(shipment.quantity) * Number(shipment.unitPrice)}</td>
-                    <td>
-                      <a
-                        className="btn btn-warning"
-                        href={`/editSh/${shipment._id}`}
-                      >
-                        <i className="fas fa-edit"></i>&nbsp;Edit
-                      </a>
-                      &nbsp;
-                      <a
-                        className="btn btn-danger"
-                        href="#"
-                        onClick={() => this.onDelete(shipment._id)}
-                      >
-                        <i className="far fa-trash-alt"></i>&nbsp;Delete
-                      </a>
-                    </td>
+                  
                   </tr>
                 ))}
               </tbody>
             </table>
 
-            <button className="btn btn-success">
-              <a href="/addSh" style={{ textdecoration: "none", color: "white" }}>
-                Create New Shipment
-              </a>
-            </button>
+           
           </div>
         </div>
       </div>

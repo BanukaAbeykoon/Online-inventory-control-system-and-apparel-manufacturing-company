@@ -105,6 +105,40 @@ export default class AccountCreate extends Component {
         }
 
 
+        btnDemo = (e) => {
+            e.preventDefault();
+    
+            const {  orderId, cusName, cusStatus, pjournal, sjournal, gjournal, other} = this.state;
+    
+            const data = {
+                orderId:orderId,
+                cusName:cusName,
+                cusStatus:cusStatus,
+                pjournal:pjournal,
+                sjournal:sjournal,
+                gjournal:gjournal,
+                other:other
+            }
+    
+            console.log(data)
+    
+            this.setState(
+                {
+                    orderId: "Aida",
+                    cusName: "Bugg",
+                    cusStatus: "Trainig class manager",
+                    pjournal: "123",
+                    sjournal: "1234",
+                    gjournal: "1234",
+                    other: "aida@gmail.com",
+                   
+                }
+            )
+        }
+
+
+
+
 
     render() {
         return (
@@ -245,6 +279,7 @@ export default class AccountCreate extends Component {
                         <i className="far fa-check-square"></i>
                         &nbsp; Save
                     </button>
+                    <button type="submit" className="btn btn-dark" style={{ marginTop: '15px', marginBottom:'20px', marginLeft:"900px", width:"140px", backgroundColor:"#2E4661", borderRadius:"10px", padding:"10px 0px 10px 0px"}} onClick={this.btnDemo}>Demo</button>
 
 
                 </form>
