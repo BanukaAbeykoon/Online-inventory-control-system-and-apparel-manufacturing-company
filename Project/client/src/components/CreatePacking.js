@@ -135,13 +135,16 @@ export default class CreatePacking extends Component {
 
     console.log(data);
 
+
+
+
     this.setState({
       customer: "Kasun Madushan",
       orderId: "O12",
       category: "t-shirt",
       payment: "Done",
       quantity: "5000",
-      weight: "12Kg",
+      weight: "12",
       dueDate: "12/04/2021",
       address: "1/53,Malabe,Colombo",
     });
@@ -285,7 +288,7 @@ export default class CreatePacking extends Component {
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Quantity</label>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     name="quantity"
                     placeholder="Enter quantity"
@@ -302,7 +305,7 @@ export default class CreatePacking extends Component {
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Weight</label>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     name="weight"
                     placeholder="Enter weight"
@@ -319,7 +322,7 @@ export default class CreatePacking extends Component {
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Duedate</label>
                   <input
-                    type="text"
+                    type="date"
                     className="form-control"
                     name="dueDate"
                     placeholder="Enter dueDate"

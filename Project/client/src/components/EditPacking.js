@@ -179,6 +179,7 @@ return Object.values(errors).every((err) => err === "");
                   <label style={{ marginBottom: "5px" }}>OrderId</label>
                   <input
                     type="text"
+                    readOnly
                     className="form-control"
                     name="orderId"
                     placeholder="Enter Order ID"
@@ -229,7 +230,7 @@ return Object.values(errors).every((err) => err === "");
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Quantity</label>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     name="quantity"
                     placeholder="Enter quantity"
@@ -246,7 +247,7 @@ return Object.values(errors).every((err) => err === "");
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Weight</label>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     name="weight"
                     placeholder="Enter weight"
@@ -263,7 +264,7 @@ return Object.values(errors).every((err) => err === "");
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Duedate</label>
                   <input
-                    type="text"
+                    type="date"
                     className="form-control"
                     name="dueDate"
                     placeholder="Enter dueDate"
