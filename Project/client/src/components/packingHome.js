@@ -108,7 +108,7 @@ export default class packingHome extends Component {
                         </li>
                         <li className="nav-item d-none d-sm-inline-block">
                           <a href="/packingHome" className="nav-link">
-                            Packing Form 
+                            Packing Form -
                           </a>
                         </li>
                       </ul>
@@ -181,9 +181,8 @@ export default class packingHome extends Component {
                 </label>
               </div>
             </div>
-
-            <br />
-            <br />
+   
+            <hr />
             <div className="col-lg-3 mt-2 mb-2" style={{ float: "right" }}>
               <input
                 className="form-control"
