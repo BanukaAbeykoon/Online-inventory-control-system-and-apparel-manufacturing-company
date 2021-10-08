@@ -152,6 +152,9 @@ export default class AddVehicle extends Component {
         <a class="nav-link" href="/TMSDash">Dashboard</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/vehicleDash"> &#62; Vehicle Details</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href=""> &#62; Add Vehicle <span class="sr-only">(current)</span> </a>
       </li>
    
@@ -204,7 +207,7 @@ export default class AddVehicle extends Component {
 
                 <div>
                       <lable style={{marginBottom:'15px'}}>Year of Manufacture</lable>
-                    <textarea  cols='30' rows='5' placeholder='Enter Date' className='form-control'            
+                    <input type="date" placeholder='Enter Date' className='form-control'            
                      name="manuyear" value={this.state.manuyear} onChange={this.handleInputChange} required/> 
                         <div style={{fontSize:12 ,color:"red"}}>
                            {this.state.manuyearError}

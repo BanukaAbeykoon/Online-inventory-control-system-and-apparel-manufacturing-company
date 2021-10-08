@@ -27,6 +27,8 @@ const driverSchema = new mongoose.Schema({
  driverSchema.path('nic').validate(async (nic) => {
     const nicCount = await mongoose.models.Driverdb.countDocuments({ nic })
     return !nicCount
-  }, 'NIC already exists')
+  }, 'NIC already exists'
+  
+  )
 
 module.exports= mongoose.model('Driverdb',driverSchema)
