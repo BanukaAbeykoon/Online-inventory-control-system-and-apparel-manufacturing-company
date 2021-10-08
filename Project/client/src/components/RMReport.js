@@ -119,28 +119,6 @@ handleSearchArea = (e) =>{
                   </div>
                 </div>
 
-              <div>
-                <ReactHTMLTableToExcel
-                  id="test-table-xls-button"
-                  className="btn btn-warning"
-                  table="ptable"
-                  filename="Inventory Summary"
-                  sheet="tablexls"
-                  buttonText="Download Excell"
-                />
-              </div>
-
-                <div>
-                  <button
-                    type="button"
-                    style={{ backgroundColor: "#2E4661", padding: "10px" }}
-                    class="btn btn-secondary btn-sm"
-                    onClick={() => generatePDF(this.state.packing)}
-                  >
-                    Downloard As PDF
-                  </button>
-                </div>
-
                 <table id="ptable" className="table">
                   <thead>
                     <tr>
@@ -178,6 +156,28 @@ handleSearchArea = (e) =>{
                     ))}
                   </tbody>
                 </table>
+
+                <div style={{ float: "left" }}>
+                  <ReactHTMLTableToExcel
+                    id="test-table-xls-button"
+                    className="btn btn-warning"
+                    table="ptable"
+                    filename="Inventory Summary"
+                    sheet="tablexls"
+                    buttonText="Download As Excel"
+                  />
+                </div>
+
+                <div style={{ float: "left" }}>
+                  <button
+                    type="button"
+                    style={{ backgroundColor: "#2E4661", padding: "8px" }}
+                    class="btn btn-secondary btn-sm"
+                    onClick={() => generatePDF(this.state.packing)}
+                  >
+                    Downloard As PDF
+                  </button>
+                </div>
               </div>
             </div>
           </div>
