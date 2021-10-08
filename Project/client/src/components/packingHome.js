@@ -300,7 +300,7 @@ export default class packingHome extends Component {
                         <h6>Category:{packing.category} </h6>
                         <h6>Payment:{packing.payment} </h6>
                         <h6>Quantity:{packing.quantity} </h6>
-                        <h6>Weight:{packing.weight} </h6>
+                        <h6>Weight:{packing.weight}kg </h6>
                         <h6>DueDate:{packing.dueDate} </h6>
                         <h6>Address:{packing.address} </h6>
                         <a

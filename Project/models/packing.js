@@ -9,6 +9,7 @@ const postSchema = new mongoose.Schema({
   orderId: {
     type: String,
     required: true,
+    
   },
   category: {
     type: String,
