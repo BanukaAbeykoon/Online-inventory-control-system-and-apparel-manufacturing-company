@@ -306,24 +306,6 @@ export default class App extends Component {
           <Route path="/rep" component={PostDetailsQC}></Route>
         </div>
 
-
-        <div className="page-content-wrapper">
-          <Route path="/matDash" exact component={MatMain}></Route>
-          <Route path="/matRet" component={MaterialDash}></Route>
-          <Route path="/matadd" component={MaterialCreate}></Route>
-          <Route path="/matedit/:id" component={MaterialEdit}></Route>
-          <Route path="/matpost/:id" component={MaterialDetails}></Route>
-          <Route path="/lmo" component={LmoMatMain}></Route>
-          <Route path="/lmoadd" component={LmoMatCreate}></Route>
-          <Route path="/lmoedit/:id" component={LmoMatEdit}></Route>
-          <Route path="/matreport" component={MatReportMain}></Route>
-          <Route path="/matreportedit/:id" component={MatReportEdit}></Route>
-          <Route path="/matreportadd" component={MatReportAdd}></Route>
-          <Route path="/matreportone/:id" component={ReportDetails}></Route>
-          <Route path="/matNotification" component={MatNotification}></Route>
-          <Route path="/matins" component={MatIns}></Route>
-        </div>
-
         <div className="page-content-wrapper">
           <Route path="/orderHome" exact component={orderHome}></Route>
           <Route path="/addOrder" component={orderCreate}></Route>
