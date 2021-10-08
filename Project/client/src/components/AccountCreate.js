@@ -124,13 +124,13 @@ export default class AccountCreate extends Component {
     
             this.setState(
                 {
-                    orderId: "Aida",
-                    cusName: "Bugg",
-                    cusStatus: "Trainig class manager",
-                    pjournal: "123",
-                    sjournal: "1234",
-                    gjournal: "1234",
-                    other: "aida@gmail.com",
+                    orderId: "OID021",
+                    cusName: "Odel",
+                    cusStatus: "special",
+                    pjournal: "120000",
+                    sjournal: "240000",
+                    gjournal: "50000",
+                    other: "no",
                    
                 }
             )

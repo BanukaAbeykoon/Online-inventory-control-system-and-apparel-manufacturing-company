@@ -107,6 +107,29 @@ export default class AddVehicle extends Component {
 
     }
     };
+    btnDemo = (e) => {
+        e.preventDefault();
+    
+        const {  regno,engno,brandname, manuyear} = this.state;
+    
+        const data = {
+               regno:regno,
+               engno:engno,
+               brandname:brandname,
+               manuyear: manuyear,
+        }
+    
+        console.log(data)
+    
+        this.setState(
+            {
+                regno:"TC-2345",
+                engno:"54xxGC",
+                brandname:"Mitsubishi L200",
+                manuyear: "2010.10.10",
+            }
+        )
+    }
 
 
 
@@ -178,6 +201,8 @@ export default class AddVehicle extends Component {
                    <div> 
                     <button  className='btn btn-success ' type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}> <i className="fas fa-save"></i>&nbsp;Save</button>
                     &nbsp;
+
+                    <button type="submit" className="btn btn-dark" style={{ marginTop: '15px', marginBottom:'20px', marginLeft:"900px", width:"140px", backgroundColor:"#2E4661", borderRadius:"10px", padding:"10px 0px 10px 0px"}} onClick={this.btnDemo}>Demo</button>
                        
                 </div>
                 </form>

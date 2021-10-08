@@ -7,7 +7,12 @@ export default class TMSDash extends Component {
           <div id="wrapper" className="toggled">
           <div id="page-content-wrapper">
             <div className="container-fluid"></div>
-            <h1 style={{backgroundColor:'black', color:'white', padding:'10px',textAlign:'center',opacity:".50"}}>Transport Management System </h1>
+            <center>
+            <h1 class="display-2">CASANOVA Transport Management</h1>
+
+            </center>
+            
+           
           <hr/>
           <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-indicators">

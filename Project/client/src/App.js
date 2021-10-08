@@ -230,9 +230,7 @@ export default class App extends Component {
           <Route path="/CreateLSmaterial" component={CreateLSmaterial}></Route>
           <Route path="/HomeLSmaterial" component={HomeLSmaterial}></Route>
           <Route path="/EditLSmaterial/:id" component={EditLSmaterial}></Route>
-          <Route
-            path="/DetailsLSmaterial"
-            component={DetailsLSmaterial}
+          <Route path="/DetailsLSmaterial/:id" component={DetailsLSmaterial}
           ></Route>
         </div>
 

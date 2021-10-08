@@ -99,8 +99,30 @@ export default class AddDriver extends Component {
        })
     }
    }
+ // demo button 
+   btnDemo = (e) => {
+    e.preventDefault();
 
-   
+    const {  name,age,nic, address} = this.state;
+
+    const data = {
+           name:name,
+           age:age,
+           nic:nic,
+           address: address,
+    }
+
+    console.log(data)
+
+    this.setState(
+        {
+            name:"Sunimal lansa",
+            age:"45",
+            nic:"1976123478",
+            address: "Negombo",
+        }
+    )
+}
    
    
    
@@ -158,6 +180,8 @@ export default class AddDriver extends Component {
                     
                     <button  className='btn btn-success ' type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}> <i className="fas fa-save"></i>&nbsp;Save</button>
                     &nbsp;
+
+                    <button type="submit" className="btn btn-dark" style={{ marginTop: '15px', marginBottom:'20px', marginLeft:"900px", width:"140px", backgroundColor:"#2E4661", borderRadius:"10px", padding:"10px 0px 10px 0px"}} onClick={this.btnDemo}>Demo</button>
                        
                 </div>
                 </form>
