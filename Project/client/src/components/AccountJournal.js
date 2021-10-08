@@ -13,6 +13,17 @@ export default class AccountJournal extends Component {
                   
                     
                     <div class="card-body">
+
+                    <img
+                  src="%PUBLIC_URL%../../sale.png"
+                  width="300"
+                  height="400"
+                  class="card-img-top"
+                  alt="..."
+                />
+
+
+
                       <h4 class="card-title">Sale Journal</h4>
                       <p class="card-text">
                         With supporting text below as a natural lead-in to
@@ -28,6 +39,16 @@ export default class AccountJournal extends Component {
                   <div class="card">
                    
                     <div class="card-body">
+
+                    <img
+                  src="%PUBLIC_URL%../../puch2.png"
+                  width="300"
+                  height="400"
+                  class="card-img-top"
+                  alt="..."
+                />
+
+
                       <h4 class="card-title">Purchase Journal</h4>
                       <p class="card-text">
                         With supporting text below as a natural lead-in to
@@ -43,6 +64,14 @@ export default class AccountJournal extends Component {
                   <div class="card">
                    
                     <div class="card-body">
+                    <img
+                  src="%PUBLIC_URL%../../general.png"
+                  width="300"
+                  height="400"
+                  class="card-img-top"
+                  alt="..."
+                />
+
                       <h4 class="card-title">General Journal</h4>
                       <p class="card-text">
                         With supporting text below as a natural lead-in to
