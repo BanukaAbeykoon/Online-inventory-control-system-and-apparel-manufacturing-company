@@ -148,6 +148,9 @@ export default class AddDriver extends Component {
         <a class="nav-link" href="/TMSDash">Dashboard</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="/DriHome"> &#62; Driver Details</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href=""> &#62;  AddDriver  <span class="sr-only">(current)</span> </a>
       </li>
    

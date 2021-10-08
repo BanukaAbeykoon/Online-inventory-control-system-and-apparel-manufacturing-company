@@ -74,8 +74,9 @@ export default class vehicleDash extends Component {
       <li class="nav-item active">
         <a class="nav-link" href="/TMSDash">Dashboard</a>
       </li>
+     
       <li class="nav-item">
-        <a class="nav-link" href=""> &#62; Vehicle Details <span class="sr-only">(current)</span> </a>
+        <a class="nav-link" href=""> &#62; Add Vehicle <span class="sr-only">(current)</span> </a>
       </li>
    
     </ul>
