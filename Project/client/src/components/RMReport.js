@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 const generatePDF = (packing) => {
   const doc = new jsPDF();
@@ -118,7 +119,29 @@ handleSearchArea = (e) =>{
                   </div>
                 </div>
 
-                <table className="table">
+              <div>
+                <ReactHTMLTableToExcel
+                  id="test-table-xls-button"
+                  className="btn btn-warning"
+                  table="ptable"
+                  filename="Inventory Summary"
+                  sheet="tablexls"
+                  buttonText="Download Excell"
+                />
+              </div>
+
+                <div>
+                  <button
+                    type="button"
+                    style={{ backgroundColor: "#2E4661", padding: "10px" }}
+                    class="btn btn-secondary btn-sm"
+                    onClick={() => generatePDF(this.state.packing)}
+                  >
+                    Downloard As PDF
+                  </button>
+                </div>
+
+                <table id="ptable" className="table">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
@@ -155,17 +178,6 @@ handleSearchArea = (e) =>{
                     ))}
                   </tbody>
                 </table>
-
-                <div>
-                  <button
-                    type="button"
-                    style={{ backgroundColor: "#2E4661", padding: "10px" }}
-                    class="btn btn-secondary btn-sm"
-                    onClick={() => generatePDF(this.state.packing)}
-                  >
-                    Report of Packing Form
-                  </button>
-                </div>
               </div>
             </div>
           </div>
