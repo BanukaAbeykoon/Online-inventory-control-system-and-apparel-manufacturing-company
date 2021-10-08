@@ -91,17 +91,19 @@ onDelete = (id) =>{
       <div className="container p-3 mb-2 bg-primary bg-gradient text-white rounded-3">
 
 
-      <h4>
+      <center> 
+          <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>
            
-           <p class="fw-bold">
+          
              ALL REPORTS
-             </p>
-             </h4>
+           </b>
+             </h1>
+             </center>
            
         
 
 
-        <button className="btn btn-info"><a href="/matreportadd" style={{textDecoration:'none',color:'white'}}>Add New Report &nbsp;
+        <button className="btn btn-info" style={{ backgroundColor: "#0E3662" }}><a href="/matreportadd" style={{textDecoration:'none',color:'white'}}>Add New Report &nbsp;
         <i class="fas fa-plus-circle"></i>
         </a></button>
 
@@ -117,7 +119,7 @@ onDelete = (id) =>{
                <th scope="col">Material ID</th>
                <th scope="col">Material Name</th>
                <th scope="col">Date</th>
-             <th scope="col">shipment ID</th>
+             <th scope="col">Shipment ID</th>
                <th scope="col">Defect</th>
                <th scope="col">Qty</th>
                <th scope="col">Action</th>

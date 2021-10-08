@@ -126,7 +126,10 @@ export default class LmoMatEdit extends Component {
 
 <div class="p-3 mb-2 bg-info text-dark rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
-                <h1 className="h3 mb-3 font-weight-normal">Edit LMO Card</h1>
+              <center>
+            <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>EDIT LMO CARD</b></h1>
+            </center>
+            <hr/>
                 <form className="needs-validation" noValidate>
 
 
@@ -202,7 +205,9 @@ export default class LmoMatEdit extends Component {
                         onChange={this.handleInputChange}/>
                         </div>
 
-                        <button className="btn btn-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
+                        <hr/>
+
+                        <button className="btn btn-success" type="submit"  style={{backgroundColor: "#0E3662"}} onClick={this.onSubmit}>
                             <i className="far fa-check-square"></i>
                             &nbsp; Update Card
                         </button>
