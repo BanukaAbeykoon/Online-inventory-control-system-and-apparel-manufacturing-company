@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-
-
-
 import Swal from 'sweetalert2';
 
 export default class AddDriver extends Component {
@@ -43,24 +40,28 @@ export default class AddDriver extends Component {
            nicError="* NIC is Required!"
        }
        else if (!this.state.nic.match('[0-9+]{10}[vV|xX]$')){
-        nicError= 'Please Enter valid Nic'
-    }
+        nicError= '*Please Enter valid Nic!'
+        }
 
-    
+        //  else if (!this.state.nic.validate){
+        // nicError= '*NIC already exists!'
+
+        // }
+
 
 
        if(!this.state.address){
         addressError="* Address is Required!"
-    }
-    if(!this.state.age){
+         }
+        if(!this.state.age){
         ageError="* Age is Required"
-    }
+        }
 
-    if(nameError||ageError||nicError||addressError){
+        if(nameError||ageError||nicError||addressError){
         this.setState({nameError,ageError,nicError,addressError});
         return false;
 
-    }
+        }
 
     return true;
 
@@ -134,6 +135,26 @@ export default class AddDriver extends Component {
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
+
+                
+          
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/TMSDash">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href=""> &#62;  AddDriver  <span class="sr-only">(current)</span> </a>
+      </li>
+   
+    </ul>
+  </div>
+</nav> 
+<br/>
             
             <div className= 'col-md-8 mt-8-4 mx-auto'>
               <h1 className="h3 mb-3 font-weight-normal">ADD NEW DRIVER</h1>

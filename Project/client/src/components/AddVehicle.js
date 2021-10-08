@@ -141,6 +141,24 @@ export default class AddVehicle extends Component {
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/TMSDash">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href=""> &#62; Add Vehicle <span class="sr-only">(current)</span> </a>
+      </li>
+   
+    </ul>
+  </div>
+</nav> 
+<br/>
             
             <div className= 'col-md-8 mt-8-4 mx-auto'>
               <h1 className="h3 mb-3 font-weight-normal">ADD NEW VEHICLE</h1>
