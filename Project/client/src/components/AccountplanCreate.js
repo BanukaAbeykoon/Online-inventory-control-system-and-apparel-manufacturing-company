@@ -85,6 +85,36 @@ export default class AccountplanCreate extends Component {
         }
 
 
+        btnDemo = (e) => {
+            e.preventDefault();
+    
+            const {  plan, section, deci, requr, time} = this.state;
+    
+            const data = {
+                plan:plan,
+                section:section,
+                deci:deci,
+                requr:requr,
+                time:time,
+               
+            }
+    
+            console.log(data)
+    
+            this.setState(
+                {
+                    plan:"increase sales",
+                    section:"production",
+                    deci: "new machine",
+                    requr:"order new machine",
+                    time:"1 month",
+                }
+            )
+        }
+
+
+
+
 
     render() {
         return (
@@ -149,6 +179,7 @@ export default class AccountplanCreate extends Component {
                         <i className="far fa-check-square"></i>
                         &nbsp; Save
                     </button>
+                    <button type="submit" className="btn btn-dark" style={{ marginTop: '15px', marginBottom:'20px', marginLeft:"900px", width:"140px", backgroundColor:"#2E4661", borderRadius:"10px", padding:"10px 0px 10px 0px"}} onClick={this.btnDemo}>Demo</button>
 
 
                 </form>
