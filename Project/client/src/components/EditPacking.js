@@ -95,141 +95,218 @@ return Object.values(errors).every((err) => err === "");
   render() {
     return (
       <div id="wrapper" className="toggled">
-      <div id="page-content-wrapper">
+        <div id="page-content-wrapper">
           <div className="container-fluid">
-      <div className="col-md-8 mt-4 mx-auto">
-        <h1 className="h3 mb-3 font-weight-normal">Update Packing Details</h1>
-        <form className="needs-validation" noValidation>
-          <div className="form-group" style={{ marginBottom:'15px'}}>
-            <label style={{ marginBottom:'5px'}}>Customer</label>
-            <input
-              type="text"
-              className="form-control"
-              name="customer"
-              placeholder="Enter New customer"
-              value={this.state.customer}
-              onChange={this.handleInputChange}
-            />
-             {this.state.errors.customer && (
-                    <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.customer}</div>
+            {/* newbar */}
+
+            <div className="row">
+              <div className="col-lg-9 mt-2 mb-2">
+                <nav
+                  className="navbar navbar-expand-lg navbar-light"
+                  style={{
+                    backgroundColor: "#e3f2fd",
+                    width: "134%",
+                    border: " solid #5f9ea0",
+                    padding: "0px",
+                  }}
+                >
+                  <div className="container-fluid">
+                    <button
+                      className="navbar-toggler"
+                      type="button"
+                      data-bs-toogle="collapse"
+                      data-bs-target="#navbarNav"
+                      aria-controls="navbarNav"
+                      aria-expanded="false"
+                      aria-label="Tooggle navigation"
+                    >
+                      <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                      <ul className="navbar-nav">
+                        <li className="nav-item">
+                          <a className="nav-link" aria-current="page" href="/">
+                            Home -
+                          </a>
+                        </li>
+
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/RMDashbord" className="nav-link">
+                            Readymade Dashboard -
+                          </a>
+                        </li>
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/packingHome" className="nav-link">
+                            Packing Form -
+                          </a>
+                        </li>
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/packingHome" className="nav-link">
+                            Update Packing Form -
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
+
+            <div className="col-md-8 mt-4 mx-auto">
+              <h1 className="h3 mb-3 font-weight-normal">
+                Update Packing Details
+              </h1>
+              <form className="needs-validation" noValidation>
+                <div className="form-group" style={{ marginBottom: "15px" }}>
+                  <label style={{ marginBottom: "5px" }}>Customer</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="customer"
+                    placeholder="Enter New customer"
+                    value={this.state.customer}
+                    onChange={this.handleInputChange}
+                  />
+                  {this.state.errors.customer && (
+                    <div classNane="text-danger" style={{ color: "red" }}>
+                      {this.state.errors.customer}
+                    </div>
                   )}
-          </div>
+                </div>
 
-          <div className="form-group" style={{ marginBottom:'15px'}}>
-            <label style={{ marginBottom:'5px'}}>OrderId</label>
-            <input
-              type="text"
-              className="form-control"
-              name="orderId"
-              placeholder="Enter Order ID"
-              value={this.state.orderId}
-              onChange={this.handleInputChange}
-            />
-             {this.state.errors.orderId && (
-              <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.orderId}</div>
+                <div className="form-group" style={{ marginBottom: "15px" }}>
+                  <label style={{ marginBottom: "5px" }}>OrderId</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="orderId"
+                    placeholder="Enter Order ID"
+                    value={this.state.orderId}
+                    onChange={this.handleInputChange}
+                  />
+                  {this.state.errors.orderId && (
+                    <div classNane="text-danger" style={{ color: "red" }}>
+                      {this.state.errors.orderId}
+                    </div>
                   )}
-          </div>
+                </div>
 
-          <div className="form-group" style={{ marginBottom:'15px'}}>
-            <label style={{ marginBottom:'5px'}}>Category</label>
-            <input
-              type="text"
-              className="form-control"
-              name="category"
-              placeholder="Enter category"
-              value={this.state.category}
-              onChange={this.handleInputChange}
-            />
-             {this.state.errors.category && (
-              <div classNane="text-ganger" style={{ color:'red'}}>{this.state.errors.category}</div>
-                  )} 
-
-          </div>
-
-          <div className="form-group" style={{ marginBottom:'15px'}}>
-            <label style={{ marginBottom:'5px'}}>Payment</label>
-            <input
-              type="text"
-              className="form-control"
-              name="payment"
-              placeholder="Enter payment status"
-              value={this.state.payment}
-              onChange={this.handleInputChange}
-            />
-             {this.state.errors.payment && (
-              <div classNane="text-gander" style={{ color:'red'}}>{this.state.errors.payment}</div>
+                <div className="form-group" style={{ marginBottom: "15px" }}>
+                  <label style={{ marginBottom: "5px" }}>Category</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="category"
+                    placeholder="Enter category"
+                    value={this.state.category}
+                    onChange={this.handleInputChange}
+                  />
+                  {this.state.errors.category && (
+                    <div classNane="text-ganger" style={{ color: "red" }}>
+                      {this.state.errors.category}
+                    </div>
                   )}
-          </div>
+                </div>
 
-          <div className="form-group" style={{ marginBottom:'15px'}}>
-            <label style={{ marginBottom:'5px'}}>Quantity</label>
-            <input
-              type="text"
-              className="form-control"
-              name="quantity"
-              placeholder="Enter quantity"
-              value={this.state.quantity}
-              onChange={this.handleInputChange}
-            />
-            {this.state.errors.quantity && (
-                    <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.quantity}</div>
+                <div className="form-group" style={{ marginBottom: "15px" }}>
+                  <label style={{ marginBottom: "5px" }}>Payment</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="payment"
+                    placeholder="Enter payment status"
+                    value={this.state.payment}
+                    onChange={this.handleInputChange}
+                  />
+                  {this.state.errors.payment && (
+                    <div classNane="text-gander" style={{ color: "red" }}>
+                      {this.state.errors.payment}
+                    </div>
                   )}
-          </div>
+                </div>
 
-          <div className="form-group" style={{ marginBottom:'15px'}}>
-            <label style={{ marginBottom:'5px'}}>Weight</label>
-            <input
-              type="text"
-              className="form-control"
-              name="weight"
-              placeholder="Enter weight"
-              value={this.state.weight}
-              onChange={this.handleInputChange}
-            />
-             {this.state.errors.weight && (
-                    <div classNane="text-gander" style={{ color:'red'}}>{this.state.errors.weight}</div>
+                <div className="form-group" style={{ marginBottom: "15px" }}>
+                  <label style={{ marginBottom: "5px" }}>Quantity</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="quantity"
+                    placeholder="Enter quantity"
+                    value={this.state.quantity}
+                    onChange={this.handleInputChange}
+                  />
+                  {this.state.errors.quantity && (
+                    <div classNane="text-danger" style={{ color: "red" }}>
+                      {this.state.errors.quantity}
+                    </div>
                   )}
-          </div>
+                </div>
 
-          <div className="form-group" style={{ marginBottom:'15px'}}>
-            <label style={{ marginBottom:'5px'}}>Duedate</label>
-            <input
-              type="text"
-              className="form-control"
-              name="dueDate"
-              placeholder="Enter dueDate"
-              value={this.state.dueDate}
-              onChange={this.handleInputChange}
-            />
-             {this.state.errors.dueDate && (
-                    <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.dueDate}</div>
+                <div className="form-group" style={{ marginBottom: "15px" }}>
+                  <label style={{ marginBottom: "5px" }}>Weight</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="weight"
+                    placeholder="Enter weight"
+                    value={this.state.weight}
+                    onChange={this.handleInputChange}
+                  />
+                  {this.state.errors.weight && (
+                    <div classNane="text-gander" style={{ color: "red" }}>
+                      {this.state.errors.weight}
+                    </div>
                   )}
-          </div>
+                </div>
 
-          <div className="form-group" style={{marginBottom:'15px'}}>
-            <label style={{marginBottom:'5px'}}>Address</label>
-            <input
-              type="text"
-              className="form-control"
-              name="address"
-              placeholder="Enter address"
-              value={this.state.address}
-              onChange={this.handleInputChange}
-            />
-             {this.state.errors.address && (
-                    <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.address}</div>
+                <div className="form-group" style={{ marginBottom: "15px" }}>
+                  <label style={{ marginBottom: "5px" }}>Duedate</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="dueDate"
+                    placeholder="Enter dueDate"
+                    value={this.state.dueDate}
+                    onChange={this.handleInputChange}
+                  />
+                  {this.state.errors.dueDate && (
+                    <div classNane="text-danger" style={{ color: "red" }}>
+                      {this.state.errors.dueDate}
+                    </div>
                   )}
-          </div>
+                </div>
 
-          <button
-            className="btn btn-success"type="submit"style={{ marginTop:'15px'}}onClick={this.onSubmit}>
-            <i className="far fa-check-square"></i>
-            &nbsp; UPDATE
-          </button>
-        </form>
-      </div>
-      </div>
-      </div>
+                <div className="form-group" style={{ marginBottom: "15px" }}>
+                  <label style={{ marginBottom: "5px" }}>Address</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="address"
+                    placeholder="Enter address"
+                    value={this.state.address}
+                    onChange={this.handleInputChange}
+                  />
+                  {this.state.errors.address && (
+                    <div classNane="text-danger" style={{ color: "red" }}>
+                      {this.state.errors.address}
+                    </div>
+                  )}
+                </div>
+
+                <button
+                  className="btn btn-success"
+                  type="submit"
+                  style={{ marginTop: "15px" }}
+                  onClick={this.onSubmit}
+                >
+                  <i className="far fa-check-square"></i>
+                  &nbsp; UPDATE
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
