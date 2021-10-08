@@ -66,78 +66,13 @@ export default class packingHome extends Component {
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
           <div className="container-fluid">
-            <div
-              className="p-3 mb-2 bg-dark text-light rounded-3"
-              style={{
-                background: "transparent",
-                width: "10%",
-                opacity: 0.5,
-                padding: "0px",
-              }}
-            >
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="exampleRadios"
-                  id="exampleRadios2"
-                  value=""
-                  onChange={this.handleSearchArea}
-                />
-
-                <label class="form-check-label" for="exampleRadios2">
-                  ALL
-                </label>
-              </div>
-
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="exampleRadios"
-                  id="exampleRadios1"
-                  value="shirt"
-                  onChange={this.handleSearchArea}
-                />
-                <label class="form-check-label" for="exampleRadios1">
-                  Shirt
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="exampleRadios"
-                  id="exampleRadios2"
-                  value="short"
-                  onChange={this.handleSearchArea}
-                />
-                <label class="form-check-label" for="exampleRadios2">
-                  Short
-                </label>
-              </div>
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="exampleRadios"
-                  id="exampleRadios3"
-                  value="tshirt"
-                  onChange={this.handleSearchArea}
-                />
-                <label class="form-check-label" for="exampleRadios3">
-                  T-Shirt
-                </label>
-              </div>
-            </div>
-
             <div className="row">
               <div className="col-lg-9 mt-2 mb-2">
                 <nav
                   className="navbar navbar-expand-lg navbar-light"
                   style={{
                     backgroundColor: "#e3f2fd",
-                    width: "102%",
+                    width: "134%",
                     border: " solid #5f9ea0",
                     padding: "0px",
                   }}
@@ -162,39 +97,111 @@ export default class packingHome extends Component {
                       <ul className="navbar-nav">
                         <li className="nav-item">
                           <a className="nav-link" aria-current="page" href="/">
-                            Posts
+                            Home -
                           </a>
                         </li>
 
                         <li className="nav-item d-none d-sm-inline-block">
                           <a href="/RMDashbord" className="nav-link">
-                            Home
+                            Readymade Dashboard -
+                          </a>
+                        </li>
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/packingHome" className="nav-link">
+                            Packing Form 
                           </a>
                         </li>
                       </ul>
                     </div>
                   </div>
                 </nav>
-                <br />
-                <br />
-                <h3>Packing Details</h3>
-              </div>
-              <div className="col-lg-3 mt-2 mb-2">
-                <input
-                  className="form-control"
-                  style={{
-                    backgroundColor: "#e3f2fd",
-                    width: "100%",
-                    border: " solid #5f9ea0",
-                    padding: "px",
-                  }}
-                  type="search"
-                  placeholder="search"
-                  name="searchQuery"
-                  onChange={this.handleSearchArea}
-                ></input>
               </div>
             </div>
+
+            <div
+              className="p-3 mb-2 bg-dark text-light rounded-3"
+              style={{
+                background: "transparent",
+                height: "50px",
+                opacity: 0.5,
+                padding: "10px",
+              }}
+            >
+              <div class="form-check" style={{ float: "left" }}>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="exampleRadios"
+                  id="exampleRadios2"
+                  value=""
+                  onChange={this.handleSearchArea}
+                />
+
+                <label class="form-check-label" for="exampleRadios2">
+                  ALL .
+                </label>
+              </div>
+              <div class="form-check" style={{ float: "left" }}>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="exampleRadios"
+                  id="exampleRadios1"
+                  value="shirt"
+                  onChange={this.handleSearchArea}
+                />
+                <label class="form-check-label" for="exampleRadios1">
+                  Shirt .
+                </label>
+              </div>
+              <div class="form-check" style={{ float: "left" }}>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="exampleRadios"
+                  id="exampleRadios2"
+                  value="short"
+                  onChange={this.handleSearchArea}
+                />
+                <label class="form-check-label" for="exampleRadios2">
+                  Short .
+                </label>
+              </div>
+              <div class="form-check" style={{ float: "left" }}>
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="exampleRadios"
+                  id="exampleRadios3"
+                  value="skirt"
+                  onChange={this.handleSearchArea}
+                />
+                <label class="form-check-label" for="exampleRadios3">
+                  Skirt
+                </label>
+              </div>
+            </div>
+
+            <br />
+            <br />
+            <div className="col-lg-3 mt-2 mb-2" style={{ float: "right" }}>
+              <input
+                className="form-control"
+                style={{
+                  backgroundColor: "#e3f2fd",
+                  width: "100%",
+                  border: " solid #5f9ea0",
+                  padding: "px",
+                }}
+                type="search"
+                placeholder="search"
+                name="searchQuery"
+                onChange={this.handleSearchArea}
+              ></input>
+            </div>
+
+            <h3>Packing Details</h3>
+            <br />
             <div
               className="table"
               style={{
@@ -294,7 +301,6 @@ export default class packingHome extends Component {
                         <h6>Category:{packing.category} </h6>
                         <h6>Payment:{packing.payment} </h6>
                         <h6>Quantity:{packing.quantity} </h6>
-                        
                         <h6>Weight:{packing.weight} </h6>
                         <h6>DueDate:{packing.dueDate} </h6>
                         <h6>Address:{packing.address} </h6>
