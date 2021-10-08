@@ -192,7 +192,7 @@ filterData(material,searchKey){
           placeholder="Search Material"
           name="searchQuery"
           onChange={this.handleSearchArea}>
-
+ 
           </input>
           </div>
           </center>
