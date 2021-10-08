@@ -105,6 +105,37 @@ export default class MatReportAdd extends Component {
        }
        }
 
+       btnDemo = (e) => {
+        e.preventDefault();
+      
+        const {  matreportID, matID, matName, date, shipID,defect, qty} = this.state;
+      
+        const data = {
+          matreportID: matreportID,
+          matID: matID,
+          matName: matName,
+          date: date,
+          shipID: shipID,
+          defect: defect,
+          qty: qty,
+        }
+      
+        console.log(data)
+      
+        this.setState(
+            {
+              matreportID: "Aida",
+              matID: "Bugg",
+              matName: "Trainig class manager",
+              date: "aida123",
+              shipID: "aida123",
+              defect: "0814532671",
+              qty: "0814532671",
+              
+            }
+        )
+      }
+
     render() {
         return (
 
@@ -286,6 +317,10 @@ export default class MatReportAdd extends Component {
                             <i className="far fa-check-square"></i>
                             &nbsp; Add Report
                         </button>
+
+                        <br/>
+                        <br/>
+                        <button type="submit" className="btn btn-dark"  style={{ backgroundColor: "#2D5F97"}}  onClick={this.btnDemo}>DEMO</button>
 
                     </form>  
                     </div>

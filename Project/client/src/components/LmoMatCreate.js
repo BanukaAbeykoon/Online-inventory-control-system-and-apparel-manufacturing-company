@@ -105,6 +105,37 @@ export default class LmoMatCreate extends Component {
        }
       }
 
+
+
+      btnDemo = (e) => {
+        e.preventDefault();
+      
+        const {  lmoID, matID, matName, qty, category, description} = this.state;
+      
+        const data = {
+          lmoID: lmoID,
+          matID: matID,
+          matName: matName,
+          qty: qty,
+          category: category,
+          description: description,
+        }
+      
+        console.log(data)
+      
+        this.setState(
+            {
+              lmoID: "Aida",
+              matID: "Bugg",
+              matName: "Trainig class manager",
+              qty: "aida123",
+              category: "aida123",
+              description: "0814532671",
+              
+            }
+        )
+      }
+
     render() {
         return (
 
@@ -266,7 +297,9 @@ export default class LmoMatCreate extends Component {
                             <i className="far fa-check-square"></i>
                             &nbsp; Submit LMO
                         </button>
-
+                        <br/>
+                        <br/>
+                        <button type="submit" className="btn btn-dark"  style={{ backgroundColor: "#2D5F97"}}  onClick={this.btnDemo}>DEMO</button>
                     </form>   
                     </div>
                     </div>
