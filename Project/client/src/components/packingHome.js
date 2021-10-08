@@ -289,6 +289,7 @@ export default class packingHome extends Component {
                           Details
                         </a>
                         <h5>No.0{index + 1}</h5>
+                        <h6>Customer:{packing.customer} </h6>
                         <h6>Order ID:{packing.orderId} </h6>
                         <h6>Category:{packing.category} </h6>
                         <h6>Payment:{packing.payment} </h6>
