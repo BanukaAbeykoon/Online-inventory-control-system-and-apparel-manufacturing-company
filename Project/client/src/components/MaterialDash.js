@@ -111,38 +111,29 @@ handleSearchArea = (e) =>{
 
 <hr/>
           
-      <div className="container">
+<div className="container bg-info rounded-3">
         <div className="row">
-          <div className="col-lg-9 mt-2 mb-2">
-            <h4>
+        <center>
+          <div className="col-lg-12 mt-2 mb-2">
            
-            <p class="fw-bold">
-              ALL MATERIAL CARDS
-              </p>
-            
-              </h4>
+          <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>
+          ALL MATERIAL CARDS
+             </b></h1>
+           
                </div>
+               </center>
+              
 
 
-             
-          <div  className="col-lg-3 mt-2 mb-2 ">
-          
-            <input
-            className="form-control "
-            type="search"
-            placeholder="Search Material"
-            name="searchQuery"
-            onChange={this.handleSearchArea}>
-
-            </input>
-             
-          </div>
+           
+         
+         
         
 
 
 
 
-<div className="p-3 mb-2 bg-dark text-light rounded-3">
+<div className="p-3 mb-2 text-light rounded-3" style={{ backgroundColor: "#0E3662" }} >
           <div class="form-check">
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="" onChange={this.handleSearchArea}/>
   <label class="form-check-label" for="exampleRadios2">
@@ -150,7 +141,7 @@ handleSearchArea = (e) =>{
   </label>
 </div>
 
-          <div class="form-check">
+          <div class="form-check" >
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="fabric" onChange={this.handleSearchArea} />
   <label class="form-check-label" for="exampleRadios1">
     Fabrics
@@ -170,29 +161,38 @@ handleSearchArea = (e) =>{
 </div>
 
 </div>
+ </div>
+       
+
+       <center>
+        <div  className="col-lg-3 mt-2 mb-2">
+          
+          <input
+          className="form-control "
+          type="search"
+          placeholder="Search Material"
+          name="searchQuery"
+          onChange={this.handleSearchArea}>
+
+          </input>
+          </div>
+          </center>
+
+    <hr/>
 
 
 
-
-
-
-
-        </div>
-        <hr/>
-
-
-        <button className="btn btn-primary"><a href="/matadd" style={{textDecoration:'none',color:'white'}}>Add New Material &nbsp;
+        <button className="btn btn-info" style={{ backgroundColor: "#0E3662" }} ><a href="/matadd" style={{textDecoration:'none',color:'white'}}>Add New Material &nbsp;
         <i class="fas fa-plus-circle"></i> 
           </a></button>
 
-         <br/>
-         <br/>
-
+         
            
-      
+      <br/>
+      <br/>
 
 
-         <div class="p-3 mb-2 bg-info text-dark rounded-3">
+         <div class="p-3 mb-2 bg-primary text-dark rounded-3">
         
          <table className="table table-hover  table table-bordered border-info table table-info table-striped" style={{marginTop:'5px'}}>
            <thead>

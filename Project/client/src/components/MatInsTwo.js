@@ -66,7 +66,34 @@ onDelete = (id) =>{
   })
 }
 
+   //filter data
+   filterData(lmomat,searchKey){
 
+    const result = lmomat.filter((lmomat) =>
+       lmomat.lmoID.toLowerCase().includes(searchKey) ||
+       lmomat.matID.toLowerCase().includes(searchKey) ||
+       lmomat.matName.toLowerCase().includes(searchKey) ||
+       lmomat.category.toLowerCase().includes(searchKey)
+    )
+    
+    this.setState({lmomat:result})
+    
+    }
+    
+    //Search Function
+    handleSearchArea = (e) =>{
+    
+      const searchKey= e.currentTarget.value;
+    
+      axios.get("http://localhost:8000/lmomat").then(res =>{
+          if(res.data.success){
+    
+            this.filterData(res.data.existingPosts,searchKey)
+    
+          }
+      });
+    
+    }
 
 
 
@@ -98,9 +125,20 @@ onDelete = (id) =>{
     </ul>
   </div>
 </nav> 
+<br/>
 
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">INSTRUCTIONS</h5>
 
-
+    <div class="spinner-grow text-info" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+    <p class="card-text">Imagine having just the right number of products for a certain SKU, given demand -- but your team is working with old data and, based on that data, projects that your inventory will fall short of demand in a month. It is obvious what your team would do: begin the process of acquiring more inventory to make up the difference. Now there will be excess inventory, and you will be in an Overstock situation.</p>
+    <p class="card-text"><small class="text-muted">Latest Regulations</small></p>
+  </div>
+  <img src="%PUBLIC_URL%../../lmo1.png" class="card-img-bottom" alt="..."/>
+</div>
 
 
       
@@ -118,22 +156,37 @@ onDelete = (id) =>{
       
            
         
-      <center>
+     
               <div class="btn-group" role="group" aria-label="Basic example">
              
-              <a href="/matins"><button type="button" class="btn btn-primary">INVENTORY</button></a>
+              <a href="/matins"><button type="button" class="btn btn-primary"style={{ backgroundColor: "#0E3662" }}>INVENTORY</button></a>
               &nbsp;
   
-              <a href="/matinstwo"><button type="button" class="btn btn-primary" >MATERIAL</button></a>
+              <a href="/matinstwo"><button type="button" class="btn btn-primary" style={{ backgroundColor: "#0E3662" }}>LMO</button></a>
+              &nbsp;
+              <a href="/matinsthree"><button type="button" class="btn btn-primary" style={{ backgroundColor: "#0E3662" }}>REPORTING</button></a>
+              
               
 </div>
-</center>
+
  
 <hr/> 
 <center>
-<h1><b>LMO SUMMARY</b></h1>
+<h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>LMO SUMMARY</b></h1>
 </center>
+<center>
+        <div  className="col-lg-3 mt-2 mb-2">
+          
+          <input
+          className="form-control "
+          type="search"
+          placeholder="Search LMO"
+          name="searchQuery"
+          onChange={this.handleSearchArea}>
 
+          </input>
+          </div>
+          </center>
 &nbsp;&nbsp;&nbsp;&nbsp;
 <ReactHTMLTableToExcel
               
@@ -142,7 +195,7 @@ onDelete = (id) =>{
               table="tablee"
               filename="LMO Summary"
               sheet="tablexls"
-              buttonText="Download Excell" />
+              buttonText="Download As Excel" />
 
               &nbsp;
 
@@ -152,7 +205,7 @@ onDelete = (id) =>{
                   class="btn btn-secondary btn-sm"
                   onClick={() => generatePDF(this.state.lmomat)}
                 >
-                  Download PDF
+                  Download As PDF
                 </button>
 
          

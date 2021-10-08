@@ -166,7 +166,7 @@ btnDemo = (e) => {
 
 
             
-              <nav class="navbar navbar-expand-lg navbar-info bg-light">
+              <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -208,8 +208,11 @@ btnDemo = (e) => {
 
 <div class="p-3 mb-2 bg-info text-dark  rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
-                <h1 className="h3 mb-3 font-weight-normal">Add New Material</h1>
+              <center>
+            <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>ADD NEW MATERIAL</b></h1>
+             </center>
 
+             <hr/>
 
               
 
@@ -320,14 +323,16 @@ btnDemo = (e) => {
                         value={this.state.description}
                         onChange={this.handleInputChange}/>
                         </div>
+
+                        <hr/>
                     <div>
-                        <button className="btn btn-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
+                        <button className="btn btn-success" type="submit" style={{ backgroundColor: "#0E3662" }} onClick={this.onSubmit}>
                             <i className="far fa-check-square"></i>
                             &nbsp; Add Material
                         </button>
                         <br/>
                         <br/>
-                        <button type="submit" className="btn btn-danger"  onClick={this.btnDemo}>DEMO</button>
+                        <button type="submit" className="btn btn-dark"  style={{ backgroundColor: "#2D5F97"}}  onClick={this.btnDemo}>DEMO</button>
                         </div>
                     </form>  
                    

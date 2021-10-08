@@ -153,8 +153,10 @@ export default class MatReportAdd extends Component {
 
 <div class="p-3 mb-2 bg-info text-dark  rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
-                <h1 className="h3 mb-3 font-weight-normal">ADD NEW REPORT</h1>
-
+              <center>
+            <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>ADD NEW REPORT</b></h1>
+              </center>
+              <hr/>
 
 
 
@@ -277,8 +279,10 @@ export default class MatReportAdd extends Component {
 )}
                         </div>
 
+                        <hr/>
+
                        
-                        <button className="btn btn-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
+                        <button className="btn btn-success" type="submit" style={{ backgroundColor: "#0E3662" }} onClick={this.onSubmit}>
                             <i className="far fa-check-square"></i>
                             &nbsp; Add Report
                         </button>

@@ -66,7 +66,33 @@ export default class MatIns extends Component {
       }
 
 
-   
+   //filter data
+filterData(material,searchKey){
+
+  const result = material.filter((material) =>
+     material.matID.toLowerCase().includes(searchKey) ||
+     material.matName.toLowerCase().includes(searchKey) ||
+     material.category.toLowerCase().includes(searchKey)
+  )
+  
+  this.setState({material:result})
+  
+  }
+  
+  //Search Function
+  handleSearchArea = (e) =>{
+  
+    const searchKey= e.currentTarget.value;
+  
+    axios.get("http://localhost:8000/material").then(res =>{
+        if(res.data.success){
+  
+          this.filterData(res.data.existingPosts,searchKey)
+  
+        }
+    });
+  
+  }
 
 
     render() {
@@ -96,7 +122,7 @@ export default class MatIns extends Component {
           </ul>
         </div>
       </nav> 
-      
+      <br/>
       <div class="card">
   <div class="card-body">
     <h5 class="card-title">INSTRUCTIONS</h5>
@@ -131,16 +157,18 @@ export default class MatIns extends Component {
      
       
       
-              <center>
+              
               <div class="btn-group" role="group" aria-label="Basic example">
              
-              <a href="/matins"><button type="button" class="btn btn-primary">INVENTORY</button></a>
+              <a href="/matins"><button type="button" class="btn btn-primary" style={{ backgroundColor: "#0E3662" }}>INVENTORY</button></a>
               &nbsp;
   
-              <a href="/matinstwo"><button type="button" class="btn btn-primary" >MATERIAL</button></a>
+              <a href="/matinstwo"><button type="button" class="btn btn-primary" style={{ backgroundColor: "#0E3662" }} >LMO</button></a>
+              &nbsp;
+              <a href="/matinsthree"><button type="button" class="btn btn-primary" style={{ backgroundColor: "#0E3662" }}>REPORTING</button></a>
               
 </div>
-</center>
+
            
       
       
@@ -149,12 +177,26 @@ export default class MatIns extends Component {
 
 <hr/>
 <center>
-<h1><b>INVENTORY SUMMARY</b></h1>
+<h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>INVENTORY SUMMARY</b></h1>
 </center>
   
 
 <div>
-  
+
+<center>
+        <div  className="col-lg-3 mt-2 mb-2">
+          
+          <input
+          className="form-control "
+          type="search"
+          placeholder="Search Material"
+          name="searchQuery"
+          onChange={this.handleSearchArea}>
+
+          </input>
+          </div>
+          </center>
+
 &nbsp;&nbsp;&nbsp;&nbsp;
               <ReactHTMLTableToExcel
               
@@ -163,7 +205,7 @@ export default class MatIns extends Component {
                         table="tableee"
                         filename="Inventory Summary"
                         sheet="tablexls"
-                        buttonText="Download Excell" />
+                        buttonText="Download As Excel" />
 
 
       
@@ -177,11 +219,13 @@ export default class MatIns extends Component {
                   class="btn btn-secondary btn-sm"
                   onClick={() => generatePDF(this.state.material)}
                 >
-                  Download PDF
+                  Download As PDF
                 </button>
+               
                 </div>
+                
                 
-            
+     
       
                <div class="p-3 mb-2 bg-info text-dark rounded-3">
                <table id="tableee" className="table table-hover  table table-bordered border-info table table-info table-striped" style={{marginTop:'5px'}}>

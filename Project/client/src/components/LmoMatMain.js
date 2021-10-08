@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { cloneElement, Component } from 'react'
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -91,17 +91,19 @@ onDelete = (id) =>{
       <div className="container p-3 mb-2 bg-primary bg-gradient text-white rounded-3">
 
 
-      <h4>
+     
+          <center> 
+          <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>
            
-           <p class="fw-bold">
+           
              All LMO Cards
-             </p>
-             </h4>
-           
+             </b>
+             </h1>
+           </center>
         
 
 
-        <button className="btn btn-info"><a href="/lmoadd" style={{textDecoration:'none',color:'white'}}>Add New LMO &nbsp;
+        <button className="btn btn-info" style={{ backgroundColor: "#0E3662" }}><a href="/lmoadd" style={{textDecoration:'none',color:'white'}}>Add New LMO &nbsp;
         <i class="fas fa-plus-circle"></i>
         </a></button>
 
