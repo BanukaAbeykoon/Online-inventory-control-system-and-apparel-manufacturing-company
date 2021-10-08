@@ -2,11 +2,32 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2';
 import './DriHome.css'
+import jsPDF from "jspdf";
+import "jspdf-autotable"; 
+
+const generatePDF = driver => {
+  const doc = new jsPDF();
+  const tableColumn = ["Driver Name", "Age", "NIC", "Address"];
+  const tableRows = [];
+
+  driver.map(driver => {
+    const driverdata = [
+      driver.name,
+      driver.age,
+      driver.nic,
+      driver.address,
+     
+ ];
+    tableRows.push(driverdata);
+  })
+  doc.text("CASANOVA", 70,8).setFontSize(13);
+  doc.text("Driver Detail Report", 14, 16).setFontSize(13); 
+  doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 8, }, startY: 35 });
+  doc.save("Driver details.pdf");
+}
 
 
 
-
-//import bootstrap from '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 export default class DriHome extends Component {
 
@@ -123,6 +144,17 @@ handlesearch=(e)=>{
 
         <button className="btn btn-success"><a href= "/AddDriver" style={{textDecoration:'none',color:'white'}}><i className="fas fa-plus-circle"></i>Add New Driver</a></button>
         
+
+        <div>
+                <button
+                  type="button"
+                  style={{ backgroundColor: "#2E4661", padding: "10px" }}
+                  class="btn btn-secondary btn-sm"
+                  onClick={() => generatePDF(this.state.driver)}
+                >
+                  Generate Report of Employees
+                </button>
+              </div>
           </div>
 
         </div>
