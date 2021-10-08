@@ -65,7 +65,16 @@ class RMDashboard extends Component {
                 </div>
                 <div class="carousel-item">
                   <img
-                    src="%PUBLIC_URL%../../rmade.jpg"
+                    src="%PUBLIC_URL%../../rme.jpg"
+                    height="400"
+                    class="d-block w-100"
+                    alt="..."
+                  />
+                  <div class="carousel-caption d-none d-md-block"></div>
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="%PUBLIC_URL%../../phpic.jpg"
                     height="400"
                     class="d-block w-100"
                     alt="..."
@@ -73,20 +82,6 @@ class RMDashboard extends Component {
                   <div class="carousel-caption d-none d-md-block">
                     <h5>Warehouse</h5>
                     <p>Packing the final order</p>
-                  </div>
-                </div>
-                <div class="carousel-item">
-                  <img
-                    src="%PUBLIC_URL%../../tport.png"
-                    height="400"
-                    class="d-block w-100"
-                    alt="..."
-                  />
-                  <div class="carousel-caption d-none d-md-block">
-                    <h5>Transport</h5>
-                    <p>
-                      Checking the vehicle scedules from Transport Management.
-                    </p>
                   </div>
                 </div>
               </div>
@@ -151,7 +146,7 @@ class RMDashboard extends Component {
               <div class="col-sm-4">
                 <div class="card-transparent">
                   <img
-                    src="%PUBLIC_URL%../../transport.png"
+                    src="%PUBLIC_URL%../../transportmen.jpg"
                     width="400"
                     height="400"
                     class="card-img-top"
@@ -168,7 +163,7 @@ class RMDashboard extends Component {
               <div class="col-sm-4">
                 <div class="card-transparent">
                   <img
-                    src="%PUBLIC_URL%../../reportph.jpg"
+                    src="%PUBLIC_URL%../../reportphmenn.jpg"
                     width="300"
                     height="400"
                     class="card-img-top"
