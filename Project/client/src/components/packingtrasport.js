@@ -118,61 +118,110 @@ export default class packingtrasport extends Component {
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
           <div className="container-fluid">
-            <div className="row justify-content-start ">
-              <div className="col-8 ">
+            <div className="row">
+              <div className="col-lg-9 mt-2 mb-2">
+                <nav
+                  className="navbar navbar-expand-lg navbar-light"
+                  style={{
+                    backgroundColor: "#e3f2fd",
+                    width: "134%",
+                    border: " solid #5f9ea0",
+                    padding: "0px",
+                  }}
+                >
+                  <div className="container-fluid">
+                    <button
+                      className="navbar-toggler"
+                      type="button"
+                      data-bs-toogle="collapse"
+                      data-bs-target="#navbarNav"
+                      aria-controls="navbarNav"
+                      aria-expanded="false"
+                      aria-label="Tooggle navigation"
+                    >
+                      <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                      <ul className="navbar-nav">
+                        <li className="nav-item">
+                          <a className="nav-link" aria-current="page" href="/">
+                            Home -
+                          </a>
+                        </li>
+
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/RMDashbord" className="nav-link">
+                            Readymade Dashboard -
+                          </a>
+                        </li>
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/packingtrasport#" className="nav-link">
+                            Trasport Details -
+                          </a>
+                        </li>
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/packingtrasport#" className="nav-link">
+                            Driver Schedule and Vehicle Schedule -
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
+
+            <hr />
+            <br />
+            <div className="row  ">
+              <div className="col-lg-9 mt-2 mb-2 ">
                 <h1
                   style={{
                     backgroundColor: "black",
                     color: "white",
                     padding: "5px",
+                    width: "134%",
                     textAlign: "center",
                     opacity: ".50",
                   }}
                 >
                   Driver Schedule
                 </h1>
-
                 <div
                   className="d-grid gap-2 d-md-flex justify-content-md-end"
                   role="group"
                   aria-label="Basic example"
-                >
-                  <button type="button" className="btn btn-warning">
-                    <a
-                      href="/DriHome"
-                      style={{ textDecoration: "none", color: "black" }}
-                    >
-                      <i className="fas fa-user-tie"></i>Driver List
-                    </a>
-                  </button>
-                  <button type="button" className="btn btn-success">
-                    <a
-                      href="/TMSDash"
-                      style={{ textDecoration: "none", color: "black" }}
-                    >
-                      <i className="fas fa-home"></i>Home
-                    </a>
-                  </button>
+                ></div>
+                <br /> <br /> <br />
+                <div class="row">
+                  {this.state.driverschedul.map((driverschedul, index) => (
+                    <div class="col-sm-4">
+                      <div class="card" style={{ width: "12rem" }}>
+                        <div
+                          class="card-body"
+                          style={{
+                            background: "#e3f2fd",
+                            border: " solid #5f9ea0",
+                            padding: "10px",
+                          }}
+                        >
+                          <h5>No.0{index + 1}</h5>
+                          <h6>Name : {driverschedul.name} </h6>
+                          <h6>Nic : {driverschedul.nic} </h6>
+                          &nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-
-                <div className="col-lg-3 mt-2 mb-2">
-                  <input
-                    className="form-control"
-                    type="search"
-                    placeholder="search"
-                    name="search"
-                    onChange={this.handlesearch}
-                  ></input>
-                </div>
-                <table class="table">
+                {/* <table class="table">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Driver Name</th>
 
                       <th scope="col">NIC </th>
-
-                      <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -182,40 +231,53 @@ export default class packingtrasport extends Component {
                         <td>{driverschedul.name} </td>
 
                         <td>{driverschedul.nic}</td>
-
-                        <td>
-                          <a
-                            className="btn btn-danger"
-                            href="#"
-                            onClick={() => this.onDelete(driverschedul._id)}
-                          >
-                            <i className="fas fa-trash-alt"></i>Delete
-                          </a>
-                        </td>
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </table> */}
+                <br /> <br /> <br />
                 <h1
                   style={{
                     backgroundColor: "black",
                     color: "white",
                     padding: "5px",
+                    width: "134%",
                     textAlign: "center",
                     opacity: ".50",
                   }}
                 >
                   Vehicle Schedule
                 </h1>
-                <table class="table">
+                <br /> <br /> <br />
+                <div class="row">
+                  {this.state.vehicleschedule.map((vehicleschedule, index) => (
+                    <div class="col-sm-4">
+                      <div class="card" style={{ width: "12rem" }}>
+                        <div
+                          class="card-body"
+                          style={{
+                            background: "#e3f2fd",
+                            border: " solid #5f9ea0",
+                            width: "130%",
+                            padding: "10px",
+                          }}
+                        >
+                          <h5>No.0{index + 1}</h5>
+                          <h6>Registration No : {vehicleschedule.regno} </h6>
+                          <h6>Brand Name : {vehicleschedule.brandname} </h6>
+                          &nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                {/* <table class="table">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">Registration NO</th>
 
                       <th scope="col">Brand Name </th>
-
-                      <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -226,21 +288,11 @@ export default class packingtrasport extends Component {
                           <td>{vehicleschedule.regno} </td>
 
                           <td>{vehicleschedule.brandname}</td>
-
-                          <td>
-                            <a
-                              className="btn btn-danger"
-                              href="#"
-                              onClick={() => this.onDelete(vehicleschedule._id)}
-                            >
-                              <i className="fas fa-trash-alt"></i>Delete
-                            </a>
-                          </td>
                         </tr>
                       )
                     )}
                   </tbody>
-                </table>
+                </table> */}
               </div>
             </div>
           </div>
