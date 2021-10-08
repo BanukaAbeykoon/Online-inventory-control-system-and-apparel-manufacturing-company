@@ -4,22 +4,18 @@ import './styleSideNav.css';
 import Swal from 'sweetalert2'
 
 
-
-
-
 export default class MaterialDash extends Component {
+
+//Binding event handler method
 constructor(props){
   super(props);
 
+  //Initializing local state by assigning an object to this.state
   this.state={
     material:[]
   };
 }
-
-
- 
-
-
+//load data from a remote endpoint
 componentDidMount(){
   this.retriveMaterial();
 }
@@ -39,7 +35,6 @@ retriveMaterial(){
 }
 
 //delete a material card
-
 onDelete = (id) =>{
 
   axios.delete(`http://localhost:8000/material/deletematerial/${id}`).then((res) =>{
@@ -204,7 +199,7 @@ handleSearchArea = (e) =>{
                <th scope="col">Suppler Name</th>
                
                <th scope="col">Shipment ID</th>
-               <th scope="col">Price</th>
+               <th scope="col">Price <br/>(Rs.)</th>
                <th scope="col">Qty</th>
                <th scope="col">Category</th>
                <th scope="col">Description</th>

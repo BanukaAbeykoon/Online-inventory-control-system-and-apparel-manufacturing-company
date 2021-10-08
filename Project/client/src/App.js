@@ -107,6 +107,8 @@ import MatIns from "./components/MatIns";
 import ReportDetails from './components/ReportDetails';
 import MatInsTwo from './components/MatInsTwo';
 import MatDis from "./components/MatDis";
+import MatInsThree from "./components/MatInsThree"
+
 
 
 
@@ -276,6 +278,7 @@ export default class App extends Component {
         <Route path="/matins" component={MatIns}></Route>
         <Route path="/matinstwo" component={MatInsTwo}></Route>
         <Route path="/matdis" component={MatDis}></Route>
+        <Route path="/matinsthree" component={MatInsThree}></Route>
         
       
         

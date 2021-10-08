@@ -16,7 +16,14 @@ export default class MatReportEdit extends Component {
             date:"",
             shipID:"",
             defect:"",
-            qty:""
+            qty:"",
+            matreportIDError:"",
+            matIDError:"",
+            matNameError:"",
+            dateError:"",
+            shipIDError:"",
+            defectError:"",
+            qtyError:""
            
 
        }
@@ -32,9 +39,55 @@ export default class MatReportEdit extends Component {
 
     } 
     
+    validate= ()=>{
+      let matreportIDError="";
+      let matIDError="";
+      let matNameError="";
+      let dateError="";
+      let shipIDError="";
+      let defectError="";
+      let qtyError="";
+     
+      if(!this.state.matreportID){
+        matreportIDError="*Report ID is Required!"
+      }
+      if(!this.state.matID){
+        matIDError="*Material ID is Required!"
+      }
+     
+      if(!this.state.matName){
+        matNameError="*Material name is Required!"
+   }
+   if(!this.state.date){
+    dateError="*Date is Required"
+   }
+  if(!this.state.shipID){
+    shipIDError="*Shipment ID  is Required"
+   }
+   if(!this.state.defect){
+    defectError="*Defect is Required"
+   }
+
+   if(!this.state.qty){
+    qtyError="*QTY is Required"
+   }
+ 
+  
+
+   if(matreportIDError||matIDError||matNameError||dateError||shipIDError||defectError||qtyError){
+       this.setState({matreportIDError,matIDError,matNameError,dateError,shipIDError,defectError,qtyError});
+       return false;
+
+   }
+
+   return true;
+
+  }
+
+
     onSubmit =(e) =>{
         e.preventDefault();
-
+        const isValid= this.validate();
         const id =this.props.match.params.id;
 
         const {matreportID,matID,matName,date,shipID,defect,qty} = this.state;
@@ -51,6 +104,7 @@ export default class MatReportEdit extends Component {
 
         }
 
+        if(isValid){
         console.log(data)
 
         axios.put(`http://localhost:8000/matreport/updatematreport/${id}`, data).then((res) =>{
@@ -75,6 +129,7 @@ export default class MatReportEdit extends Component {
 
 
     }
+  }
 
     componentDidMount(){
 
@@ -160,7 +215,11 @@ export default class MatReportEdit extends Component {
     value={this.state.matreportID}
     readOnly
     onChange={this.handleInputChange}
+    required
     />
+    <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matreportIDError}
+                   </div>
   </div>
 
   <div class="col">
@@ -169,7 +228,11 @@ export default class MatReportEdit extends Component {
      value={this.state.matID}
      readOnly
      onChange={this.handleInputChange}
+     required
      />
+     <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matIDError}
+                   </div>
   </div>
 </div>
 
@@ -181,7 +244,11 @@ export default class MatReportEdit extends Component {
     value={this.state.matName}
     readOnly
     onChange={this.handleInputChange}
+    required
     />
+    <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matNameError}
+                   </div>
   </div>
 
   <div class="col">
@@ -190,7 +257,11 @@ export default class MatReportEdit extends Component {
      value={this.state.date}
      readOnly
      onChange={this.handleInputChange}
+     required
      />
+     <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.dateError}
+                   </div>
   </div>
 </div>
 
@@ -204,7 +275,11 @@ export default class MatReportEdit extends Component {
     value={this.state.shipID}
     readOnly
     onChange={this.handleInputChange}
+    required
     />
+    <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.shipIDError}
+                   </div>
   </div>
 
   <div class="col">
@@ -213,7 +288,11 @@ export default class MatReportEdit extends Component {
      value={this.state.defect}
      
      onChange={this.handleInputChange}
+     required
      />
+     <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.defectError}
+                   </div>
   </div>
 </div>
 
@@ -231,7 +310,12 @@ export default class MatReportEdit extends Component {
                         placeholder="Enter Qty"
                         value={this.state.qty}
                       
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required
+                        />
+                        <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.qtyError}
+                   </div>
                         </div>
 
                         <hr/>
