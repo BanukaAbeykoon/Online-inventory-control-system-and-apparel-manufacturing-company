@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 export default class MaterialEdit extends Component {
 
-
+    //Binding event handler method
     constructor(props){
         super(props);
         this.state={
@@ -43,7 +43,7 @@ export default class MaterialEdit extends Component {
 
     } 
 
-
+    //validation
     validate= ()=>{
       let matIDError="";
       let matNameError="";
@@ -55,7 +55,7 @@ export default class MaterialEdit extends Component {
       let qtyError="";
       let categoryError="";
       let descriptionError="";
-
+      //statements
       if(!this.state.matID){
         matIDError="*Material ID is Required!"
       }
@@ -109,7 +109,7 @@ export default class MaterialEdit extends Component {
    return true;
 
   }
-    
+    //onsubmit method
     onSubmit =(e) =>{
         e.preventDefault();
         const isValid= this.validate();
@@ -130,10 +130,10 @@ export default class MaterialEdit extends Component {
             description:description
 
         }
-
+        //if validation succussesfully pass
         if(isValid){
         console.log(data)
-
+       //Put data to back end using the Http link
         axios.put(`http://localhost:8000/material/updatematerial/${id}`, data).then((res) =>{
             if(res.data.success){
               Swal.fire('Updated','Material Card Updated Successfilly','success')
@@ -156,7 +156,7 @@ export default class MaterialEdit extends Component {
       }
 
     }
-
+    //load data from a remote endpoint
     componentDidMount(){
 
         const id =this.props.match.params.id;
@@ -183,17 +183,18 @@ export default class MaterialEdit extends Component {
 
 
 
-
+    //gather outputs
     render() {
         return (
  
-            <div id="wrapper" className="toggled">
-            <div id="page-content-wrapper">
-            <div className="container-fluid">
+          //component organizer
+          <div id="wrapper" className="toggled">
+          <div id="page-content-wrapper">
+          <div className="container-fluid">
 
            
         
-            
+              {/* custom navigation        */}
               <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -213,32 +214,21 @@ export default class MaterialEdit extends Component {
   </div>
 </nav> 
 
-
-
-
- 
-
-             
 <hr/>
 
-
-
-
-
-
-
+{/* Title        */}
 <div class="p-3 mb-2 bg-info text-dark rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
               <center>
             <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>EDIT MATERIAL CARD</b></h1>
                </center>
             <hr/>
+
+
+                {/* Edit form */}
                 <form className="needs-validation" noValidate>
 
-           
-
-
-                <div class="row">
+  <div class="row">
   <div class="col">
     <label style={{marginBottom:'5px'}} >Material ID</label>
     <input type="text" class="form-control" name="matID" placeholder="Enter Material ID"
@@ -396,9 +386,8 @@ export default class MaterialEdit extends Component {
             </div>
             </div>
 
-            <div class="footer">
-
-
+  {/* Footer */}
+  <div class="footer">
   <div class="contain">
 
     <br/>
