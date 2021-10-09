@@ -115,36 +115,45 @@ export default class AccountReport extends Component {
                   </div>
 
 
-
-                  <div className="p-3 mb-2 bg-dark text-light rounded-3">
-          <div class="form-check">
+                  <div
+              className="p-3 mb-2 bg-dark text-light rounded-3"
+              style={{
+                background: "transparent",
+                height: "50px",
+                opacity: 0.5,
+                padding: "10px",
+              }}
+            >
+          <div class="form-check"  style={{ float: "left" }} >
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="" onChange={this.handleSearchArea}/>
   
   <label class="form-check-label" for="exampleRadios2">
-    ALL
+    ALL &nbsp;  &nbsp;
   </label>
 </div>
+ 
 
-          <div class="form-check">
+          <div class="form-check"  style={{ float: "left" }}>
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="special" onChange={this.handleSearchArea} />
   <label class="form-check-label" for="exampleRadios1">
-   Special Customer
+   Special Customer&nbsp;  &nbsp;
   </label>
 </div>
-<div class="form-check">
+<div class="form-check"  style={{ float: "left" }}>
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="normal" onChange={this.handleSearchArea}/>
   <label class="form-check-label" for="exampleRadios2">
-  Normal Customer
+  Normal Customer&nbsp;  &nbsp;
   </label>
 </div>
-<div class="form-check">
+<div class="form-check"  style={{ float: "left" }}>
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="new" onChange={this.handleSearchArea}/>
   <label class="form-check-label" for="exampleRadios3">
-    New Customer
+    New Customer&nbsp;  &nbsp;
   </label>
 </div>
 
 </div>
+
 
 
 
