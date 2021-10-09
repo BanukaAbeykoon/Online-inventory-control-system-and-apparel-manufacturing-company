@@ -146,16 +146,29 @@ class AccountNavBar extends Component {
                 </div>
               </a>
             </li>
-            <li>
-              <a href="/">
-                <i class="fas fa-users-cog"></i>
-                &nbsp; Admin
-              </a>
-            </li>
+            <br />
+            <div style={{ backgroundColor: "#FFFFFF" }}>
+              <hr />
+            </div>
             <li>
               <a href="#">
-                <i class="fas fa-file-invoice"></i>
-                &nbsp; Reports
+                <div className="dropdown">
+                  <button className="dropbtn">
+                    <i class="fas fa-users-cog"></i>
+                    &nbsp; Admin
+                  </button>
+                  <div className="dropdown-content">
+                    <a href="/admindash">Admin Dashboard</a>
+                    <a href="/admincus">Customer Management</a>
+                    <a href="/adminmaterial">Material Management</a>
+                    <a href="/adminproduction">Production Management</a>
+                    <a href="/adminimport">Import Management</a>
+                    <a href="/adminquality">Quality Management</a>
+                    <a href="/adminaccount">Account Management</a>
+                    <a href="/admintransport">Transport Management</a>
+                    <a href="/adminready">ReadyMade Management</a>
+                  </div>
+                </div>
               </a>
             </li>
           </ul>
