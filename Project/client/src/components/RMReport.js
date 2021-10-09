@@ -185,7 +185,7 @@ handleSearchArea = (e) =>{
                     ></input>
                   </div>
                 </div>
-                  <br/>
+                <br />
                 <table id="ptable" className="table">
                   <thead>
                     <tr>
@@ -238,7 +238,7 @@ handleSearchArea = (e) =>{
                 <div style={{ float: "left" }}>
                   <button
                     type="button"
-                    style={{ backgroundColor: "#2E4661", padding: "8px" }}
+                    style={{ backgroundColor: "#228B22", padding: "8px" }}
                     class="btn btn-secondary btn-sm"
                     onClick={() => generatePDF(this.state.packing)}
                   >

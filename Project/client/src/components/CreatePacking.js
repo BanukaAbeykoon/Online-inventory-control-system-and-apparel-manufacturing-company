@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import swal from "sweetalert2";
 import {RMsetErrors, setErrors} from "./../conmmon/RMsetErrors"
+import moment from "moment";
 
 export default class CreatePacking extends Component {
   constructor(props) {
@@ -145,7 +146,7 @@ export default class CreatePacking extends Component {
       payment: "Done",
       quantity: "5000",
       weight: "12",
-      dueDate: "12/04/2021",
+      dueDate: "10/04/2021",
       address: "1/53,Malabe,Colombo",
     });
   };
@@ -328,6 +329,7 @@ export default class CreatePacking extends Component {
                     placeholder="Enter dueDate"
                     value={this.state.dueDate}
                     onChange={this.handleInputChange}
+                    max={moment().format("YYYY-MM-DD")}
                   />
                   {this.state.errors.dueDate && (
                     <div classNane="text-danger" style={{ color: "red" }}>
