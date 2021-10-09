@@ -177,7 +177,7 @@ class EditPostQC extends Component {
 
           <div className="form-group" style={{marginBottom:'15px'}}>
           <lable style={{marginBottom:'5px'}}>Qualityrate</lable>
-          <input type="text"
+          <input type="number"  min="0" max="100" step="1"
           className="form-control"
           name="Qualityrate"
           placeholder="Enter Quality"
