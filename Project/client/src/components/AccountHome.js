@@ -238,7 +238,7 @@ export default class AccountHome extends Component {
                   <th scope="row">{index+1}</th>
                   <td>
                       <a href={`/postAcc/${account._id}`} style={{textDecoration:'none'}}>
-                      {account.orderId} 
+                      {`OID${account._id.substr(0,5)}`}
                       </a>
                       </td>
                   <td> {account.cusName}</td>

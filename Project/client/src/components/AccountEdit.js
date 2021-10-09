@@ -102,6 +102,8 @@ export default class AccountEdit extends Component {
    
    
     render() {
+
+      const id = this.props.match.params.id;
         return (
             <div className="container">
             <div className="col-md-8 mt-4 mx-auto">
@@ -170,7 +172,7 @@ export default class AccountEdit extends Component {
                         className="form-control"
                         name="orderId"
                         placeholder="Enter Order ID"
-                        value={this.state.orderId}
+                        value= {`OID${id.substr(0,5)}`}
                         readOnly
                         onChange={this.handleInputChange}/>
                     </div>

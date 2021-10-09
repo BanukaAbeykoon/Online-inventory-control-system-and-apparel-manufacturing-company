@@ -94,6 +94,7 @@ return Object.values(errors).every((err) => err === "");
   }
 
   render() {
+    const id = this.props.match.params.id;
     return (
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
@@ -184,7 +185,7 @@ return Object.values(errors).every((err) => err === "");
                     className="form-control"
                     name="orderId"
                     placeholder="Enter Order ID"
-                    value={this.state.orderId}
+                    value={`OID${id.substr(0,5)}`}
                     onChange={this.handleInputChange}
                   />
                   {this.state.errors.orderId && (
