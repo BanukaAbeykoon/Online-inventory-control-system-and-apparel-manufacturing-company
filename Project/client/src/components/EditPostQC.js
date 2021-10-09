@@ -122,7 +122,8 @@ class EditPostQC extends Component {
           name="OrderID"
           placeholder="Enter Order ID"
           value={this.state.OrderID}
-          onChange={this.handleInputChange}/>
+          onChange={this.handleInputChange}
+          readOnly/>
           </div>
 
           <div className="form-group" style={{marginBottom:'15px'}}>
@@ -152,7 +153,8 @@ class EditPostQC extends Component {
           name="BuyerID"
           placeholder="Enter BuyerID"
           value={this.state.BuyerID}
-          onChange={this.handleInputChange}/>
+          onChange={this.handleInputChange}
+          readOnly/>
           </div>
 
           <div className="form-group" style={{marginBottom:'15px'}}>

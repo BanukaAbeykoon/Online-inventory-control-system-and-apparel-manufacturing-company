@@ -297,17 +297,6 @@ export default class App extends Component {
 	 
 	 
 	 
-	 
-
-        <div className="page-content-wrapper">
-          <Route path="/qcDash" exact component={HomeQC}></Route>
-          <Route path="/add" component={CreatepostQC}></Route>
-          <Route path="/edit/:id" component={EditPostQC}></Route>
-          <Route path="/post/:id" component={PostDetailsQC}></Route>
-          <Route path="/dash" component={QualityDash}></Route>
-          <Route path="/defect" component={DefectCard}></Route>
-          <Route path="/rep" component={PostDetailsQC}></Route>
-        </div>
 
         <div className="page-content-wrapper">
           <Route path="/orderHome" exact component={orderHome}></Route>
