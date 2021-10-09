@@ -113,7 +113,7 @@ class DefectCard extends Component {
           <input type="number"
           className="form-control"
           name="missingitem"
-          placeholder="Enter Order ID"
+          placeholder="Incomplete / Missing items"
           value={this.state.missingitem}
           onChange={this.handleInputChange}
           required/>
@@ -151,7 +151,7 @@ class DefectCard extends Component {
 
           <div className="form-group" style={{marginBottom:'15px'}}>
           <lable style={{marginBottom:'5px'}}>Requirements Satification Rate</lable>
-          <input type="number"
+          <input type="number"  min="0" max="100" step="1"
           className="form-control"
           name="srate"
           placeholder="Requirements Satification Rate"
