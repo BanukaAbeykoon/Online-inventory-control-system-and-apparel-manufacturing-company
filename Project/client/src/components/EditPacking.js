@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import swal from "sweetalert2";
 import {RMsetErrors, setErrors} from "./../conmmon/RMsetErrors"
+import moment from "moment";
 
 export default class EditPacking extends Component {
   constructor(props) {
@@ -270,6 +271,7 @@ return Object.values(errors).every((err) => err === "");
                     placeholder="Enter dueDate"
                     value={this.state.dueDate}
                     onChange={this.handleInputChange}
+                    max={moment().format("YYYY-MM-DD")}
                   />
                   {this.state.errors.dueDate && (
                     <div classNane="text-danger" style={{ color: "red" }}>
