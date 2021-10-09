@@ -27,6 +27,7 @@ export default class PackingDetails extends Component {
     
     render() {
 
+        const id = this.props.match.params.id;
         const {customer,orderId,category,payment,quantity,weight,dueDate,address} = this.state.packing;
         return (
 
@@ -86,7 +87,7 @@ export default class PackingDetails extends Component {
 
             <dl className="row">
               <dt className="col-sm-3">OrderID</dt>
-              <dd className="col-sm-9">{orderId}</dd>
+              <dd className="col-sm-9">{`OID${id.substr(0,5)}`}</dd>
               <br/>
               <br/>
               <dt className="col-sm-3">Category</dt>
