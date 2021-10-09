@@ -65,7 +65,7 @@ retriveReport(){
     const result = matreport.filter((matreport) =>
        matreport.matreportID.toLowerCase().includes(searchKey) ||
        matreport.matID.toLowerCase().includes(searchKey) ||
-       matreport.date.toLowerCase().includes(searchKey)
+       matreport.defect.toLowerCase().includes(searchKey)
       
     )
     
@@ -160,6 +160,43 @@ retriveReport(){
     <center>
 <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>REPORTING SUMMARY</b></h1>
 </center>
+
+
+<div className="p-3 mb-2 text-light rounded-3" style={{ backgroundColor: "#0E3662" }} >
+          <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="" onChange={this.handleSearchArea}/>
+  <label class="form-check-label" for="exampleRadios2">
+    ALL
+  </label>
+</div>
+
+          <div class="form-check" >
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="error in wool" onChange={this.handleSearchArea} />
+  <label class="form-check-label" for="exampleRadios1">
+    Error in wool
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="cutting edges" onChange={this.handleSearchArea}/>
+  <label class="form-check-label" for="exampleRadios2">
+  Cutting edges
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="colour patch" onChange={this.handleSearchArea}/>
+  <label class="form-check-label" for="exampleRadios3">
+  Colour patch
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="damaged edges" onChange={this.handleSearchArea}/>
+  <label class="form-check-label" for="exampleRadios3">
+  Damaged edges
+  </label>
+</div>
+
+</div>
+
 
 <center>
         <div  className="col-lg-3 mt-2 mb-2">

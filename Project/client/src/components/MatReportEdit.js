@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 export default class MatReportEdit extends Component {
 
-
+    //Binding event handler method
     constructor(props){
         super(props);
         this.state={
@@ -38,7 +38,7 @@ export default class MatReportEdit extends Component {
         })
 
     } 
-    
+    //validation
     validate= ()=>{
       let matreportIDError="";
       let matIDError="";
@@ -47,7 +47,7 @@ export default class MatReportEdit extends Component {
       let shipIDError="";
       let defectError="";
       let qtyError="";
-     
+      //statements
       if(!this.state.matreportID){
         matreportIDError="*Report ID is Required!"
       }
@@ -57,24 +57,24 @@ export default class MatReportEdit extends Component {
      
       if(!this.state.matName){
         matNameError="*Material name is Required!"
-   }
-   if(!this.state.date){
-    dateError="*Date is Required"
-   }
-  if(!this.state.shipID){
-    shipIDError="*Shipment ID  is Required"
-   }
-   if(!this.state.defect){
-    defectError="*Defect is Required"
-   }
+      }
+      if(!this.state.date){
+       dateError="*Date is Required"
+      }
+      if(!this.state.shipID){
+        shipIDError="*Shipment ID  is Required"
+      }
+      if(!this.state.defect){
+        defectError="*Defect is Required"
+      }
 
-   if(!this.state.qty){
-    qtyError="*QTY is Required"
-   }
+      if(!this.state.qty){
+        qtyError="*QTY is Required"
+      }
  
   
 
-   if(matreportIDError||matIDError||matNameError||dateError||shipIDError||defectError||qtyError){
+      if(matreportIDError||matIDError||matNameError||dateError||shipIDError||defectError||qtyError){
        this.setState({matreportIDError,matIDError,matNameError,dateError,shipIDError,defectError,qtyError});
        return false;
 
@@ -84,7 +84,7 @@ export default class MatReportEdit extends Component {
 
   }
 
-
+    //onsubmit method
     onSubmit =(e) =>{
         e.preventDefault();
         const isValid= this.validate();
@@ -103,10 +103,10 @@ export default class MatReportEdit extends Component {
           
 
         }
-
+        //if validation succussesfully pass
         if(isValid){
         console.log(data)
-
+        //Put data to back end using the Http link
         axios.put(`http://localhost:8000/matreport/updatematreport/${id}`, data).then((res) =>{
             if(res.data.success){
               Swal.fire('Updated','Report Updated Successfilly','success')
@@ -130,7 +130,7 @@ export default class MatReportEdit extends Component {
 
     }
   }
-
+    //load data from a remote endpoint
     componentDidMount(){
 
         const id =this.props.match.params.id;
@@ -156,17 +156,17 @@ export default class MatReportEdit extends Component {
 
 
 
-
+     //gather outputs
     render() {
         return (
- 
+            //component organizer
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
 
            
         
-            
+              {/* custom navigation        */}
               <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -185,14 +185,8 @@ export default class MatReportEdit extends Component {
     </ul>
   </div>
 </nav> 
-
-
-
-
- 
-
-             
 <hr/>
+{/* Title        */}
 <div class="p-3 mb-2 bg-info text-dark rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
               <center>
@@ -200,6 +194,7 @@ export default class MatReportEdit extends Component {
             </center>
 
             <hr/>
+            {/* Edit form */}
                 <form className="needs-validation" noValidate>
 
            
@@ -330,11 +325,9 @@ export default class MatReportEdit extends Component {
             </div>
             </div>
             </div>
-
-            <div class="footer">
-
-
-  <div class="contain">
+{/* Footer */}
+<div class="footer">
+<div class="contain">
 
     <br/>
   <div class="col">

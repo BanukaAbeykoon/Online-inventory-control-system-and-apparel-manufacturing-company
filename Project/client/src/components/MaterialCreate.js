@@ -4,7 +4,8 @@ import './styleSideNav.css';
 import Swal from 'sweetalert2';
 
 export default class MaterialCreate extends Component {
-
+       
+       //handle data to database
        constructor(props){
            super(props);
            this.state={
@@ -31,7 +32,7 @@ export default class MaterialCreate extends Component {
 
           }
        } 
-
+      
        handleInputChange = (e) =>{
            const{name,value} = e.target;
 
@@ -43,7 +44,7 @@ export default class MaterialCreate extends Component {
        } 
 
        
-
+      //validation
        validate= ()=>{
         let matIDError="";
         let matNameError="";
@@ -56,64 +57,69 @@ export default class MaterialCreate extends Component {
         let categoryError="";
         let descriptionError="";
  
+        //statements
         if(!this.state.matID){
           matIDError="*Material ID is Required!"
         }
+
+        
+
         if(!this.state.matName){
           matNameError="*Material name is Required!"
         }
        
         if(!this.state.supID){
           supIDError="*Supplier ID is Required!"
-     }
-     if(!this.state.supName){
-      supNameError="*Supplier name is Required"
-     }
+        }
+        if(!this.state.supName){
+           supNameError="*Supplier name is Required"
+        }
 
-     if(!this.state.arrDate){
-      arrDateError="*Arrival date is Required"
-     }
-     if(!this.state.shipID){
-      shipIDError="*Shipment ID is Required"
-     }
-     if(!this.state.price){
-      priceError="*Price is Required"
-     }
+        if(!this.state.arrDate){
+          arrDateError="*Arrival date is Required"
+        }
+         
+        
+         
+        if(!this.state.shipID){
+          shipIDError="*Shipment ID is Required"
+        }
+        if(!this.state.price){
+          priceError="*Price is Required"
+        }
 
-      else if (!this.state.price.match('^[1-9]+[0-9]*$')){
-      priceError= '*Please Enter a Valid Price Range '
-   } 
+          else if (!this.state.price.match('^[1-9]+[0-9]*$')){
+            priceError= '*Please Enter a Valid Price Range '
+          } 
 
-     if(!this.state.qty){
-      qtyError="*QTY is Required"
-     }
+        if(!this.state.qty){
+          qtyError="*QTY is Required"
+        }
 
-       else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
-        qtyError= '*Please Enter a Valid QTY Range '
-     } 
+           else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
+            qtyError= '*Please Enter a Valid QTY Range '
+        } 
 
-     if(!this.state.category){
-      categoryError="*Category is Required"
-     }
+        if(!this.state.category){
+          categoryError="*Category is Required"
+        }
 
-     if(!this.state.description){
-      descriptionError="Description is Required"
-     }
+        if(!this.state.description){
+          descriptionError="Description is Required"
+        }
  
-     if(matIDError||matNameError||supIDError||supNameError||arrDateError||shipIDError||priceError||qtyError||categoryError||descriptionError){
+        if(matIDError||matNameError||supIDError||supNameError||arrDateError||shipIDError||priceError||qtyError||categoryError||descriptionError){
          this.setState({matIDError,matNameError,supIDError,supNameError,arrDateError,shipIDError,priceError,qtyError,categoryError,descriptionError});
          return false;
  
-     }
+        }  
  
      return true;
  
     }
  
-
-
-       
-       onSubmit =(e) =>{
+     //onsubmit method
+      onSubmit =(e) =>{
            e.preventDefault();
            const isValid= this.validate();
            const {matID,matName,supID,supName,arrDate,shipID,price,qty,category,description} = this.state;
@@ -133,12 +139,10 @@ export default class MaterialCreate extends Component {
            }
 
 
-      
-
-
+          //if validation succussesfully pass
           if(isValid){
            console.log(data)
-
+           //Post data to back end using the Http link
            axios.post("http://localhost:8000/material/save", data).then((res) =>{
                if(res.data.success){
               Swal.fire('Added','Material Card Added Successfilly','success')
@@ -162,7 +166,7 @@ export default class MaterialCreate extends Component {
           }
 }
 
-
+//Demo button
 btnDemo = (e) => {
   e.preventDefault();
 
@@ -199,18 +203,23 @@ btnDemo = (e) => {
   )
 }
 
+
+  
+
+
       
 
-
+    //gather outputs
     render() {
         return (
 
+          //component organizer
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
 
 
-            
+              {/* custom navigation        */}
               <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -233,7 +242,7 @@ btnDemo = (e) => {
 
 <hr/>
 
-
+{/* Instruction section */}
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">INSTRUCTIONS</h5>
@@ -250,7 +259,7 @@ btnDemo = (e) => {
 
 
 
-
+{/* Title        */}
 <div class="p-3 mb-2 bg-info text-dark  rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
               <center>
@@ -261,15 +270,15 @@ btnDemo = (e) => {
 
               
 
-               
+               {/* Material add form */}
                 <form className="needs-validation" noValidate>
                     
 
                 
                     <div class="row">
-  <div class="col">
+    <div class="col">
     <label  style={{marginBottom:'5px'}} >Material ID</label>
-    <input type="text" class="form-control"  name="matID" placeholder="Enter Material ID"
+    <input type="text" class="form-control" maxlength="6"  name="matID" placeholder="Enter Material ID"
     value={this.state.matID}
   
     onChange={this.handleInputChange}
@@ -303,7 +312,7 @@ btnDemo = (e) => {
 <div class="row">
   <div class="col">
   <label style={{marginBottom:'5px'}} >Supplier ID</label>
-    <input type="text" class="form-control" name="supID" placeholder="Enter Supplier ID"
+    <input type="text" class="form-control" maxlength="6" name="supID" placeholder="Enter Supplier ID"
     value={this.state.supID}
     onChange={this.handleInputChange}
     required
@@ -352,7 +361,7 @@ btnDemo = (e) => {
 
   <div class="col">
   <label style={{marginBottom:'5px'}} >Shipment ID</label>
-    <input type="text" class="form-control" name="shipID"  placeholder="Enter Shipment ID"
+    <input type="text" class="form-control"  maxlength="6" name="shipID"  placeholder="Enter Shipment ID"
      value={this.state.shipID}
      onChange={this.handleInputChange}
      required
@@ -411,7 +420,8 @@ btnDemo = (e) => {
                         onChange={this.handleInputChange}
                         required
                         />
-                        <div style={{fontSize:15 ,color:"red"}}>
+
+                   <div style={{fontSize:15 ,color:"red"}}>
                            {this.state.categoryError}
                    </div>
                         </div>
@@ -453,7 +463,8 @@ btnDemo = (e) => {
                     </div>
                     </div>  
 
-                    <div class="footer">
+{/* Footer */}
+<div class="footer">
 
 
 <div class="contain">

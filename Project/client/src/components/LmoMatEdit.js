@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 export default class LmoMatEdit extends Component {
 
-
+    //Binding event handler method
     constructor(props){
         super(props);
         this.state={
@@ -33,7 +33,7 @@ export default class LmoMatEdit extends Component {
         })
 
     } 
-
+    //validation
     validate= ()=>{
       let lmoIDError="";
       let matIDError="";
@@ -41,7 +41,7 @@ export default class LmoMatEdit extends Component {
       let qtyError="";
       let categoryError="";
       let descriptionError="";
-     
+      //statements
       if(!this.state.lmoID){
         lmoIDError="*LMO ID is Required!"
       }
@@ -51,24 +51,24 @@ export default class LmoMatEdit extends Component {
      
       if(!this.state.matName){
         matNameError="*Material name is Required!"
-   }
-   if(!this.state.qty){
-    qtyError="*QTY is Required"
-   }
+      }
+      if(!this.state.qty){
+        qtyError="*QTY is Required"
+      }
 
-   else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
-    qtyError= '*Please Enter a Valid QTY Range '
- } 
+        else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
+          qtyError= '*Please Enter a Valid QTY Range '
+        } 
 
-   if(!this.state.category){
-    categoryError="*Category is Required"
-   }
-   if(!this.state.description){
-    descriptionError="*Description is Required"
-   }
+      if(!this.state.category){
+        categoryError="*Category is Required"
+      }
+      if(!this.state.description){
+        descriptionError="*Description is Required"
+      }
   
 
-   if(lmoIDError||matIDError||matNameError||qtyError||categoryError||descriptionError){
+      if(lmoIDError||matIDError||matNameError||qtyError||categoryError||descriptionError){
        this.setState({lmoIDError,matIDError,matNameError,qtyError,categoryError,descriptionError});
        return false;
 
@@ -77,7 +77,7 @@ export default class LmoMatEdit extends Component {
    return true;
 
   }
-    
+    //onsubmit method
     onSubmit =(e) =>{
         e.preventDefault();
         const isValid= this.validate();
@@ -94,10 +94,10 @@ export default class LmoMatEdit extends Component {
             description:description
 
         }
-
+        //if validation succussesfully pass
         if(isValid){
         console.log(data)
-
+        //Put data to back end using the Http link
         axios.put(`http://localhost:8000/lmomat/updatelmomat/${id}`, data).then((res) =>{
             if(res.data.success){
                 Swal.fire('Updated','LMO Card Updated Successfilly','success')
@@ -117,7 +117,7 @@ export default class LmoMatEdit extends Component {
       }
 
     }
-
+    //load data from a remote endpoint
     componentDidMount(){
 
         const id =this.props.match.params.id;
@@ -141,17 +141,17 @@ export default class LmoMatEdit extends Component {
 
 
 
-
+    //gather outputs
     render() {
         return (
-
+            //component organizer
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
 
 
 
-           
+              {/* custom navigation        */}
               <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -174,20 +174,16 @@ export default class LmoMatEdit extends Component {
 </nav> 
 
 <hr/>
-
+{/* Title        */}
 <div class="p-3 mb-2 bg-info text-dark rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
               <center>
             <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>EDIT LMO CARD</b></h1>
             </center>
             <hr/>
+                {/* Edit form */}
                 <form className="needs-validation" noValidate>
-
-
-
-
-
-                <div className="form-group" style={{marginBottom:'15px'}}>
+                  <div className="form-group" style={{marginBottom:'15px'}}>
                         <label style={{marginBottom:'5px'}} >LMO ID</label>
                         <input type="text"
                         className="form-control"
@@ -296,9 +292,8 @@ export default class LmoMatEdit extends Component {
                     </div>
                     </div> 
 
-                    <div class="footer">
-
-
+{/* Footer */}
+<div class="footer">
 <div class="contain">
 
   <br/>
