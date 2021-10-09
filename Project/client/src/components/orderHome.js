@@ -97,7 +97,7 @@ handleSearchArea = (e) =>{
                 <th scope="row">{index+1}</th>
                 <td>
                    
-                    {order.orderID}
+                {`OID${order._id.substr(0,5)}`}
                    
                     </td>
                 <td>{order.product}</td>
