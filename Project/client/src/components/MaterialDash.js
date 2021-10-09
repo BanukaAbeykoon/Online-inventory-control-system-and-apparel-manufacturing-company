@@ -4,28 +4,25 @@ import './styleSideNav.css';
 import Swal from 'sweetalert2'
 
 
-
-
-
 export default class MaterialDash extends Component {
+
+//Binding event handler method
 constructor(props){
   super(props);
 
+  //Initializing local state by assigning an object to this.state
   this.state={
     material:[]
   };
 }
-
-
- 
-
-
+//load data from a remote endpoint
 componentDidMount(){
   this.retriveMaterial();
 }
 
 
 retriveMaterial(){
+  //get server side http module to get data to client side Http request
   axios.get("http://localhost:8000/material").then(res =>{
       if(res.data.success){
         this.setState({
@@ -39,7 +36,6 @@ retriveMaterial(){
 }
 
 //delete a material card
-
 onDelete = (id) =>{
 
   axios.delete(`http://localhost:8000/material/deletematerial/${id}`).then((res) =>{
@@ -77,41 +73,39 @@ handleSearchArea = (e) =>{
 
 }
 
+  //gather outputs
   render() {
     return (
+    //component organizer
+    <div id="wrapper" className="toggled">
+    <div id="page-content-wrapper">
+    <div className="container-fluid">
 
-      <div id="wrapper" className="toggled">
-      <div id="page-content-wrapper">
-        
-          
-          <div className="container-fluid">
-            
-
-
-          
-              <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+     {/* custom navigation        */}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+        </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="/matDash">Dashboard</a>
-      </li>
+      <ul class="navbar-nav">
+       <li class="nav-item active">
+         <a class="nav-link" href="/matDash">Dashboard</a>
+       </li>
       <li class="nav-item">
         <a class="nav-link" href=""> &#62; Material Card  <span class="sr-only">(current)</span> </a>
       </li>
    
     </ul>
   </div>
-</nav> 
+    </nav> 
 
 
 
 
 <hr/>
-          
-<div className="container bg-info rounded-3">
+
+   {/* Title        */}
+  <div className="container bg-info rounded-3">
         <div className="row">
         <center>
           <div className="col-lg-12 mt-2 mb-2">
@@ -120,19 +114,11 @@ handleSearchArea = (e) =>{
           ALL MATERIAL CARDS
              </b></h1>
            
-               </div>
-               </center>
+          </div>
+        </center>
               
 
-
-           
-         
-         
-        
-
-
-
-
+{/* Filter Category */}
 <div className="p-3 mb-2 text-light rounded-3" style={{ backgroundColor: "#0E3662" }} >
           <div class="form-check">
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="" onChange={this.handleSearchArea}/>
@@ -166,7 +152,7 @@ handleSearchArea = (e) =>{
 
        <center>
         <div  className="col-lg-3 mt-2 mb-2">
-          
+          {/* Searchbar */}
           <input
           className="form-control "
           type="search"
@@ -181,7 +167,7 @@ handleSearchArea = (e) =>{
     <hr/>
 
 
-
+         {/* Add new material button */}
         <button className="btn btn-info" style={{ backgroundColor: "#0E3662" }} ><a href="/matadd" style={{textDecoration:'none',color:'white'}}>Add New Material &nbsp;
         <i class="fas fa-plus-circle"></i> 
           </a></button>
@@ -193,7 +179,7 @@ handleSearchArea = (e) =>{
 
 
          <div class="p-3 mb-2 bg-primary text-dark rounded-3">
-        
+        {/* Material Table */}
          <table className="table table-hover  table table-bordered border-info table table-info table-striped" style={{marginTop:'5px'}}>
            <thead>
              <tr>
@@ -204,7 +190,7 @@ handleSearchArea = (e) =>{
                <th scope="col">Suppler Name</th>
                
                <th scope="col">Shipment ID</th>
-               <th scope="col">Price</th>
+               <th scope="col">Price <br/>(Rs.)</th>
                <th scope="col">Qty</th>
                <th scope="col">Category</th>
                <th scope="col">Description</th>
@@ -213,6 +199,7 @@ handleSearchArea = (e) =>{
              </tr>
            </thead>
            <tbody>
+             {/* Get data to the table using a map */}
              {this.state.material.map((material,index) =>(
                   <tr key={index}>
                     <th scope="row">{index+1}</th>
@@ -231,10 +218,12 @@ handleSearchArea = (e) =>{
                     <td>{material.category}</td>
                     <td>{material.description}</td>
                     <td>
+                      {/* Edit button */}
                       <a className="btn btn-info" href={`/matedit/${material._id}`}>
                         <i className="fas fa-edit"></i>&nbsp;Edit
                       </a>
                       &nbsp;
+                      {/* Delete Button */}
                       <a className="btn btn-danger" href="#" onClick={() =>this.onDelete(material._id)}>
                         <i className="far fa-trash-alt"></i>&nbsp;Delete
                       </a>
@@ -252,10 +241,14 @@ handleSearchArea = (e) =>{
    
 
          </div>
+         <br/>
         </div>
+        
         </div>
+        
         </div>
-
+        
+        {/* Footer Section */}
         <div class="footer">
 
 
@@ -319,10 +312,6 @@ handleSearchArea = (e) =>{
 </div>
         </div>
      
-
-
-
-
 
       
     )

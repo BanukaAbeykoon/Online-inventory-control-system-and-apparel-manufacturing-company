@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2';
-import {LmoMatCreateValid, setErrors} from "./../components/validationprocess/LmoMatCreateValid"
+
 
 
 export default class LmoMatCreate extends Component {
-
+       //Binding event handler method
        constructor(props){
            super(props);
            this.state={
@@ -15,7 +15,13 @@ export default class LmoMatCreate extends Component {
                qty:"",
                category:"",
                description:"",
-               errors:{}
+               lmoIDError:"",
+               matIDError:"",
+               matNameError:"",
+               qtyError:"",
+               categoryError:"",
+               descriptionError:""
+             
 
           }
        } 
@@ -30,37 +36,57 @@ export default class LmoMatCreate extends Component {
 
        } 
 
-
-
-
-        //Form Validation part
-  validate = (
-    lmoID,
-    matID,
-    matName,
-    qty,
-    category,
-    description
-  ) => {
-    const errors = setErrors(
-      lmoID,
-      matID,
-      matName,
-      qty,
-      category,
-      description
-    );
-
-    this.setState({ errors: errors });
-
-    return Object.values(errors).every((err) => err === "");
-  };
+       //validation
+       validate= ()=>{
+        let lmoIDError="";
+        let matIDError="";
+        let matNameError="";
+        let qtyError="";
+        let categoryError="";
+        let descriptionError="";
+       //statements
+        if(!this.state.lmoID){
+          lmoIDError="*LMO ID is Required!"
+        }
+        if(!this.state.matID){
+          matIDError="*Material ID is Required!"
+        }
        
-       onSubmit =(e) =>{
-           e.preventDefault();
+        if(!this.state.matName){
+          matNameError="*Material name is Required!"
+        }
+        if(!this.state.qty){
+          qtyError="*QTY is Required"
+        }
 
+          else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
+            qtyError= '*Please Enter a Valid QTY Range '
+          } 
+
+        if(!this.state.category){
+           categoryError="*Category is Required"
+        }
+        if(!this.state.description){
+          descriptionError="*Description is Required"
+        }
+    
+ 
+        if(lmoIDError||matIDError||matNameError||qtyError||categoryError||descriptionError){
+         this.setState({lmoIDError,matIDError,matNameError,qtyError,categoryError,descriptionError});
+         return false;
+ 
+     }
+ 
+     return true;
+ 
+    }
+
+          //onsubmit method
+           onSubmit =(e) =>{
+           e.preventDefault();
+           const isValid= this.validate();
            const {lmoID,matID,matName,qty,category,description} = this.state;
-           if (this.validate(lmoID,matID,matName,qty,category,description)) {
+           
 
            const data = {
                lmoID:lmoID,
@@ -73,18 +99,10 @@ export default class LmoMatCreate extends Component {
            }
 
 
-
-          
-          
-
-
-
-
-
-
-
-           console.log(data)
-
+       //if validation succussesfully pass
+       if(isValid){
+       console.log(data)
+           //Post data to back end using the Http link
            axios.post("http://localhost:8000/lmomat/save", data).then((res) =>{
                if(res.data.success){
                 Swal.fire('Added','LMO Card Added Successfilly','success')
@@ -102,11 +120,11 @@ export default class LmoMatCreate extends Component {
            })
 
 
-       }
+          }
       }
 
 
-
+      //Demo button
       btnDemo = (e) => {
         e.preventDefault();
       
@@ -125,29 +143,26 @@ export default class LmoMatCreate extends Component {
       
         this.setState(
             {
-              lmoID: "Aida",
-              matID: "Bugg",
-              matName: "Trainig class manager",
-              qty: "aida123",
-              category: "aida123",
-              description: "0814532671",
+              lmoID: "LMO001",
+              matID: "MAT020",
+              matName: "Crape",
+              qty: "10000",
+              category: "Fabric",
+              description: "Versatile fabric",
               
             }
         )
       }
-
+    //gather outputs
     render() {
         return (
-
+            //component organizer
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
-
-
-
-
-            
-              <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
+              .
+          {/* custom navigation        */}
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -175,7 +190,7 @@ export default class LmoMatCreate extends Component {
 
 
 
-
+{/* Instruction section */}
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">INSTRUCTIONS</h5>
@@ -186,16 +201,19 @@ export default class LmoMatCreate extends Component {
     <p class="card-text">Imagine having just the right number of products for a certain SKU, given demand -- but your team is working with old data and, based on that data, projects that your inventory will fall short of demand in a month. It is obvious what your team would do: begin the process of acquiring more inventory to make up the difference. Now there will be excess inventory, and you will be in an Overstock situation.</p>
     <p class="card-text"><small class="text-muted">Latest Regulations</small></p>
   </div>
-  <img src="%PUBLIC_URL%../../lmo1.png" class="card-img-bottom" alt="..."/>
+  <img src="%PUBLIC_URL%../../CASANOVA03.png" class="card-img-bottom" alt="..."/>
 </div>
 
 <div class="p-3 mb-2 bg-info text-dark rounded-3">
 
             <div className="col-md-8 mt-4 mx-auto">
+              {/* Title        */}
               <center>
                 <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>ADD NEW LMO CARD</b></h1>
                 </center>
                 <hr/>
+
+                 {/* LMO add form */}
                 <form className="needs-validation" noValidate>
 
 
@@ -206,12 +224,15 @@ export default class LmoMatCreate extends Component {
                         name="lmoID"
                         placeholder="Enter LMO ID"
                         value={this.state.lmoID}
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required
+                        />
 
-{this.state.errors.lmoID && (
 
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.lmoID}</div>
-)}
+
+<div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.lmoIDError}
+                   </div>
                         </div>
 
 
@@ -222,13 +243,16 @@ export default class LmoMatCreate extends Component {
                         name="matID"
                         placeholder="Enter Material ID"
                         value={this.state.matID}
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required
+                        />
 
-{this.state.errors.matID && (
 
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.matID}</div>
-)}
-                        </div>
+<div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matIDError}
+                   </div>
+
+                 </div>
 
                         <div className="form-group" style={{marginBottom:'15px'}}>
                         <label style={{marginBottom:'5px'}} >Material Name</label>
@@ -237,12 +261,14 @@ export default class LmoMatCreate extends Component {
                         name="matName"
                         placeholder="Enter Material Name"
                         value={this.state.matName}
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required
+                        />
+                         
+                         <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matNameError}
+                   </div>
 
-{this.state.errors.matName && (
-
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.matName}</div>
-)}
                         </div>
 
                        
@@ -254,12 +280,14 @@ export default class LmoMatCreate extends Component {
                         name="qty"
                         placeholder="Enter Qty"
                         value={this.state.qty}
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required
+                        />
+                          
+                          <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.qtyError}
+                   </div>
 
-{this.state.errors.qty && (
-
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.qty}</div>
-)}
                         </div>
 
                         <div className="form-group" style={{marginBottom:'15px'}}>
@@ -269,12 +297,13 @@ export default class LmoMatCreate extends Component {
                         name="category"
                         placeholder="Enter Category"
                         value={this.state.category}
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required
+                        />
 
-{this.state.errors.category && (
-
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.category}</div>
-)}
+<div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.categoryError}
+                   </div>
                         </div>
 
                         <div className="form-group" style={{marginBottom:'15px'}}>
@@ -284,12 +313,13 @@ export default class LmoMatCreate extends Component {
                         name="description"
                         placeholder="Enter Description"
                         value={this.state.description}
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required
+                        />
 
-{this.state.errors.description && (
-
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.description}</div>
-)}
+<div  style={{fontSize:15 ,color:"red"}}>
+                           {this.state.descriptionError}
+                   </div>
                         </div>
                         <hr/>
 
@@ -307,7 +337,8 @@ export default class LmoMatCreate extends Component {
                     </div> 
 
 
-                    <div class="footer">
+{/* Footer */}
+<div class="footer">
 
 
 <div class="contain">

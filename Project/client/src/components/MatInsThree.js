@@ -1,56 +1,57 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import jsPDF from 'jspdf';
 
-const generatePDF = lmomat => {
-  const doc = new jsPDF();
-  const tableColumn = ["LMOID", "MATID", "MAT NAME", "QTY", "CATEGORY", "DESCRIPTION"];
-  const tableRows = [];
 
-  lmomat.map(lmomat => {
-    const lmomatdata = [
-      lmomat.lmoID,
-      lmomat.matID,
-      lmomat.matName,
-      lmomat.qty,
-      lmomat.category,
-      lmomat.description,
-   
- ];
-    tableRows.push(lmomatdata);
-  })
-  doc.text("CASANOVA", 70,8).setFontSize(13);
-  doc.text("LMO SUMMURY", 14, 16).setFontSize(13); 
-  doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 8, }, startY: 35 });
-  doc.save("LMOSUMMARY.pdf");
-}
+const generatePDF = matreport => {
+    const doc = new jsPDF();
+    const tableColumn = ["REPORT ID", "MATID", "MAT NAME", "DATE", "SHIPMENT ID", "DEFECT", "QTY"];
+    const tableRows = [];
+  
+    matreport.map(matreport => {
+      const matreportdata = [
+        matreport.matreportID,
+        matreport.matID,
+        matreport.matName,
+        matreport.date,
+        matreport.shipID,
+        matreport.defect,
+        matreport.qty,
+     
+   ];
+      tableRows.push(matreportdata);
+    })
+    doc.text("CASANOVA", 70,8).setFontSize(13);
+    doc.text("REPORTING SUMMURY", 14, 16).setFontSize(13); 
+    doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 8, }, startY: 35 });
+    doc.save("REPORTINGSUMMARY.pdf");
+  }
 
 
-export default class MatInsTwo extends Component {
+export default class MatInsThree extends Component {
 constructor(props){
   super(props);
 
   this.state={
-    lmomat:[]
+    matreport:[]
   };
 }
 
 
 componentDidMount(){
-  this.retriveLmo();
+  this.retriveReport();
 }
 
 
-retriveLmo(){
-  axios.get("http://localhost:8000/lmomat").then(res =>{
+retriveReport(){
+  axios.get("http://localhost:8000/matreport").then(res =>{
       if(res.data.success){
         this.setState({
-          lmomat:res.data.existingPosts
+          matreport:res.data.existingPosts
         });
 
-        console.log(this.state.lmomat);
+        console.log(this.state.matreport);
       }
 
   });
@@ -58,17 +59,17 @@ retriveLmo(){
 
 
 
-   //filter data
-   filterData(lmomat,searchKey){
+ //filter data
+ filterData(matreport,searchKey){
 
-    const result = lmomat.filter((lmomat) =>
-       lmomat.lmoID.toLowerCase().includes(searchKey) ||
-       lmomat.matID.toLowerCase().includes(searchKey) ||
-       lmomat.matName.toLowerCase().includes(searchKey) ||
-       lmomat.category.toLowerCase().includes(searchKey)
+    const result = matreport.filter((matreport) =>
+       matreport.matreportID.toLowerCase().includes(searchKey) ||
+       matreport.matID.toLowerCase().includes(searchKey) ||
+       matreport.defect.toLowerCase().includes(searchKey)
+      
     )
     
-    this.setState({lmomat:result})
+    this.setState({matreport:result})
     
     }
     
@@ -77,7 +78,7 @@ retriveLmo(){
     
       const searchKey= e.currentTarget.value;
     
-      axios.get("http://localhost:8000/lmomat").then(res =>{
+      axios.get("http://localhost:8000/matreport").then(res =>{
           if(res.data.success){
     
             this.filterData(res.data.existingPosts,searchKey)
@@ -111,13 +112,12 @@ retriveLmo(){
         <a class="nav-link" href="/matDash">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href=""> &#62; Insights <span class="sr-only">(current)</span> </a>
+        <a class="nav-link" href="/matinsthree"> &#62; Insights  <span class="sr-only">(current)</span> </a>
       </li>
    
     </ul>
   </div>
 </nav> 
-<br/>
 
 <div class="card">
   <div class="card-body">
@@ -133,6 +133,7 @@ retriveLmo(){
 </div>
 
 
+
       
       
       
@@ -142,30 +143,24 @@ retriveLmo(){
       
 <hr/> 
       
-      <div className="container p-3 mb-2 bg-info bg-gradient  rounded-3">
+      <div className="container p-3 mb-2 bg-info bg-gradient rounded-3">
 
 
-      
-           
-        
-     
-              <div class="btn-group" role="group" aria-label="Basic example">
+      <div class="btn-group" role="group" aria-label="Basic example">
              
-              <a href="/matins"><button type="button" class="btn btn-primary"style={{ backgroundColor: "#0E3662" }}>INVENTORY</button></a>
-              &nbsp;
-  
-              <a href="/matinstwo"><button type="button" class="btn btn-primary" style={{ backgroundColor: "#0E3662" }}>LMO</button></a>
-              &nbsp;
-              <a href="/matinsthree"><button type="button" class="btn btn-primary" style={{ backgroundColor: "#0E3662" }}>REPORTING</button></a>
-              
-              
-</div>
-
+             <a href="/matins"><button type="button" class="btn btn-primary"style={{ backgroundColor: "#0E3662" }}>INVENTORY</button></a>
+             &nbsp;
  
-<hr/> 
-<center>
-<h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>LMO SUMMARY</b></h1>
+             <a href="/matinstwo"><button type="button" class="btn btn-primary" style={{ backgroundColor: "#0E3662" }}>LMO</button></a>
+             &nbsp;
+             <a href="/matinsthree"><button type="button" class="btn btn-primary" style={{ backgroundColor: "#0E3662" }}>REPORTING</button></a>
+    </div>
+    <hr/>
+
+    <center>
+<h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>REPORTING SUMMARY</b></h1>
 </center>
+
 
 <div className="p-3 mb-2 text-light rounded-3" style={{ backgroundColor: "#0E3662" }} >
           <div class="form-check">
@@ -176,25 +171,32 @@ retriveLmo(){
 </div>
 
           <div class="form-check" >
-  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="fabric" onChange={this.handleSearchArea} />
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="error in wool" onChange={this.handleSearchArea} />
   <label class="form-check-label" for="exampleRadios1">
-    Fabrics
+    Error in wool
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="accessory" onChange={this.handleSearchArea}/>
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="cutting edges" onChange={this.handleSearchArea}/>
   <label class="form-check-label" for="exampleRadios2">
-    Accessories
+  Cutting edges
   </label>
 </div>
 <div class="form-check">
-  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="packing" onChange={this.handleSearchArea}/>
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="colour patch" onChange={this.handleSearchArea}/>
   <label class="form-check-label" for="exampleRadios3">
-    Packing Materials
+  Colour patch
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="damaged edges" onChange={this.handleSearchArea}/>
+  <label class="form-check-label" for="exampleRadios3">
+  Damaged edges
   </label>
 </div>
 
 </div>
+
 
 <center>
         <div  className="col-lg-3 mt-2 mb-2">
@@ -202,68 +204,74 @@ retriveLmo(){
           <input
           className="form-control "
           type="search"
-          placeholder="Search LMO"
+          placeholder="Search Report"
           name="searchQuery"
           onChange={this.handleSearchArea}>
 
           </input>
           </div>
           </center>
-&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+          
 <ReactHTMLTableToExcel
               
               id="test-table-xls-button"
               className="btn btn-warning"
-              table="tablee"
+              table="table"
               filename="LMO Summary"
               sheet="tablexls"
               buttonText="Download As Excel" />
 
-              &nbsp;
+&nbsp;
 
 <button
                   type="button"
                   style={{ backgroundColor: "#00000", padding: "7px" }}
                   class="btn btn-secondary btn-sm"
-                  onClick={() => generatePDF(this.state.lmomat)}
+                  onClick={() => generatePDF(this.state.matreport)}
                 >
                   Download As PDF
                 </button>
 
-         
-         
-        <div class="p-3 mb-2 bg-info text-dark rounded-3">
-         <table id="tablee" className="table table-hover  table table-bordered border-info table table-info table-striped"style={{marginTop:'5px'}}>
+           
+<table id="table" className="table table-hover  table table-bordered border-info table table-info table-striped"style={{marginTop:'5px'}}>
            <thead>
              <tr>
                <th scope="col">#</th>
-               <th scope="col">LMOID</th>
-               <th scope="col">MatID</th>
-               <th scope="col">MatName</th>
-             <th scope="col">Qty</th>
-               <th scope="col">Category</th>
-               <th scope="col">Description</th>
-               
+               <th scope="col">Report ID</th>
+               <th scope="col">Material ID</th>
+               <th scope="col">Material Name</th>
+               <th scope="col">Date</th>
+             <th scope="col">Shipment ID</th>
+               <th scope="col">Defect</th>
+               <th scope="col">Qty</th>
+             
 
              </tr>
            </thead>
            <tbody>
-             {this.state.lmomat.map((lmomat,index) =>(
+             {this.state.matreport.map((matreport,index) =>(
                   <tr key={index}>
                     <th scope="row">{index+1}</th>
-
-                    <td>{lmomat.lmoID}</td>
+                     
+                    <td>
+                    <a href={`/matreportone/${matreport._id}`} style={{textDecoration:'none'}}>
+                      {matreport.matreportID}
+                      </a>
+                      </td>
                     <td>
                       
-                      {lmomat.matID}
+                      {matreport.matID}
                     
                       </td>
-                    <td>{lmomat.matName}</td>
+                    <td>{matreport.matName}</td>
                    
-                    <td>{lmomat.qty}</td>
-                    <td>{lmomat.category}</td>
-                    <td>{lmomat.description}</td>
-                   
+                    <td>{matreport.date}</td>
+                    <td>{matreport.shipID}</td>
+                    <td>{matreport.defect}</td>
+                    <td>{matreport.qty}</td>
+                  
 
                   </tr>
 
@@ -275,9 +283,7 @@ retriveLmo(){
         </div>
         </div>
         </div>
-      </div>
-
-
+     
 
 
       <div class="footer">

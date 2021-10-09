@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 
 
@@ -107,6 +108,7 @@ export default class AddVehicle extends Component {
 
     }
     };
+    
     btnDemo = (e) => {
         e.preventDefault();
     
@@ -141,6 +143,27 @@ export default class AddVehicle extends Component {
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/TMSDash">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/vehicleDash"> &#62; Vehicle Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href=""> &#62; Add Vehicle <span class="sr-only">(current)</span> </a>
+      </li>
+   
+    </ul>
+  </div>
+</nav> 
+<br/>
             
             <div className= 'col-md-8 mt-8-4 mx-auto'>
               <h1 className="h3 mb-3 font-weight-normal">ADD NEW VEHICLE</h1>
@@ -186,8 +209,8 @@ export default class AddVehicle extends Component {
 
                 <div>
                       <lable style={{marginBottom:'15px'}}>Year of Manufacture</lable>
-                    <textarea  cols='30' rows='5' placeholder='Enter Date' className='form-control'            
-                     name="manuyear" value={this.state.manuyear} onChange={this.handleInputChange} required/> 
+                    <input type="date" placeholder='Enter Date' className='form-control'            
+                     name="manuyear" value={this.state.manuyear} onChange={this.handleInputChange} max={moment().format("YYYY-MM-DD")} required/> 
                         <div style={{fontSize:12 ,color:"red"}}>
                            {this.state.manuyearError}
                    </div>

@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 export default class MaterialEdit extends Component {
 
-
+    //Binding event handler method
     constructor(props){
         super(props);
         this.state={
@@ -18,7 +18,17 @@ export default class MaterialEdit extends Component {
             price:"",
             qty:"",
             category:"",
-            description:""
+            description:"",
+            matIDError:"",
+            matNameError:"",
+            supIDError:"",
+            supNameError:"",
+            arrDateError:"",
+            shipIDError:"",
+            priceError:"",
+            qtyError:"",
+            categoryError:"",
+            descriptionError:""
 
        }
     } 
@@ -32,10 +42,77 @@ export default class MaterialEdit extends Component {
         })
 
     } 
-    
+
+    //validation
+    validate= ()=>{
+      let matIDError="";
+      let matNameError="";
+      let supIDError="";
+      let supNameError="";
+      let arrDateError="";
+      let shipIDError="";
+      let priceError="";
+      let qtyError="";
+      let categoryError="";
+      let descriptionError="";
+      //statements
+      if(!this.state.matID){
+        matIDError="*Material ID is Required!"
+      }
+      if(!this.state.matName){
+        matNameError="*Material name is Required!"
+      }
+     
+      if(!this.state.supID){
+        supIDError="*Supplier ID is Required!"
+   }
+   if(!this.state.supName){
+    supNameError="*Supplier name is Required"
+   }
+
+   if(!this.state.arrDate){
+    arrDateError="*Arrival date is Required"
+   }
+   if(!this.state.shipID){
+    shipIDError="*Shipment ID is Required"
+   }
+   if(!this.state.price){
+    priceError="*Price is Required"
+   }
+
+//     else if (!this.state.price.match('^[1-9]+[0-9]*$')){
+//     priceError= '*Please Enter a Valid Price Range'
+//  } 
+
+   if(!this.state.qty){
+    qtyError="*QTY is Required"
+   }
+
+  //    else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
+  //     qtyError= "*Please Enter a Valid QTY Range "
+  //  } 
+
+   if(!this.state.category){
+    categoryError="*Category is Required"
+   }
+
+   if(!this.state.description){
+    descriptionError="Description is Required"
+   }
+
+   if(matIDError||matNameError||supIDError||supNameError||arrDateError||shipIDError||priceError||qtyError||categoryError||descriptionError){
+       this.setState({matIDError,matNameError,supIDError,supNameError,arrDateError,shipIDError,priceError,qtyError,categoryError,descriptionError});
+       return false;
+
+   }
+
+   return true;
+
+  }
+    //onsubmit method
     onSubmit =(e) =>{
         e.preventDefault();
-
+        const isValid= this.validate();
         const id =this.props.match.params.id;
 
         const {matID,matName,supID,supName,arrDate,shipID,price,qty,category,description} = this.state;
@@ -53,9 +130,10 @@ export default class MaterialEdit extends Component {
             description:description
 
         }
-
+        //if validation succussesfully pass
+        if(isValid){
         console.log(data)
-
+       //Put data to back end using the Http link
         axios.put(`http://localhost:8000/material/updatematerial/${id}`, data).then((res) =>{
             if(res.data.success){
               Swal.fire('Updated','Material Card Updated Successfilly','success')
@@ -75,10 +153,10 @@ export default class MaterialEdit extends Component {
                 )
             }
         })
-
+      }
 
     }
-
+    //load data from a remote endpoint
     componentDidMount(){
 
         const id =this.props.match.params.id;
@@ -105,17 +183,18 @@ export default class MaterialEdit extends Component {
 
 
 
-
+    //gather outputs
     render() {
         return (
  
-            <div id="wrapper" className="toggled">
-            <div id="page-content-wrapper">
-            <div className="container-fluid">
+          //component organizer
+          <div id="wrapper" className="toggled">
+          <div id="page-content-wrapper">
+          <div className="container-fluid">
 
            
         
-            
+              {/* custom navigation        */}
               <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -135,32 +214,21 @@ export default class MaterialEdit extends Component {
   </div>
 </nav> 
 
-
-
-
- 
-
-             
 <hr/>
 
-
-
-
-
-
-
+{/* Title        */}
 <div class="p-3 mb-2 bg-info text-dark rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
               <center>
             <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>EDIT MATERIAL CARD</b></h1>
                </center>
             <hr/>
+
+
+                {/* Edit form */}
                 <form className="needs-validation" noValidate>
 
-           
-
-
-                <div class="row">
+  <div class="row">
   <div class="col">
     <label style={{marginBottom:'5px'}} >Material ID</label>
     <input type="text" class="form-control" name="matID" placeholder="Enter Material ID"
@@ -168,6 +236,9 @@ export default class MaterialEdit extends Component {
     readOnly
     onChange={this.handleInputChange}
     />
+    <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matIDError}
+                   </div>
   </div>
 
   <div class="col">
@@ -176,7 +247,11 @@ export default class MaterialEdit extends Component {
      value={this.state.matName}
      readOnly
      onChange={this.handleInputChange}
+     required
      />
+     <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matNameError}
+                   </div>
   </div>
 </div>
 
@@ -188,7 +263,11 @@ export default class MaterialEdit extends Component {
     value={this.state.supID}
     readOnly
     onChange={this.handleInputChange}
+    required
     />
+    <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.supIDError}
+                   </div>
   </div>
 
   <div class="col">
@@ -197,7 +276,11 @@ export default class MaterialEdit extends Component {
      value={this.state.supName}
      readOnly
      onChange={this.handleInputChange}
+     required
      />
+     <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.supNameError}
+                   </div>
   </div>
 </div>
 
@@ -211,7 +294,11 @@ export default class MaterialEdit extends Component {
     value={this.state.arrDate}
     readOnly
     onChange={this.handleInputChange}
+    required
     />
+    <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.arrDateError}
+                   </div>
   </div>
 
   <div class="col">
@@ -220,7 +307,11 @@ export default class MaterialEdit extends Component {
      value={this.state.shipID}
      readOnly
      onChange={this.handleInputChange}
+     required
      />
+     <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.shipIDError}
+                   </div>
   </div>
 </div>
 
@@ -233,7 +324,11 @@ export default class MaterialEdit extends Component {
     <input type="number" class="form-control" name="price" placeholder="Enter Price"
     value={this.state.price}
     onChange={this.handleInputChange}
+    required
     />
+    <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.priceError}
+                   </div>
   </div>
 
   <div class="col">
@@ -241,7 +336,11 @@ export default class MaterialEdit extends Component {
     <input type="number" class="form-control" name="qty" placeholder="Enter Qty"
      value={this.state.qty}
      onChange={this.handleInputChange}
+     required
      />
+     <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.qtyError}
+                   </div>
   </div>
 </div>
 
@@ -254,7 +353,11 @@ export default class MaterialEdit extends Component {
                         placeholder="Enter Category"
                         value={this.state.category}
                         
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required/>
+                        <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.categoryError}
+                   </div>
                         </div>
 
                         <div className="form-group" style={{marginBottom:'15px'}}>
@@ -264,7 +367,11 @@ export default class MaterialEdit extends Component {
                         name="description"
                         placeholder="Enter Description"
                         value={this.state.description}
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required/>
+                        <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.descriptionError}
+                   </div>
                         </div>
                          
                          <hr/>
@@ -279,9 +386,8 @@ export default class MaterialEdit extends Component {
             </div>
             </div>
 
-            <div class="footer">
-
-
+  {/* Footer */}
+  <div class="footer">
   <div class="contain">
 
     <br/>

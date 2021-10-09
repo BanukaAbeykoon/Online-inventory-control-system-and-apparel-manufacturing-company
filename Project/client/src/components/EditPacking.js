@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import swal from "sweetalert2";
 import {RMsetErrors, setErrors} from "./../conmmon/RMsetErrors"
+import moment from "moment";
 
 export default class EditPacking extends Component {
   constructor(props) {
@@ -179,6 +180,7 @@ return Object.values(errors).every((err) => err === "");
                   <label style={{ marginBottom: "5px" }}>OrderId</label>
                   <input
                     type="text"
+                    readOnly
                     className="form-control"
                     name="orderId"
                     placeholder="Enter Order ID"
@@ -229,7 +231,7 @@ return Object.values(errors).every((err) => err === "");
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Quantity</label>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     name="quantity"
                     placeholder="Enter quantity"
@@ -246,7 +248,7 @@ return Object.values(errors).every((err) => err === "");
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Weight</label>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control"
                     name="weight"
                     placeholder="Enter weight"
@@ -263,12 +265,13 @@ return Object.values(errors).every((err) => err === "");
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Duedate</label>
                   <input
-                    type="text"
+                    type="date"
                     className="form-control"
                     name="dueDate"
                     placeholder="Enter dueDate"
                     value={this.state.dueDate}
                     onChange={this.handleInputChange}
+                    max={moment().format("YYYY-MM-DD")}
                   />
                   {this.state.errors.dueDate && (
                     <div classNane="text-danger" style={{ color: "red" }}>

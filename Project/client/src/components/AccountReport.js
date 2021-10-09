@@ -106,6 +106,54 @@ export default class AccountReport extends Component {
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
+
+
+            <div className="row">
+              <div className="col-lg-9 mt-2 mb-2">
+                <nav
+                  className="navbar navbar-expand-lg navbar-light"
+                  style={{
+                    backgroundColor: "#e3f2fd",
+                    width: "134%",
+                    border: " solid #5f9ea0",
+                    padding: "0px",
+                  }}
+                >
+                  <div className="container-fluid">
+                    <button
+                      className="navbar-toggler"
+                      type="button"
+                      data-bs-toogle="collapse"
+                      data-bs-target="#navbarNav"
+                      aria-controls="navbarNav"
+                      aria-expanded="false"
+                      aria-label="Tooggle navigation"
+                    >
+                      <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                      <ul className="navbar-nav">
+                        <li className="nav-item">
+                          <a className="nav-link" aria-current="page" href="/Accountdashboard">
+                            Account Home -
+                          </a>
+                        </li>
+
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/reporte" className="nav-link">
+                           Account Reports -
+                          </a>
+                        </li>
+
+                       
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
+
       
               
       
@@ -115,36 +163,45 @@ export default class AccountReport extends Component {
                   </div>
 
 
-
-                  <div className="p-3 mb-2 bg-dark text-light rounded-3">
-          <div class="form-check">
+                  <div
+              className="p-3 mb-2 bg-dark text-light rounded-3"
+              style={{
+                background: "transparent",
+                height: "50px",
+                opacity: 0.5,
+                padding: "10px",
+              }}
+            >
+          <div class="form-check"  style={{ float: "left" }} >
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="" onChange={this.handleSearchArea}/>
   
   <label class="form-check-label" for="exampleRadios2">
-    ALL
+    ALL &nbsp;  &nbsp;
   </label>
 </div>
+ 
 
-          <div class="form-check">
+          <div class="form-check"  style={{ float: "left" }}>
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="special" onChange={this.handleSearchArea} />
   <label class="form-check-label" for="exampleRadios1">
-   Special Customer
+   Special Customer&nbsp;  &nbsp;
   </label>
 </div>
-<div class="form-check">
+<div class="form-check"  style={{ float: "left" }}>
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="normal" onChange={this.handleSearchArea}/>
   <label class="form-check-label" for="exampleRadios2">
-  Normal Customer
+  Normal Customer&nbsp;  &nbsp;
   </label>
 </div>
-<div class="form-check">
+<div class="form-check"  style={{ float: "left" }}>
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="new" onChange={this.handleSearchArea}/>
   <label class="form-check-label" for="exampleRadios3">
-    New Customer
+    New Customer&nbsp;  &nbsp;
   </label>
 </div>
 
 </div>
+
 
 
 

@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './styleSideNav.css';
 import Swal from 'sweetalert2';
-import {MatReportAddValid, setErrors} from "./../components/validationprocess/MatReportAddValid"
+
 
 
 export default class MatReportAdd extends Component {
-
+       //handle data to database
        constructor(props){
            super(props);
            this.state={
@@ -17,7 +17,14 @@ export default class MatReportAdd extends Component {
             shipID:"",
             defect:"",
             qty:"",
-            errors:{}
+            matreportIDError:"",
+            matIDError:"",
+            matNameError:"",
+            dateError:"",
+            shipIDError:"",
+            defectError:"",
+            qtyError:""
+           
 
           }
        } 
@@ -31,47 +38,62 @@ export default class MatReportAdd extends Component {
            })
 
        } 
-
-
-         //Form Validation part
-  validate = (
-    matreportID,
-    matID,
-    matName,
-    date,
-    shipID,
-    defect,
-    qty
-  ) => {
-    const errors = setErrors(
-      matreportID,
-      matID,
-      matName,
-      date,
-      shipID,
-      defect,
-      qty
-    );
-
-    this.setState({ errors: errors });
-
-    return Object.values(errors).every((err) => err === "");
-  };
-
-
-
-
-
-
-
-
-
+        //validation
+       validate= ()=>{
+        let matreportIDError="";
+        let matIDError="";
+        let matNameError="";
+        let dateError="";
+        let shipIDError="";
+        let defectError="";
+        let qtyError="";
+       //statements
+        if(!this.state.matreportID){
+          matreportIDError="*Report ID is Required!"
+        }
+        if(!this.state.matID){
+          matIDError="*Material ID is Required!"
+        }
        
-       onSubmit =(e) =>{
-           e.preventDefault();
+        if(!this.state.matName){
+          matNameError="*Material name is Required!"
+        }
+        if(!this.state.date){
+          dateError="*Date is Required"
+        }
+        if(!this.state.shipID){
+          shipIDError="*Shipment ID  is Required"
+        }
+        if(!this.state.defect){
+          defectError="*Defect is Required"
+        }
 
+        if(!this.state.qty){
+          qtyError="*QTY is Required"
+        }
+          else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
+           qtyError= '*Please Enter a Valid QTY Range '
+         } 
+    
+ 
+        if(matreportIDError||matIDError||matNameError||dateError||shipIDError||defectError||qtyError){
+         this.setState({matreportIDError,matIDError,matNameError,dateError,shipIDError,defectError,qtyError});
+         return false;
+ 
+     }
+ 
+     return true;
+ 
+    }
+        
+
+
+//onsubmit method
+ onSubmit =(e) =>{
+           e.preventDefault();
+           const isValid= this.validate();
            const {matreportID,matID,matName,date,shipID,defect,qty} = this.state;
-           if (this.validate(matreportID,matID,matName,date,shipID,defect,qty)) {
+          
 
            const data = {
             matreportID:matreportID,
@@ -82,9 +104,10 @@ export default class MatReportAdd extends Component {
             defect:defect,
             qty:qty
            }
-
+           //if validation succussesfully pass
+           if(isValid){
            console.log(data)
-
+           //Post data to back end using the Http link
            axios.post("http://localhost:8000/matreport/save", data).then((res) =>{
                if(res.data.success){
                 Swal.fire('Added','Report Added Successfilly','success')
@@ -102,9 +125,10 @@ export default class MatReportAdd extends Component {
                }
            })
 
+       
        }
-       }
-
+      }
+       //Demo button
        btnDemo = (e) => {
         e.preventDefault();
       
@@ -124,27 +148,27 @@ export default class MatReportAdd extends Component {
       
         this.setState(
             {
-              matreportID: "Aida",
-              matID: "Bugg",
-              matName: "Trainig class manager",
-              date: "aida123",
-              shipID: "aida123",
-              defect: "0814532671",
-              qty: "0814532671",
+              matreportID: "RP007",
+              matID: "MAT17",
+              matName: "Clips",
+              date: "	2021-09-07",
+              shipID: "SHP005",
+              defect: "Damaged",
+              qty: "2000",
               
             }
         )
       }
-
+    //gather outputs
     render() {
         return (
-
+           //component organizer
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
 
 
-            
+              {/* custom navigation        */}
               <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -166,7 +190,7 @@ export default class MatReportAdd extends Component {
 
 
 <hr/>
-
+{/* Instruction section */}
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">INSTRUCTIONS</h5>
@@ -177,11 +201,11 @@ export default class MatReportAdd extends Component {
     <p class="card-text">Imagine having just the right number of products for a certain SKU, given demand -- but your team is working with old data and, based on that data, projects that your inventory will fall short of demand in a month. It is obvious what your team would do: begin the process of acquiring more inventory to make up the difference. Now there will be excess inventory, and you will be in an Overstock situation.</p>
     <p class="card-text"><small class="text-muted">Latest Regulations</small></p>
   </div>
-  <img src="%PUBLIC_URL%../../lmo1.png" class="card-img-bottom" alt="..."/>
+  <img src="%PUBLIC_URL%../../CASANOVA04.png" class="card-img-bottom" alt="..."/>
 </div>
              
 
-
+{/* Title        */}
 <div class="p-3 mb-2 bg-info text-dark  rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
               <center>
@@ -191,7 +215,7 @@ export default class MatReportAdd extends Component {
 
 
 
-               
+               {/* Material add form */}
                 <form className="needs-validation" noValidate>
                     
 
@@ -202,12 +226,12 @@ export default class MatReportAdd extends Component {
     <input type="text" class="form-control" name="matreportID" placeholder="Enter Report ID"
     value={this.state.matreportID}
     onChange={this.handleInputChange}
+    required
     />
 
-{this.state.errors.matreportID && (
-
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.matreportID}</div>
-)}
+<div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matreportIDError}
+                   </div>
   </div>
 
   <div class="col">
@@ -215,12 +239,12 @@ export default class MatReportAdd extends Component {
     <input type="text" class="form-control" name="matID"  placeholder="Enter Material ID"
      value={this.state.matID}
      onChange={this.handleInputChange}
+     required
      />
 
-{this.state.errors.matID && (
-
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.matID}</div>
-)}
+<div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matIDError}
+                   </div>
   </div>
 </div>
 
@@ -231,12 +255,12 @@ export default class MatReportAdd extends Component {
     <input type="text" class="form-control" name="matName" placeholder="Enter Material Name"
     value={this.state.matName}
     onChange={this.handleInputChange}
+    required
     />
 
-{this.state.errors.matName && (
-
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.matName}</div>
-)}
+<div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matNameError}
+                   </div>
   </div>
 
   <div class="col">
@@ -244,11 +268,11 @@ export default class MatReportAdd extends Component {
     <input type="date" class="form-control" name="date"  placeholder="Enter Date"
      value={this.state.date}
      onChange={this.handleInputChange}
+     required
      />
-     {this.state.errors.date && (
-
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.date}</div>
-)}
+     <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.dateError}
+                   </div>
   </div>
 </div>
 
@@ -261,11 +285,11 @@ export default class MatReportAdd extends Component {
     <input type="text" class="form-control" name="shipID" placeholder="Enter Ship ID"
     value={this.state.shipID}
     onChange={this.handleInputChange}
+    required
     />
-     {this.state.errors.shipID && (
-
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.shipID}</div>
-)}
+     <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.shipIDError}
+                   </div>
   </div>
   <div class="mb-3">
 
@@ -276,13 +300,13 @@ export default class MatReportAdd extends Component {
   placeholder="Enter Defect"
   value={this.state.defect}
      onChange={this.handleInputChange}
+     required
   
   ></textarea>
 
-{this.state.errors.defect && (
-
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.defect}</div>
-)}
+<div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.defectError}
+                   </div>
    
      </div>
   </div>
@@ -301,13 +325,14 @@ export default class MatReportAdd extends Component {
                         name="qty"
                         placeholder="Enter Qty"
                         value={this.state.qty}
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required
+                        />
 
+<div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.qtyError}
+                   </div>
 
-{this.state.errors.qty && (
-
-<div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.qty}</div>
-)}
                         </div>
 
                         <hr/>
@@ -327,10 +352,8 @@ export default class MatReportAdd extends Component {
                     </div>
                     </div>
                     </div>  
-
-                    <div class="footer">
-
-
+{/* Footer */}
+<div class="footer">
 <div class="contain">
 
   <br/>

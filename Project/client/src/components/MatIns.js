@@ -183,6 +183,35 @@ filterData(material,searchKey){
 
 <div>
 
+<div className="p-3 mb-2 text-light rounded-3" style={{ backgroundColor: "#0E3662" }} >
+          <div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="" onChange={this.handleSearchArea}/>
+  <label class="form-check-label" for="exampleRadios2">
+    ALL
+  </label>
+</div>
+
+          <div class="form-check" >
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="fabric" onChange={this.handleSearchArea} />
+  <label class="form-check-label" for="exampleRadios1">
+    Fabrics
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="accessory" onChange={this.handleSearchArea}/>
+  <label class="form-check-label" for="exampleRadios2">
+    Accessories
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="packing" onChange={this.handleSearchArea}/>
+  <label class="form-check-label" for="exampleRadios3">
+    Packing Materials
+  </label>
+</div>
+
+</div>
+
 <center>
         <div  className="col-lg-3 mt-2 mb-2">
           

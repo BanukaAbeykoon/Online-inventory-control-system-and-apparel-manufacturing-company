@@ -4,7 +4,8 @@ import './styleSideNav.css';
 import Swal from 'sweetalert2';
 
 export default class MaterialCreate extends Component {
-
+       
+       //handle data to database
        constructor(props){
            super(props);
            this.state={
@@ -17,11 +18,21 @@ export default class MaterialCreate extends Component {
                price:"",
                qty:"",
                category:"",
-               description:""
+               description:"",
+               matIDError:"",
+               matNameError:"",
+               supIDError:"",
+               supNameError:"",
+               arrDateError:"",
+               shipIDError:"",
+               priceError:"",
+               qtyError:"",
+               categoryError:"",
+               descriptionError:""
 
           }
        } 
-
+      
        handleInputChange = (e) =>{
            const{name,value} = e.target;
 
@@ -31,10 +42,86 @@ export default class MaterialCreate extends Component {
            })
 
        } 
-       
-       onSubmit =(e) =>{
-           e.preventDefault();
 
+       
+      //validation
+       validate= ()=>{
+        let matIDError="";
+        let matNameError="";
+        let supIDError="";
+        let supNameError="";
+        let arrDateError="";
+        let shipIDError="";
+        let priceError="";
+        let qtyError="";
+        let categoryError="";
+        let descriptionError="";
+ 
+        //statements
+        if(!this.state.matID){
+          matIDError="*Material ID is Required!"
+        }
+
+        
+
+        if(!this.state.matName){
+          matNameError="*Material name is Required!"
+        }
+       
+        if(!this.state.supID){
+          supIDError="*Supplier ID is Required!"
+        }
+        if(!this.state.supName){
+           supNameError="*Supplier name is Required"
+        }
+
+        if(!this.state.arrDate){
+          arrDateError="*Arrival date is Required"
+        }
+         
+        
+         
+        if(!this.state.shipID){
+          shipIDError="*Shipment ID is Required"
+        }
+        if(!this.state.price){
+          priceError="*Price is Required"
+        }
+
+          else if (!this.state.price.match('^[1-9]+[0-9]*$')){
+            priceError= '*Please Enter a Valid Price Range '
+          } 
+
+        if(!this.state.qty){
+          qtyError="*QTY is Required"
+        }
+
+           else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
+            qtyError= '*Please Enter a Valid QTY Range '
+        } 
+
+        if(!this.state.category){
+          categoryError="*Category is Required"
+        }
+
+        if(!this.state.description){
+          descriptionError="Description is Required"
+        }
+ 
+        if(matIDError||matNameError||supIDError||supNameError||arrDateError||shipIDError||priceError||qtyError||categoryError||descriptionError){
+         this.setState({matIDError,matNameError,supIDError,supNameError,arrDateError,shipIDError,priceError,qtyError,categoryError,descriptionError});
+         return false;
+ 
+        }  
+ 
+     return true;
+ 
+    }
+ 
+     //onsubmit method
+      onSubmit =(e) =>{
+           e.preventDefault();
+           const isValid= this.validate();
            const {matID,matName,supID,supName,arrDate,shipID,price,qty,category,description} = this.state;
 
            const data = {
@@ -52,49 +139,10 @@ export default class MaterialCreate extends Component {
            }
 
 
-           if(matID =="" )
-           {
-            Swal.fire('WARNING','Add Material ID','warning')
-           }
-           else if(matName ==""){
-            Swal.fire('WARNING','Add Material Name','warning')
-           }
-           else if(supID ==""){
-            Swal.fire('WARNING','Add Supplier ID','warning')
-           }
-           else if(supName ==""){
-            Swal.fire('WARNING','Add Supplier Name','warning')
-           }
-           else if(arrDate ==""){
-            Swal.fire('WARNING','Add Arrival Date','warning')
-           }
-           else if(shipID ==""){
-            Swal.fire('WARNING','Add Shipment ID','warning')
-            
-          }
-          else if(price ==""){
-            Swal.fire('WARNING','Add Material Price','warning')
-          }
-
-          else if(qty ==""){
-            Swal.fire('WARNING','Add Material Qty','warning')
-            
-          }
-
-          else if(category ==""){
-            Swal.fire('WARNING','Add Material Category','warning')
-            
-          }
-
-          else if(description ==""){
-            Swal.fire('WARNING','Add Material Description','warning')
-            
-          }
-
-
-
+          //if validation succussesfully pass
+          if(isValid){
            console.log(data)
-
+           //Post data to back end using the Http link
            axios.post("http://localhost:8000/material/save", data).then((res) =>{
                if(res.data.success){
               Swal.fire('Added','Material Card Added Successfilly','success')
@@ -115,9 +163,10 @@ export default class MaterialCreate extends Component {
                }
            })
 
+          }
 }
 
-
+//Demo button
 btnDemo = (e) => {
   e.preventDefault();
 
@@ -140,32 +189,37 @@ btnDemo = (e) => {
 
   this.setState(
       {
-        matID: "Aida",
-        matName: "Bugg",
-        supID: "Trainig class manager",
-        supName: "aida123",
-        arrDate: "aida123",
-        shipID: "0814532671",
-        price: "aida@gmail.com",
-        qty: "1/53,Malabe,Colombo",
-        category: "1/53,Malabe,Colombo",
-        description: "1/53,Malabe,Colombo",
+        matID: "MAT003",
+        matName: "Cashmere",
+        supID: "SUP002",
+        supName: "Xiong",
+        arrDate: "11/10/2021",
+        shipID: "SHP004",
+        price: "1500",
+        qty: "10000",
+        category: "Fabric",
+        description: "Wool lustrous",
       }
   )
 }
 
+
+  
+
+
       
 
-
+    //gather outputs
     render() {
         return (
 
+          //component organizer
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
 
 
-            
+              {/* custom navigation        */}
               <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -188,7 +242,7 @@ btnDemo = (e) => {
 
 <hr/>
 
-
+{/* Instruction section */}
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">INSTRUCTIONS</h5>
@@ -205,7 +259,7 @@ btnDemo = (e) => {
 
 
 
-
+{/* Title        */}
 <div class="p-3 mb-2 bg-info text-dark  rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
               <center>
@@ -216,49 +270,74 @@ btnDemo = (e) => {
 
               
 
-               
+               {/* Material add form */}
                 <form className="needs-validation" noValidate>
                     
 
                 
                     <div class="row">
-  <div class="col">
+    <div class="col">
     <label  style={{marginBottom:'5px'}} >Material ID</label>
-    <input type="text" class="form-control"  name="matID" placeholder="Enter Material ID"
+    <input type="text" class="form-control" maxlength="6"  name="matID" placeholder="Enter Material ID"
     value={this.state.matID}
   
     onChange={this.handleInputChange}
+    required
     />
+    <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matIDError}
+                   </div>
+</div>
 
 
-  </div>
 
   <div class="col">
   <label  style={{marginBottom:'5px'}} >Material Name</label>
     <input type="text" class="form-control" name="matName"  placeholder="Enter Material Name"
      value={this.state.matName}
      onChange={this.handleInputChange}
+     required
      />
+
+<div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.matNameError}
+                   </div>
   </div>
+
+  
+
 </div>
 
    
 <div class="row">
   <div class="col">
   <label style={{marginBottom:'5px'}} >Supplier ID</label>
-    <input type="text" class="form-control" name="supID" placeholder="Enter Supplier ID"
+    <input type="text" class="form-control" maxlength="6" name="supID" placeholder="Enter Supplier ID"
     value={this.state.supID}
     onChange={this.handleInputChange}
+    required
     />
+    <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.supIDError}
+                   </div>
   </div>
+
+  
 
   <div class="col">
   <label style={{marginBottom:'5px'}} >Supplier Name</label>
     <input type="text" class="form-control" name="supName"  placeholder="Enter Suppler Name"
      value={this.state.supName}
      onChange={this.handleInputChange}
+     required
      />
+     <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.supNameError}
+                   </div>
   </div>
+
+  
+
 </div>
 
 
@@ -270,16 +349,30 @@ btnDemo = (e) => {
     <input type="date" class="form-control" name="arrDate" placeholder="Enter Arrival Date"
     value={this.state.arrDate}
     onChange={this.handleInputChange}
+    required
     />
+    <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.arrDateError}
+                   </div>
   </div>
+
+  
+
 
   <div class="col">
   <label style={{marginBottom:'5px'}} >Shipment ID</label>
-    <input type="text" class="form-control" name="shipID"  placeholder="Enter Shipment ID"
+    <input type="text" class="form-control"  maxlength="6" name="shipID"  placeholder="Enter Shipment ID"
      value={this.state.shipID}
      onChange={this.handleInputChange}
+     required
      />
+      <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.shipIDError}
+                   </div>
   </div>
+
+ 
+
 </div>
 
 
@@ -291,16 +384,29 @@ btnDemo = (e) => {
     <input   type="number" min="0.00" max="1000000.00" step="0.01"   class="form-control" name="price" placeholder="Enter Price"
     value={this.state.price}
     onChange={this.handleInputChange}
+    required
     />
+    <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.priceError}
+                   </div>
   </div>
+
+  
 
   <div class="col">
   <label style={{marginBottom:'5px'}} >Qty</label>
-    <input type="number" class="form-control" name="qty" placeholder="Enter Qty"
+    <input type="number" min="0" class="form-control" name="qty" placeholder="Enter Qty"
      value={this.state.qty}
      onChange={this.handleInputChange}
+     required
      />
+      <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.qtyError}
+                   </div>
   </div>
+
+  
+
 </div>
 
                         
@@ -311,8 +417,16 @@ btnDemo = (e) => {
                         name="category"
                         placeholder="Enter Category"
                         value={this.state.category}
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required
+                        />
+
+                   <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.categoryError}
+                   </div>
                         </div>
+
+                        
 
                         <div className="form-group" style={{marginBottom:'15px'}}>
                         <label style={{marginBottom:'5px'}} >Description</label>
@@ -321,8 +435,15 @@ btnDemo = (e) => {
                         name="description"
                         placeholder="Enter Description"
                         value={this.state.description}
-                        onChange={this.handleInputChange}/>
+                        onChange={this.handleInputChange}
+                        required
+                        />
+                         <div style={{fontSize:15 ,color:"red"}}>
+                           {this.state.descriptionError}
+                   </div>
                         </div>
+
+                       
 
                         <hr/>
                     <div>
@@ -342,7 +463,8 @@ btnDemo = (e) => {
                     </div>
                     </div>  
 
-                    <div class="footer">
+{/* Footer */}
+<div class="footer">
 
 
 <div class="contain">
