@@ -2,6 +2,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 
 
@@ -107,6 +108,7 @@ export default class AddVehicle extends Component {
 
     }
     };
+    
     btnDemo = (e) => {
         e.preventDefault();
     
@@ -208,7 +210,7 @@ export default class AddVehicle extends Component {
                 <div>
                       <lable style={{marginBottom:'15px'}}>Year of Manufacture</lable>
                     <input type="date" placeholder='Enter Date' className='form-control'            
-                     name="manuyear" value={this.state.manuyear} onChange={this.handleInputChange} required/> 
+                     name="manuyear" value={this.state.manuyear} onChange={this.handleInputChange} max={moment().format("YYYY-MM-DD")} required/> 
                         <div style={{fontSize:12 ,color:"red"}}>
                            {this.state.manuyearError}
                    </div>
