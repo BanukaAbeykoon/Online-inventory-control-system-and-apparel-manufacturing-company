@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './styleSideNav.css';
-import Swal from 'sweetalert2';
+
 
 export default class ReportDetails extends Component {
     constructor(props){
@@ -29,6 +29,7 @@ export default class ReportDetails extends Component {
 
     render() {
 
+        const id =this.props.match.params.id;      
         const{matreportID,matID,matName,date,shipID,defect,qty} = this.state.matreport;
         return (
 
@@ -75,7 +76,7 @@ export default class ReportDetails extends Component {
          
                 <div style={{marginTop:'20px'}}>
                 
-                <h4>  <i class="fas fa-angle-double-up"></i> &nbsp; {matreportID}</h4>
+                <h4>  <i class="fas fa-angle-double-up"></i> &nbsp;{`RP${id.substr(0,7)}`}</h4>
                 <hr/>
                 
                 <dl className="row">

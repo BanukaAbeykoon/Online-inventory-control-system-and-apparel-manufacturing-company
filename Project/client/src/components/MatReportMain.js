@@ -161,7 +161,8 @@ render() {
                      
                     <td>
                     <a href={`/matreportone/${matreport._id}`} style={{textDecoration:'none'}}>
-                      {matreport.matreportID}
+                      {/* {matreport.matreportID} */}
+                      {`RP${matreport._id.substr(0,7)}`}
                       </a>
                       </td>
                     <td>

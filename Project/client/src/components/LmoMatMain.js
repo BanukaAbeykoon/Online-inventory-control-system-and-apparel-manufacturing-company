@@ -163,7 +163,7 @@ render() {
                   <tr key={index}>
                     <th scope="row">{index+1}</th>
 
-                    <td>{lmomat.lmoID}</td>
+                    <td> {`LMO${lmomat._id.substr(0,7)}`}</td>
                     <td>
                       
                       {lmomat.matID}
