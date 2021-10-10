@@ -28,17 +28,19 @@ export default class ShipmentDetails extends Component {
     render() {
 
         const { shipmentID, supplierID, supllierName, materialID ,materialName,quantity, unitPrice,date } = this.state.shipment;
+        const id = this.props.match.params.id;
 
         return (
           <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
               <div style={{ marginTop: "20px" }}>
-                <h4>{shipmentID}</h4>
+                <h4>{`SID${id.substr(0, 5)}`}</h4>
                 <hr />
 
                 <dl className="row">
                   <dt className="col-sm-3">SupplierID</dt>
                   <dd className="col-sm-9">{supplierID}</dd>
+
                   <br />
                   <br />
                   <br />

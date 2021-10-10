@@ -36,12 +36,14 @@ export default class DetailsLSmaterial extends Component {
       date ,
     } = this.state.lmocard;
     /* details */
+
+     const id = this.props.match.params.id;
     return (
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
           <div className="container-fluid">
             <div style={{ marginTop: "20px" }}>
-              <h4> {shipID} </h4>
+              <h4>{`SHID${id.substr(0, 5)}`}</h4>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <p>
                 <a href="/HomeLSmaterial">All shipments</a>
