@@ -158,6 +158,7 @@ export default class MatReportEdit extends Component {
 
      //gather outputs
     render() {
+      const id =this.props.match.params.id;
         return (
             //component organizer
             <div id="wrapper" className="toggled">
@@ -207,7 +208,7 @@ export default class MatReportEdit extends Component {
   <div class="col">
     <label style={{marginBottom:'5px'}} >MatRepID</label>
     <input type="text" class="form-control" name="matreportID" placeholder="Report ID"
-    value={this.state.matreportID}
+    value={`RP${id.substr(0,7)}`}
     readOnly
     onChange={this.handleInputChange}
     required

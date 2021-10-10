@@ -154,7 +154,7 @@ export default class MatReportAdd extends Component {
               matName: "Clips",
               date: "	2021-09-07",
               shipID: "SHP005",
-              defect: "Damaged",
+              defect: "Colour patch",
               qty: "2000",
               
             }
@@ -222,7 +222,7 @@ export default class MatReportAdd extends Component {
 
                 
                     <div class="row">
-  <div class="col">
+  {/* <div class="col">
     <label style={{marginBottom:'5px'}} >Report ID</label>
     <input type="text" maxlength="5" class="form-control" name="matreportID" placeholder="Enter Report ID"
     value={this.state.matreportID}
@@ -233,7 +233,7 @@ export default class MatReportAdd extends Component {
 <div style={{fontSize:15 ,color:"red"}}>
                            {this.state.matreportIDError}
                    </div>
-  </div>
+  </div> */}
 
   <div class="col">
   <label style={{marginBottom:'5px'}} >Material ID</label>

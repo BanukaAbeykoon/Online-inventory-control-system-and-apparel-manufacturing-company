@@ -143,6 +143,7 @@ export default class LmoMatEdit extends Component {
 
     //gather outputs
     render() {
+      const id =this.props.match.params.id;
         return (
             //component organizer
             <div id="wrapper" className="toggled">
@@ -189,10 +190,11 @@ export default class LmoMatEdit extends Component {
                         className="form-control"
                         name="lmoID"
                         placeholder="Enter LMO ID"
-                        value={this.state.lmoID}
+                        value={`LMO${id.substr(0,7)}`}
                         readOnly
                         onChange={this.handleInputChange}
                         required
+                        readOnly
                         />
                         <div style={{fontSize:15 ,color:"red"}}>
                            {this.state.lmoIDError}
@@ -213,6 +215,7 @@ export default class LmoMatEdit extends Component {
                       
                         onChange={this.handleInputChange}
                         required
+                        readOnly
                         />
                         <div style={{fontSize:15 ,color:"red"}}>
                            {this.state.matIDError}
@@ -228,7 +231,8 @@ export default class LmoMatEdit extends Component {
                         value={this.state.matName}
                         
                         onChange={this.handleInputChange}
-                        required/>
+                        required
+                        readOnly/>
                         <div style={{fontSize:15 ,color:"red"}}>
                            {this.state.matNameError}
                    </div>

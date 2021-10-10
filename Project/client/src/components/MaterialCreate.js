@@ -277,7 +277,7 @@ btnDemo = (e) => {
 
                 
                     <div class="row">
-    <div class="col">
+    {/* <div class="col">
     <label  style={{marginBottom:'5px'}} >Material ID</label>
     <input type="text" class="form-control" maxlength="6"  name="matID" placeholder="Enter Material ID"
     value={this.state.matID}
@@ -288,7 +288,7 @@ btnDemo = (e) => {
     <div style={{fontSize:15 ,color:"red"}}>
                            {this.state.matIDError}
                    </div>
-</div>
+</div> */}
 
 
 
