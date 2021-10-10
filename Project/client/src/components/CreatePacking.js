@@ -77,6 +77,9 @@ export default class CreatePacking extends Component {
     if (this.state.weight.match("-")) {
       weightError = "* Weight should not be Negetive ";
     }
+    if (this.state.weight.match("([0-9]{3})$")) {
+      weightError = "* invalid Weight ";
+    }
 
     if (!this.state.dueDate) {
       dueDateError = "* Date is Required";

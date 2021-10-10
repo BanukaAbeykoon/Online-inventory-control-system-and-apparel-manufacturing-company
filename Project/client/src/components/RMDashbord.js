@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./RMdashbord.css"
+import "./btn3.css";
 
 class RMDashboard extends Component {
   render() {
@@ -133,13 +134,16 @@ class RMDashboard extends Component {
                     class="card-img-top"
                     alt="..."
                   />
+                  <div class="shadow bg- rounded">
+                    <div class="card-body" style={{ textAlign: "center" }}>
+                      <div class="shadow bg- rounded">
+                        <h5 class="card-title">Packing Details</h5>
 
-                  <div class="card-body">
-                    <h5 class="card-title">Packing Details</h5>
-
-                    <a href="/packingHome" class="btn btn-primary">
-                      Go Packing Form
-                    </a>
+                        <a href="/packingHome" className="bn3">
+                          Go Packing Form
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -152,11 +156,15 @@ class RMDashboard extends Component {
                     class="card-img-top"
                     alt="..."
                   />
-                  <div class="card-body">
-                    <h5 class="card-title">Transport Details</h5>
-                    <a href="/packingtrasport" class="btn btn-primary">
-                      Go Transport Details
-                    </a>
+                  <div class="shadow bg- rounded">
+                    <div class="card-body" style={{ textAlign: "center" }}>
+                      <div class="shadow bg- rounded">
+                        <h5 class="card-title">Transport Details</h5>
+                        <a href="/packingtrasport" className="bn3">
+                           Transport Schedule
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -169,12 +177,16 @@ class RMDashboard extends Component {
                     class="card-img-top"
                     alt="..."
                   />
-                  <div class="card-body">
-                    <h5 class="card-title">Reporting</h5>
+                  <div class="shadow bg- rounded">
+                    <div class="card-body" style={{ textAlign: "center" }}>
+                      <div class="shadow bg- rounded">
+                        <h5 class="card-title">Reporting</h5>
 
-                    <a href="/RMReport" class="btn btn-primary">
-                      Go Reporting
-                    </a>
+                        <a href="/RMReport" className="bn3">
+                          Go Reporting
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
