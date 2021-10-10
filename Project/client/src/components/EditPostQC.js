@@ -158,7 +158,7 @@ class EditPostQC extends Component {
           </div>
 
           <div className="form-group" style={{marginBottom:'15px'}}>
-          <lable style={{marginBottom:'5px'}}>requirment1</lable>
+          <lable style={{marginBottom:'5px'}}>Requirment 1</lable>
           <input type="text"
           className="form-control"
           name="requirment1"
@@ -168,7 +168,7 @@ class EditPostQC extends Component {
           </div>
 
           <div className="form-group" style={{marginBottom:'15px'}}>
-          <lable style={{marginBottom:'5px'}}>requirment2</lable>
+          <lable style={{marginBottom:'5px'}}>Requirment 2</lable>
           <input type="text"
           className="form-control"
           name="requirment2"
