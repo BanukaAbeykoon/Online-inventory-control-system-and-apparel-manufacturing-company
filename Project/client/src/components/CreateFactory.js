@@ -38,8 +38,6 @@ export default class CreateFactory extends Component {
     });
   };
 
-
-
   //validation
   validate = () => {
     let facnameError = "";
@@ -55,43 +53,29 @@ export default class CreateFactory extends Component {
       facnameError = "*facnameError is Required!";
     }
 
-
     if (!this.state.factelephone) {
       factelephoneError = "* factelephoneError is Required!";
-    }
-    if (
-      !this.state.factelephone.match(/^[0-9]{10}$/)
-    )
-    {
+    } else if (!this.state.factelephone.match(/^[0-9]{10}$/)) {
       factelephoneError = "*Please Enter valid Telephonephone!";
     }
 
-
-
     if (!this.state.facemail) {
       facemailError = "* facemailError is Required!";
-    }
-    if (
+    } else if (
       !this.state.facemail.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
     ) {
       facemailError = "*Please Enter valid email!";
     }
-      
-
 
     if (!this.state.facwebsite) {
       facwebsiteError = "* facwebsiteError is Required";
-    }
-    if (
-      !this.state.facwebsite.match(/^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$/)
+    } else if (
+      !this.state.facwebsite.match(
+        /^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$/
+      )
     ) {
       facwebsiteError = "*Please Enter valid website!";
     }
-
-
-
-
-
 
     if (!this.state.ceoname) {
       ceonameError = "* ceonameError is Required";
@@ -102,8 +86,13 @@ export default class CreateFactory extends Component {
     if (!this.state.product) {
       productError = "* productError is Required";
     }
+
     if (!this.state.units) {
       unitsError = "* unitsError is Required";
+    } else if (this.state.units.match("-")) {
+      unitsError = "*Units should not be Negetive!";
+    } else if (!this.state.units.match("([0-9]{4})$")) {
+      unitsError = "*Units should be more than 1000";
     }
 
     if (
@@ -132,11 +121,9 @@ export default class CreateFactory extends Component {
     return true;
   };
 
-
   onSubmit = (e) => {
     e.preventDefault();
     const isValid = this.validate();
-
 
     const {
       facname,
@@ -160,7 +147,7 @@ export default class CreateFactory extends Component {
       units: units,
     };
 
-    if(isValid){
+    if (isValid) {
       console.log(data);
 
       axios.post("/inventory/create", data).then((res) => {
@@ -183,6 +170,8 @@ export default class CreateFactory extends Component {
       });
     }
   };
+
+
 
   render() {
     return (
@@ -321,7 +310,7 @@ export default class CreateFactory extends Component {
                   type="Number"
                   className="form-control"
                   name="units"
-                  placeholder="Enter Number of Units "
+                  placeholder="Units (Minimum Units should be more than 1000)"
                   value={this.state.units}
                   onChange={this.handleInputChange}
                   required
