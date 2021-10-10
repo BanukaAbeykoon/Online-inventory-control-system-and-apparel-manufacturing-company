@@ -137,6 +137,21 @@ export default class AccountHome extends Component {
       <h4>ALL Account Details</h4>
       <hr/>
 
+      <div class="card">
+    <div class="card-body">
+    <h5 class="card-title">INSTRUCTIONS</h5>
+
+    <div class="spinner-grow text-info" role="status">
+  <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="card-text">Imagine having just the right number of products for a certain SKU, given demand -- but your team is working with old data and, based on that data, projects that your inventory will fall short of demand in a month. It is obvious what your team would do: begin the process of acquiring more inventory to make up the difference. Now there will be excess inventory, and you will be in an Overstock situation.</p>
+    <p class="card-text"><small class="text-muted">Latest Regulations</small></p>
+  </div>
+  <img src="%PUBLIC_URL%../../lmo1.png" class="card-img-bottom" alt="..."/>
+    </div>            
+
+    <br/> <br/> 
+
       <div
               className="p-3 mb-2 bg-dark text-light rounded-3"
               style={{
