@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import jsPDF from 'jspdf';
 
+//PDF generate
 const generatePDF = lmomat => {
   const doc = new jsPDF();
   const tableColumn = ["LMOID", "MATID", "MAT NAME", "QTY", "CATEGORY", "DESCRIPTION"];
   const tableRows = [];
 
+  // Generate according to the map
   lmomat.map(lmomat => {
     const lmomatdata = [
       lmomat.lmoID,
@@ -21,29 +22,31 @@ const generatePDF = lmomat => {
  ];
     tableRows.push(lmomatdata);
   })
+  // PDF Details
   doc.text("CASANOVA", 70,8).setFontSize(13);
   doc.text("LMO SUMMURY", 14, 16).setFontSize(13); 
   doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 8, }, startY: 35 });
   doc.save("LMOSUMMARY.pdf");
 }
 
-
+//Binding event handler method
 export default class MatInsTwo extends Component {
 constructor(props){
   super(props);
-
+ //Initializing local state by assigning an object to this.state
   this.state={
     lmomat:[]
   };
 }
 
-
+//load data from a remote endpoint
 componentDidMount(){
   this.retriveLmo();
 }
 
 
 retriveLmo(){
+   //get server side http module to get data to client side Http request
   axios.get("http://localhost:8000/lmomat").then(res =>{
       if(res.data.success){
         this.setState({
@@ -89,18 +92,18 @@ retriveLmo(){
 
 
 
-
+  //gather outputs
   render() {
     return (
 
-
+      //component organizer
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
             <div className="container-fluid">
 
       
       
-            
+              {/* custom navigation        */}
               <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -163,10 +166,12 @@ retriveLmo(){
 
  
 <hr/> 
+{/* Title        */}
 <center>
 <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>LMO SUMMARY</b></h1>
 </center>
 
+{/* Filter Category */}
 <div className="p-3 mb-2 text-light rounded-3" style={{ backgroundColor: "#0E3662" }} >
           <div class="form-check">
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="" onChange={this.handleSearchArea}/>
@@ -198,7 +203,7 @@ retriveLmo(){
 
 <center>
         <div  className="col-lg-3 mt-2 mb-2">
-          
+          {/* Searchbar */}
           <input
           className="form-control "
           type="search"
@@ -210,6 +215,7 @@ retriveLmo(){
           </div>
           </center>
 &nbsp;&nbsp;&nbsp;&nbsp;
+{/* print excell      */}
 <ReactHTMLTableToExcel
               
               id="test-table-xls-button"
@@ -231,7 +237,7 @@ retriveLmo(){
                 </button>
 
          
-         
+           {/* Print table          */}
         <div class="p-3 mb-2 bg-info text-dark rounded-3">
          <table id="tablee" className="table table-hover  table table-bordered border-info table table-info table-striped"style={{marginTop:'5px'}}>
            <thead>
@@ -279,7 +285,7 @@ retriveLmo(){
 
 
 
-
+     {/* Footer section */}
       <div class="footer">
 
 
