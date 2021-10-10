@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 
 
 export default class MatReportAdd extends Component {
-
+       //handle data to database
        constructor(props){
            super(props);
            this.state={
@@ -38,7 +38,7 @@ export default class MatReportAdd extends Component {
            })
 
        } 
-
+        //validation
        validate= ()=>{
         let matreportIDError="";
         let matIDError="";
@@ -47,7 +47,7 @@ export default class MatReportAdd extends Component {
         let shipIDError="";
         let defectError="";
         let qtyError="";
-       
+       //statements
         if(!this.state.matreportID){
           matreportIDError="*Report ID is Required!"
         }
@@ -57,26 +57,26 @@ export default class MatReportAdd extends Component {
        
         if(!this.state.matName){
           matNameError="*Material name is Required!"
-     }
-     if(!this.state.date){
-      dateError="*Date is Required"
-     }
-    if(!this.state.shipID){
-      shipIDError="*Shipment ID  is Required"
-     }
-     if(!this.state.defect){
-      defectError="*Defect is Required"
-     }
+        }
+        if(!this.state.date){
+          dateError="*Date is Required"
+        }
+        if(!this.state.shipID){
+          shipIDError="*Shipment ID  is Required"
+        }
+        if(!this.state.defect){
+          defectError="*Defect is Required"
+        }
 
-     if(!this.state.qty){
-      qtyError="*QTY is Required"
-     }
-     else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
-      qtyError= '*Please Enter a Valid QTY Range '
-   } 
+        if(!this.state.qty){
+          qtyError="*QTY is Required"
+        }
+          else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
+           qtyError= '*Please Enter a Valid QTY Range '
+         } 
     
  
-     if(matreportIDError||matIDError||matNameError||dateError||shipIDError||defectError||qtyError){
+        if(matreportIDError||matIDError||matNameError||dateError||shipIDError||defectError||qtyError){
          this.setState({matreportIDError,matIDError,matNameError,dateError,shipIDError,defectError,qtyError});
          return false;
  
@@ -88,7 +88,7 @@ export default class MatReportAdd extends Component {
         
 
 
-
+//onsubmit method
  onSubmit =(e) =>{
            e.preventDefault();
            const isValid= this.validate();
@@ -104,10 +104,10 @@ export default class MatReportAdd extends Component {
             defect:defect,
             qty:qty
            }
-
+           //if validation succussesfully pass
            if(isValid){
            console.log(data)
-
+           //Post data to back end using the Http link
            axios.post("http://localhost:8000/matreport/save", data).then((res) =>{
                if(res.data.success){
                 Swal.fire('Added','Report Added Successfilly','success')
@@ -128,7 +128,7 @@ export default class MatReportAdd extends Component {
        
        }
       }
-
+       //Demo button
        btnDemo = (e) => {
         e.preventDefault();
       
@@ -159,16 +159,16 @@ export default class MatReportAdd extends Component {
             }
         )
       }
-
+    //gather outputs
     render() {
         return (
-
+           //component organizer
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
 
 
-            
+              {/* custom navigation        */}
               <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -190,7 +190,7 @@ export default class MatReportAdd extends Component {
 
 
 <hr/>
-
+{/* Instruction section */}
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">INSTRUCTIONS</h5>
@@ -205,7 +205,7 @@ export default class MatReportAdd extends Component {
 </div>
              
 
-
+{/* Title        */}
 <div class="p-3 mb-2 bg-info text-dark  rounded-3">
             <div className="col-md-8 mt-4 mx-auto">
               <center>
@@ -215,7 +215,7 @@ export default class MatReportAdd extends Component {
 
 
 
-               
+               {/* Material add form */}
                 <form className="needs-validation" noValidate>
                     
 
@@ -352,10 +352,8 @@ export default class MatReportAdd extends Component {
                     </div>
                     </div>
                     </div>  
-
-                    <div class="footer">
-
-
+{/* Footer */}
+<div class="footer">
 <div class="contain">
 
   <br/>

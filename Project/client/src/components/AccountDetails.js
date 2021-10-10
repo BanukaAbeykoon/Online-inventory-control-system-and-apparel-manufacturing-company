@@ -30,7 +30,9 @@ export default class AccountDetails extends Component {
 
     render() {
 
-        const {orderId,cusName,cusStatus,pjournal,sjournal,gjournal,other} = this.state.account;
+        const {_id,cusName,cusStatus,pjournal,sjournal,gjournal,other} = this.state.account;
+        const id = this.props.match.params.id;
+
         return (
           
            
@@ -42,7 +44,7 @@ export default class AccountDetails extends Component {
 
             <dl className = "row">
                 <dt className="col-sm-3">Order ID</dt>
-                <dt className="col-sm-9"> {orderId} </dt>
+                <dt className="col-sm-9">  {`OID${id.substr(0,5)}`} </dt>
 
                 <dt className="col-sm-3">Customer Name</dt>
                 <dt className="col-sm-9"> {cusName} </dt>

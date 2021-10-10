@@ -61,6 +61,68 @@ export default class AccountPurchaseJournal extends Component {
     return (
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
+
+
+
+
+
+        <div className="row">
+              <div className="col-lg-9 mt-2 mb-2">
+                <nav
+                  className="navbar navbar-expand-lg navbar-light"
+                  style={{
+                    backgroundColor: "#e3f2fd",
+                    width: "134%",
+                    border: " solid #5f9ea0",
+                    padding: "0px",
+                  }}
+                >
+                  <div className="container-fluid">
+                    <button
+                      className="navbar-toggler"
+                      type="button"
+                      data-bs-toogle="collapse"
+                      data-bs-target="#navbarNav"
+                      aria-controls="navbarNav"
+                      aria-expanded="false"
+                      aria-label="Tooggle navigation"
+                    >
+                      <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                      <ul className="navbar-nav">
+                        <li className="nav-item">
+                          <a className="nav-link" aria-current="page" href="/Accountdashboard">
+                            Account Home -
+                          </a>
+                        </li>
+
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/journal" className="nav-link">
+                           Journal Details -
+                          </a>
+                        </li>
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/purchasejournal" className="nav-link">
+                           Purchase Journal Details -
+                          </a>
+                        </li>
+                      
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
           <div className="container-sm">
             <div className="row">
               <div className="col-lg-9 mt-2 mb-2">
