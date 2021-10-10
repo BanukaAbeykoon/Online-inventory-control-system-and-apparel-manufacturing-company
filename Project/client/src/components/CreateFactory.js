@@ -188,14 +188,14 @@ export default class CreateFactory extends Component {
     } = this.state;
 
     const data = {
-      orderid: orderid,
-      rawproduct: rawproduct,
-      matone: matone,
-      matoneqty: matoneqty,
-      mattwo: mattwo,
-      mattwoqty: mattwoqty,
-      matthree: matthree,
-      matthreeqty: matthreeqty,
+      facname: facname,
+      factelephone: factelephone,
+      facemail: facemail,
+      facwebsite: facwebsite,
+      ceoname: ceoname,
+      fconame: fconame,
+      product: product,
+      units: units,
     };
 
     console.log(data);
