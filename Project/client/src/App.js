@@ -178,7 +178,7 @@ export default class App extends Component {
           <Route path="/createrawfac" component={CreateRawFactory}></Route>
           <Route path="/editrawfac/:id" component={EditRawFactory}></Route>
           <Route path="/factory/:id" component={RawFactoryDetails}></Route>
-          <Route path="/clientneworder" component={neworder}></Route>
+          <Route path="/neworder" component={neworder}></Route>
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
 
@@ -322,13 +322,6 @@ export default class App extends Component {
 	 
 	 
 
-
-        <div className="page-content-wrapper">
-          <Route path="/orderHome" exact component={orderHome}></Route>
-          <Route path="/addOrder" component={orderCreate}></Route>
-          <Route path="/editOrder/:id" component={orderEdit}></Route>
-          <Route path="/order/:id" component={orderDetails}></Route>
-        </div>
       </BrowserRouter>
     );
   }

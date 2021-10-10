@@ -187,7 +187,7 @@ export default class RawFactoryHome extends Component {
                           href={`/factory/${factory._id}`}
                           style={{ textDecoration: "none" }}
                         >
-                          {factory.orderid}
+                          {`OID${factory._id.substr(0, 5)}`}
                         </a>
                       </td>
                       <td>{factory.rawproduct}</td>
