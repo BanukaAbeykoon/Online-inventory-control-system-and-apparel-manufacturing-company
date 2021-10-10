@@ -36,6 +36,7 @@ export default class EditFactory extends Component {
     });
   };
 
+
   //validation
   validate = () => {
     let facnameError = "";
@@ -93,7 +94,6 @@ export default class EditFactory extends Component {
       unitsError = "*Units should be more than 1000";
     }
 
-    
     if (
       facnameError ||
       factelephoneError ||
@@ -119,8 +119,6 @@ export default class EditFactory extends Component {
 
     return true;
   };
-
-  
 
   onSubmit = (e) => {
     const id = this.props.match.params.id;
@@ -337,7 +335,7 @@ export default class EditFactory extends Component {
                   type="Number"
                   className="form-control"
                   name="units"
-                  placeholder="Enter Number of Units "
+                  placeholder="Units (Minimum Units should be more than 1000)"
                   value={this.state.units}
                   onChange={this.handleInputChange}
                   required

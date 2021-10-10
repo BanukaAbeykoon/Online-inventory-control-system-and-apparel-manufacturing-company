@@ -172,6 +172,48 @@ export default class CreateFactory extends Component {
   };
 
 
+  
+  btnDemo = (e) => {
+    e.preventDefault();
+
+    const {
+      orderid,
+      rawproduct,
+      matone,
+      matoneqty,
+      mattwo,
+      mattwoqty,
+      matthree,
+      matthreeqty,
+    } = this.state;
+
+    const data = {
+      orderid: orderid,
+      rawproduct: rawproduct,
+      matone: matone,
+      matoneqty: matoneqty,
+      mattwo: mattwo,
+      mattwoqty: mattwoqty,
+      matthree: matthree,
+      matthreeqty: matthreeqty,
+    };
+
+    console.log(data);
+
+    this.setState({
+      orderid: "Aida",
+      rawproduct: "Bugg",
+      matone: "Trainig class manager",
+      matoneqty: "aida123",
+      mattwo: "aida123",
+      mattwoqty: "4422",
+      matthree: "trouse",
+      matthreeqty: 43563,
+    });
+  };
+
+
+
 
   render() {
     return (
