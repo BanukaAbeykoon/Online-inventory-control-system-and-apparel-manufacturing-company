@@ -220,6 +220,7 @@ export default class LmoMatCreate extends Component {
                 <div className="form-group" style={{marginBottom:'15px'}}>
                         <label style={{marginBottom:'5px'}} >LMO ID</label>
                         <input type="text"
+                        maxlength="6"
                         className="form-control"
                         name="lmoID"
                         placeholder="Enter LMO ID"
@@ -239,6 +240,7 @@ export default class LmoMatCreate extends Component {
                     <div className="form-group" style={{marginBottom:'15px'}}>
                         <label style={{marginBottom:'5px'}} >Material ID</label>
                         <input type="text"
+                        maxlength="6"
                         className="form-control"
                         name="matID"
                         placeholder="Enter Material ID"

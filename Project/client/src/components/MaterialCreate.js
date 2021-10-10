@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './styleSideNav.css';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 export default class MaterialCreate extends Component {
        
@@ -349,6 +350,7 @@ btnDemo = (e) => {
     <input type="date" class="form-control" name="arrDate" placeholder="Enter Arrival Date"
     value={this.state.arrDate}
     onChange={this.handleInputChange}
+    max={moment().format("YYYY-MM-DD")}
     required
     />
     <div style={{fontSize:15 ,color:"red"}}>
@@ -380,8 +382,8 @@ btnDemo = (e) => {
 
 <div class="row">
   <div class="col">
-  <label style={{marginBottom:'5px'}} >Price Per Piece</label>
-    <input   type="number" min="0.00" max="1000000.00" step="0.01"   class="form-control" name="price" placeholder="Enter Price"
+  <label style={{marginBottom:'5px'}} >Price Per Piece (Rs.)</label>
+   <input   type="number" min="0.00" max="1000000.00" step="0.01"   class="form-control" name="price" placeholder="Enter Price"
     value={this.state.price}
     onChange={this.handleInputChange}
     required
@@ -484,7 +486,7 @@ btnDemo = (e) => {
   
 </div>
 <div class="col">
-  <h1></h1>
+  
   <ul>
     <li></li>
   </ul>

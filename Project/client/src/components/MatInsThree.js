@@ -3,12 +3,13 @@ import axios from 'axios';
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import jsPDF from 'jspdf';
 
-
+//PDF generate
 const generatePDF = matreport => {
     const doc = new jsPDF();
     const tableColumn = ["REPORT ID", "MATID", "MAT NAME", "DATE", "SHIPMENT ID", "DEFECT", "QTY"];
     const tableRows = [];
   
+    // Generate according to the map
     matreport.map(matreport => {
       const matreportdata = [
         matreport.matreportID,
@@ -22,29 +23,31 @@ const generatePDF = matreport => {
    ];
       tableRows.push(matreportdata);
     })
+    // PDF Details
     doc.text("CASANOVA", 70,8).setFontSize(13);
     doc.text("REPORTING SUMMURY", 14, 16).setFontSize(13); 
     doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 8, }, startY: 35 });
     doc.save("REPORTINGSUMMARY.pdf");
   }
 
-
+//Binding event handler method
 export default class MatInsThree extends Component {
 constructor(props){
   super(props);
-
+ //Initializing local state by assigning an object to this.state
   this.state={
     matreport:[]
   };
 }
 
-
+//load data from a remote endpoint
 componentDidMount(){
   this.retriveReport();
 }
 
 
 retriveReport(){
+  //get server side http module to get data to client side Http request
   axios.get("http://localhost:8000/matreport").then(res =>{
       if(res.data.success){
         this.setState({
@@ -65,6 +68,7 @@ retriveReport(){
     const result = matreport.filter((matreport) =>
        matreport.matreportID.toLowerCase().includes(searchKey) ||
        matreport.matID.toLowerCase().includes(searchKey) ||
+       matreport.date.toLowerCase().includes(searchKey)||
        matreport.defect.toLowerCase().includes(searchKey)
       
     )
@@ -90,18 +94,18 @@ retriveReport(){
 
 
 
-
+//gather outputs
   render() {
     return (
 
-
+     //component organizer
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
             <div className="container-fluid">
 
       
       
-            
+             {/* custom navigation        */}
               <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -156,12 +160,12 @@ retriveReport(){
              <a href="/matinsthree"><button type="button" class="btn btn-primary" style={{ backgroundColor: "#0E3662" }}>REPORTING</button></a>
     </div>
     <hr/>
-
+     {/* Title        */}
     <center>
 <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>REPORTING SUMMARY</b></h1>
 </center>
 
-
+{/* Filter Category */}
 <div className="p-3 mb-2 text-light rounded-3" style={{ backgroundColor: "#0E3662" }} >
           <div class="form-check">
   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="" onChange={this.handleSearchArea}/>
@@ -200,7 +204,7 @@ retriveReport(){
 
 <center>
         <div  className="col-lg-3 mt-2 mb-2">
-          
+           {/* Searchbar */}
           <input
           className="form-control "
           type="search"
@@ -213,13 +217,13 @@ retriveReport(){
           </center>
 
 
-          
+{/* print excell      */}
 <ReactHTMLTableToExcel
               
               id="test-table-xls-button"
               className="btn btn-warning"
               table="table"
-              filename="LMO Summary"
+              filename="REPORTING Summary"
               sheet="tablexls"
               buttonText="Download As Excel" />
 
@@ -234,7 +238,7 @@ retriveReport(){
                   Download As PDF
                 </button>
 
-           
+  {/* Print table          */}
 <table id="table" className="table table-hover  table table-bordered border-info table table-info table-striped"style={{marginTop:'5px'}}>
            <thead>
              <tr>
@@ -285,7 +289,7 @@ retriveReport(){
         </div>
      
 
-
+{/* Footer section */}
       <div class="footer">
 
 
