@@ -201,14 +201,14 @@ export default class CreateFactory extends Component {
     console.log(data);
 
     this.setState({
-      orderid: "Aida",
-      rawproduct: "Bugg",
-      matone: "Trainig class manager",
-      matoneqty: "aida123",
-      mattwo: "aida123",
-      mattwoqty: "4422",
-      matthree: "trouse",
-      matthreeqty: 43563,
+      facname: "ABC Company",
+      factelephone: "0123456789",
+      facemail: "abc@gmail.com",
+      facwebsite: "www.abc.com",
+      ceoname: "M.K Perera",
+      fconame: "N.L Silva",
+      product: "Trouses",
+      units: 4000,
     });
   };
 
