@@ -286,16 +286,7 @@ export default class CreatePacking extends Component {
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
-                  {/* <label style={{ marginBottom: "5px" }}>Order ID</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    name="orderId"
-                    placeholder="Enter Order ID"
-                    value={this.state.orderId}
-                    onChange={this.handleInputChange}
-                    required
-                  /> */}
+                
 
                   <div style={{ fontSize: 12, color: "red" }}>
                     {this.state.orderIdError}
