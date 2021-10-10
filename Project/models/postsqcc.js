@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
 
+
+
+        orderID:{
+            type:String,
+            required:true
+        },
         missingitem:{
             type:Number,
             required:true
