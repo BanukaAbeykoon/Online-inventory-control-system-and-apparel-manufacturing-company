@@ -48,46 +48,53 @@ export default class EditFactory extends Component {
     let unitsError = "";
 
     if (!this.state.facname) {
-      facnameError = "*facnameError is Required!";
+      facnameError = "*Factory Name is Required!";
     }
 
     if (!this.state.factelephone) {
-      factelephoneError = "* factelephoneError is Required!";
-    } else if (!this.state.factelephone.match(/^[0-9]{10}$/)) {
-      factelephoneError = "*Please Enter valid Telephonephone!";
+      factelephoneError = "* Factory Telephone is Required!";
+    }
+    else if (!this.state.factelephone.toString().match(/^[0-9]{10}$/)) {
+      factelephoneError = "*Please Enter valid Telephone Number!";
     }
 
     if (!this.state.facemail) {
-      facemailError = "* facemailError is Required!";
+      facemailError = "* Factory Email is Required!";
     }
     else if (
       !this.state.facemail.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
     ) {
-      facemailError = "*Please Enter valid email!";
+      facemailError = "*Please Enter valid Email!";
     }
 
     if (!this.state.facwebsite) {
-      facwebsiteError = "* facwebsiteError is Required";
+      facwebsiteError = "* Factory Website is Required";
     }
-    else if (!this.state.facwebsite.match("^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$")
+    else if (
+      !this.state.facwebsite.match("^([wW]{3})+.[a-zA-Z0-9.-/@#$]+.[a-z]{2,4}$")
     ) {
       facwebsiteError = "*Please Enter valid website!";
     }
 
     if (!this.state.ceoname) {
-      ceonameError = "* ceonameError is Required";
+      ceonameError = "* CEO Name is Required";
     }
     if (!this.state.fconame) {
-      fconameError = "* fconameError is Required";
+      fconameError = "* FCO Name is Required";
     }
     if (!this.state.product) {
-      productError = "* productError is Required";
+      productError = "* Product Category is Required";
     }
 
     if (!this.state.units) {
-      unitsError = "* unitsError is Required";
+      unitsError = "* Unit quantity is Required";
     }
-    
+      else if (this.state.units.toString().match("-")) {
+        unitsError = "*Units should not be Negetive!";
+      } else if (!this.state.units.toString().match("([0-9]{4})$")) {
+        unitsError = "*Units should be more than 1000";
+      }
+
 
     if (
       facnameError ||
@@ -118,6 +125,8 @@ export default class EditFactory extends Component {
   onSubmit = (e) => {
     const id = this.props.match.params.id;
     e.preventDefault();
+
+    console.log(this.state.factelephone);
     const isValid = this.validate();
 
     const {
@@ -131,18 +140,16 @@ export default class EditFactory extends Component {
       units,
     } = this.state;
 
-   
-   
-      const data = {
-        facname: facname,
-        factelephone: factelephone,
-        facemail: facemail,
-        facwebsite: facwebsite,
-        ceoname: ceoname,
-        fconame: fconame,
-        product: product,
-        units: units,
-      };
+    const data = {
+      facname: facname,
+      factelephone: factelephone,
+      facemail: facemail,
+      facwebsite: facwebsite,
+      ceoname: ceoname,
+      fconame: fconame,
+      product: product,
+      units: units,
+    };
 
     if (isValid) {
       console.log(data);
@@ -186,7 +193,7 @@ export default class EditFactory extends Component {
           units: res.data.inventory.units,
         });
 
-        console.log(this.state.inventory);
+        
       }
     });
   }
@@ -243,7 +250,7 @@ export default class EditFactory extends Component {
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
                 <label style={{ marginBottom: "5px" }}>Factory Email</label>
-              
+
                 <input
                   type="email"
                   className="form-control"

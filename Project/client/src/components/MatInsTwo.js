@@ -6,14 +6,13 @@ import jsPDF from 'jspdf';
 //PDF generate
 const generatePDF = lmomat => {
   const doc = new jsPDF();
-  const tableColumn = ["LMOID", "MATID", "MAT NAME", "QTY", "CATEGORY", "DESCRIPTION"];
+  const tableColumn = [ "MAT NAME", "QTY", "CATEGORY", "DESCRIPTION"];
   const tableRows = [];
 
   // Generate according to the map
   lmomat.map(lmomat => {
     const lmomatdata = [
-      lmomat.lmoID,
-      lmomat.matID,
+      
       lmomat.matName,
       lmomat.qty,
       lmomat.category,
@@ -258,7 +257,8 @@ retriveLmo(){
                   <tr key={index}>
                     <th scope="row">{index+1}</th>
 
-                    <td>{lmomat.lmoID}</td>
+                    {/* <td>{lmomat.lmoID}</td> */}
+                    <td>{`LMO${lmomat._id.substr(0,7)}`}</td>
                     <td>
                       
                       {lmomat.matID}

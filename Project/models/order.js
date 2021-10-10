@@ -2,10 +2,11 @@
 const mongoose = require('mongoose');
 
 const cusOrder = new mongoose.Schema({
-  orderID:{
-    type:String,
-    required:true
-  },
+  // orderID:{
+  //   type:String,
+  //   required:true,
+  //   default:"1234"
+  // },
   product:{
     type:String,
     required:true 

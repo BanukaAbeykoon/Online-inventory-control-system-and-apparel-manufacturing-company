@@ -50,26 +50,26 @@ export default class CreateFactory extends Component {
     let unitsError = "";
 
     if (!this.state.facname) {
-      facnameError = "*facnameError is Required!";
+      facnameError = "*Factory Name is Required!";
     }
 
     if (!this.state.factelephone) {
-      factelephoneError = "* factelephoneError is Required!";
+      factelephoneError = "* Factory Telephone is Required!";
     }
-    else if (!this.state.factelephone.match(/^[0-9]{10}$/)) {
-      factelephoneError = "*Please Enter valid Telephonephone!";
+    else if (!this.state.factelephone.toString().match(/^[0-9]{10}$/)) {
+      factelephoneError = "*Please Enter valid Telephone Number!";
     }
 
     if (!this.state.facemail) {
-      facemailError = "* facemailError is Required!";
+      facemailError = "* Factory Email is Required!";
     } else if (
       !this.state.facemail.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
     ) {
-      facemailError = "*Please Enter valid email!";
+      facemailError = "*Please Enter valid Email!";
     }
 
     if (!this.state.facwebsite) {
-      facwebsiteError = "* facwebsiteError is Required";
+      facwebsiteError = "* Factory Website is Required";
     } else if (
       !this.state.facwebsite.match(
         /^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$/
@@ -79,20 +79,20 @@ export default class CreateFactory extends Component {
     }
 
     if (!this.state.ceoname) {
-      ceonameError = "* ceonameError is Required";
+      ceonameError = "* CEO Name is Required";
     }
     if (!this.state.fconame) {
-      fconameError = "* fconameError is Required";
+      fconameError = "* FCO Name is Required";
     }
     if (!this.state.product) {
-      productError = "* productError is Required";
+      productError = "* Product Category is Required";
     }
 
     if (!this.state.units) {
-      unitsError = "* unitsError is Required";
-    } else if (this.state.units.match("-")) {
+      unitsError = "* Unit quantity is Required";
+    } else if (this.state.units.toString().match("-")) {
       unitsError = "*Units should not be Negetive!";
-    } else if (!this.state.units.match("([0-9]{4})$")) {
+    } else if (!this.state.units.toString().match("([0-9]{4})$")) {
       unitsError = "*Units should be more than 1000";
     }
 

@@ -80,6 +80,10 @@ export default class MaterialEdit extends Component {
     priceError="*Price is Required"
    }
 
+  //  else if(this.state.price.match(/-/)){
+  //   priceError="*Price should not be negative"
+  //  }
+
 //     else if (!this.state.price.match('^[1-9]+[0-9]*$')){
 //     priceError= '*Please Enter a Valid Price Range'
 //  } 
@@ -87,6 +91,9 @@ export default class MaterialEdit extends Component {
    if(!this.state.qty){
     qtyError="*QTY is Required"
    }
+  //  if(this.state.qty.match("-")){
+  //   qtyError="*QTY should not be negative"
+  //  }
 
   //    else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
   //     qtyError= "*Please Enter a Valid QTY Range "
@@ -185,6 +192,7 @@ export default class MaterialEdit extends Component {
 
     //gather outputs
     render() {
+      const id =this.props.match.params.id;
         return (
  
           //component organizer
@@ -232,7 +240,7 @@ export default class MaterialEdit extends Component {
   <div class="col">
     <label style={{marginBottom:'5px'}} >Material ID</label>
     <input type="text" class="form-control" name="matID" placeholder="Enter Material ID"
-    value={this.state.matID}
+    value={`MAT${id.substr(0,7)}`}
     readOnly
     onChange={this.handleInputChange}
     />

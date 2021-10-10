@@ -9,12 +9,13 @@ import 'jspdf-autotable';
 
 const generatePDF = material => {
   const doc = new jsPDF();
-  const tableColumn = ["MATID", "SUPID", "ARRIVAL DATE", "SHIPID", "PRICE", "QTY", "CATEGORY","TOTAL"];
+  const tableColumn = ["MAT NAME", "SUPID", "ARRIVAL DATE", "SHIPID", "PRICE", "QTY", "CATEGORY","TOTAL"];
   const tableRows = [];
 
   material.map(material => {
     const materialdata = [
-      material.matID,
+      
+      material.matName,
       material.supID,
       material.arrDate,
       material.shipID,
@@ -259,7 +260,8 @@ filterData(material,searchKey){
                           <th scope="row">{index+1}</th>
                           <td>
                             
-                            {material.matID}
+                            {/* {material.matID} */}
+                            {`MAT${material._id.substr(0,7)}`}
                             
                             </td>
                         

@@ -29,11 +29,13 @@ export default class admincus extends Component {
   render() {
     return (
     
-
+      //component organizer
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
           <div className="container-fluid">
             <div className="container p-3 mb-2 bg-primary bg-gradient text-white rounded-3">
+
+              {/* Table Header*/}
               <center>
                 <h1
                   className="h3 mb-3 font-weight-normal rounded-3 "

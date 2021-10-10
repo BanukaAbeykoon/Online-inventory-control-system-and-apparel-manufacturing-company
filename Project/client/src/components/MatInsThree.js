@@ -6,14 +6,14 @@ import jsPDF from 'jspdf';
 //PDF generate
 const generatePDF = matreport => {
     const doc = new jsPDF();
-    const tableColumn = ["REPORT ID", "MATID", "MAT NAME", "DATE", "SHIPMENT ID", "DEFECT", "QTY"];
+    const tableColumn = [  "MAT NAME", "DATE", "SHIPMENT ID", "DEFECT", "QTY"];
     const tableRows = [];
   
     // Generate according to the map
     matreport.map(matreport => {
       const matreportdata = [
-        matreport.matreportID,
-        matreport.matID,
+       
+        
         matreport.matName,
         matreport.date,
         matreport.shipID,
@@ -259,11 +259,10 @@ retriveReport(){
                   <tr key={index}>
                     <th scope="row">{index+1}</th>
                      
-                    <td>
-                    <a href={`/matreportone/${matreport._id}`} style={{textDecoration:'none'}}>
-                      {matreport.matreportID}
-                      </a>
-                      </td>
+                    
+                      {/* {matreport.matreportID} */}
+                      <td>{`RP${matreport._id.substr(0,7)}`}</td>
+                      
                     <td>
                       
                       {matreport.matID}

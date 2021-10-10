@@ -29,7 +29,7 @@ export default class MaterialDetails extends Component {
     }
     //gather outputs
     render() {
-
+      const id =this.props.match.params.id;
         const{matID,matName,supID,supName,arrDate,shipID,price,qty,category,description} = this.state.material;
         return (
 
@@ -79,7 +79,7 @@ export default class MaterialDetails extends Component {
          
                 <div style={{marginTop:'20px'}}>
                 
-                <h4>  <i class="fas fa-angle-double-up"></i> &nbsp; {matID}</h4>
+                <h4>  <i class="fas fa-angle-double-up"></i> &nbsp; {`MAT${id.substr(0,5)}`}</h4>
                 <hr/>
                 
                 <dl className="row ">

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import swal from 'sweetalert2';
 export default class orderEdit extends Component {
   constructor(props){
     super(props);
@@ -37,7 +37,7 @@ export default class orderEdit extends Component {
 
     axios.put(`http://localhost:8000/order/updateorder/${id}`,data).then((res) =>{
       if (res.data.success) {
-        alert("Post Updated Successfully");
+        swal.fire("updated", "update Successfully", "success");
         this.setState(
             {
               orderID: "",
@@ -75,7 +75,7 @@ export default class orderEdit extends Component {
       <div className="col-md-8 mt-4 mx-auto">
         <h1 className="h3 mb-3 font-weight-normal">Edit Order</h1>
         <form className="needs-validation" noValidation>
-          <div className="form-group" style={{marginBottom:'15px'}}>
+          {/* <div className="form-group" style={{marginBottom:'15px'}}>
             <label style={{ marginBottom:'5px'}}>Order ID</label>
             <input type="text"
               readOnly
@@ -84,7 +84,7 @@ export default class orderEdit extends Component {
               placeholder="Enter Order ID"
               value={this.state.orderID}
               onChange={this.handleInputChange}/>
-          </div>
+          </div> */}
 
           <div className="form-group" style={{ marginBottom:'15px'}}>
             <label style={{ marginBottom:'5px'}}>Product</label>

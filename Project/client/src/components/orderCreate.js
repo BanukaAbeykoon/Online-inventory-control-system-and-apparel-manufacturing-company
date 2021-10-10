@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import swal from 'sweetalert2';
 
 export default class orderCreate extends Component {
 
     constructor(props){
         super(props);
         this.state={
-            orderID:"",
+            
             product:"",
             unprice:"",
             qty:""
@@ -25,10 +26,10 @@ export default class orderCreate extends Component {
     onSubmit = (e) =>{
 
         e.preventDefault();
-        const {orderID,product,unprice,qty} = this.state;
+        const {product,unprice,qty} = this.state;
 
         const data ={
-            orderID:orderID,
+           
             product:product,
             unprice:unprice,
             qty:qty
@@ -38,18 +39,19 @@ export default class orderCreate extends Component {
         axios.post("http://localhost:8000/order/save", data).then((res) => {
           if (res.data.success) {
             this.setState({
-              orderID: "",
+             
               product: "",
               unprice: "",
               qty:""
             });
           }
-          alert("Added")
+          swal.fire("Created", "Create Successfully", "success");
         });
     }
 
     render() {
         return (
+
           <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
               <div className="container-fluid">
@@ -76,6 +78,55 @@ export default class orderCreate extends Component {
                         onChange={this.handleInputChange}
                       />
                     </div>
+
+            <div id="wrapper" className="toggled">
+      <div id="page-content-wrapper">
+      <div className="container-fluid">
+            <div className="col-md-8 mt-4 mx-auto">
+                <h1 className="h3 mb-3 font-weight-normal">Create New Order</h1>
+                <form className="needs-validation" noValidation>
+                    {/* <div className="form-group" style={{marginBottom:'15px'}}>
+                    <label style={{marginBottom:'5px'}} >Order ID</label>
+                    <input type="text"
+                    className="form-control"
+                    name="orderID"
+                    placeholder="Enter OrderID"
+                    value={this.state.orderID}
+                    onChange={this.handleInputChange}/>            
+            </div> */}
+
+            <div className="form-group" style={{marginBottom:'15px'}}>
+                <label style={{marginBottom:'5px'}}>Product </label>
+                <input type="text"
+                 className="form-control"
+                 name="product"
+                 placeholder="Enter Product"
+                 value={this.state.product}
+                 onChange={this.handleInputChange}/>
+            </div>
+
+            <div className="form-group" style={{marginBottom:'15px'}}>
+                <label style={{marginBottom:'5px'}}>Unit Price</label>
+                <input type="number"
+                 className="form-control"
+                 name="unprice"
+                 placeholder="Enter Quantity"
+                 value={this.state.unprice}
+                 onChange={this.handleInputChange}/>
+            </div>
+
+            
+            <div className="form-group" style={{marginBottom:'15px'}}>
+                <label style={{marginBottom:'5px'}}>Quantity</label>
+                <input type="number"
+                 className="form-control"
+                 name="qty"
+                 placeholder="Enter Quantity"
+                 value={this.state.qty}
+                 onChange={this.handleInputChange}/>
+            </div>
+
+
 
                     <div
                       className="form-group"

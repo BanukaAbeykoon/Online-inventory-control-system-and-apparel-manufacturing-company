@@ -217,7 +217,7 @@ export default class LmoMatCreate extends Component {
                 <form className="needs-validation" noValidate>
 
 
-                <div className="form-group" style={{marginBottom:'15px'}}>
+                {/* <div className="form-group" style={{marginBottom:'15px'}}>
                         <label style={{marginBottom:'5px'}} >LMO ID</label>
                         <input type="text"
                         maxlength="6"
@@ -234,7 +234,7 @@ export default class LmoMatCreate extends Component {
 <div style={{fontSize:15 ,color:"red"}}>
                            {this.state.lmoIDError}
                    </div>
-                        </div>
+                        </div> */}
 
 
                     <div className="form-group" style={{marginBottom:'15px'}}>

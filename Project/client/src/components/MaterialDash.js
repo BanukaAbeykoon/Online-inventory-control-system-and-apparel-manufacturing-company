@@ -205,7 +205,8 @@ handleSearchArea = (e) =>{
                     <th scope="row">{index+1}</th>
                     <td>
                       <a href={`/matpost/${material._id}`} style={{textDecoration:'none'}}>
-                      {material.matID}
+                      {/* {material.matID} */}
+                      {`MAT${material._id.substr(0,7)}`}
                       </a>
                       </td>
                     <td>{material.matName}</td>
