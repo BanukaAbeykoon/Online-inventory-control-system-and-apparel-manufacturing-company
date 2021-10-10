@@ -58,6 +58,7 @@ export default class AddVehicle extends Component {
         if(!this.state.manuyear){
             manuyearError="*Manufacture year   is Required!"
         }
+       
 
 
         if(regnoError||engnoError||brandnameError||manuyearError){
@@ -128,7 +129,7 @@ export default class AddVehicle extends Component {
                 regno:"TC-2345",
                 engno:"54xxGC",
                 brandname:"Mitsubishi L200",
-                manuyear: "2010.10.10",
+                manuyear: "",
             }
         )
     }
