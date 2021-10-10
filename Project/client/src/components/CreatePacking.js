@@ -9,7 +9,7 @@ export default class CreatePacking extends Component {
     super(props);
     this.state = {
       customer: "",
-      orderId: "",
+     // orderId: "",
       category: "",
       payment: "",
       quantity: "",
@@ -38,7 +38,7 @@ export default class CreatePacking extends Component {
 
   validate = () => {
     let customerError = "";
-    let orderIdError = "";
+  //  let orderIdError = "";
     let categoryError = "";
     let paymentError = "";
     let quantityError = "";
@@ -49,14 +49,14 @@ export default class CreatePacking extends Component {
     if (!this.state.customer) {
       customerError = "*Customer is Required!";
     }
-    if (!this.state.orderId) {
-      orderIdError = "* Order is Required!";
-    }
-
+    // if (!this.state.orderId) {
+    //   orderIdError = "* Order is Required!";
+    // }
     //  else if (!this.state.nic.validate){
     // nicError= '*NIC already exists!'
-
     // }
+
+    //validation
 
     if (!this.state.category) {
       categoryError = "* Category is Required!";
@@ -91,7 +91,7 @@ export default class CreatePacking extends Component {
 
     if (
       customerError ||
-      orderIdError ||
+    //  orderIdError ||
       categoryError ||
       paymentError ||
       quantityError ||
@@ -101,7 +101,7 @@ export default class CreatePacking extends Component {
     ) {
       this.setState({
         customerError,
-        orderIdError,
+      //  orderIdError,
         categoryError,
         paymentError,
         quantityError,
@@ -121,7 +121,7 @@ export default class CreatePacking extends Component {
     const isValid = this.validate();
     const {
       customer,
-      orderId,
+    //  orderId,
       category,
       payment,
       quantity,
@@ -133,7 +133,7 @@ export default class CreatePacking extends Component {
     if (isValid) {
       const data = {
         customer: customer,
-        orderId: orderId,
+     //   orderId: orderId,
         category: category,
         payment: payment,
         quantity: quantity,
@@ -147,7 +147,7 @@ export default class CreatePacking extends Component {
         if (res.data.success) {
           this.setState({
             customer: "",
-            orderId: "",
+            //orderId: "",
             category: "",
             payment: "",
             quantity: "",
@@ -168,7 +168,7 @@ export default class CreatePacking extends Component {
 
     const {
       customer,
-      orderId,
+     // orderId,
       category,
       payment,
       quantity,
@@ -179,7 +179,7 @@ export default class CreatePacking extends Component {
 
     const data = {
       customer: customer,
-      orderId: orderId,
+     // orderId: orderId,
       category: category,
       payment: payment,
       quantity: quantity,
@@ -192,7 +192,7 @@ export default class CreatePacking extends Component {
 
     this.setState({
       customer: "Kasun Madushan",
-      orderId: "O12",
+   //   orderId: "O12",
       category: "t-shirt",
       payment: "Done",
       quantity: "5000",
@@ -207,8 +207,9 @@ export default class CreatePacking extends Component {
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
           <div className="container-fluid">
+           
+           
             {/* newbar */}
-
             <div className="row">
               <div className="col-lg-9 mt-2 mb-2">
                 <nav
@@ -264,11 +265,12 @@ export default class CreatePacking extends Component {
             </div>
 
             <div className="col-md-8 mt-4 mx-auto">
-              <h1 className="h3 mb-3 font-weight-normal">
+                <h1 className="h3 mb-3 font-weight-normal">
                 {" "}
                 Add New Packing Form
-              </h1>
+                </h1>
               <form className="needs-validation" noValidate>
+                
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Customer</label>
                   <input
@@ -288,13 +290,9 @@ export default class CreatePacking extends Component {
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                 
 
-                  <div style={{ fontSize: 12, color: "red" }}>
-                    {this.state.orderIdError}
-                  </div>
+                  
 
-                  <div style={{ fontSize: 12, color: "red" }}>
-                    {this.state.orderIdError}
-                  </div>
+                 
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
