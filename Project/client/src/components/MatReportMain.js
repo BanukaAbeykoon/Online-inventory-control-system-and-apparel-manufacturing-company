@@ -44,6 +44,33 @@ onDelete = (id) =>{
   })
 }
 
+//filter data
+filterData(matreport,searchKey){
+
+  const result = matreport.filter((matreport) =>
+  matreport.matreportID.toLowerCase().includes(searchKey) ||
+  matreport.matID.toLowerCase().includes(searchKey) ||
+  matreport.date.toLowerCase().includes(searchKey)
+  )
+  
+  this.setState({matreport:result})
+  
+  }
+  
+  //Search Function
+  handleSearchArea = (e) =>{
+  
+    const searchKey= e.currentTarget.value;
+  
+    axios.get("http://localhost:8000/matreport").then(res =>{
+        if(res.data.success){
+  
+          this.filterData(res.data.existingPosts,searchKey)
+  
+        }
+    });
+  
+  }
 
 //gather outputs
 render() {
@@ -95,8 +122,19 @@ render() {
         <i class="fas fa-plus-circle"></i>
         </a></button>
 
-         <br/>
-         <br/>
+        <center>
+        <div  className="col-lg-3 mt-2 mb-2">
+          {/* Searchbar */}
+          <input
+          className="form-control "
+          type="search"
+          placeholder="Search Report"
+          name="searchQuery"
+          onChange={this.handleSearchArea}>
+
+          </input>
+          </div>
+          </center>
 
          <div class="p-3 mb-2 bg-info text-dark rounded-3">
           {/* Report Table */} 

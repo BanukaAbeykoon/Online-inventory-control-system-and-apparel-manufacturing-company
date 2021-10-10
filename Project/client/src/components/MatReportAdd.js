@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import './styleSideNav.css';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 
 
@@ -149,7 +150,7 @@ export default class MatReportAdd extends Component {
         this.setState(
             {
               matreportID: "RP007",
-              matID: "MAT17",
+              matID: "MAT017",
               matName: "Clips",
               date: "	2021-09-07",
               shipID: "SHP005",
@@ -223,7 +224,7 @@ export default class MatReportAdd extends Component {
                     <div class="row">
   <div class="col">
     <label style={{marginBottom:'5px'}} >Report ID</label>
-    <input type="text" class="form-control" name="matreportID" placeholder="Enter Report ID"
+    <input type="text" maxlength="5" class="form-control" name="matreportID" placeholder="Enter Report ID"
     value={this.state.matreportID}
     onChange={this.handleInputChange}
     required
@@ -236,7 +237,7 @@ export default class MatReportAdd extends Component {
 
   <div class="col">
   <label style={{marginBottom:'5px'}} >Material ID</label>
-    <input type="text" class="form-control" name="matID"  placeholder="Enter Material ID"
+    <input type="text" maxlength="6" class="form-control" name="matID"  placeholder="Enter Material ID"
      value={this.state.matID}
      onChange={this.handleInputChange}
      required
@@ -268,6 +269,7 @@ export default class MatReportAdd extends Component {
     <input type="date" class="form-control" name="date"  placeholder="Enter Date"
      value={this.state.date}
      onChange={this.handleInputChange}
+     max={moment().format("YYYY-MM-DD")}
      required
      />
      <div style={{fontSize:15 ,color:"red"}}>
@@ -282,7 +284,7 @@ export default class MatReportAdd extends Component {
 <div class="row">
   <div class="col">
   <label style={{marginBottom:'5px'}} >Ship ID</label>
-    <input type="text" class="form-control" name="shipID" placeholder="Enter Ship ID"
+    <input type="text" maxlength="6" class="form-control" name="shipID" placeholder="Enter Ship ID"
     value={this.state.shipID}
     onChange={this.handleInputChange}
     required

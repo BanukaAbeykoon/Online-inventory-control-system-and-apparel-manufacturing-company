@@ -45,6 +45,36 @@ onDelete = (id) =>{
   })
 }
 
+
+//filter data
+filterData(lmomat,searchKey){
+
+  const result = lmomat.filter((lmomat) =>
+     lmomat.lmoID.toLowerCase().includes(searchKey) ||
+     lmomat.matID.toLowerCase().includes(searchKey) ||
+     lmomat.category.toLowerCase().includes(searchKey)
+  )
+  
+  this.setState({lmomat:result})
+  
+  }
+  
+  //Search Function
+  handleSearchArea = (e) =>{
+  
+    const searchKey= e.currentTarget.value;
+  
+    axios.get("http://localhost:8000/lmomat").then(res =>{
+        if(res.data.success){
+  
+          this.filterData(res.data.existingPosts,searchKey)
+  
+        }
+    });
+  
+  }
+  
+
 //gather outputs
 render() {
     return (
@@ -74,6 +104,7 @@ render() {
   </div>
 </nav> 
 
+
 <hr/> 
       
 <div className="container p-3 mb-2 bg-primary bg-gradient text-white rounded-3">
@@ -94,8 +125,21 @@ render() {
         <i class="fas fa-plus-circle"></i>
         </a></button>
 
-         <br/>
-         <br/>
+        <center>
+        <div  className="col-lg-3 mt-2 mb-2">
+          {/* Searchbar */}
+          <input
+          className="form-control "
+          type="search"
+          placeholder="Search LMO"
+          name="searchQuery"
+          onChange={this.handleSearchArea}>
+
+          </input>
+          </div>
+          </center>
+
+         
 
         <div class="p-3 mb-2 bg-info text-dark rounded-3">
            {/* LMO Table */}

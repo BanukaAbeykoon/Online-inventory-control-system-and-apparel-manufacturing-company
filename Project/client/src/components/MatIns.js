@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import './styleSideNav.css';
-import Swal from 'sweetalert2'
 import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
@@ -72,6 +71,7 @@ filterData(material,searchKey){
   const result = material.filter((material) =>
      material.matID.toLowerCase().includes(searchKey) ||
      material.matName.toLowerCase().includes(searchKey) ||
+     material.arrDate.toLowerCase().includes(searchKey)||
      material.category.toLowerCase().includes(searchKey)
   )
   
@@ -136,29 +136,10 @@ filterData(material,searchKey){
   <img src="%PUBLIC_URL%../../lmo1.png" class="card-img-bottom" alt="..."/>
 </div>
       
-      
-      
-
-
-
-
-                
-            <div className="container p-3 mb-2 bg-info text-dark rounded-3">
+      <div className="container p-3 mb-2 bg-info text-dark rounded-3">
               <div className="row">
              
-      
-      
-             
-              
-      
-      
-      
-             
-     
-      
-      
-              
-              <div class="btn-group" role="group" aria-label="Basic example">
+      <div class="btn-group" role="group" aria-label="Basic example">
              
               <a href="/matins"><button type="button" class="btn btn-primary" style={{ backgroundColor: "#0E3662" }}>INVENTORY</button></a>
               &nbsp;
@@ -237,11 +218,6 @@ filterData(material,searchKey){
                         buttonText="Download As Excel" />
 
 
-      
- 
-      
-                
-              
                 <button
                   type="button"
                   style={{ backgroundColor: "#00000", padding: "7px" }}
@@ -297,9 +273,7 @@ filterData(material,searchKey){
                           <td>Rs.{material.price*material.qty}.00</td>
                           
                          
-                         
-      
-                        </tr>
+                      </tr>
       
       
                   ))}
