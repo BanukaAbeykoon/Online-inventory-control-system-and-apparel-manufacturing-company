@@ -172,7 +172,7 @@ export default class CreateFactory extends Component {
   };
 
 
-  
+
   btnDemo = (e) => {
     e.preventDefault();
 
@@ -372,6 +372,25 @@ export default class CreateFactory extends Component {
                 <i className="far fa-check-square"></i>
                 &nbsp; Save
               </button>
+
+              <button
+                type="submit"
+                className="btn btn-dark"
+                style={{
+                  marginTop: "15px",
+                  marginBottom: "20px",
+                  marginLeft: "900px",
+                  width: "140px",
+                  backgroundColor: "#2E4661",
+                  borderRadius: "10px",
+                  padding: "10px 0px 10px 0px",
+                }}
+                onClick={this.btnDemo}
+              >
+                Demo
+              </button>
+
+              
             </form>
           </form>
         </div>
