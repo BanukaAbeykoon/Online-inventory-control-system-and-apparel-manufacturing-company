@@ -55,7 +55,7 @@ class AccountNavBar extends Component {
                 </button>
                 <div className="dropdown-content">
                   <a href="/PMDashboard">Production Dashboard</a>
-                  <a href="/clientneworder">Client New Orders</a>
+                  <a href="/neworder">Client New Orders</a>
                   <a href="/searchfac">Search Factory</a>
                   <a href="/magictool">Magic Tool</a>
                   <a href="/rawfacHome">Raw Factory Dashboard</a>

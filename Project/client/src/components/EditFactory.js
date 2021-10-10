@@ -87,11 +87,7 @@ export default class EditFactory extends Component {
     if (!this.state.units) {
       unitsError = "* unitsError is Required";
     }
-    // else if (this.state.units.match("-")) {
-    //   unitsError = "*Units should not be Negetive!";
-    // } else if (!this.state.units.match("([0-9]{4})$")) {
-    //   unitsError = "*Units should be more than 1000";
-    // }
+    
 
     if (
       facnameError ||
