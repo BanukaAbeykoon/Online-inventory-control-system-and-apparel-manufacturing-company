@@ -9,7 +9,7 @@ export default class AccountCreate extends Component {
         constructor(props){
             super(props);
             this.state={
-                orderId:"",
+               // orderId:"",
                 cusName:"",
                 cusStatus:"",
                 pjournal:"",
@@ -17,7 +17,7 @@ export default class AccountCreate extends Component {
                 gjournal:"",
                 other:"",
 
-                orderIdError:"",
+               // orderIdError:"",
                 cusNameError:"",
                 cusStatusError:"",
                 pjournalError:"",
@@ -42,7 +42,7 @@ export default class AccountCreate extends Component {
         //Form Validation part
  
         validate= ()=>{
-              let orderIdError="";
+             // let orderIdError="";
                let cusNameError="";
                let cusStatusError="";
                let pjournalError="";
@@ -50,9 +50,9 @@ export default class AccountCreate extends Component {
                let gjournalError="";
                let  otherError="";
    
-          if(!this.state.orderId){
-            orderIdError="*Name is Required!"
-          }
+          // if(!this.state.orderId){
+          //   orderIdError="*Name is Required!"
+          // }
           if(!this.state.cusName){
             cusNameError="* Customer Name is Required!"
           }
@@ -66,7 +66,7 @@ export default class AccountCreate extends Component {
            if(!this.state.pjournal){
             pjournalError="* purchase journal amount is Required"
            }
-           if(this.state.pjournal.match("-")){
+           if(this.state.pjournal.toString().match("-")){
             pjournalError="* purchase journal amount should not be negative "
            }
 
@@ -74,7 +74,7 @@ export default class AccountCreate extends Component {
            if(!this.state.sjournal){
             sjournalError="* sale journal is Required"
             }
-            if(this.state.sjournal.match("-")){
+            if(this.state.sjournal.toString().match("-")){
               sjournalError="* sale journal amount should not be negative "
              }
 
@@ -84,7 +84,7 @@ export default class AccountCreate extends Component {
             if(!this.state.gjournal){
               gjournalError="*general journal  is Required"
              }
-             if(this.state.gjournal.match("-")){
+             if(this.state.gjournal.toString().match("-")){
               gjournalError="* general journal amount should not be negative "
              }
 
@@ -96,8 +96,8 @@ export default class AccountCreate extends Component {
              } 
                          
    
-           if(orderIdError||cusNameError||cusStatusError||pjournalError || sjournalError || gjournalError || otherError){
-           this.setState({orderIdError,cusNameError,cusStatusError,pjournalError , sjournalError , gjournalError , otherError});
+           if(cusNameError||cusStatusError||pjournalError || sjournalError || gjournalError || otherError){
+           this.setState({cusNameError,cusStatusError,pjournalError , sjournalError , gjournalError , otherError});
            return false;
    
            }
@@ -115,11 +115,11 @@ export default class AccountCreate extends Component {
         onSubmit = (e) =>{
             e.preventDefault();
             const isValid = this.validate();
-            const {orderId,cusName,cusStatus,pjournal,sjournal,gjournal,other} = this.state;
+            const {cusName,cusStatus,pjournal,sjournal,gjournal,other} = this.state;
           
 
             const data = {
-                orderId:orderId,
+               // orderId:orderId,
                 cusName:cusName,
                 cusStatus:cusStatus,
                 pjournal:pjournal,
@@ -137,7 +137,7 @@ export default class AccountCreate extends Component {
                     this.setState(
                     {
 
-                        orderId:"",
+                       // orderId:"",
                         cusName:"",
                         cusStatus:"",
                         pjournal:"",
@@ -159,10 +159,10 @@ export default class AccountCreate extends Component {
         btnDemo = (e) => {
             e.preventDefault();
     
-            const {  orderId, cusName, cusStatus, pjournal, sjournal, gjournal, other} = this.state;
+            const {  cusName, cusStatus, pjournal, sjournal, gjournal, other} = this.state;
     
             const data = {
-                orderId:orderId,
+                //orderId:orderId,
                 cusName:cusName,
                 cusStatus:cusStatus,
                 pjournal:pjournal,
@@ -175,7 +175,7 @@ export default class AccountCreate extends Component {
     
             this.setState(
                 {
-                    orderId: "OID021",
+                   // orderId: "OID021",
                     cusName: "Odel",
                     cusStatus: "special",
                     pjournal: "120000",

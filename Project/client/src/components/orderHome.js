@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+
 export default class orderHome extends Component {
   constructor(props) {
     super(props);
@@ -61,12 +62,15 @@ handleSearchArea = (e) =>{
       <div id="page-content-wrapper">
       <div className="container-fluid">
 
-
+      <div className="container bg-info rounded-3">
       <div className="row justify-content-center">
               <div  class="col-9">
           <div className="row">
               <div className="col-lg-9 mt-2 mb-2">
+            
                 <h4>ALL Order</h4>
+                <hr/>
+
             </div>
             <div className="col-lg-3 mt-2 mb-2">
                 <input
@@ -78,8 +82,11 @@ handleSearchArea = (e) =>{
                 </input>
             </div>
         </div>
+        <button className="btn btn-success"><a href="/addOrder" style={{textDecoration:'none',color:'white'}}>Create New Post</a></button>
+        <br/> <br/> 
+        <div class="p-3 mb-2 bg-primary text-dark rounded-3">
        
-        <table className="table table-hover" style={{marginTop:'400'}}>
+        <table className="table table-hover  table table-bordered border-info table table-info table-striped" style={{marginTop:'5px'}}>
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -118,11 +125,13 @@ handleSearchArea = (e) =>{
           </tbody>
         </table>
 
-        <button className="btn btn-success"><a href="/addOrder" style={{textDecoration:'none',color:'white'}}>Create New Post</a></button>
+       
+              </div>
               </div>
               </div>
 
 
+      </div>
       </div>
       </div>
       </div>

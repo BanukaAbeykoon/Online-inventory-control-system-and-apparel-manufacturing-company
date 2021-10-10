@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const accountSchema = new mongoose.Schema({
 
-    orderId:{ 
-        type: String,
-        required: true
-        },
+    // orderId:{ 
+    //     type: String,
+    //     required: true
+    //     },
 
         cusName:{ 
         type: String,
