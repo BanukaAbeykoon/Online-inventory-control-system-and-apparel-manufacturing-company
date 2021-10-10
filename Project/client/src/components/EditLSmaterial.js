@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import swal from "sweetalert2";
 
 export default class EditLSmaterial extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ export default class EditLSmaterial extends Component {
 
     axios.put(`/lmocard/updatelmocard/${id}`, data).then((res) => {
       if (res.data.success) {
-        alert("Post Updated Successfully");
+        swal.fire("Updated", "updated Successfilly", "success");
         this.setState({
           shipID: shipID,
           supplierID: supplierID,
@@ -90,7 +91,9 @@ export default class EditLSmaterial extends Component {
 
   render() {
     return (
-      <div className="col-md-8 mt-4 mx-auto">
+     <div id="wrapper" className="toggled">
+        <div id="page-content-wrapper">
+          <div className="container-sm">
         <h1 className="h3 mb-3 font-weight-normal">Edit Post</h1>
         <form className="needs-validation" noValidate>
           <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -156,7 +159,7 @@ export default class EditLSmaterial extends Component {
           <div className="form-group" style={{ marginBottom: "15px" }}>
             <label style={{ marginBottom: "5px" }}>Quantity</label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               name="quantity"
               placeholder="Enter Post Quantity"
@@ -168,7 +171,7 @@ export default class EditLSmaterial extends Component {
           <div className="form-group" style={{ marginBottom: "15px" }}>
             <label style={{ marginBottom: "5px" }}>UnitPrice</label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               name="unitPrice"
               placeholder="Enter Post UnitPrice"
@@ -180,7 +183,7 @@ export default class EditLSmaterial extends Component {
           <div className="form-group" style={{ marginBottom: "15px" }}>
             <label style={{ marginBottom: "5px" }}>Date</label>
             <input
-              type="text"
+              type="date"
               className="form-control"
               name="date"
               placeholder="Enter Post Date"
@@ -199,6 +202,8 @@ export default class EditLSmaterial extends Component {
             &nbsp; update
           </button>
         </form>
+      </div>
+      </div>
       </div>
     );
   }

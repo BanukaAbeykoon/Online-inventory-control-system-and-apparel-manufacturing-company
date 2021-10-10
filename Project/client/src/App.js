@@ -206,7 +206,7 @@ export default class App extends Component {
         </div>
 
         <Route path="/ShipmentHome" component={ShipmentHome}></Route>
-        <div className="container">
+      
           <Route path="/addSh" component={ShipmentCreate}></Route>
           <Route path="/editSh/:id" component={ShipmentEdit}></Route>
           <Route path="/shipment/:id" component={ShipmentDetails}></Route>
@@ -219,7 +219,7 @@ export default class App extends Component {
             path="/DetailsLSmaterial/:id"
             component={DetailsLSmaterial}
           ></Route>
-        </div>
+     
 
         <div className="page-content-wrapper">
           <Route path="/qcDash" exact component={HomeQC}></Route>

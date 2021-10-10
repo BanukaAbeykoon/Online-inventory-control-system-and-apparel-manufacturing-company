@@ -62,7 +62,7 @@ export default class CreateLSmaterial extends Component {
       axios.post("/lmocard/save", data).then((res) => {
         if (res.data.success) {
           //alert("Create Successfully !!!");
-          swal.fire("Added", "Factory Added Successfully", "success");
+          swal.fire("Added", "shipment Added Successfully", "success");
           //this.retrieveInventory();
 
           this.setState({
