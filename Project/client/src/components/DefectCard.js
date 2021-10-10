@@ -8,6 +8,7 @@ class DefectCard extends Component {
   constructor(props){
     super(props);
     this.state={
+        orderID:"",
         missingitem:"",
         misplased:"",
         ambigusitem:"",
@@ -27,8 +28,9 @@ class DefectCard extends Component {
 
   onSubmit = (e) =>{
     e.preventDefault();
-    const {missingitem,misplased,ambigusitem,duplicateitem,srate} = this.state;
+    const {orderID,missingitem,misplased,ambigusitem,duplicateitem,srate} = this.state;
     const data ={
+        orderID:orderID,
         missingitem:missingitem,
         misplased:misplased,
         ambigusitem:ambigusitem,
@@ -37,9 +39,14 @@ class DefectCard extends Component {
     }
 
 
-    if(missingitem =="")
+    
+    if(orderID =="")
     {
       Swal.fire('WARNING','Enter Order ID','warning')
+    }
+    else if(missingitem =="")
+    {
+      Swal.fire('WARNING','Enter Missing Items Amount','warning')
     }
     else if(misplased ==""){
       Swal.fire('WARNING','Enter Misplaced Items Amount','warning')
@@ -64,6 +71,7 @@ class DefectCard extends Component {
           Swal.fire('Added','Defect Card Added Successfully','success') 
         this.setState(
           { 
+            orderID:"",
             missingitem:"",
             misplased:"",
             ambigusitem:"",
@@ -76,13 +84,14 @@ class DefectCard extends Component {
   }
 
 
-  //Demo button
+   //Demo button
 btnDemo = (e) => {
   e.preventDefault();
 
-  const {  missingitem, misplased, ambigusitem, duplicateitem, srate} = this.state;
+  const {  orderID, missingitem, misplased, ambigusitem, duplicateitem, srate} = this.state;
 
   const data = {
+    orderID:orderID,
     missingitem: missingitem,
     misplased: misplased,
     ambigusitem: ambigusitem,
@@ -95,7 +104,8 @@ btnDemo = (e) => {
 
   this.setState(
       {
-        missingitem: "OID072",
+        orderID:"OID095",
+        missingitem: "120",
         misplased: "228",
         ambigusitem: "83",
         duplicateitem: "18",
@@ -139,12 +149,20 @@ btnDemo = (e) => {
         <h1 className="h3 mb-3 font-weight-nomal">Add New Defect Card</h1>
         <form className="needs-validation" >
 
-          <div className="form-group" style={{marginBottom:'15px'}}>
+        <div className="form-group" style={{marginBottom:'15px'}}>
           <lable style={{marginBottom:'5px'}}>Order ID</lable>
-          <input type="text"
+          <input type="text" class="form-control" maxlength="6"  name="orderID" placeholder="Enter Order ID"
+    value={this.state.orderID}
+          onChange={this.handleInputChange}
+          required/>
+          </div>
+          
+          <div className="form-group" style={{marginBottom:'15px'}}>
+          <lable style={{marginBottom:'5px'}}>Incomplete / missing items</lable>
+          <input type="number"  min="0" max=" " step="1"
           className="form-control"
           name="missingitem"
-          placeholder="Enter Order ID"
+          placeholder="Enter Incomplete / missing items"
           value={this.state.missingitem}
           onChange={this.handleInputChange}
           required/>
