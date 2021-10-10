@@ -50,13 +50,13 @@ export default class CreateFactory extends Component {
     let unitsError = "";
 
     if (!this.state.facname) {
-      facnameError = "*facnameError is Required!";
+      facnameError = "*Factory Name is Required!";
     }
 
     if (!this.state.factelephone) {
-      factelephoneError = "* factelephoneError is Required!";
+      factelephoneError = "* Factory TelephoneError is Required!";
     }
-    else if (!this.state.factelephone.match(/^[0-9]{10}$/)) {
+    else if (!this.state.factelephone.toString().match(/^[0-9]{10}$/)) {
       factelephoneError = "*Please Enter valid Telephonephone!";
     }
 
@@ -90,9 +90,9 @@ export default class CreateFactory extends Component {
 
     if (!this.state.units) {
       unitsError = "* unitsError is Required";
-    } else if (this.state.units.match("-")) {
+    } else if (this.state.units.toString().match("-")) {
       unitsError = "*Units should not be Negetive!";
-    } else if (!this.state.units.match("([0-9]{4})$")) {
+    } else if (!this.state.units.toString().match("([0-9]{4})$")) {
       unitsError = "*Units should be more than 1000";
     }
 
