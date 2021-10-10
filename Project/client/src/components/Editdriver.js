@@ -12,7 +12,11 @@ export default class Editdriver extends Component {
             name:"",
             age:"",
             nic:"",
-            address:""
+            address:"",
+            nameError:"",
+            ageError:"",
+            nicError:"",
+            addressError:""
         }
     }
     handleInputChange=(e)=>{
@@ -23,11 +27,54 @@ export default class Editdriver extends Component {
             [name]:value
         })
     }
+
+    validate= ()=>{
+        let nameError="";
+        let ageError="";
+        let nicError="";
+        let addressError="";
+ 
+        if(!this.state.name){
+            nameError="*Name is Required!"
+        }
+        if(!this.state.nic){
+            nicError="* NIC is Required!"
+        }
+        else if (!this.state.nic.match('[0-9+]{10}[vV|xX]$')){
+         nicError= '*Please Enter valid Nic!'
+         }
+ 
+         //  else if (!this.state.nic.validate){
+         // nicError= '*NIC already exists!'
+ 
+         // }
+ 
+ 
+ 
+        if(!this.state.address){
+         addressError="* Address is Required!"
+          }
+         if(!this.state.age){
+         ageError="* Age is Required"
+         }
+ 
+         if(nameError||ageError||nicError||addressError){
+         this.setState({nameError,ageError,nicError,addressError});
+         return false;
+ 
+         }
+ 
+     return true;
+ 
+    }
+ 
+
+
     
     onSubmit=(e)=>{
         const id = this.props.match.params.id;
         e.preventDefault();
- 
+        const isValid= this.validate();
         const {name,age,nic,address}= this.state;
  
         const data={
@@ -36,7 +83,7 @@ export default class Editdriver extends Component {
             nic:nic,
             address:address
         }
- 
+        if(isValid){
         console.log(data)
  
         axios.put(`/driver/DriHome/updatedriver/${id}`,data).then((res)=>{
@@ -51,6 +98,7 @@ export default class Editdriver extends Component {
             }
         })
     }
+}
  
     
     componentDidMount(){
@@ -70,7 +118,7 @@ export default class Editdriver extends Component {
             }
         })
     }
-    
+
     
     render() {
         return (
@@ -92,22 +140,33 @@ export default class Editdriver extends Component {
                    <lable style={{marginBottom:'15px'}}>Driver Name</lable>
                     <input type='text' placeholder='Enter Name' className = 'form-control'
                     name="name" value={this.state.name} onChange={this.handleInputChange}/> 
+                      <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.nameError}
+                   </div>
 
                     <lable style={{marginBottom:'15px'}}>Driver Age</lable>
                     <input type='text' placeholder='Enter Age' className = 'form-control'
                     name="age" value={this.state.age} onChange={this.handleInputChange}/> 
-
+                          <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.ageError}
+                   </div>
 
 
                     <lable style={{marginBottom:'15px'}}>Driver NIC</lable>
                     <input type='text' placeholder='Enter NIC' className = 'form-control'
                     name="nic" value={this.state.nic} onChange={this.handleInputChange}/> 
-
+                              <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.nicError}
+                   </div>
                 
                     <lable style={{marginBottom:'15px'}}>Driver Address</lable>
                     <textarea  cols='30' rows='5' placeholder='Address' className='form-control'            
                      name="address" value={this.state.address} onChange={this.handleInputChange}/> <br/>
-                    
+                          <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.addressError}
+                   </div>
+
+
                     <button  className='btn btn-success ' type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}> <i className="fas fa-update"></i>&nbsp;UPDATE</button>
                     &nbsp;
                        
