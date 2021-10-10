@@ -35,36 +35,39 @@ export default class AccountDetails extends Component {
 
         return (
           
-           
+            <div class="card bg-info text-left col-lg-7 mt-2 mb-2">
+            <div class="card-body">
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div style={{marginTop:'20px'}}>
-            <h4> {cusName} </h4>
+            <h2> {cusName} </h2>
             <hr/>
 
+            
+
             <dl className = "row">
-                <dt className="col-sm-3">Order ID</dt>
+                <dt className="col-sm-3"><i class="fas fa-circle"/>&nbsp;Order ID</dt>
                 <dt className="col-sm-9">  {`OID${id.substr(0,5)}`} </dt>
 
-                <dt className="col-sm-3">Customer Name</dt>
+                <dt className="col-sm-3"><i class="fas fa-circle"/>&nbsp;Customer Name</dt>
                 <dt className="col-sm-9"> {cusName} </dt>
 
-                <dt className="col-sm-3">Customer Status</dt>
+                <dt className="col-sm-3"><i class="fas fa-circle"/>&nbsp;Customer Status</dt>
                 <dt className="col-sm-9"> {cusStatus} </dt>
 
-                <dt className="col-sm-3">Purchase Journal</dt>
+                <dt className="col-sm-3"><i class="fas fa-circle"/>&nbsp;Purchase Journal</dt>
                 <dt className="col-sm-9">Rs {pjournal} </dt>
 
-                <dt className="col-sm-3">Sale Journal</dt>
+                <dt className="col-sm-3"><i class="fas fa-circle"/>&nbsp;Sale Journal</dt>
                 <dt className="col-sm-9">Rs {sjournal} </dt>
 
-                <dt className="col-sm-3">General Journal</dt>
+                <dt className="col-sm-3"><i class="fas fa-circle"/>&nbsp;General Journal</dt>
                 <dt className="col-sm-9">Rs {gjournal} </dt>
 
-                <dt className="col-sm-3">Other</dt>
+                <dt className="col-sm-3"><i class="fas fa-circle"/>&nbsp;Other</dt>
                 <dt className="col-sm-9"> {other} </dt>
 
-                <dt className="col-sm-3">Profit</dt>
+                <dt className="col-sm-3"><i class="fas fa-circle"/>&nbsp;Profit</dt>
                 <dt className="col-sm-9">Rs {Number(sjournal)-(Number(pjournal)+Number(gjournal)) } </dt>
 
 
@@ -75,6 +78,8 @@ export default class AccountDetails extends Component {
             </dl>
 
             
+            </div>
+            </div>
             </div>
             </div>
 

@@ -133,7 +133,7 @@ export default class AccountHome extends Component {
 
 
 
-
+            <div className="container bg-info rounded-3">
       <h4>ALL Account Details</h4>
       <hr/>
 
@@ -234,9 +234,9 @@ export default class AccountHome extends Component {
           <br/> <br/> 
 
        
-         
+          <div class="p-3 mb-2 bg-primary text-dark rounded-3">
 
-          <table className ="table"> 
+          <table className="table table-hover  table table-bordered border-info table table-info table-striped" style={{marginTop:'5px'}}>
             <thead>
 
               <tr>
@@ -294,7 +294,8 @@ export default class AccountHome extends Component {
            
             
 
-
+            </div>
+        </div>
         </div>
         </div>
 

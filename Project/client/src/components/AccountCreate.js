@@ -250,8 +250,8 @@ export default class AccountCreate extends Component {
 
 
 
-
-
+           
+            <div class="p-3 mb-2 bg-light text-dark rounded-3">
                 <h1 className="h3 mb-3 front-weight-normal">Create new Accounts</h1>
                 <form className="needs-validation" noValidate>
                    
@@ -369,6 +369,8 @@ export default class AccountCreate extends Component {
                 </form>
                 
             </div>
+            </div>
+            
 
 
             
