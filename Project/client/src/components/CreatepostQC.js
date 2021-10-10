@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import './style.css';
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 class CreatepostQC extends Component {
 
@@ -91,6 +92,40 @@ class CreatepostQC extends Component {
     })
   }
 
+
+//Demo button
+btnDemo = (e) => {
+  e.preventDefault();
+
+  const {  OrderID, CheckedDate, ArrivalDate, BuyerID, requirment1, requirment2, Qualityrate} = this.state;
+
+  const data = {
+    OrderID: OrderID,
+    CheckedDate: CheckedDate,
+    ArrivalDate: ArrivalDate,
+    BuyerID: BuyerID,
+    requirment1: requirment1,
+    requirment2: requirment2,
+    Qualityrate: Qualityrate,
+    
+  }
+
+  console.log(data)
+
+  this.setState(
+      {
+        OrderID: "OID006",
+        CheckedDate: "",
+        ArrivalDate: "",
+        BuyerID: "DDT543",
+        requirment1: "Ripped Jeans",
+        requirment2: "Light Blue Denim Material",
+        Qualityrate: "92",
+       
+      }
+  )
+}
+
   render() {
     return (
       <div id="wrapper" className="toggled">
@@ -140,7 +175,9 @@ class CreatepostQC extends Component {
           name="CheckedDate"
           placeholder="Enter CheckedDate"
           value={this.state.CheckedDate}
-          onChange={this.handleInputChange}/>
+          onChange={this.handleInputChange}
+          max={moment().format("YYYY-MM-DD")}
+          />
           </div>
 
           <div className="form-group" style={{marginBottom:'15px'}}>
@@ -150,7 +187,9 @@ class CreatepostQC extends Component {
           name="ArrivalDate"
           placeholder="EnterArrivalDate"
           value={this.state.ArrivalDate}
-          onChange={this.handleInputChange}/>
+          onChange={this.handleInputChange}
+          max={moment().format("YYYY-MM-DD")}
+          />
           </div>
 
           <div className="form-group" style={{marginBottom:'15px'}}>
@@ -193,10 +232,15 @@ class CreatepostQC extends Component {
           onChange={this.handleInputChange}/>
           </div>
 
+<div>
           <button className="btn btn-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
             <i className="far fa-check-square"></i>
             &nbsp; Save
           </button>
+          <br/>
+          <br/>
+          <button type="submit" className="btn btn-dark"  style={{ backgroundColor: "#2D5F97"}}  onClick={this.btnDemo}>DEMO</button>
+          </div>
         </form>
         </div>
         </div>

@@ -39,7 +39,7 @@ class DefectCard extends Component {
 
     if(missingitem =="")
     {
-      Swal.fire('WARNING','Enter Missing Items Amount','warning')
+      Swal.fire('WARNING','Enter Order ID','warning')
     }
     else if(misplased ==""){
       Swal.fire('WARNING','Enter Misplaced Items Amount','warning')
@@ -75,6 +75,37 @@ class DefectCard extends Component {
     })
   }
 
+
+  //Demo button
+btnDemo = (e) => {
+  e.preventDefault();
+
+  const {  missingitem, misplased, ambigusitem, duplicateitem, srate} = this.state;
+
+  const data = {
+    missingitem: missingitem,
+    misplased: misplased,
+    ambigusitem: ambigusitem,
+    duplicateitem: duplicateitem,
+    srate: srate,
+
+  }
+
+  console.log(data)
+
+  this.setState(
+      {
+        missingitem: "OID072",
+        misplased: "228",
+        ambigusitem: "83",
+        duplicateitem: "18",
+        srate: "82",
+
+      }
+  )
+}
+
+
   render() {
     return (
       <div id="wrapper" className="toggled">
@@ -109,11 +140,11 @@ class DefectCard extends Component {
         <form className="needs-validation" >
 
           <div className="form-group" style={{marginBottom:'15px'}}>
-          <lable style={{marginBottom:'5px'}}>Incomplete / missing items</lable>
-          <input type="number"
+          <lable style={{marginBottom:'5px'}}>Order ID</lable>
+          <input type="text"
           className="form-control"
           name="missingitem"
-          placeholder="Incomplete / Missing items"
+          placeholder="Enter Order ID"
           value={this.state.missingitem}
           onChange={this.handleInputChange}
           required/>
@@ -121,7 +152,7 @@ class DefectCard extends Component {
 
           <div className="form-group" style={{marginBottom:'15px'}}>
           <lable style={{marginBottom:'5px'}}>Misplaced items</lable>
-          <input type="number"
+          <input type="number"  min="0" max=" " step="1"
           className="form-control"
           name="misplased"
           placeholder="Misplaced items"
@@ -131,7 +162,7 @@ class DefectCard extends Component {
 
           <div className="form-group" style={{marginBottom:'15px'}}>
           <lable style={{marginBottom:'5px'}}>Inconsistance / ambiguous items</lable>
-          <input type="number"
+          <input type="number"  min="0" max=" " step="1"
           className="form-control"
           name="ambigusitem"
           placeholder="Inconsistance / ambiguous items"
@@ -141,7 +172,7 @@ class DefectCard extends Component {
 
           <div className="form-group" style={{marginBottom:'15px'}}>
           <lable style={{marginBottom:'5px'}}>Redundant / Duplicate items</lable>
-          <input type="number"
+          <input type="number"  min="0" max=" " step="1"
           className="form-control"
           name="duplicateitem"
           placeholder="Redundant / Duplicate items"
@@ -163,6 +194,9 @@ class DefectCard extends Component {
             <i className="far fa-check-square"></i>
             &nbsp; Submit
           </button>
+          <br/>
+          <br/>
+          <button type="submit" className="btn btn-dark"  style={{ backgroundColor: "#2D5F97"}}  onClick={this.btnDemo}>DEMO</button>
         </form>
         </div>
         </div>
