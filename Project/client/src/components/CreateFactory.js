@@ -61,11 +61,11 @@ export default class CreateFactory extends Component {
     }
 
     if (!this.state.facemail) {
-      facemailError = "* factory Email is Required!";
+      facemailError = "* Factory Email is Required!";
     } else if (
       !this.state.facemail.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
     ) {
-      facemailError = "*Please Enter valid email!";
+      facemailError = "*Please Enter valid Email!";
     }
 
     if (!this.state.facwebsite) {
