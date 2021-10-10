@@ -6,7 +6,7 @@ class SHdashboard extends Component {
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
           <div className="container-fluid"></div>
-
+{/* add nav bar */}
           <div className="container-fluid">
             <div className="row">
               <div className="col-lg-9 mt-2 mb-2">
