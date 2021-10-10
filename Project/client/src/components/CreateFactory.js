@@ -55,7 +55,8 @@ export default class CreateFactory extends Component {
 
     if (!this.state.factelephone) {
       factelephoneError = "* factelephoneError is Required!";
-    } else if (!this.state.factelephone.match(/^[0-9]{10}$/)) {
+    }
+    else if (!this.state.factelephone.match(/^[0-9]{10}$/)) {
       factelephoneError = "*Please Enter valid Telephonephone!";
     }
 
@@ -208,7 +209,7 @@ export default class CreateFactory extends Component {
       ceoname: "M.K Perera",
       fconame: "N.L Silva",
       product: "Trouses",
-      units: 4000,
+      units: "4000",
     });
   };
 
