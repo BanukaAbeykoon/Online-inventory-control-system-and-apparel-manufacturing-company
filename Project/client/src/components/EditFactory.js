@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import axios from "axios";
 import swal from "sweetalert2";
 
@@ -68,11 +68,12 @@ export default class EditFactory extends Component {
     if (!this.state.facwebsite) {
       facwebsiteError = "* facwebsiteError is Required";
     } else if (
-      !this.state.facwebsite.match(/^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$/)
+      !this.state.facwebsite.match(
+        /^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$/
+      )
     ) {
       facwebsiteError = "*Please Enter valid website!";
     }
-
 
     if (!this.state.ceoname) {
       ceonameError = "* ceonameError is Required";
@@ -86,8 +87,13 @@ export default class EditFactory extends Component {
 
     if (!this.state.units) {
       unitsError = "* unitsError is Required";
+    } else if (this.state.units.match("-")) {
+      unitsError = "*Units should not be Negetive!";
+    } else if (!this.state.units.match("([0-9]{4})$")) {
+      unitsError = "*Units should be more than 1000";
     }
 
+    
     if (
       facnameError ||
       factelephoneError ||
@@ -113,6 +119,8 @@ export default class EditFactory extends Component {
 
     return true;
   };
+
+  
 
   onSubmit = (e) => {
     const id = this.props.match.params.id;
