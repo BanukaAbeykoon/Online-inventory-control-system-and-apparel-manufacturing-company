@@ -32,7 +32,7 @@ const generatePDF = (shipment) => {
     tableRows.push(shipmentdata);
   });
   doc.text("Casanova Inventory", 70, 8).setFontSize(13);
-  doc.text("Shipment Detail Report", 14, 16).setFontSize(13);
+  doc.text("Shipment Details Report", 14, 16).setFontSize(13);
   doc.autoTable(tableColumn, tableRows, {
     styles: { fontSize: 8 },
     startY: 35,

@@ -44,8 +44,8 @@ class SHdashboard extends Component {
                     With supporting text below as a natural lead-in to
                     additional content.
                   </p>
-                  <a href="#" class="btn btn-primary">
-                   Less material shipment
+                  <a href="/HomeLSmaterial" class="btn btn-primary">
+                    Less material shipment
                   </a>
                 </div>
               </div>
@@ -53,7 +53,7 @@ class SHdashboard extends Component {
             <div class="col-sm-4">
               <div class="card">
                 <img
-                  src="report.jpg"
+                  src="reportSH.jpg"
                   width="300"
                   height="400"
                   class="card-img-top"
@@ -67,7 +67,7 @@ class SHdashboard extends Component {
                   </p>
                   <a href="#" class="btn btn-primary">
                     Report
-                    </a>
+                  </a>
                 </div>
               </div>
             </div>

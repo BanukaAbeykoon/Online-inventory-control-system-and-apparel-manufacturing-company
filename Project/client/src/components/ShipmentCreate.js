@@ -197,7 +197,7 @@ export default class ShipmentCreate extends Component {
           <div className="form-group" style={{ marginBottom: "15px" }}>
             <label style={{ marginBottom: "5px" }}>Quantity</label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               name="quantity"
               placeholder="Enter Quantity"

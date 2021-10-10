@@ -1,6 +1,43 @@
 import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert2";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+
+
+const generatePDF = (lmocard) => {
+  const doc = new jsPDF();
+  const tableColumn = [
+    "shipmentID",
+    "supplierID",
+    "materialID",
+    "materialName",
+    "quantity ",
+    "unitPrice",
+    "date",
+  ];
+  const tableRows = [];
+
+  lmocard.map((lmocard) => {
+    const shipmentdata = [
+      lmocard.shipmentID,
+      lmocard.supplierID,
+      lmocard.materialID,
+      lmocard.materialName,
+      lmocard.quantity,
+      lmocard.unitPrice,
+      lmocard.date,
+    ];
+    tableRows.push(shipmentdata);
+  });
+  doc.text("Casanova Inventory", 70, 8).setFontSize(13);
+  doc.text("Shipment Details Report", 14, 16).setFontSize(13);
+  doc.autoTable(tableColumn, tableRows, {
+    styles: { fontSize: 8 },
+    startY: 35,
+  });
+  doc.save("shipment details.pdf");
+};
 
 
 export default class HomeLSmaterial extends Component {
@@ -30,7 +67,7 @@ export default class HomeLSmaterial extends Component {
 
   onDelete = (id) => {
     axios.delete(`/lmocard/deleteslmocard/${id}`).then((res) => {
-      alert("Deleted Successfully");
+       swal.fire("Deleted", "deleted Successfully", "success");
       this.retrievelmocard();
     });
   };
@@ -43,7 +80,7 @@ export default class HomeLSmaterial extends Component {
         lmocard.supllierName.toLowerCase().includes(searchKey) ||
         lmocard.lessmaterialID.toLowerCase().includes(searchKey) ||
         lmocard.lessmaterialName.toLowerCase().includes(searchKey) ||
-        lmocard.qunatity.toLowerCase().includes(searchKey) ||
+        lmocard.quantity.toLowerCase().includes(searchKey) ||
         lmocard.unitPrice.toLowerCase().includes(searchKey) ||
         lmocard.date.toLowerCase().includes(searchKey)
     );
@@ -64,10 +101,11 @@ export default class HomeLSmaterial extends Component {
     return (
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
-          <div className="container-fluid">
+          <div className="container-sm">
+
             <div className="row">
               <div className="col-lg-9 mt-2 mb-2">
-                <h4>All Imports</h4>
+                <h4>All Shipments</h4>
               </div>
               <div className="col-lg-3 mt-2 mb-2">
                 <input
@@ -78,6 +116,16 @@ export default class HomeLSmaterial extends Component {
                   onChange={this.handleSearchArea}
                 ></input>
               </div>
+            </div>
+            <div>
+              <button
+                type="button"
+                style={{ backgroundColor: "#2E4661", padding: "10px" }}
+                class="btn btn-secondary btn-sm"
+                onClick={() => generatePDF(this.state.lmocard)}
+              >
+                Generate Report of shipments
+              </button>
             </div>
             <table className="table">
               <thead>
@@ -91,6 +139,7 @@ export default class HomeLSmaterial extends Component {
                   <th scope="col">Quantity</th>
                   <th scope="col">UnitPrice</th>
                   <th scope="col">Date</th>
+                  <th scope="col">Total</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
@@ -113,6 +162,9 @@ export default class HomeLSmaterial extends Component {
                     <td>{lmocard.quantity}</td>
                     <td>{lmocard.unitPrice}</td>
                     <td>{lmocard.date}</td>
+                    <td>
+                      Rs {Number(lmocard.quantity) * Number(lmocard.unitPrice)}
+                    </td>
 
                     <td>
                       <a
@@ -144,8 +196,10 @@ export default class HomeLSmaterial extends Component {
               </a>
             </button>
           </div>
-        </div>
-      </div>
+    </div>
+    </div>
+  
+
     );
   }
 }

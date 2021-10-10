@@ -152,7 +152,7 @@ export default class EditPost extends Component {
           <div className="form-group" style={{ marginBottom: "15px" }}>
             <label style={{ marginBottom: "5px" }}>Quantity </label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               name="quantity"
               placeholder="Enter Quantity "
@@ -164,7 +164,7 @@ export default class EditPost extends Component {
           <div className="form-group" style={{ marginBottom: "15px" }}>
             <label style={{ marginBottom: "5px" }}>UnitPrice</label>
             <input
-              type="text"
+              type="number"
               className="form-control"
               name="unitPrice"
               placeholder="Enter UnitPrice "
@@ -176,7 +176,7 @@ export default class EditPost extends Component {
           <div className="form-group" style={{ marginBottom: "15px" }}>
             <label style={{ marginBottom: "5px" }}>Date</label>
             <input
-              type="text"
+              type="date"
               className="form-control"
               name="Date"
               placeholder="Enter Date "

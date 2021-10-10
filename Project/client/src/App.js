@@ -221,7 +221,7 @@ export default class App extends Component {
         </div>
 
         <Route path="/ShipmentHome" component={ShipmentHome}></Route>
-        <div className="container">
+      
           <Route path="/addSh" component={ShipmentCreate}></Route>
           <Route path="/editSh/:id" component={ShipmentEdit}></Route>
           <Route path="/shipment/:id" component={ShipmentDetails}></Route>
@@ -232,7 +232,7 @@ export default class App extends Component {
           <Route path="/EditLSmaterial/:id" component={EditLSmaterial}></Route>
           <Route path="/DetailsLSmaterial/:id" component={DetailsLSmaterial}
           ></Route>
-        </div>
+     
 
 
    
