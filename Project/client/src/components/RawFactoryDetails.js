@@ -62,7 +62,7 @@ export default class RawFactoryDetails extends Component {
               <hr />
               <dl className="row">
                 <dt className="col-sm-3">Order ID</dt>
-                <dd className="col-sm-9">{`OID${id.substr(0, 5)}`}</dd>
+                <dd className="col-sm-9">{orderid}</dd>
                 <br />
                 <br />
                 <br />
