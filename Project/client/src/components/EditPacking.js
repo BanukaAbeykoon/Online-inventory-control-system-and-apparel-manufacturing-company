@@ -161,6 +161,23 @@ return Object.values(errors).every((err) => err === "");
               </h1>
               <form className="needs-validation" noValidation>
                 <div className="form-group" style={{ marginBottom: "15px" }}>
+                  <label style={{ marginBottom: "5px" }}>OrderId</label>
+                  <input
+                    type="text"
+                    readOnly
+                    className="form-control"
+                    name="orderId"
+                    placeholder="Enter Order ID"
+                    value={`OID${id.substr(0, 5)}`}
+                    onChange={this.handleInputChange}
+                  />
+                  {this.state.errors.orderId && (
+                    <div classNane="text-danger" style={{ color: "red" }}>
+                      {this.state.errors.orderId}
+                    </div>
+                  )}
+                </div>
+                <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Customer</label>
                   <input
                     type="text"
@@ -177,23 +194,7 @@ return Object.values(errors).every((err) => err === "");
                   )}
                 </div>
 
-                <div className="form-group" style={{ marginBottom: "15px" }}>
-                  <label style={{ marginBottom: "5px" }}>OrderId</label>
-                  <input
-                    type="text"
-                    readOnly
-                    className="form-control"
-                    name="orderId"
-                    placeholder="Enter Order ID"
-                    value={`OID${id.substr(0,5)}`}
-                    onChange={this.handleInputChange}
-                  />
-                  {this.state.errors.orderId && (
-                    <div classNane="text-danger" style={{ color: "red" }}>
-                      {this.state.errors.orderId}
-                    </div>
-                  )}
-                </div>
+                
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Category</label>

@@ -141,7 +141,6 @@ export default class CreatePacking extends Component {
 
     this.setState({
       customer: "Kasun Madushan",
-      orderId: "O12",
       category: "t-shirt",
       payment: "Done",
       quantity: "5000",
@@ -235,7 +234,7 @@ export default class CreatePacking extends Component {
                   )}
                 </div>
 
-                <div className="form-group" style={{ marginBottom: "15px" }}>
+                {/* <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Order ID</label>
                   <input
                     type="text"
@@ -250,7 +249,7 @@ export default class CreatePacking extends Component {
                       {this.state.errors.orderId}
                     </div>
                   )}
-                </div>
+                </div> */}
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Category</label>
@@ -268,7 +267,7 @@ export default class CreatePacking extends Component {
                     </div>
                   )}
                 </div>
-
+              
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Payment</label>
                   <input
@@ -276,6 +275,7 @@ export default class CreatePacking extends Component {
                     className="form-control"
                     name="payment"
                     placeholder="Enter payment status"
+                    value="payment"
                     value={this.state.payment}
                     onChange={this.handleInputChange}
                   />
@@ -290,6 +290,7 @@ export default class CreatePacking extends Component {
                   <label style={{ marginBottom: "5px" }}>Quantity</label>
                   <input
                     type="number"
+                    
                     className="form-control"
                     name="quantity"
                     placeholder="Enter quantity"
