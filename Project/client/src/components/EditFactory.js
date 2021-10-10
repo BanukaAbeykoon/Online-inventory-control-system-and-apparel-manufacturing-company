@@ -59,7 +59,11 @@ export default class EditFactory extends Component {
 
     if (!this.state.facemail) {
       facemailError = "* facemailError is Required!";
-    } 
+    } else if (
+      !this.state.facemail.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+    ) {
+      facemailError = "*Please Enter valid email!";
+    }
 
     if (!this.state.facwebsite) {
       facwebsiteError = "* facwebsiteError is Required";
