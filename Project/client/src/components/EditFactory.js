@@ -67,7 +67,11 @@ export default class EditFactory extends Component {
 
     if (!this.state.facwebsite) {
       facwebsiteError = "* facwebsiteError is Required";
-    } 
+    } else if (
+      !this.state.facwebsite.match(/^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$/)
+    ) {
+      facwebsiteError = "*Please Enter valid website!";
+    }
 
 
     if (!this.state.ceoname) {
