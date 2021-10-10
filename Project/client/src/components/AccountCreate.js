@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import swal from 'sweetalert2';
-import {createValid, setErrors} from "./../components/validateAcc/createValid"
+
 
 
 export default class AccountCreate extends Component {
@@ -16,7 +16,15 @@ export default class AccountCreate extends Component {
                 sjournal:"",
                 gjournal:"",
                 other:"",
-                errors: {}
+
+                orderIdError:"",
+                cusNameError:"",
+                cusStatusError:"",
+                pjournalError:"",
+                sjournalError:"",
+                gjournalError:"",
+                otherError:"",
+              
             }
         }
 
@@ -32,30 +40,73 @@ export default class AccountCreate extends Component {
 
 
         //Form Validation part
-  validate = (
-    orderId,
-    cusName,
-    cusStatus,
-    pjournal,
-    sjournal,
-    gjournal,
-    other
-  ) => {
-    const errors = setErrors(
-        orderId,
-        cusName,
-        cusStatus,
-        pjournal,
-        sjournal,
-        gjournal,
-        other
-     
-    );
+ 
+        validate= ()=>{
+              let orderIdError="";
+               let cusNameError="";
+               let cusStatusError="";
+               let pjournalError="";
+               let sjournalError="";
+               let gjournalError="";
+               let  otherError="";
+   
+          if(!this.state.orderId){
+            orderIdError="*Name is Required!"
+          }
+          if(!this.state.cusName){
+            cusNameError="* Customer Name is Required!"
+          }
+        
+          
+          if(!this.state.cusStatus){
+            cusStatusError="* customer status is Required!"
+            }
 
-    this.setState({ errors: errors });
 
-    return Object.values(errors).every((err) => err === "");
-  };
+           if(!this.state.pjournal){
+            pjournalError="* purchase journal amount is Required"
+           }
+           if(this.state.pjournal.match("-")){
+            pjournalError="* purchase journal amount should not be negative "
+           }
+
+
+           if(!this.state.sjournal){
+            sjournalError="* sale journal is Required"
+            }
+            if(this.state.sjournal.match("-")){
+              sjournalError="* sale journal amount should not be negative "
+             }
+
+
+
+
+            if(!this.state.gjournal){
+              gjournalError="*general journal  is Required"
+             }
+             if(this.state.gjournal.match("-")){
+              gjournalError="* general journal amount should not be negative "
+             }
+
+
+
+
+            if(!this.state.other){
+              otherError="* other feild is Required"
+             } 
+                         
+   
+           if(orderIdError||cusNameError||cusStatusError||pjournalError || sjournalError || gjournalError || otherError){
+           this.setState({orderIdError,cusNameError,cusStatusError,pjournalError , sjournalError , gjournalError , otherError});
+           return false;
+   
+           }
+   
+        return true;
+   
+      }
+    
+  
 
 
 
@@ -63,9 +114,9 @@ export default class AccountCreate extends Component {
 
         onSubmit = (e) =>{
             e.preventDefault();
-
+            const isValid = this.validate();
             const {orderId,cusName,cusStatus,pjournal,sjournal,gjournal,other} = this.state;
-            if (this.validate(orderId, cusName, cusStatus, pjournal, sjournal, gjournal, other)) {
+          
 
             const data = {
                 orderId:orderId,
@@ -76,7 +127,7 @@ export default class AccountCreate extends Component {
                 gjournal:gjournal,
                 other:other
             }
-
+            if (isValid) {
             console.log(data)
 
             axios.post("http://localhost:8000/account/save",data).then((res)=>{
@@ -101,7 +152,7 @@ export default class AccountCreate extends Component {
                     )
                 }
             })
-        }
+          }
         }
 
 
@@ -204,24 +255,7 @@ export default class AccountCreate extends Component {
                 <h1 className="h3 mb-3 front-weight-normal">Create new Accounts</h1>
                 <form className="needs-validation" noValidate>
                    
-                    <div className="form-group" style={{marginBottom:'15px'}}>
-                        <label style={{marginBottom: '5px'}}>Order ID</label>
-                        <input type = "text"
-                        
-                        className="form-control"
-                        name="orderId"
-                        placeholder="Enter Order ID"
-                        value={this.state.orderId}
-                        onChange={this.handleInputChange}/>
-
-
-                                {this.state.errors.orderId && (
-
-                                <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.orderId}</div>
-                                )}
-
-
-                    </div>
+                  
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
                         <label style={{marginBottom: '5px'}}>Customer Name</label>
@@ -232,11 +266,9 @@ export default class AccountCreate extends Component {
                         value={this.state.cusName}
                         onChange={this.handleInputChange}/>
 
-                            {this.state.errors.cusName && (
-
-                            <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.cusName}</div>
-                            )}    
-
+                        <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.cusNameError}
+                        </div>
 
 
 
@@ -252,10 +284,9 @@ export default class AccountCreate extends Component {
                         value={this.state.cusStatus}
                         onChange={this.handleInputChange}/>
 
-                        {this.state.errors.cusStatus && (
-
-                        <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.cusStatus}</div>
-                        )}    
+                        <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.cusStatusError}
+                        </div>   
 
 
                     </div>
@@ -269,11 +300,9 @@ export default class AccountCreate extends Component {
                         value={this.state.pjournal}
                         onChange={this.handleInputChange}/>
 
-                        {this.state.errors.pjournal && (
-
-                        <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.pjournal}</div>
-                        )} 
-
+                        <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.pjournalError}
+                        </div>   
 
                     </div>
 
@@ -286,10 +315,9 @@ export default class AccountCreate extends Component {
                         value={this.state.sjournal}
                         onChange={this.handleInputChange}/>
 
-                        {this.state.errors.sjournal && (
-
-                        <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.sjournal}</div>
-                        )} 
+                        <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.sjournalError}
+                        </div>   
 
 
 
@@ -304,10 +332,9 @@ export default class AccountCreate extends Component {
                         value={this.state.gjournal}
                         onChange={this.handleInputChange}/>
 
-                        {this.state.errors.gjournal && (
-
-                        <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.gjournal}</div>
-                        )} 
+                        <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.gjournalError}
+                        </div>   
 
 
 
@@ -323,10 +350,9 @@ export default class AccountCreate extends Component {
                         value={this.state.other}
                         onChange={this.handleInputChange}/>
 
-                        {this.state.errors.other && (
-
-                        <div classNane="text-danger" style={{ color:'red'}}>{this.state.errors.other}</div>
-                        )} 
+                        <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.otherError}
+                        </div>  
 
 
 

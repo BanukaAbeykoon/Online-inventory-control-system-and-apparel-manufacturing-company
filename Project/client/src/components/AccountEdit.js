@@ -14,7 +14,15 @@ export default class AccountEdit extends Component {
             pjournal:"",
             sjournal:"",
             gjournal:"",
-            other:""
+            other:"",
+
+            orderIdError:"",
+            cusNameError:"",
+            cusStatusError:"",
+            pjournalError:"",
+            sjournalError:"",
+            gjournalError:"",
+            otherError:"",
         }
     }
 
@@ -28,9 +36,83 @@ export default class AccountEdit extends Component {
 
     }
 
+
+      
+        //Form Validation part
+ 
+        validate= ()=>{
+          let orderIdError="";
+           let cusNameError="";
+           let cusStatusError="";
+           let pjournalError="";
+           let sjournalError="";
+           let gjournalError="";
+           let  otherError="";
+
+      if(!this.state.orderId){
+        orderIdError="*Name is Required!"
+      }
+      if(!this.state.cusName){
+        cusNameError="* Customer Name is Required!"
+      }
+    
+      
+      if(!this.state.cusStatus){
+        cusStatusError="* customer status is Required!"
+        }
+
+
+       if(!this.state.pjournal){
+        pjournalError="* purchase journal amount is Required"
+       }
+       if(this.state.pjournal.match("-")){
+        pjournalError="* purchase journal amount should not be negative "
+       }
+
+
+       if(!this.state.sjournal){
+        sjournalError="* sale journal is Required"
+        }
+        if(this.state.sjournal.match("-")){
+          sjournalError="* sale journal amount should not be negative "
+         }
+
+
+
+
+        if(!this.state.gjournal){
+          gjournalError="*general journal  is Required"
+         }
+         if(this.state.gjournal.match("-")){
+          gjournalError="* general journal amount should not be negative "
+         }
+
+
+
+
+        if(!this.state.other){
+          otherError="* other feild is Required"
+         } 
+                     
+
+       if(orderIdError||cusNameError||cusStatusError||pjournalError || sjournalError || gjournalError || otherError){
+       this.setState({orderIdError,cusNameError,cusStatusError,pjournalError , sjournalError , gjournalError , otherError});
+       return false;
+
+       }
+
+    return true;
+
+  }
+
+
+
+
     onSubmit = (e) =>{
         e.preventDefault();
+        
         const id = this.props.match.params.id;
+        const isValid = this.validate();
 
         const {orderId,cusName,cusStatus,pjournal,sjournal,gjournal,other} = this.state;
 
@@ -43,7 +125,7 @@ export default class AccountEdit extends Component {
             gjournal:gjournal,
             other:other
         }
-
+        if (isValid) {
         console.log(data)
 
         axios.put(`http://localhost:8000/account/updateaccount/${id}`,data).then((res)=>{
@@ -68,7 +150,7 @@ export default class AccountEdit extends Component {
                 )
             }
         })
-
+      }
     }
 
    
@@ -207,6 +289,12 @@ export default class AccountEdit extends Component {
                         placeholder="Enter Purchase Journal"
                         value={this.state.pjournal}
                         onChange={this.handleInputChange}/>
+
+                          <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.pjournalError}
+                        </div>   
+
+
                     </div>
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
@@ -217,6 +305,12 @@ export default class AccountEdit extends Component {
                         placeholder="Enter Sale Journal"
                         value={this.state.sjournal}
                         onChange={this.handleInputChange}/>
+                       
+                       <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.sjournalError}
+                        </div>   
+
+
                     </div>
 
                     <div className="form-group" style={{marginBottom:'15px'}}>
@@ -227,6 +321,10 @@ export default class AccountEdit extends Component {
                         placeholder="Enter General Journal"
                         value={this.state.gjournal}
                         onChange={this.handleInputChange}/>
+                       <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.gjournalError}
+                        </div>   
+
                     </div>
 
 
@@ -238,6 +336,14 @@ export default class AccountEdit extends Component {
                         placeholder="Enter Other DETAILS"
                         value={this.state.other}
                         onChange={this.handleInputChange}/>
+
+
+                        <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.otherError}
+                        </div> 
+
+
+
                     </div>
 
                     <button className="btn btn-success" type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}>
