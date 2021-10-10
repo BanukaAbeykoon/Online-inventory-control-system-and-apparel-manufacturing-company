@@ -156,7 +156,8 @@ export default class AccountReport extends Component {
 
       
               
-      
+            <div className="container bg-info rounded-3">
+            <br/> 
                   <div className="col-lg-9 mt-2 mb-2">
                     <h4>Account Reports</h4>
                     <hr/>
@@ -256,15 +257,17 @@ export default class AccountReport extends Component {
                   onClick={() => generatePDF(this.state.account)}
                 >
                   Download as PDF file
-                </button>     
+                </button> 
+
+                <br/>    <br/> 
       
             
       
       
              
-               
+                <div class="p-3 mb-2 bg-primary text-dark rounded-3">
       
-                <table id ="reportTB" className ="table"> 
+                <table id ="reportTB" className ="table table-hover  table table-bordered border-info table table-info table-striped" style={{marginTop:'5px'}}>
                   <thead>
       
                     <tr>
@@ -311,6 +314,8 @@ export default class AccountReport extends Component {
                   
       
       
+              </div>
+              </div>
               </div>
               </div>
 

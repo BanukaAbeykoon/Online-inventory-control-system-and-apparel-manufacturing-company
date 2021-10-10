@@ -23,11 +23,11 @@ class AccountNavBar extends Component {
               <div className="dropdown">
                 <button className="dropbtn">
                   <i class="fas fa-sort-amount-up-alt"></i>
-                  &nbsp; Customer{" "}
+                  &nbsp; Order Management{" "}
                 </button>
                 <div className="dropdown-content">
-                  <a href="#"> sample1</a>
-                  <a href="#">sample2</a>
+                  <a href="/orderDashboard"> order dashboard</a>
+                  <a href="/orderHome">order</a>
                 </div>
               </div>
             </li>

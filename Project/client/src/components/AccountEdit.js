@@ -243,7 +243,7 @@ export default class AccountEdit extends Component {
             </div>
 
 
-
+            <div class="p-3 mb-2 bg-light text-dark rounded-3">
 
                 <h1 className="h3 mb-3 front-weight-normal">Update Account Details</h1>
                 <form className="needs-validation" noValidate>
@@ -354,6 +354,7 @@ export default class AccountEdit extends Component {
 
                 </form>
                 
+            </div>
             </div>
 
 

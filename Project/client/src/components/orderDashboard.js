@@ -445,6 +445,16 @@ export default class orderDashboard extends Component {
                         </h5>
                       </div>
                     </div>
+
+                    <button className="btn btn-success"><a href= "/orderHome" style={{textDecoration:'none', color:'white'}}>
+            
+                   Place A Order </a> &nbsp;
+                    <i class="far fa-plus-square"></i>
+
+                     </button>
+
+
+
                     {/* 
 
 <div class="row">
