@@ -112,7 +112,7 @@ class EditPostQC extends Component {
   </div>
 </nav>
      <div className="col-md-8 mt-4 mx-auto">
-        <h1 className="h3 mb-3 font-weight-nomal">Update Check Card</h1>
+        <h1 className="h3 mb-3 font-weight-nomal">Update Quality Check Card</h1>
         <form className="needs-validation" noValidate>
 
           <div className="form-group" style={{marginBottom:'15px'}}>
