@@ -177,14 +177,14 @@ export default class CreateFactory extends Component {
     e.preventDefault();
 
     const {
-      orderid,
-      rawproduct,
-      matone,
-      matoneqty,
-      mattwo,
-      mattwoqty,
-      matthree,
-      matthreeqty,
+      facname,
+      factelephone,
+      facemail,
+      facwebsite,
+      ceoname,
+      fconame,
+      product,
+      units,
     } = this.state;
 
     const data = {
@@ -390,7 +390,7 @@ export default class CreateFactory extends Component {
                 Demo
               </button>
 
-              
+
             </form>
           </form>
         </div>
