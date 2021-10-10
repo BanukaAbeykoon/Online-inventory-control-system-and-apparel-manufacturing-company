@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert2";
 
@@ -53,30 +53,16 @@ export default class EditFactory extends Component {
 
     if (!this.state.factelephone) {
       factelephoneError = "* factelephoneError is Required!";
-    }
-    if (!this.state.factelephone.match(/^[0-9]{10}$/)) {
-      factelephoneError = "*Please Enter valid Telephonephone!";
-    }
+    } 
 
     if (!this.state.facemail) {
       facemailError = "* facemailError is Required!";
-    }
-    if (
-      !this.state.facemail.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
-    ) {
-      facemailError = "*Please Enter valid email!";
-    }
+    } 
 
     if (!this.state.facwebsite) {
       facwebsiteError = "* facwebsiteError is Required";
-    }
-    if (
-      !this.state.facwebsite.match(
-        /^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$/
-      )
-    ) {
-      facwebsiteError = "*Please Enter valid website!";
-    }
+    } 
+
 
     if (!this.state.ceoname) {
       ceonameError = "* ceonameError is Required";
@@ -87,6 +73,7 @@ export default class EditFactory extends Component {
     if (!this.state.product) {
       productError = "* productError is Required";
     }
+
     if (!this.state.units) {
       unitsError = "* unitsError is Required";
     }
@@ -117,11 +104,9 @@ export default class EditFactory extends Component {
     return true;
   };
 
-
-
   onSubmit = (e) => {
-    e.preventDefault();
     const id = this.props.match.params.id;
+    e.preventDefault();
     const isValid = this.validate();
 
     const {
@@ -151,15 +136,6 @@ export default class EditFactory extends Component {
 
       axios.put(`/inventory/update/${id}`, data).then((res) => {
         if (res.data.success) {
-          //alert("Factory Details Update Successfully");
-
-          swal.fire(
-            "Updated",
-            "Factory Details Updated Successfully",
-            "success"
-          );
-          //this.retrieveInventory();
-
           this.setState({
             facname: "",
             factelephone: "",
@@ -170,6 +146,12 @@ export default class EditFactory extends Component {
             product: "",
             units: "",
           });
+
+          swal.fire(
+            "Updated",
+            "Factory Details Updated Successfully",
+            "success"
+          );
         }
       });
     }
@@ -177,7 +159,6 @@ export default class EditFactory extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    
 
     axios.get(`/inventory/${id}`).then((res) => {
       if (res.data.success) {
@@ -210,144 +191,155 @@ export default class EditFactory extends Component {
           <hr />
 
           <h1 className="h3 mb-3 front-weight-normal">Edit Factory Details</h1>
-          <form className="needs-validation" noValidate>
-            <div className="form-group" style={{ marginBottom: "15px" }}>
-              <label style={{ marginBottom: "5px" }}>Factory Name</label>
-              <input
-                type="text"
-                className="form-control"
-                name="facname"
-                placeholder="Enter Factory Name"
-                value={this.state.facname}
-                onChange={this.handleInputChange}
-              />
 
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.facnameError}
+          <form>
+            <form className="needs-validation" noValidate>
+              <div className="form-group" style={{ marginBottom: "15px" }}>
+                <label style={{ marginBottom: "5px" }}>Factory Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="facname"
+                  placeholder="Enter Factory Name"
+                  value={this.state.facname}
+                  onChange={this.handleInputChange}
+                  required
+                />
+
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.facnameError}
+                </div>
               </div>
-            </div>
 
-            <div className="form-group" style={{ marginBottom: "15px" }}>
-              <label style={{ marginBottom: "5px" }}>Factory Telephone</label>
-              <input
-                type="text"
-                className="form-control"
-                name="factelephone"
-                placeholder="Enter Valid Factory Telephone (Ex:- 0123456789)"
-                value={this.state.factelephone}
-                onChange={this.handleInputChange}
-              />
+              <div className="form-group" style={{ marginBottom: "15px" }}>
+                <label style={{ marginBottom: "5px" }}>Factory Telephone</label>
+                <input
+                  type="number"
+                  className="form-control"
+                  name="factelephone"
+                  placeholder="Enter Valid Factory Telephone (Ex:- 0123456789)"
+                  value={this.state.factelephone}
+                  onChange={this.handleInputChange}
+                  required
+                />
 
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.factelephoneError}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.factelephoneError}
+                </div>
               </div>
-            </div>
 
-            <div className="form-group" style={{ marginBottom: "15px" }}>
-              <label style={{ marginBottom: "5px" }}>Factory Email</label>
-              <input
-                type="text"
-                className="form-control"
-                name="facemail"
-                placeholder="Enter Valid Factory Email (Ex:- abc@gmail.com)"
-                value={this.state.facemail}
-                onChange={this.handleInputChange}
-              />
+              <div className="form-group" style={{ marginBottom: "15px" }}>
+                <label style={{ marginBottom: "5px" }}>Factory Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  name="facemail"
+                  placeholder="Enter Valid Factory Email (Ex:- abc@gmail.com)"
+                  value={this.state.facemail}
+                  onChange={this.handleInputChange}
+                  required
+                />
 
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.facemailError}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.facemailError}
+                </div>
               </div>
-            </div>
 
-            <div className="form-group" style={{ marginBottom: "15px" }}>
-              <label style={{ marginBottom: "5px" }}>Factory Website</label>
-              <input
-                type="text"
-                className="form-control"
-                name="facwebsite"
-                placeholder="Enter Factory Website (Ex:- www.abc.com)"
-                value={this.state.facwebsite}
-                onChange={this.handleInputChange}
-              />
+              <div className="form-group" style={{ marginBottom: "15px" }}>
+                <label style={{ marginBottom: "5px" }}>Factory Website</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="facwebsite"
+                  placeholder="Enter Factory Website (Ex:- www.abc.com)"
+                  value={this.state.facwebsite}
+                  onChange={this.handleInputChange}
+                  required
+                />
 
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.facwebsiteError}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.facwebsiteError}
+                </div>
               </div>
-            </div>
 
-            <div className="form-group" style={{ marginBottom: "15px" }}>
-              <label style={{ marginBottom: "5px" }}>CEO Name</label>
-              <input
-                type="text"
-                className="form-control"
-                name="ceoname"
-                placeholder="Factory CEO Name"
-                value={this.state.ceoname}
-                onChange={this.handleInputChange}
-              />
+              <div className="form-group" style={{ marginBottom: "15px" }}>
+                <label style={{ marginBottom: "5px" }}>CEO Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="ceoname"
+                  placeholder="Factory CEO Name"
+                  value={this.state.ceoname}
+                  onChange={this.handleInputChange}
+                  required
+                />
 
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.ceonameError}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.ceonameError}
+                </div>
               </div>
-            </div>
 
-            <div className="form-group" style={{ marginBottom: "15px" }}>
-              <label style={{ marginBottom: "5px" }}>FCO Name</label>
-              <input
-                type="text"
-                className="form-control"
-                name="fconame"
-                placeholder="Factory FCO Name"
-                value={this.state.fconame}
-                onChange={this.handleInputChange}
-              />
+              <div className="form-group" style={{ marginBottom: "15px" }}>
+                <label style={{ marginBottom: "5px" }}>FCO Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="fconame"
+                  placeholder="Factory FCO Name"
+                  value={this.state.fconame}
+                  onChange={this.handleInputChange}
+                  required
+                />
 
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.fconameError}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.fconameError}
+                </div>
               </div>
-            </div>
 
-            <div className="form-group" style={{ marginBottom: "15px" }}>
-              <label style={{ marginBottom: "5px" }}>Product</label>
-              <input
-                type="text"
-                className="form-control"
-                name="product"
-                placeholder="Enter Production"
-                value={this.state.product}
-                onChange={this.handleInputChange}
-              />
+              <div className="form-group" style={{ marginBottom: "15px" }}>
+                <label style={{ marginBottom: "5px" }}>Product</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  name="product"
+                  placeholder="Enter Production"
+                  value={this.state.product}
+                  onChange={this.handleInputChange}
+                  required
+                />
 
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.productError}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.productError}
+                </div>
               </div>
-            </div>
 
-            <div className="form-group" style={{ marginBottom: "15px" }}>
-              <label style={{ marginBottom: "5px" }}>Units</label>
-              <input
-                type="Number"
-                className="form-control"
-                name="units"
-                placeholder="Enter Number of Units "
-                value={this.state.units}
-                onChange={this.handleInputChange}
-              />
+              <div className="form-group" style={{ marginBottom: "15px" }}>
+                <label style={{ marginBottom: "5px" }}>Units</label>
+                <input
+                  type="Number"
+                  className="form-control"
+                  name="units"
+                  placeholder="Enter Number of Units "
+                  value={this.state.units}
+                  onChange={this.handleInputChange}
+                  required
+                />
 
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.unitsError}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.unitsError}
+                </div>
               </div>
-            </div>
 
-            <button
-              className="btn btn-success"
-              type="submit"
-              style={{ marginTop: "15px" }}
-              onClick={this.onSubmit}
-            >
-              <i className="far fa-check-square"></i>
-              &nbsp; Update Factory Detils
-            </button>
+              <button
+                className="btn btn-success"
+                type="submit"
+                style={{ marginTop: "15px" }}
+                onClick={this.onSubmit}
+              >
+                <i className="far fa-check-square"></i>
+                &nbsp; Save
+              </button>
+            </form>
           </form>
         </div>
       </div>
