@@ -81,6 +81,7 @@ export default class neworder extends Component {
                 </td>
               </tr>
             ))}
+            
           </tbody>
         </table>
 

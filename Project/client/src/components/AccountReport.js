@@ -284,7 +284,7 @@ export default class AccountReport extends Component {
                    {this.state.account.map((account,index)=>(
                       <tr key={index}>
                         <th scope="row">{index+1}</th>
-                        <td>{account.orderId} </td>
+                        <td> {`OID${account._id.substr(0,5)}`} </td>
                         <td> {account.cusName}</td>
                         <td>{account.cusStatus}</td>
                         <td> Rs {account.pjournal}</td>
