@@ -1,25 +1,28 @@
-import React, { cloneElement, Component } from 'react'
+import React, { Component } from 'react'
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
 
 
 export default class LmoMatMain extends Component {
+//Binding event handler method
 constructor(props){
   super(props);
 
+  //Initializing local state by assigning an object to this.state
   this.state={
     lmomat:[]
   };
 }
 
-
+//load data from a remote endpoint
 componentDidMount(){
   this.retriveLmo();
 }
 
 
 retriveLmo(){
+  //get server side http module to get data to client side Http request
   axios.get("http://localhost:8000/lmomat").then(res =>{
       if(res.data.success){
         this.setState({
@@ -42,22 +45,18 @@ onDelete = (id) =>{
   })
 }
 
-
-
-
-
-
-  render() {
+//gather outputs
+render() {
     return (
 
-
+      //component organizer
       <div id="wrapper" className="toggled">
-        <div id="page-content-wrapper">
-            <div className="container-fluid">
+      <div id="page-content-wrapper">
+      <div className="container-fluid">
 
       
       
-            
+              {/* custom navigation        */}
               <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -75,34 +74,22 @@ onDelete = (id) =>{
   </div>
 </nav> 
 
-
-
-
-
-      
-      
-      
-      
-      
-      
-      
 <hr/> 
       
-      <div className="container p-3 mb-2 bg-primary bg-gradient text-white rounded-3">
+<div className="container p-3 mb-2 bg-primary bg-gradient text-white rounded-3">
 
 
      
           <center> 
+          {/* Title        */}  
           <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>
-           
-           
-             All LMO Cards
-             </b>
-             </h1>
+           All LMO Cards
+           </b>
+           </h1>
            </center>
         
 
-
+        {/* Add new LMO button */}
         <button className="btn btn-info" style={{ backgroundColor: "#0E3662" }}><a href="/lmoadd" style={{textDecoration:'none',color:'white'}}>Add New LMO &nbsp;
         <i class="fas fa-plus-circle"></i>
         </a></button>
@@ -111,6 +98,7 @@ onDelete = (id) =>{
          <br/>
 
         <div class="p-3 mb-2 bg-info text-dark rounded-3">
+           {/* LMO Table */}
          <table className="table table-hover  table table-bordered border-info table table-info table-striped"style={{marginTop:'5px'}}>
            <thead>
              <tr>
@@ -126,6 +114,7 @@ onDelete = (id) =>{
              </tr>
            </thead>
            <tbody>
+             {/* Get data to the table using a map */}
              {this.state.lmomat.map((lmomat,index) =>(
                   <tr key={index}>
                     <th scope="row">{index+1}</th>
@@ -142,10 +131,12 @@ onDelete = (id) =>{
                     <td>{lmomat.category}</td>
                     <td>{lmomat.description}</td>
                     <td>
+                      {/* Edit button */}
                       <a className="btn btn-info" href={`/lmoedit/${lmomat._id}`}>
                         <i className="fas fa-edit"></i>&nbsp;Edit
                       </a>
                       &nbsp;
+                      {/* Delete Button */}
                       <a className="btn btn-danger" href="#" onClick={() =>this.onDelete(lmomat._id)}>
                         <i className="far fa-trash-alt"></i>&nbsp;Delete
                       </a>
@@ -165,8 +156,8 @@ onDelete = (id) =>{
 
 
 
-
-      <div class="footer">
+{/* Footer Section */}
+<div class="footer">
 
 
 <div class="contain">

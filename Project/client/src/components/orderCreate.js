@@ -50,6 +50,9 @@ export default class orderCreate extends Component {
 
     render() {
         return (
+            <div id="wrapper" className="toggled">
+      <div id="page-content-wrapper">
+      <div className="container-fluid">
             <div className="col-md-8 mt-4 mx-auto">
                 <h1 className="h3 mb-3 font-weight-normal">Create New Order</h1>
                 <form className="needs-validation" noValidation>
@@ -102,7 +105,10 @@ export default class orderCreate extends Component {
             </button>
 
             </form>
-            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
         )
     }
 }

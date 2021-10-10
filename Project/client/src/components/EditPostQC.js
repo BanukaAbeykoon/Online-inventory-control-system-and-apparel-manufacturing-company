@@ -122,7 +122,8 @@ class EditPostQC extends Component {
           name="OrderID"
           placeholder="Enter Order ID"
           value={this.state.OrderID}
-          onChange={this.handleInputChange}/>
+          onChange={this.handleInputChange}
+          readOnly/>
           </div>
 
           <div className="form-group" style={{marginBottom:'15px'}}>
@@ -152,7 +153,8 @@ class EditPostQC extends Component {
           name="BuyerID"
           placeholder="Enter BuyerID"
           value={this.state.BuyerID}
-          onChange={this.handleInputChange}/>
+          onChange={this.handleInputChange}
+          readOnly/>
           </div>
 
           <div className="form-group" style={{marginBottom:'15px'}}>
@@ -177,7 +179,7 @@ class EditPostQC extends Component {
 
           <div className="form-group" style={{marginBottom:'15px'}}>
           <lable style={{marginBottom:'5px'}}>Qualityrate</lable>
-          <input type="text"
+          <input type="number"  min="0" max="100" step="1"
           className="form-control"
           name="Qualityrate"
           placeholder="Enter Quality"

@@ -1,116 +1,97 @@
-// import React, { Component } from "react";
-// import axios from "axios";
+import React, { Component } from "react";
+import axios from "axios";
 
-// export default class neworder extends Component {
-//   constructor(props) {
-//     super(props);
+export default class neworder extends Component {
+  constructor(props) {
+    super(props);
 
-//     this.state = {
-//       orders: [],
-//     };
-//   }
+    this.state = {
+      order: [],
+    };
+  }
 
-//   componentDidMount() {
-//     this.retrieveOrders();
-//   }
+  componentDidMount() {
+    this.retrievePosts();
+  }
 
-//   retrieveOrders() {
-//     axios.get("/orders").then((res) => {
-//       if (res.data.success) {
-//         this.setState({
-//           orders: res.data.existingOrders,
-//         });
+  retrievePosts() {
+    axios.get("http://localhost:8000/order").then(res => {
+      if (res.data.success){
+        this.setState({
+          order:res.data.existingorder,
+        });
 
-//         console.log(this.state.orders);
-//       }
-//     });
-//   }
+        console.log(this.state.order);
+      }
+    });
+  }
 
 
-//   filterData(orders, searchKey) {
-//     const result = orders.filter(
-//       (orders) =>
-//         orders.orderid.toLowerCase().includes(searchKey) ||
-//         orders.cusid.toLowerCase().includes(searchKey) ||
-//         orders.product.toLowerCase().includes(searchKey) ||
-//         orders.quantity.toLowerCase().includes(searchKey)
-//     );
-//     this.setState({ orders: result });
-//   }
+  render() {
+    return (
+      <div id="wrapper" className="toggled">
+      <div id="page-content-wrapper">
+      <div className="container-fluid">
 
-//   handleSearchArea = (e) => {
-//     const searchKey = e.currentTarget.value;
 
-//     axios.get("/orders").then((res) => {
-//       if (res.data.success) {
-//         this.filterData(res.data.existingOrders, searchKey);
-//       }
-//     });
-//   };
+      <div className="row justify-content-center">
+              <div  class="col-9">
+          <div className="row">
+              <div className="col-lg-9 mt-2 mb-2">
+                <h4>ALL Order</h4>
+            </div>
+            <div className="col-lg-3 mt-2 mb-2">
+                <input
+                className="form-control"
+                type="search"
+                placeholder="search"
+                name="searchQuery"
+                onChange={this.handleSearchArea}>
+                </input>
+            </div>
+        </div>
+       
+        <table className="table table-hover" style={{marginTop:'400'}}>
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col"> Order ID</th>
+              <th scope="col">Product </th>
+              <th scope="col">unit price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Total</th>
+             
+            </tr>
+          </thead>
+          <tbody>
+            {this.state.order.map((order,index) =>(
+              <tr key={index}>
+                <th scope="row">{index+1}</th>
+                <td>
+                   
+                {`OID${order._id.substr(0,5)}`}
+                   
+                    </td>
+                <td>{order.product}</td>
+                <td>Rs.{order.unprice}</td>
+                <td>{order.qty}</td>
+                <td> Rs.{Number(order.unprice) * Number(order.qty)}</td>
+                <td>
+                 
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-//   render() {
-//     return (
-//       <div id="wrapper" className="toggled">
-//         <div id="page-content-wrapper">
-//           <div className="container-fluid">
-//             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-//               <a
-//                 href="/PMDashboard"
-//                 class="btn btn-primary me-md-2"
-//                 type="button"
-//               >
-//                 Production Dashboard
-//               </a>
-//             </div>
-//             <div className="row"></div>
+        <button className="btn btn-success"><a href="/addOrder" style={{textDecoration:'none',color:'white'}}>Create New Post</a></button>
+              </div>
+              </div>
 
-//             <br />
-//             <div className="col-lg-9 mt-2 mb-2">
-//               <h4>All orders</h4>
-//             </div>
-//             <table class="table table-bordered border-primary">
-//               <thead class="blue">
-//                 <tr>
-//                   <th scope="col">#</th>
-//                   <th scope="col">orderid</th>
-//                   <th scope="col">cusid</th>
-//                   <th scope="col">product</th>
-//                   <th scope="col">Quantity</th>
-//                 </tr>
-//               </thead>
-//               <tbody>
-//                 {this.state.orders.map((orders, index) => (
-//                   <tr>
-//                     <th scope="row">{index + 1}</th>
-//                     <td>
-//                       <a href={`/orders/${orders._id}`}>{orders.orderid}</a>
-//                     </td>
-//                     <td>{orders.cusid}</td>
-//                     <td>{orders.product}</td>
-//                     <td>{orders.quantity}</td>
-//                   </tr>
-//                 ))}
-//               </tbody>
-//             </table>
 
-//             <button className="btn btn-primary btn-lg">
-//               <a
-//                 href="/magictool"
-//                 style={{
-//                   textDecoration: "none",
-//                   color: "white",
-//                   width: "232rem",
-//                   transition: "0.3s",
-//                   opacity: "10",
-//                   hover: "#006db9",
-//                 }}
-//               >
-//                 Go TO Magic Tool
-//               </a>
-//             </button>
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   }
-// }
+      </div>
+      </div>
+      </div>
+    );
+  }
+}

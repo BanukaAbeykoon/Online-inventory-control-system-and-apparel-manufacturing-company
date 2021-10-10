@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 
 export default class LmoMatCreate extends Component {
-
+       //Binding event handler method
        constructor(props){
            super(props);
            this.state={
@@ -36,9 +36,7 @@ export default class LmoMatCreate extends Component {
 
        } 
 
-
-
-
+       //validation
        validate= ()=>{
         let lmoIDError="";
         let matIDError="";
@@ -46,7 +44,7 @@ export default class LmoMatCreate extends Component {
         let qtyError="";
         let categoryError="";
         let descriptionError="";
-       
+       //statements
         if(!this.state.lmoID){
           lmoIDError="*LMO ID is Required!"
         }
@@ -56,24 +54,24 @@ export default class LmoMatCreate extends Component {
        
         if(!this.state.matName){
           matNameError="*Material name is Required!"
-     }
-     if(!this.state.qty){
-      qtyError="*QTY is Required"
-     }
+        }
+        if(!this.state.qty){
+          qtyError="*QTY is Required"
+        }
 
-     else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
-      qtyError= '*Please Enter a Valid QTY Range '
-   } 
+          else if (!this.state.qty.match('^[1-9]+[0-9]*$')){
+            qtyError= '*Please Enter a Valid QTY Range '
+          } 
 
-     if(!this.state.category){
-      categoryError="*Category is Required"
-     }
-     if(!this.state.description){
-      descriptionError="*Description is Required"
-     }
+        if(!this.state.category){
+           categoryError="*Category is Required"
+        }
+        if(!this.state.description){
+          descriptionError="*Description is Required"
+        }
     
  
-     if(lmoIDError||matIDError||matNameError||qtyError||categoryError||descriptionError){
+        if(lmoIDError||matIDError||matNameError||qtyError||categoryError||descriptionError){
          this.setState({lmoIDError,matIDError,matNameError,qtyError,categoryError,descriptionError});
          return false;
  
@@ -83,12 +81,8 @@ export default class LmoMatCreate extends Component {
  
     }
 
-
-
-
-        
-       
-       onSubmit =(e) =>{
+          //onsubmit method
+           onSubmit =(e) =>{
            e.preventDefault();
            const isValid= this.validate();
            const {lmoID,matID,matName,qty,category,description} = this.state;
@@ -105,10 +99,10 @@ export default class LmoMatCreate extends Component {
            }
 
 
-
-           if(isValid){
+       //if validation succussesfully pass
+       if(isValid){
        console.log(data)
-
+           //Post data to back end using the Http link
            axios.post("http://localhost:8000/lmomat/save", data).then((res) =>{
                if(res.data.success){
                 Swal.fire('Added','LMO Card Added Successfilly','success')
@@ -130,7 +124,7 @@ export default class LmoMatCreate extends Component {
       }
 
 
-
+      //Demo button
       btnDemo = (e) => {
         e.preventDefault();
       
@@ -159,19 +153,16 @@ export default class LmoMatCreate extends Component {
             }
         )
       }
-
+    //gather outputs
     render() {
         return (
-
+            //component organizer
             <div id="wrapper" className="toggled">
             <div id="page-content-wrapper">
             <div className="container-fluid">
-
-
-
-
-            
-              <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
+              .
+          {/* custom navigation        */}
+          <nav class="navbar navbar-expand-lg navbar-dark bg-dark  rounded-3">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -199,7 +190,7 @@ export default class LmoMatCreate extends Component {
 
 
 
-
+{/* Instruction section */}
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">INSTRUCTIONS</h5>
@@ -216,10 +207,13 @@ export default class LmoMatCreate extends Component {
 <div class="p-3 mb-2 bg-info text-dark rounded-3">
 
             <div className="col-md-8 mt-4 mx-auto">
+              {/* Title        */}
               <center>
                 <h1 className="h3 mb-3 font-weight-normal text-info rounded-3 " style={{backgroundColor: "#0E3662" , padding: "10px"}}><b>ADD NEW LMO CARD</b></h1>
                 </center>
                 <hr/>
+
+                 {/* LMO add form */}
                 <form className="needs-validation" noValidate>
 
 
@@ -343,7 +337,8 @@ export default class LmoMatCreate extends Component {
                     </div> 
 
 
-                    <div class="footer">
+{/* Footer */}
+<div class="footer">
 
 
 <div class="contain">

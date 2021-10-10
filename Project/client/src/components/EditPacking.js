@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import swal from "sweetalert2";
 import {RMsetErrors, setErrors} from "./../conmmon/RMsetErrors"
+import moment from "moment";
 
 export default class EditPacking extends Component {
   constructor(props) {
@@ -93,6 +94,7 @@ return Object.values(errors).every((err) => err === "");
   }
 
   render() {
+    const id = this.props.match.params.id;
     return (
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
@@ -159,6 +161,23 @@ return Object.values(errors).every((err) => err === "");
               </h1>
               <form className="needs-validation" noValidation>
                 <div className="form-group" style={{ marginBottom: "15px" }}>
+                  <label style={{ marginBottom: "5px" }}>OrderId</label>
+                  <input
+                    type="text"
+                    readOnly
+                    className="form-control"
+                    name="orderId"
+                    placeholder="Enter Order ID"
+                    value={`OID${id.substr(0, 5)}`}
+                    onChange={this.handleInputChange}
+                  />
+                  {this.state.errors.orderId && (
+                    <div classNane="text-danger" style={{ color: "red" }}>
+                      {this.state.errors.orderId}
+                    </div>
+                  )}
+                </div>
+                <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Customer</label>
                   <input
                     type="text"
@@ -175,23 +194,7 @@ return Object.values(errors).every((err) => err === "");
                   )}
                 </div>
 
-                <div className="form-group" style={{ marginBottom: "15px" }}>
-                  <label style={{ marginBottom: "5px" }}>OrderId</label>
-                  <input
-                    type="text"
-                    readOnly
-                    className="form-control"
-                    name="orderId"
-                    placeholder="Enter Order ID"
-                    value={this.state.orderId}
-                    onChange={this.handleInputChange}
-                  />
-                  {this.state.errors.orderId && (
-                    <div classNane="text-danger" style={{ color: "red" }}>
-                      {this.state.errors.orderId}
-                    </div>
-                  )}
-                </div>
+                
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Category</label>
@@ -270,6 +273,7 @@ return Object.values(errors).every((err) => err === "");
                     placeholder="Enter dueDate"
                     value={this.state.dueDate}
                     onChange={this.handleInputChange}
+                    max={moment().format("YYYY-MM-DD")}
                   />
                   {this.state.errors.dueDate && (
                     <div classNane="text-danger" style={{ color: "red" }}>

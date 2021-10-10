@@ -15,12 +15,6 @@ import TMSDash from "./components/TMSDash";
 import AllMain from "./components/AllMain";
 import TMSSchedule from "./components/TMSSchedule";
 
-
-
-
-
-
-
 import Adashboard from "./components/Adashboard";
 import AccountCreate from "./components/AccountCreate";
 import AccountEdit from "./components/AccountEdit";
@@ -37,22 +31,12 @@ import mainhome from "./components/mainhome";
 import AccountSaleJournal from "./components/AccountSaleJournal";
 import AccountPurchaseJournal from "./components/AccountPurchaseJournal";
 
-
-
-
-
-
-
-
-
 import CreateFactory from "./components/CreateFactory";
 import EditFactory from "./components/EditFactory";
 import pmHome from "./components/pmHome";
 import PMNavBar from "./components/PMNavBar";
 import FactoryDetails from "./components/FactoryDetails";
 import PMDashboard from "./components/PMDashboard";
-
-
 
 import RawFactoryHome from "./components/RawFactoryHome";
 import CreateRawFactory from "./components/CreateRawFactory";
@@ -62,71 +46,63 @@ import searchFactory from "./components/searchFactory";
 import neworder from "./components/neworder";
 import neworderdetail from "./components/neworderdetail";
 import MagicTool from "./components/MagicTool";
+import adminDash from "./components/adminDash";
+import admincus from "./components/admincus";
+import adminmaterial from "./components/adminmaterial";
+import adminproduction from "./components/adminproduction";
+import adminimport from "./components/adminimport";
+import adminquality from "./components/adminquality";
+import adminaccount from "./components/adminaccount";
+import admintransport from "./components/admintransport";
+import adminready from "./components/adminready";
 
 
 
-import CreatePacking from './components/CreatePacking';
+
+import CreatePacking from "./components/CreatePacking";
 import EditPacking from "./components/EditPacking";
 import packingHome from "./components/packingHome";
 import NavBar from "./components/RMNavBar";
-import RMDashbord from './components/RMDashbord';
-import PackingDetails from './components/PackingDetails';
-import RMReport from './components/RMReport';
+import RMDashbord from "./components/RMDashbord";
+import PackingDetails from "./components/PackingDetails";
+import RMReport from "./components/RMReport";
 import packingtrasport from "./components/packingtrasport";
 
-
 import ShipmentCreate from "./components/ShipmentCreate";
-import ShipmentEdit from './components/ShipmentEdit';
+import ShipmentEdit from "./components/ShipmentEdit";
 import ShipmentHome from "./components/ShipmentHome";
 import ShipmentNavBar from "./components/ShipmentNavBar";
 import ShipmentDetails from "./components/ShipmentDetails";
-import SHdashboard from './components/SHdashboard';
+import SHdashboard from "./components/SHdashboard";
 
 import CreateLSmaterial from "./components/CreateLSmaterial";
 import EditLSmaterial from "./components/EditLSmaterial";
 import HomeLSmaterial from "./components/HomeLSmaterial";
 import DetailsLSmaterial from "./components/DetailsLSmaterial";
 
-
-
-
-
-import MaterialCreate from './components/MaterialCreate';
-import MaterialEdit from './components/MaterialEdit';
-import LmoMatCreate from './components/LmoMatCreate';
-import MaterialDash from './components/MaterialDash';
-import MaterialDetails from './components/MaterialDetails';
-import LmoMatMain from './components/LmoMatMain';
-import LmoMatEdit from './components/LmoMatEdit';
-import MatMain from './components/MatMain';
-import MatReportMain from './components/MatReportMain';
-import MatReportEdit from './components/MatReportEdit';
-import MatReportAdd from './components/MatReportAdd';
-import MatNotification from './components/MatNotification';
+import MaterialCreate from "./components/MaterialCreate";
+import MaterialEdit from "./components/MaterialEdit";
+import LmoMatCreate from "./components/LmoMatCreate";
+import MaterialDash from "./components/MaterialDash";
+import MaterialDetails from "./components/MaterialDetails";
+import LmoMatMain from "./components/LmoMatMain";
+import LmoMatEdit from "./components/LmoMatEdit";
+import MatMain from "./components/MatMain";
+import MatReportMain from "./components/MatReportMain";
+import MatReportEdit from "./components/MatReportEdit";
+import MatReportAdd from "./components/MatReportAdd";
+import MatNotification from "./components/MatNotification";
 import MatIns from "./components/MatIns";
-import ReportDetails from './components/ReportDetails';
-import MatInsTwo from './components/MatInsTwo';
+import ReportDetails from "./components/ReportDetails";
+import MatInsTwo from "./components/MatInsTwo";
 import MatDis from "./components/MatDis";
 import MatInsThree from "./components/MatInsThree"
 
 
-
-
-
-
-
-
-
-
-
-import orderCreate from './components/orderCreate';
+import orderCreate from "./components/orderCreate";
 import orderEdit from "./components/orderEdit";
 import orderHome from "./components/orderHome";
-import orderDetails from './components/orderDetails'
-
-
-
-
+import orderDetails from "./components/orderDetails";
 
 import EditPostQC from "./components/EditPostQC";
 import HomeQC from "./components/HomeQC";
@@ -137,20 +113,13 @@ import DefectCard from "./components/DefectCard";
 import CreatepostQC from "./components/CreatepostQC";
 import orderDashboard from "./components/orderDashboard";
 
-
-
-
-
-
 export default class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        {window.location.pathname !== "/"  && <AccountNavBar />}
-        
-        <Route path="/" exact component={AllMain}></Route>
+        {window.location.pathname !== "/" && <AccountNavBar />}
 
-       
+        <Route path="/" exact component={AllMain}></Route>
 
         <Route path="/TMSSchedule" component={TMSSchedule}></Route>
 
@@ -184,12 +153,15 @@ export default class App extends Component {
         <Route path="/accountPlanHome" component={AccountplanHome}></Route>
         <Route path="/addAccountPlan" component={AccountplanCreate}></Route>
         <Route path="/editAccountPlan/:id" component={AccountplanEdit}></Route>
-        <Route path="/AccountplanDetails/:id" component={AccountplanDetails}></Route>
+        <Route
+          path="/AccountplanDetails/:id"
+          component={AccountplanDetails}
+        ></Route>
         <Route path="/salejournal" component={AccountSaleJournal}></Route>
-        <Route path="/purchasejournal" component={AccountPurchaseJournal}></Route>
-
-
-
+        <Route
+          path="/purchasejournal"
+          component={AccountPurchaseJournal}
+        ></Route>
 
         {/*Factory create--inventory*/}
         <Route path="/pmHome" component={pmHome}></Route>
@@ -209,6 +181,17 @@ export default class App extends Component {
           <Route path="/clientneworder" component={neworder}></Route>
           <Route path="/order/:id" component={neworderdetail}></Route>
           <Route path="/magictool" component={MagicTool}></Route>
+
+          {/*Admin Panel*/}
+          <Route path="/admindash" component={adminDash}></Route>
+          <Route path="/admincus" component={admincus}></Route>
+          <Route path="/adminmaterial" component={adminmaterial}></Route>
+          <Route path="/adminproduction" component={adminproduction}></Route>
+          <Route path="/adminimport" component={adminimport}></Route>
+          <Route path="/adminquality" component={adminquality}></Route>
+          <Route path="/adminaccount" component={adminaccount}></Route>
+          <Route path="/admintransport" component={admintransport}></Route>
+          <Route path="/adminready" component={adminready}></Route>
         </div>
 
         <div className="comtainer-fluid">
@@ -232,10 +215,51 @@ export default class App extends Component {
           <Route path="/CreateLSmaterial" component={CreateLSmaterial}></Route>
           <Route path="/HomeLSmaterial" component={HomeLSmaterial}></Route>
           <Route path="/EditLSmaterial/:id" component={EditLSmaterial}></Route>
-          <Route path="/DetailsLSmaterial/:id" component={DetailsLSmaterial}
+          <Route
+            path="/DetailsLSmaterial/:id"
+            component={DetailsLSmaterial}
           ></Route>
         </div>
 
+        <div className="page-content-wrapper">
+          <Route path="/qcDash" exact component={HomeQC}></Route>
+          <Route path="/add" component={CreatepostQC}></Route>
+          <Route path="/edit/:id" component={EditPostQC}></Route>
+          <Route path="/post/:id" component={PostDetailsQC}></Route>
+          <Route path="/dash" component={QualityDash}></Route>
+          <Route path="/defect" component={DefectCard}></Route>
+          <Route path="/rep" component={PostDetailsQC}></Route>
+        </div>
+
+
+        <div className="page-content-wrapper">
+          <Route path="/matDash" exact component={MatMain}></Route>
+          <Route path="/matRet" component={MaterialDash}></Route>
+          <Route path="/matadd" component={MaterialCreate}></Route>
+          <Route path="/matedit/:id" component={MaterialEdit}></Route>
+          <Route path="/matpost/:id" component={MaterialDetails}></Route>
+          <Route path="/lmo" component={LmoMatMain}></Route>
+          <Route path="/lmoadd" component={LmoMatCreate}></Route>
+          <Route path="/lmoedit/:id" component={LmoMatEdit}></Route>
+          <Route path="/matreport" component={MatReportMain}></Route>
+          <Route path="/matreportedit/:id" component={MatReportEdit}></Route>
+          <Route path="/matreportadd" component={MatReportAdd}></Route>
+          <Route path="/matreportone/:id" component={ReportDetails}></Route>
+          <Route path="/matNotification" component={MatNotification}></Route>
+          <Route path="/matins" component={MatIns}></Route>
+          <Route path="/matinstwo" component={MatInsTwo}></Route>
+          <Route path="/matdis" component={MatDis}></Route>
+        </div>
+
+        <div className="page-content-wrapper">
+          <Route path="/qcDash" exact component={HomeQC}></Route>
+          <Route path="/add" component={CreatepostQC}></Route>
+          <Route path="/edit/:id" component={EditPostQC}></Route>
+          <Route path="/post/:id" component={PostDetailsQC}></Route>
+          <Route path="/dash" component={QualityDash}></Route>
+          <Route path="/defect" component={DefectCard}></Route>
+          <Route path="/rep" component={PostDetailsQC}></Route>
+        </div>
 
    
 		
@@ -297,17 +321,7 @@ export default class App extends Component {
 	 
 	 
 	 
-	 
 
-        <div className="page-content-wrapper">
-          <Route path="/qcDash" exact component={HomeQC}></Route>
-          <Route path="/add" component={CreatepostQC}></Route>
-          <Route path="/edit/:id" component={EditPostQC}></Route>
-          <Route path="/post/:id" component={PostDetailsQC}></Route>
-          <Route path="/dash" component={QualityDash}></Route>
-          <Route path="/defect" component={DefectCard}></Route>
-          <Route path="/rep" component={PostDetailsQC}></Route>
-        </div>
 
         <div className="page-content-wrapper">
           <Route path="/orderHome" exact component={orderHome}></Route>
