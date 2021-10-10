@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert2";
+import moment from "moment";
 
 
 export default class CreatePacking extends Component {
@@ -285,7 +286,7 @@ export default class CreatePacking extends Component {
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
-                  <label style={{ marginBottom: "5px" }}>Order ID</label>
+                  {/* <label style={{ marginBottom: "5px" }}>Order ID</label>
                   <input
                     type="text"
                     className="form-control"
@@ -294,16 +295,15 @@ export default class CreatePacking extends Component {
                     value={this.state.orderId}
                     onChange={this.handleInputChange}
                     required
-                  />
+                  /> */}
 
                   <div style={{ fontSize: 12, color: "red" }}>
                     {this.state.orderIdError}
                   </div>
 
-                <div style={{fontSize:12 ,color:"red"}}>
-                           {this.state.orderIdError}
-                   </div>
-
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.orderIdError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -380,6 +380,7 @@ export default class CreatePacking extends Component {
                     value={this.state.dueDate}
                     onChange={this.handleInputChange}
                     required
+                    max={moment().format("YYYY-MM-DD")}
                   />
                   <div style={{ fontSize: 12, color: "red" }}>
                     {this.state.dueDateError}
