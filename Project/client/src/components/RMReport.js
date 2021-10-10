@@ -190,8 +190,8 @@ handleSearchArea = (e) =>{
                   <thead>
                     <tr>
                       <th scope="col">#</th>
+                      <th scope="col">Order ID</th>
                       <th scope="col">Customer</th>
-                      <th scope="col">OrderId</th>
                       <th scope="col">Category</th>
                       <th scope="col">Payment</th>
                       <th scope="col">Quantity</th>
@@ -204,15 +204,9 @@ handleSearchArea = (e) =>{
                     {this.state.packing.map((packing, index) => (
                       <tr key={index}>
                         <th scope="row">{index + 1}</th>
-                        <td>
-                          <a
-                            href={`/packing/${packing._id}`}
-                            style={{ textDecoration: "none" }}
-                          >
-                            {packing.orderId}
-                          </a>
-                        </td>
-                        <td>{packing.orderId}</td>
+
+                        <td>{`OID${packing._id.substr(0, 5)}`}</td>
+                        <td>{packing.customer}</td>
                         <td>{packing.category}</td>
                         <td>{packing.payment}</td>
                         <td>{packing.quantity}</td>
