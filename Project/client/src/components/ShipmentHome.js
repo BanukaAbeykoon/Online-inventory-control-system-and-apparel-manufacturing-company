@@ -10,6 +10,7 @@ const generatePDF = (shipment) => {
   const tableColumn = [
     "shipmentID",
     "supplierID",
+    "supplierName",
     "materialID",
     "materialName",
     "quantity ",
@@ -23,6 +24,7 @@ const generatePDF = (shipment) => {
     const shipmentdata = [
       shipment.shipmentID,
       shipment.supplierID,
+      shipment.supplierName,
       shipment.materialID,
       shipment.materialName,
       shipment.quantity,
@@ -101,8 +103,8 @@ export default class ShipmentHome extends Component {
     const result = shipment.filter(
       (shipment) =>
         shipment.supllierName.toLowerCase().includes(searchKey) ||
-        shipment.materialName.toLowerCase().includes(searchKey) ||
-        shipment.shipmentID.toLowerCase().includes(searchKey)
+        shipment.lessmaterialName.toLowerCase().includes(searchKey) 
+        
     );
 
     this.setState({ shipment: result });
@@ -125,6 +127,55 @@ export default class ShipmentHome extends Component {
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
           <div className="container-sm">
+            <div className="row">
+              <div className="col-lg-9 mt-2 mb-2">
+                <nav
+                  className="navbar navbar-expand-lg navbar-light"
+                  style={{
+                    backgroundColor: "#e3f2fd",
+                    width: "134%",
+                    border: " solid #5f9ea0",
+                    padding: "0px",
+                  }}
+                >
+                  <div className="container-fluid">
+                    <button
+                      className="navbar-toggler"
+                      type="button"
+                      data-bs-toogle="collapse"
+                      data-bs-target="#navbarNav"
+                      aria-controls="navbarNav"
+                      aria-expanded="false"
+                      aria-label="Tooggle navigation"
+                    >
+                      <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                      <ul className="navbar-nav">
+                        <li className="nav-item">
+                          <a className="nav-link" aria-current="page" href="/">
+                            Home -
+                          </a>
+                        </li>
+
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/SHdashboard" className="nav-link">
+                            Shipment Dashboard -
+                          </a>
+                        </li>
+                        <li className="nav-item d-none d-sm-inline-block">
+                          <a href="/ShipmentHome" className="nav-link">
+                            Regular shipment form -
+                          </a>
+                        </li>
+                        
+                      </ul>
+                    </div>
+                  </div>
+                </nav>
+              </div>
+            </div>
             <div className="row">
               <div className="col-lg-9 mt-2 mb-2">
                 <h4>All Shipments</h4>
@@ -174,7 +225,7 @@ export default class ShipmentHome extends Component {
                         href={`/shipment/${shipment._id}`}
                         style={{ textDecoration: "none" }}
                       >
-                        {shipment.shipmentID}
+                        {`SID${shipment._id.substr(0, 5)}`}
                       </a>
                     </td>
                     <td>{shipment.supplierID}</td>
@@ -184,7 +235,10 @@ export default class ShipmentHome extends Component {
                     <td>{shipment.quantity}</td>
                     <td>Rs {shipment.unitPrice}</td>
                     <td>{shipment.date}</td>
-                    <td>Rs {Number(shipment.quantity) * Number(shipment.unitPrice)}</td>
+                    <td>
+                      Rs{" "}
+                      {Number(shipment.quantity) * Number(shipment.unitPrice)}
+                    </td>
                     <td>
                       <a
                         className="btn btn-warning"
