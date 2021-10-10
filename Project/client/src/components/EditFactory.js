@@ -53,7 +53,9 @@ export default class EditFactory extends Component {
 
     if (!this.state.factelephone) {
       factelephoneError = "* factelephoneError is Required!";
-    } 
+    } else if (!this.state.factelephone.match(/^[0-9]{10}$/)) {
+      factelephoneError = "*Please Enter valid Telephonephone!";
+    }
 
     if (!this.state.facemail) {
       facemailError = "* facemailError is Required!";
