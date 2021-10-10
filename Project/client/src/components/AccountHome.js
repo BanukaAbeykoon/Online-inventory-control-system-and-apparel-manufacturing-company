@@ -208,8 +208,15 @@ export default class AccountHome extends Component {
             </div>
           </div>
 
-      
+          <button className="btn btn-success"><a href= "/addAcc" style={{textDecoration:'none', color:'white'}}>
+            
+            Create new </a> &nbsp;
+            <i class="far fa-plus-square"></i>
 
+          </button>
+
+      
+          <br/> <br/> 
 
        
          
@@ -268,12 +275,7 @@ export default class AccountHome extends Component {
         
 
            
-            <button className="btn btn-success"><a href= "/addAcc" style={{textDecoration:'none', color:'white'}}>
-            
-              Create new </a> &nbsp;
-              <i class="far fa-plus-square"></i>
-
-            </button>
+           
            
             
 
