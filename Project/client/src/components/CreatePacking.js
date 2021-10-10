@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert2";
 
+
 export default class CreatePacking extends Component {
   constructor(props) {
     super(props);
@@ -294,9 +295,15 @@ export default class CreatePacking extends Component {
                     onChange={this.handleInputChange}
                     required
                   />
+
                   <div style={{ fontSize: 12, color: "red" }}>
                     {this.state.orderIdError}
                   </div>
+
+                <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.orderIdError}
+                   </div>
+
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
