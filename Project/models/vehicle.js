@@ -4,7 +4,8 @@ const vehicleschema = new mongoose.Schema({
 
     regno:{
         type:String,
-        required:true
+        required:true,
+        unique:true
     },
 
     engno:{
@@ -23,4 +24,12 @@ const vehicleschema = new mongoose.Schema({
 
 });
 
+/**
+ * Validates unique email
+ */
+ vehicleschema.path('regno').validate(async (regno) => {
+    const nicCount = await mongoose.models.vehicledbs.countDocuments({ regno })
+    return !nicCount
+  }, 'Reg no is already exists'
+ )
 module.exports= mongoose.model('vehicledbs',vehicleschema)
