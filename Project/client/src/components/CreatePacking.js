@@ -3,11 +3,6 @@ import axios from 'axios'
 import swal from "sweetalert2";
 
 
-
-import {RMsetErrors, setErrors} from "./../conmmon/RMsetErrors"
-import moment from "moment";
-
-
 export default class CreatePacking extends Component {
   constructor(props) {
     super(props);
@@ -186,11 +181,12 @@ export default class CreatePacking extends Component {
 
     this.setState({
       customer: "Kasun Madushan",
+      orderId: "O12",
       category: "t-shirt",
       payment: "Done",
       quantity: "5000",
       weight: "12",
-      dueDate: "10/04/2021",
+      dueDate: "12/04/2021",
       address: "1/53,Malabe,Colombo",
     });
   };
@@ -279,7 +275,7 @@ export default class CreatePacking extends Component {
                    </div>
                 </div>
 
-                {/* <div className="form-group" style={{ marginBottom: "15px" }}>
+                <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Order ID</label>
                   <input
                     type="text"
@@ -290,19 +286,10 @@ export default class CreatePacking extends Component {
                     onChange={this.handleInputChange}
                     required
                   />
-
                 <div style={{fontSize:12 ,color:"red"}}>
                            {this.state.orderIdError}
                    </div>
                 </div>
-
-                  {this.state.errors.orderId && (
-                    <div classNane="text-danger" style={{ color: "red" }}>
-                      {this.state.errors.orderId}
-                    </div>
-                  )}
-                </div> */}
-
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Category</label>
@@ -319,7 +306,7 @@ export default class CreatePacking extends Component {
                            {this.state.categoryError}
                    </div>
                 </div>
-              
+
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Payment</label>
                   <input
@@ -327,7 +314,6 @@ export default class CreatePacking extends Component {
                     className="form-control"
                     name="payment"
                     placeholder="Enter payment status"
-                    value="payment"
                     value={this.state.payment}
                     onChange={this.handleInputChange}
                     required
@@ -341,7 +327,6 @@ export default class CreatePacking extends Component {
                   <label style={{ marginBottom: "5px" }}>Quantity</label>
                   <input
                     type="number"
-                    
                     className="form-control"
                     name="quantity"
                     placeholder="Enter quantity"
@@ -379,11 +364,7 @@ export default class CreatePacking extends Component {
                     placeholder="Enter dueDate"
                     value={this.state.dueDate}
                     onChange={this.handleInputChange}
-
                     required
-
-                    max={moment().format("YYYY-MM-DD")}
-
                   />
                  <div style={{fontSize:12 ,color:"red"}}>
                            {this.state.dueDateError}
