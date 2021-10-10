@@ -148,14 +148,14 @@ export default class CreateRawFactory extends Component {
     console.log(data);
 
     this.setState({
-      orderid: "Aida",
-      rawproduct: "Bugg",
-      matone: "Trainig class manager",
-      matoneqty: "aida123",
-      mattwo: "aida123",
-      mattwoqty: "4422",
-      matthree: "trouse",
-      matthreeqty: 43563,
+      orderid: "OID11111",
+      rawproduct: "Trouses",
+      matone: "fabric",
+      matoneqty: 20000,
+      mattwo: "zippers",
+      mattwoqty: 2000,
+      matthree: "buttons",
+      matthreeqty: 4000,
     });
   };
 
@@ -237,7 +237,7 @@ export default class CreateRawFactory extends Component {
                 Material 1 Quantity (Metes)
               </label>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 name="matoneqty"
                 placeholder="Enter Material 1 Quantity"

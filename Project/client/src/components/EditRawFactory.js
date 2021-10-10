@@ -127,7 +127,7 @@ export default class EditRawFactory extends Component {
                 className="form-control"
                 name="orderid"
                 placeholder="Enter Order ID"
-                value={`OID${id.substr(0, 5)}`}
+                value={this.state.orderid}
                 onChange={this.handleInputChange}
                 style={{ marginBottom: "15px" }}
                 padding="20px"
