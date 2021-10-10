@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert2";
 
@@ -36,7 +36,6 @@ export default class EditFactory extends Component {
     });
   };
 
-
   //validation
   validate = () => {
     let facnameError = "";
@@ -60,7 +59,8 @@ export default class EditFactory extends Component {
 
     if (!this.state.facemail) {
       facemailError = "* facemailError is Required!";
-    } else if (
+    }
+    else if (
       !this.state.facemail.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
     ) {
       facemailError = "*Please Enter valid email!";
@@ -68,10 +68,8 @@ export default class EditFactory extends Component {
 
     if (!this.state.facwebsite) {
       facwebsiteError = "* facwebsiteError is Required";
-    } else if (
-      !this.state.facwebsite.match(
-        /^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$/
-      )
+    }
+    else if (!this.state.facwebsite.match("^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$")
     ) {
       facwebsiteError = "*Please Enter valid website!";
     }
@@ -88,11 +86,12 @@ export default class EditFactory extends Component {
 
     if (!this.state.units) {
       unitsError = "* unitsError is Required";
-    } else if (this.state.units.match("-")) {
-      unitsError = "*Units should not be Negetive!";
-    } else if (!this.state.units.match("([0-9]{4})$")) {
-      unitsError = "*Units should be more than 1000";
     }
+    // else if (this.state.units.match("-")) {
+    //   unitsError = "*Units should not be Negetive!";
+    // } else if (!this.state.units.match("([0-9]{4})$")) {
+    //   unitsError = "*Units should be more than 1000";
+    // }
 
     if (
       facnameError ||
@@ -136,16 +135,18 @@ export default class EditFactory extends Component {
       units,
     } = this.state;
 
-    const data = {
-      facname: facname,
-      factelephone: factelephone,
-      facemail: facemail,
-      facwebsite: facwebsite,
-      ceoname: ceoname,
-      fconame: fconame,
-      product: product,
-      units: units,
-    };
+   
+   
+      const data = {
+        facname: facname,
+        factelephone: factelephone,
+        facemail: facemail,
+        facwebsite: facwebsite,
+        ceoname: ceoname,
+        fconame: fconame,
+        product: product,
+        units: units,
+      };
 
     if (isValid) {
       console.log(data);
@@ -246,6 +247,7 @@ export default class EditFactory extends Component {
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
                 <label style={{ marginBottom: "5px" }}>Factory Email</label>
+              
                 <input
                   type="email"
                   className="form-control"
@@ -335,7 +337,7 @@ export default class EditFactory extends Component {
                   type="Number"
                   className="form-control"
                   name="units"
-                  placeholder="Units (Minimum Units should be more than 1000)"
+                  placeholder="Enter Number of Units"
                   value={this.state.units}
                   onChange={this.handleInputChange}
                   required
