@@ -5,6 +5,7 @@ export const setErrors = (customer,orderId,category,payment,quantity,weight,dueD
     errors.category = category?"":"Caregory is Required !";
     errors.payment = payment ?"":"Payment is Required !";
     errors.quantity = quantity? "":"Quantity is Required !";
+    
     errors.weight = weight ?"":"Weight is Required !";
     errors.dueDate = dueDate ?"":"Duedate is Required !";
     errors.address = address ?"":"Address is Required !";
