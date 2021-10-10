@@ -9,7 +9,11 @@ export default class EditVehicle extends Component {
             regno:"",
             engno:"",
             brandname:"",
-            manuyear:""
+            manuyear:"",
+            regnoError:"",
+            engnoError:"",
+            brandnameError:"",
+            manuyearError:""
         }
     }
 
@@ -22,9 +26,43 @@ export default class EditVehicle extends Component {
         })
     }
 
+    validate=()=>{
+        let regnoError="";
+        let engnoError="";
+        let brandnameError="";
+        let manuyearError="";
+
+        if(!this.state.regno){
+            regnoError= '*Register Number is Required!'
+        }
+        else if (!this.state.regno.includes('-')){
+            regnoError= '*Please enter valid Register Number!'
+        }
+
+        if(!this.state.engno){
+            engnoError="*Engine Number is Required! "
+        }
+        if(!this.state.brandname){
+            brandnameError="*Brand Name is Required!"
+        }
+
+        if(!this.state.manuyear){
+            manuyearError="*Manufacture year   is Required!"
+        }
+       
+
+
+        if(regnoError||engnoError||brandnameError||manuyearError){
+            this.setState({regnoError,engnoError,brandnameError,manuyearError});
+            return false;
+        }
+        return true;
+    }
+
     onSubmit=(e)=>{
         const id = this.props.match.params.id;
         e.preventDefault();
+        const isValid= this.validate();
 
         const{regno,engno,brandname,manuyear}= this.state;
         const data={
@@ -33,7 +71,7 @@ export default class EditVehicle extends Component {
             brandname:brandname,
             manuyear:manuyear
         }
-
+        if(isValid){
         console.log(data)
 
         axios.put(`http://localhost:8000/vehicle/vehicleDash/updatevehicle/${id}`,data).then((res)=>{
@@ -47,7 +85,7 @@ export default class EditVehicle extends Component {
                 Swal.fire("Updated!","Vehicle Update Successfully","success")
             }
         })
-
+    }
 
     }
 
@@ -87,22 +125,38 @@ export default class EditVehicle extends Component {
                    <lable style={{marginBottom:'15px'}}>Registration NO</lable>
                     <input type='text' placeholder='Enter No' className = 'form-control'
                     name="regno" value={this.state.regno} onChange={this.handleInputChange}/> 
+                     <div className="text-danger" style={{fontSize:12 ,color:"red"}}>
+                           {this.state.regnoError}
+                   </div>
+
+
+
 
                     <lable style={{marginBottom:'15px'}}>Engine NO</lable>
                     <input type='text' placeholder='Enter NO' className = 'form-control'
                     name="engno" value={this.state.engno} onChange={this.handleInputChange}/> 
-
+                      <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.engnoError}
+                   </div>
 
 
                     <lable style={{marginBottom:'15px'}}> Brand Name</lable>
                     <input type='text' placeholder='Enter Name' className = 'form-control'
                     name="brandname" value={this.state.brandname} onChange={this.handleInputChange}/> 
-
+                    
+                    <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.brandnameError}
+                   </div>
                 
                     <lable style={{marginBottom:'15px'}}>Year of Manufacture</lable>
                     <textarea  cols='30' rows='5' placeholder='Enter Date' className='form-control'            
                      name="manuyear" value={this.state.manuyear} onChange={this.handleInputChange}/> <br/>
-                    
+                       <div style={{fontSize:12 ,color:"red"}}>
+                           {this.state.manuyearError}
+                   </div>
+
+
+
                     <button  className='btn btn-success ' type="submit" style={{marginTop:'15px'}} onClick={this.onSubmit}> <i className="fas fa-save"></i>&nbsp;Update Vehicle</button>
                     &nbsp;
                        
