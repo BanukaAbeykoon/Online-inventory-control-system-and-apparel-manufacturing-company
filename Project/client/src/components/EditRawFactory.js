@@ -99,6 +99,9 @@ export default class EditRawFactory extends Component {
   }
 
   render() {
+
+    const id = this.props.match.params.id;
+
     return (
       <div className="container">
         <div className="col-md-8 mt-4 mx-auto">
@@ -107,7 +110,6 @@ export default class EditRawFactory extends Component {
               BACK
             </a>
           </div>
-          <hr />
 
           <h1 className="h3 mb-3 front-weight-normal">
             Edit Raw Factory Details
@@ -116,16 +118,25 @@ export default class EditRawFactory extends Component {
 
           <form className="needs-validation" noValidate>
             <div className="form-group" style={{ marginBottom: "15px" }}>
-              <label style={{ marginBottom: "5px" }}>Order ID</label>
+              <label style={{ marginBottom: "5px" }}>
+                <h1 className="h3 mb-3 front-weight-normal">Order ID</h1>
+              </label>
+
               <input
                 type="text"
                 className="form-control"
                 name="orderid"
                 placeholder="Enter Order ID"
-                value={this.state.orderid}
+                value={`OID${id.substr(0, 5)}`}
                 onChange={this.handleInputChange}
+                style={{ marginBottom: "15px" }}
+                padding="20px"
+                readOnly
               />
             </div>
+
+            <hr />
+            <br />
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
               <label style={{ marginBottom: "5px" }}>Product</label>

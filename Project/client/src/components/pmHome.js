@@ -111,10 +111,7 @@ export default class pmHome extends Component {
                     <tr key={index}>
                       <th scope="row">{index + 1}</th>
                       <td>
-                        <a
-                          href={`/inventory/${inventory._id}`}
-                          style={{ textDecoration: "none" }}
-                        >
+                        <a href={`/inventory/${inventory._id}`} style={{ textDecoration: "none" }}>
                           {inventory.facname}
                         </a>
                       </td>

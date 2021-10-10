@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert2";
-import {CreateFactoryValid, setErrors} from "./../components/validationprocess/CreateFactoryValid"
+
+
 
 export default class CreateFactory extends Component {
   //Display form
@@ -16,7 +17,14 @@ export default class CreateFactory extends Component {
       fconame: "",
       product: "",
       units: "",
-      errors: {}
+      facnameError: "",
+      factelephoneError: "",
+      facemailError: "",
+      facwebsiteError: "",
+      ceonameError: "",
+      fconameError: "",
+      productError: "",
+      unitsError: "",
     };
   }
 
@@ -30,18 +38,107 @@ export default class CreateFactory extends Component {
     });
   };
 
-  //Form Validation part
-  validate = (
-    facname,
-    factelephone,
-    facemail,
-    facwebsite,
-    ceoname,
-    fconame,
-    product,
-    units
-  ) => {
-    const errors = setErrors(
+
+
+  //validation
+  validate = () => {
+    let facnameError = "";
+    let factelephoneError = "";
+    let facemailError = "";
+    let facwebsiteError = "";
+    let ceonameError = "";
+    let fconameError = "";
+    let productError = "";
+    let unitsError = "";
+
+    if (!this.state.facname) {
+      facnameError = "*facnameError is Required!";
+    }
+
+
+    if (!this.state.factelephone) {
+      factelephoneError = "* factelephoneError is Required!";
+    }
+    if (
+      !this.state.factelephone.match(/^[0-9]{10}$/)
+    )
+    {
+      factelephoneError = "*Please Enter valid Telephonephone!";
+    }
+
+
+
+    if (!this.state.facemail) {
+      facemailError = "* facemailError is Required!";
+    }
+    if (
+      !this.state.facemail.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+    ) {
+      facemailError = "*Please Enter valid email!";
+    }
+      
+
+
+    if (!this.state.facwebsite) {
+      facwebsiteError = "* facwebsiteError is Required";
+    }
+    if (
+      !this.state.facwebsite.match(/^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$/)
+    ) {
+      facwebsiteError = "*Please Enter valid website!";
+    }
+
+
+
+
+
+
+    if (!this.state.ceoname) {
+      ceonameError = "* ceonameError is Required";
+    }
+    if (!this.state.fconame) {
+      fconameError = "* fconameError is Required";
+    }
+    if (!this.state.product) {
+      productError = "* productError is Required";
+    }
+    if (!this.state.units) {
+      unitsError = "* unitsError is Required";
+    }
+
+    if (
+      facnameError ||
+      factelephoneError ||
+      facemailError ||
+      facwebsiteError ||
+      ceonameError ||
+      fconameError ||
+      productError ||
+      unitsError
+    ) {
+      this.setState({
+        facnameError,
+        factelephoneError,
+        facemailError,
+        facwebsiteError,
+        ceonameError,
+        fconameError,
+        productError,
+        unitsError,
+      });
+      return false;
+    }
+
+    return true;
+  };
+
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const isValid = this.validate();
+
+
+    const {
       facname,
       factelephone,
       facemail,
@@ -49,54 +146,43 @@ export default class CreateFactory extends Component {
       ceoname,
       fconame,
       product,
-      units
-    );
+      units,
+    } = this.state;
 
-    this.setState({ errors: errors });
+    const data = {
+      facname: facname,
+      factelephone: factelephone,
+      facemail: facemail,
+      facwebsite: facwebsite,
+      ceoname: ceoname,
+      fconame: fconame,
+      product: product,
+      units: units,
+    };
 
-    return Object.values(errors).every((err) => err === "");
-  };
+    if(isValid){
+      console.log(data);
 
-onSubmit = (e) => {
-  e.preventDefault();
+      axios.post("/inventory/create", data).then((res) => {
+        if (res.data.success) {
+          //alert("Create Successfully !!!");
+          swal.fire("Added", "Factory Added Successfully", "success");
+          //this.retrieveInventory();
 
-  const { facname, factelephone, facemail, facwebsite, ceoname, fconame, product, units, } = this.state;
-  if (this.validate(facname, factelephone, facemail, facwebsite, ceoname, fconame, product, units)) {
-    
-  const data = {
-    facname: facname,
-    factelephone: factelephone,
-    facemail: facemail,
-    facwebsite: facwebsite,
-    ceoname: ceoname,
-    fconame: fconame,
-    product: product,
-    units: units,
-  };
-
-  console.log(data);
-
-  axios.post("/inventory/create", data).then((res) => {
-    if (res.data.success) {
-      //alert("Create Successfully !!!");
-      swal.fire("Added", "Factory Added Successfully", "success");
-      //this.retrieveInventory();
-
-      this.setState({
-        facname: "",
-        factelephone: "",
-        facemail: "",
-        facwebsite: "",
-        ceoname: "",
-        fconame: "",
-        product: "",
-        units: "",
+          this.setState({
+            facname: "",
+            factelephone: "",
+            facemail: "",
+            facwebsite: "",
+            ceoname: "",
+            fconame: "",
+            product: "",
+            units: "",
+          });
+        }
       });
     }
-  });
-  }
-  
-};
+  };
 
   render() {
     return (
@@ -119,13 +205,12 @@ onSubmit = (e) => {
                   placeholder="Enter Factory Name"
                   value={this.state.facname}
                   onChange={this.handleInputChange}
+                  required
                 />
 
-                {this.state.errors.facname && (
-                  <div classNane="text-danger" style={{ color: "red" }}>
-                    {this.state.errors.facname}
-                  </div>
-                )}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.facnameError}
+                </div>
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -134,34 +219,31 @@ onSubmit = (e) => {
                   type="number"
                   className="form-control"
                   name="factelephone"
-                  placeholder="Enter Factory Telephone"
+                  placeholder="Enter Valid Factory Telephone (Ex:- 0123456789)"
                   value={this.state.factelephone}
                   onChange={this.handleInputChange}
+                  required
                 />
-                {this.state.errors.factelephone && (
-                  <div classNane="text-danger" style={{ color: "red" }}>
-                    {this.state.errors.factelephone}
-                  </div>
-                )}
+
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.factelephoneError}
+                </div>
               </div>
 
-              <div class="form-group">
-                <div className="form-group" style={{ marginBottom: "15px" }}>
-                  <label style={{ marginBottom: "5px" }}>Factory Email</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    name="facemail"
-                    placeholder="Enter Factory Email"
-                    value={this.state.facemail}
-                    onChange={this.handleInputChange}
-                  />
+              <div className="form-group" style={{ marginBottom: "15px" }}>
+                <label style={{ marginBottom: "5px" }}>Factory Email</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  name="facemail"
+                  placeholder="Enter Valid Factory Email (Ex:- abc@gmail.com)"
+                  value={this.state.facemail}
+                  onChange={this.handleInputChange}
+                  required
+                />
 
-                  {this.state.errors.facemail && (
-                    <div classNane="text-danger" style={{ color: "red" }}>
-                      {this.state.errors.facemail}
-                    </div>
-                  )}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.facemailError}
                 </div>
               </div>
 
@@ -171,15 +253,15 @@ onSubmit = (e) => {
                   type="text"
                   className="form-control"
                   name="facwebsite"
-                  placeholder="Enter Factory Website"
+                  placeholder="Enter Factory Website (Ex:- www.abc.com)"
                   value={this.state.facwebsite}
                   onChange={this.handleInputChange}
+                  required
                 />
-                {this.state.errors.facwebsite && (
-                  <div classNane="text-danger" style={{ color: "red" }}>
-                    {this.state.errors.facwebsite}
-                  </div>
-                )}
+
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.facwebsiteError}
+                </div>
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -191,13 +273,12 @@ onSubmit = (e) => {
                   placeholder="Factory CEO Name"
                   value={this.state.ceoname}
                   onChange={this.handleInputChange}
+                  required
                 />
 
-                {this.state.errors.ceoname && (
-                  <div classNane="text-danger" style={{ color: "red" }}>
-                    {this.state.errors.ceoname}
-                  </div>
-                )}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.ceonameError}
+                </div>
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -209,13 +290,12 @@ onSubmit = (e) => {
                   placeholder="Factory FCO Name"
                   value={this.state.fconame}
                   onChange={this.handleInputChange}
+                  required
                 />
 
-                {this.state.errors.fconame && (
-                  <div classNane="text-danger" style={{ color: "red" }}>
-                    {this.state.errors.fconame}
-                  </div>
-                )}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.fconameError}
+                </div>
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -227,13 +307,12 @@ onSubmit = (e) => {
                   placeholder="Enter Production"
                   value={this.state.product}
                   onChange={this.handleInputChange}
+                  required
                 />
 
-                {this.state.errors.product && (
-                  <div classNane="text-danger" style={{ color: "red" }}>
-                    {this.state.errors.product}
-                  </div>
-                )}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.productError}
+                </div>
               </div>
 
               <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -245,13 +324,12 @@ onSubmit = (e) => {
                   placeholder="Enter Number of Units "
                   value={this.state.units}
                   onChange={this.handleInputChange}
+                  required
                 />
 
-                {this.state.errors.units && (
-                  <div classNane="text-danger" style={{ color: "red" }}>
-                    {this.state.errors.units}
-                  </div>
-                )}
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.unitsError}
+                </div>
               </div>
 
               <button

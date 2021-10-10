@@ -37,17 +37,22 @@ export default class RawFactoryDetails extends Component {
       matthreeqty,
     } = this.state.factory;
 
+    const id = this.props.match.params.id;
+
     return (
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
           <div className="container-fluid">
             <div style={{ marginTop: "20px" }}>
-
-              
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a href="/rawfacHome" class="btn btn-primary me-md-2" type="button">BACK</a>
-        </div>               
-                
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a
+                  href="/rawfacHome"
+                  class="btn btn-primary me-md-2"
+                  type="button"
+                >
+                  BACK
+                </a>
+              </div>
               <h4>
                 <tr>
                   <div>Order ID:&nbsp;</div> {orderid}{" "}
@@ -57,7 +62,7 @@ export default class RawFactoryDetails extends Component {
               <hr />
               <dl className="row">
                 <dt className="col-sm-3">Order ID</dt>
-                <dd className="col-sm-9"> {orderid} </dd>
+                <dd className="col-sm-9">{`OID${id.substr(0, 5)}`}</dd>
                 <br />
                 <br />
                 <br />

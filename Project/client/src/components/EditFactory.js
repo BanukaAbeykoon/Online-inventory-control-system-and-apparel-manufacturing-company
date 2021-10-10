@@ -15,6 +15,14 @@ export default class EditFactory extends Component {
       fconame: "",
       product: "",
       units: "",
+      facnameError: "",
+      factelephoneError: "",
+      facemailError: "",
+      facwebsiteError: "",
+      ceonameError: "",
+      fconameError: "",
+      productError: "",
+      unitsError: "",
     };
   }
 
@@ -28,9 +36,93 @@ export default class EditFactory extends Component {
     });
   };
 
+  //validation
+  validate = () => {
+    let facnameError = "";
+    let factelephoneError = "";
+    let facemailError = "";
+    let facwebsiteError = "";
+    let ceonameError = "";
+    let fconameError = "";
+    let productError = "";
+    let unitsError = "";
+
+    if (!this.state.facname) {
+      facnameError = "*facnameError is Required!";
+    }
+
+    if (!this.state.factelephone) {
+      factelephoneError = "* factelephoneError is Required!";
+    }
+    if (!this.state.factelephone.match(/^[0-9]{10}$/)) {
+      factelephoneError = "*Please Enter valid Telephonephone!";
+    }
+
+    if (!this.state.facemail) {
+      facemailError = "* facemailError is Required!";
+    }
+    if (
+      !this.state.facemail.match(/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/)
+    ) {
+      facemailError = "*Please Enter valid email!";
+    }
+
+    if (!this.state.facwebsite) {
+      facwebsiteError = "* facwebsiteError is Required";
+    }
+    if (
+      !this.state.facwebsite.match(
+        /^([wW]{3})+\.[a-zA-Z0-9.-/@#$]+\.[a-z]{2,4}$/
+      )
+    ) {
+      facwebsiteError = "*Please Enter valid website!";
+    }
+
+    if (!this.state.ceoname) {
+      ceonameError = "* ceonameError is Required";
+    }
+    if (!this.state.fconame) {
+      fconameError = "* fconameError is Required";
+    }
+    if (!this.state.product) {
+      productError = "* productError is Required";
+    }
+    if (!this.state.units) {
+      unitsError = "* unitsError is Required";
+    }
+
+    if (
+      facnameError ||
+      factelephoneError ||
+      facemailError ||
+      facwebsiteError ||
+      ceonameError ||
+      fconameError ||
+      productError ||
+      unitsError
+    ) {
+      this.setState({
+        facnameError,
+        factelephoneError,
+        facemailError,
+        facwebsiteError,
+        ceonameError,
+        fconameError,
+        productError,
+        unitsError,
+      });
+      return false;
+    }
+
+    return true;
+  };
+
+
+
   onSubmit = (e) => {
     e.preventDefault();
     const id = this.props.match.params.id;
+    const isValid = this.validate();
 
     const {
       facname,
@@ -54,32 +146,38 @@ export default class EditFactory extends Component {
       units: units,
     };
 
+    if (isValid) {
+      console.log(data);
 
-    console.log(data);
+      axios.put(`/inventory/update/${id}`, data).then((res) => {
+        if (res.data.success) {
+          //alert("Factory Details Update Successfully");
 
-    axios.put(`/inventory/update/${id}`, data).then((res) => {
-      if (res.data.success) {
-        //alert("Factory Details Update Successfully");
-        
-        swal.fire("Updated", "Factory Details Updated Successfully", "success");
-        //this.retrieveInventory();
+          swal.fire(
+            "Updated",
+            "Factory Details Updated Successfully",
+            "success"
+          );
+          //this.retrieveInventory();
 
-        this.setState({
-          facname: "",
-          factelephone: "",
-          facemail: "",
-          facwebsite: "",
-          ceoname: "",
-          fconame: "",
-          product: "",
-          units: "",
-        });
-      }
-    });
+          this.setState({
+            facname: "",
+            factelephone: "",
+            facemail: "",
+            facwebsite: "",
+            ceoname: "",
+            fconame: "",
+            product: "",
+            units: "",
+          });
+        }
+      });
+    }
   };
 
   componentDidMount() {
     const id = this.props.match.params.id;
+    
 
     axios.get(`/inventory/${id}`).then((res) => {
       if (res.data.success) {
@@ -103,13 +201,12 @@ export default class EditFactory extends Component {
     return (
       <div className="container">
         <div className="col-md-8 mt-4 mx-auto">
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <a href="/pmHome" class="btn btn-primary me-md-2" type="button">
+              BACK
+            </a>
+          </div>
 
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <a href="/pmHome" class="btn btn-primary me-md-2" type="button">
-                BACK
-              </a>
-            </div>
-          
           <hr />
 
           <h1 className="h3 mb-3 front-weight-normal">Edit Factory Details</h1>
@@ -124,6 +221,10 @@ export default class EditFactory extends Component {
                 value={this.state.facname}
                 onChange={this.handleInputChange}
               />
+
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.facnameError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -132,10 +233,14 @@ export default class EditFactory extends Component {
                 type="text"
                 className="form-control"
                 name="factelephone"
-                placeholder="Enter Factory Telephone"
+                placeholder="Enter Valid Factory Telephone (Ex:- 0123456789)"
                 value={this.state.factelephone}
                 onChange={this.handleInputChange}
               />
+
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.factelephoneError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -144,10 +249,14 @@ export default class EditFactory extends Component {
                 type="text"
                 className="form-control"
                 name="facemail"
-                placeholder="Enter Factory Email"
+                placeholder="Enter Valid Factory Email (Ex:- abc@gmail.com)"
                 value={this.state.facemail}
                 onChange={this.handleInputChange}
               />
+
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.facemailError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -156,10 +265,14 @@ export default class EditFactory extends Component {
                 type="text"
                 className="form-control"
                 name="facwebsite"
-                placeholder="Enter Factory Website"
+                placeholder="Enter Factory Website (Ex:- www.abc.com)"
                 value={this.state.facwebsite}
                 onChange={this.handleInputChange}
               />
+
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.facwebsiteError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -172,6 +285,10 @@ export default class EditFactory extends Component {
                 value={this.state.ceoname}
                 onChange={this.handleInputChange}
               />
+
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.ceonameError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -184,6 +301,10 @@ export default class EditFactory extends Component {
                 value={this.state.fconame}
                 onChange={this.handleInputChange}
               />
+
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.fconameError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -196,6 +317,10 @@ export default class EditFactory extends Component {
                 value={this.state.product}
                 onChange={this.handleInputChange}
               />
+
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.productError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -208,6 +333,10 @@ export default class EditFactory extends Component {
                 value={this.state.units}
                 onChange={this.handleInputChange}
               />
+
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.unitsError}
+              </div>
             </div>
 
             <button
