@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from "react";
+import axios from "axios";
 import swal from "sweetalert2";
 
 
@@ -23,7 +23,6 @@ export default class CreatePacking extends Component {
       weightError: "",
       dueDateError: "",
       addressError: "",
-     
     };
   }
 
@@ -36,75 +35,86 @@ export default class CreatePacking extends Component {
     });
   };
 
-  validate= ()=>{
-    let customerError="";
-    let orderIdError="";
-    let categoryError="";
-    let paymentError="";
-    let quantityError="";
-    let weightError="";
-    let dueDateError="";
-    let addressError="";
+  validate = () => {
+    let customerError = "";
+    let orderIdError = "";
+    let categoryError = "";
+    let paymentError = "";
+    let quantityError = "";
+    let weightError = "";
+    let dueDateError = "";
+    let addressError = "";
 
-
-    if(!this.state.customer){
-      customerError="*Customer is Required!"
+    if (!this.state.customer) {
+      customerError = "*Customer is Required!";
     }
-    if(!this.state.orderId){
-      orderIdError="* Order is Required!"
+    if (!this.state.orderId) {
+      orderIdError = "* Order is Required!";
     }
-   
 
-     //  else if (!this.state.nic.validate){
-     // nicError= '*NIC already exists!'
+    //  else if (!this.state.nic.validate){
+    // nicError= '*NIC already exists!'
 
-     // }
+    // }
 
+    if (!this.state.category) {
+      categoryError = "* Category is Required!";
+    }
+    if (!this.state.payment) {
+      paymentError = "* Payment is Required";
+    }
+    if (!this.state.quantity) {
+      quantityError = "* quantity is Required";
+    }
 
+    if (this.state.quantity.match("-")) {
+      quantityError = "* Quantity should not be Negetive ";
+    }
 
-    if(!this.state.category){
-      categoryError="* Category is Required!"
-      }
-     if(!this.state.payment){
-      paymentError="* Payment is Required"
-     }
-     if(!this.state.quantity){
-      quantityError="* quantity is Required"
-     }
+    if (!this.state.weight) {
+      weightError = "* Weight is Required";
+    }
+    if (this.state.weight.match("-")) {
+      weightError = "* Weight should not be Negetive ";
+    }
 
-     if(this.state.quantity.match('-')){
-      quantityError="* Quantity should not be Negetive "
-     }
-    
-     if(!this.state.weight){
-      weightError="* Weight is Required"
-     }
-     if(this.state.weight.match('-')){
-      weightError="* Weight should not be Negetive "
-     }
+    if (!this.state.dueDate) {
+      dueDateError = "* Date is Required";
+    }
+    if (!this.state.address) {
+      addressError = "* Address is Required";
+    }
 
-     if(!this.state.dueDate){
-      dueDateError="* Date is Required"
-     }
-     if(!this.state.address){
-      addressError="* Address is Required"
-     }
+    if (
+      customerError ||
+      orderIdError ||
+      categoryError ||
+      paymentError ||
+      quantityError ||
+      weightError ||
+      dueDateError ||
+      addressError
+    ) {
+      this.setState({
+        customerError,
+        orderIdError,
+        categoryError,
+        paymentError,
+        quantityError,
+        weightError,
+        dueDateError,
+        addressError,
+      });
+      return false;
+    }
 
-     if(customerError||orderIdError||categoryError||paymentError||quantityError||weightError||dueDateError||addressError){
-     this.setState({customerError,orderIdError,categoryError,paymentError,quantityError,weightError,dueDateError,addressError});
-     return false;
-
-     }
-
- return true;
-
-}
-
+    return true;
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
 
-    const isValid= this.validate();
+    const isValid = this.validate();
     const {
       customer,
       orderId,
@@ -115,8 +125,8 @@ export default class CreatePacking extends Component {
       dueDate,
       address,
     } = this.state;
-   
-     if(isValid){
+
+    if (isValid) {
       const data = {
         customer: customer,
         orderId: orderId,
@@ -145,10 +155,10 @@ export default class CreatePacking extends Component {
           //alert("Post Updated Successfully")
         }
       });
-     }
+    }
   };
 
-//btn demo
+  //btn demo
   btnDemo = (e) => {
     e.preventDefault();
 
@@ -175,9 +185,6 @@ export default class CreatePacking extends Component {
     };
 
     console.log(data);
-
-
-
 
     this.setState({
       customer: "Kasun Madushan",
@@ -267,12 +274,11 @@ export default class CreatePacking extends Component {
                     placeholder="Enter New customer"
                     value={this.state.customer}
                     onChange={this.handleInputChange}
-                   
                     recuired
                   />
-                   <div style={{fontSize:12 ,color:"red"}}>
-                           {this.state.customerError}
-                   </div>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.customerError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -286,9 +292,15 @@ export default class CreatePacking extends Component {
                     onChange={this.handleInputChange}
                     required
                   />
+
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.orderIdError}
+                  </div>
+
                 <div style={{fontSize:12 ,color:"red"}}>
                            {this.state.orderIdError}
                    </div>
+
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -302,9 +314,9 @@ export default class CreatePacking extends Component {
                     onChange={this.handleInputChange}
                     required
                   />
-                  <div style={{fontSize:12 ,color:"red"}}>
-                           {this.state.categoryError}
-                   </div>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.categoryError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -318,9 +330,9 @@ export default class CreatePacking extends Component {
                     onChange={this.handleInputChange}
                     required
                   />
-                <div style={{fontSize:12 ,color:"red"}}>
-                           {this.state.paymentError}
-                   </div>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.paymentError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -334,9 +346,9 @@ export default class CreatePacking extends Component {
                     onChange={this.handleInputChange}
                     required
                   />
-                   <div style={{fontSize:12 ,color:"red"}}>
-                           {this.state.quantityError}
-                   </div>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.quantityError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -350,9 +362,9 @@ export default class CreatePacking extends Component {
                     onChange={this.handleInputChange}
                     required
                   />
-                  <div style={{fontSize:12 ,color:"red"}}>
-                           {this.state.weightError}
-                   </div>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.weightError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -366,9 +378,9 @@ export default class CreatePacking extends Component {
                     onChange={this.handleInputChange}
                     required
                   />
-                 <div style={{fontSize:12 ,color:"red"}}>
-                           {this.state.dueDateError}
-                   </div>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.dueDateError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -382,9 +394,9 @@ export default class CreatePacking extends Component {
                     onChange={this.handleInputChange}
                     required
                   />
-                   <div style={{fontSize:12 ,color:"red"}}>
-                           {this.state.addressError}
-                   </div>
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.addressError}
+                  </div>
                 </div>
 
                 <button
