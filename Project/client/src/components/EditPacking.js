@@ -16,7 +16,15 @@ export default class EditPacking extends Component {
       weight: "",
       dueDate: "",
       address: "",
-       errors:{}
+      customerError: "",
+      orderIdError: "",
+      categoryError: "",
+      paymentError: "",
+      quantityError: "",
+      weightError: "",
+      dueDateError: "",
+      addressError: "",
+      errors: {},
     };
   }
 
@@ -29,48 +37,144 @@ export default class EditPacking extends Component {
     });
   };
 
-validate=(customer,orderId,category,payment,quantity,weight,dueDate,address)=>{
-const errors = setErrors(customer,orderId,category,payment,quantity,weight,dueDate,address);
-this.setState({errors: errors});
-return Object.values(errors).every((err) => err === "");
-};
+  validate = () => {
+    let customerError = "";
+    let orderIdError = "";
+    let categoryError = "";
+    let paymentError = "";
+    let quantityError = "";
+    let weightError = "";
+    let dueDateError = "";
+    let addressError = "";
 
+    if (!this.state.customer) {
+      customerError = "*Cusasdftomer is Required!";
+    }
+    if (!this.state.orderId) {
+      orderIdError = "* Order is Required!";
+    }
+
+    //  else if (!this.state.nic.validate){
+    // nicError= '*NIC already exists!'
+
+    // }
+
+    if (!this.state.category) {
+      categoryError = "* Category is Required!";
+    }
+    if (!this.state.payment) {
+      paymentError = "* Payment is Required";
+    }
+    if (!this.state.quantity) {
+      quantityError = "* quantity is Required";
+    }
+
+    if (this.state.quantity.match("-")) {
+      quantityError = "* Quantity should not be Negetive ";
+    }
+
+    if (!this.state.weight) {
+      weightError = "* Weight is Required";
+    }
+    if (this.state.weight.match("-")) {
+      weightError = "* Weight should not be Negetive ";
+    }
+    if (this.state.weight.match("([0-9]{3})$")) {
+      weightError = "* invalid Weight ";
+    }
+
+    if (!this.state.dueDate) {
+      dueDateError = "* Date is Required";
+    }
+    if (!this.state.address) {
+      addressError = "* Address is Required";
+    }
+
+    if (
+      customerError ||
+      orderIdError ||
+      categoryError ||
+      paymentError ||
+      quantityError ||
+      weightError ||
+      dueDateError ||
+      addressError
+    ) {
+      this.setState({
+        customerError,
+        orderIdError,
+        categoryError,
+        paymentError,
+        quantityError,
+        weightError,
+        dueDateError,
+        addressError,
+      });
+      return false;
+    }
+
+    return true;
+  };
+
+  
   onSubmit = (e) => {
     e.preventDefault();
     const id = this.props.match.params.id;
-      const {customer,orderId,category,payment,quantity,weight,dueDate,address} = this.state;
-        if(this.validate(customer,orderId,category,payment,quantity,weight,dueDate,address)){
-    const data = {
-      customer:customer,
-      orderId:orderId,
-      category:category,
-      payment:payment,
-      quantity:quantity,
-      weight:weight,
-      dueDate:dueDate,
-      address:address
-    }
-    console.log(data)
+     const isValid = this.validate();
+    const {
+      customer,
+      orderId,
+      category,
+      payment,
+      quantity,
+      weight,
+      dueDate,
+      address,
+    } = this.state;
+    if (
+      this.validate(
+        customer,
+        orderId,
+        category,
+        payment,
+        quantity,
+        weight,
+        dueDate,
+        address
+      )
+    ) {
+      const data = {
+        customer: customer,
+        orderId: orderId,
+        category: category,
+        payment: payment,
+        quantity: quantity,
+        weight: weight,
+        dueDate: dueDate,
+        address: address,
+      };
+      console.log(data);
 
-    axios.put(`http://localhost:8000/packing/update/${id}`, data).then((res) => {
-      if (res.data.success) {
-       
-        this.setState({
-          customer: "",
-          orderId: "",
-          category: "",
-          payment: "",
-          quantity: "",
-          weight: "",
-          dueDate: "",
-          address: ""
+      axios
+        .put(`http://localhost:8000/packing/update/${id}`, data)
+        .then((res) => {
+          if (res.data.success) {
+            this.setState({
+              customer: "",
+              orderId: "",
+              category: "",
+              payment: "",
+              quantity: "",
+              weight: "",
+              dueDate: "",
+              address: "",
+            });
+            swal.fire("Updated", "Post Updated Successfully", "Updated");
+            //    alert("Post Updated Successfully");
+          }
         });
-         swal.fire('Updated','Post Updated Successfully','Updated');
-    //    alert("Post Updated Successfully");
-      }
-    });
+    }
   };
-}
 
   componentDidMount() {
     const id = this.props.match.params.id;
@@ -85,10 +189,9 @@ return Object.values(errors).every((err) => err === "");
           quantity: res.data.packing.quantity,
           weight: res.data.packing.weight,
           dueDate: res.data.packing.dueDate,
-          address: res.data.packing.address
+          address: res.data.packing.address,
         });
         console.log(this.state.packing);
-          
       }
     });
   }
@@ -187,14 +290,11 @@ return Object.values(errors).every((err) => err === "");
                     value={this.state.customer}
                     onChange={this.handleInputChange}
                   />
-                  {this.state.errors.customer && (
-                    <div classNane="text-danger" style={{ color: "red" }}>
-                      {this.state.errors.customer}
-                    </div>
-                  )}
-                </div>
 
-                
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.customerError}
+                  </div>
+                </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
                   <label style={{ marginBottom: "5px" }}>Category</label>
@@ -206,11 +306,9 @@ return Object.values(errors).every((err) => err === "");
                     value={this.state.category}
                     onChange={this.handleInputChange}
                   />
-                  {this.state.errors.category && (
-                    <div classNane="text-ganger" style={{ color: "red" }}>
-                      {this.state.errors.category}
-                    </div>
-                  )}
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.categoryError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -223,11 +321,9 @@ return Object.values(errors).every((err) => err === "");
                     value={this.state.payment}
                     onChange={this.handleInputChange}
                   />
-                  {this.state.errors.payment && (
-                    <div classNane="text-gander" style={{ color: "red" }}>
-                      {this.state.errors.payment}
-                    </div>
-                  )}
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.paymentError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -240,11 +336,9 @@ return Object.values(errors).every((err) => err === "");
                     value={this.state.quantity}
                     onChange={this.handleInputChange}
                   />
-                  {this.state.errors.quantity && (
-                    <div classNane="text-danger" style={{ color: "red" }}>
-                      {this.state.errors.quantity}
-                    </div>
-                  )}
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.quantityError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -257,11 +351,9 @@ return Object.values(errors).every((err) => err === "");
                     value={this.state.weight}
                     onChange={this.handleInputChange}
                   />
-                  {this.state.errors.weight && (
-                    <div classNane="text-gander" style={{ color: "red" }}>
-                      {this.state.errors.weight}
-                    </div>
-                  )}
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.weightError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -275,11 +367,9 @@ return Object.values(errors).every((err) => err === "");
                     onChange={this.handleInputChange}
                     max={moment().format("YYYY-MM-DD")}
                   />
-                  {this.state.errors.dueDate && (
-                    <div classNane="text-danger" style={{ color: "red" }}>
-                      {this.state.errors.dueDate}
-                    </div>
-                  )}
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.dueDateError}
+                  </div>
                 </div>
 
                 <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -292,11 +382,9 @@ return Object.values(errors).every((err) => err === "");
                     value={this.state.address}
                     onChange={this.handleInputChange}
                   />
-                  {this.state.errors.address && (
-                    <div classNane="text-danger" style={{ color: "red" }}>
-                      {this.state.errors.address}
-                    </div>
-                  )}
+                  <div style={{ fontSize: 12, color: "red" }}>
+                    {this.state.addressError}
+                  </div>
                 </div>
 
                 <button

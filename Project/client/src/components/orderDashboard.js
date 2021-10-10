@@ -184,6 +184,7 @@ export default class orderDashboard extends Component {
                         }}
                       >
                         <div class="col-xs-1" align="center">
+                          
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="150"
@@ -250,6 +251,7 @@ export default class orderDashboard extends Component {
                     <br />
                     <hr />
                     <br />
+                     <div class="shadow  rounded">
                     <div class="card bg-dark text-white">
                       <img
                         class="card-img"
@@ -258,155 +260,163 @@ export default class orderDashboard extends Component {
                         height="400"
                         alt="Card image"
                       />
+                      
+                    </div>
                     </div>
                     <hr />
                     <br />
-                    <div class="gallery">
-                      <figure class="gallery__item gallery__item--1">
-                        <img
-                          src="%PUBLIC_URL%../../11.jpg"
-                          class="gallery__img"
-                          alt="Image 1"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--2">
-                        <img
-                          src="%PUBLIC_URL%../../12.jpg"
-                          class="gallery__img"
-                          alt="Image 2"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--3">
-                        <img
-                          src="%PUBLIC_URL%../../13.jpg"
-                          class="gallery__img"
-                          alt="Image 3"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--4">
-                        <img
-                          src="%PUBLIC_URL%../../14.png"
-                          class="gallery__img"
-                          alt="Image 4"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--5">
-                        <img
-                          src="%PUBLIC_URL%../../15.jpg"
-                          class="gallery__img"
-                          alt="Image 5"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../16.jpg"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../17.jpeg"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../18.jpeg"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../19.jpeg"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../20.png"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../21.jpg"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../22.jpg"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../23.jpeg"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../24.jpg"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../26.jfif"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../25.png"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../27.jpeg"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../28.jpeg"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../29.png"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
-                      <figure class="gallery__item gallery__item--6">
-                        <img
-                          src="%PUBLIC_URL%../../23.jpeg"
-                          class="gallery__img"
-                          alt="Image 6"
-                        />
-                      </figure>
+                    <div class="shadow  rounded">
+                      <div class="gallery">
+                        <figure class="gallery__item gallery__item--1">
+                          <img
+                            src="%PUBLIC_URL%../../11.jpg"
+                            class="gallery__img"
+                            alt="Image 1"
+                          />
+                        </figure>{" "}
+                        
+                          <figure class="gallery__item gallery__item--2">
+                            <img
+                              src="%PUBLIC_URL%../../12.jpg"
+                              class="gallery__img"
+                              alt="Image 2"
+                            />
+                          </figure>
+                        
+                        <figure class="gallery__item gallery__item--3">
+                          <img
+                            src="%PUBLIC_URL%../../13.jpg"
+                            class="gallery__img"
+                            alt="Image 3"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--4">
+                          <img
+                            src="%PUBLIC_URL%../../14.png"
+                            class="gallery__img"
+                            alt="Image 4"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--5">
+                          <img
+                            src="%PUBLIC_URL%../../15.jpg"
+                            class="gallery__img"
+                            alt="Image 5"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../16.jpg"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../17.jpeg"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../18.jpeg"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../19.jpeg"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../20.png"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../21.jpg"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../22.jpg"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../23.jpeg"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../24.jpg"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../26.jfif"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../25.png"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../27.jpeg"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../28.jpeg"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../29.png"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                        <figure class="gallery__item gallery__item--6">
+                          <img
+                            src="%PUBLIC_URL%../../23.jpeg"
+                            class="gallery__img"
+                            alt="Image 6"
+                          />
+                        </figure>
+                      </div>
                     </div>
                     <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />{" "}
                     <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />{" "}
                     <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />{" "}
-                    <br /> <br /> <br />
+                    <br /> <br /> <br /> <br />
+                    <br /> <br /> <br /> <br />
+                    <hr />
                     <div>
                       <h1
                         style={{
@@ -434,15 +444,21 @@ export default class orderDashboard extends Component {
                         >
                           Casanova is an apparel manufacturing company based in
                           Sri Lanka.
+                         
+                          <br />
                           <br />
                           Casanova import materials through Priyantha
                           Distributers.
                           <br />
+                          <br />
                           The raw-materials are sending to local garments to
                           produce a ready-made product.
                           <br />
-                          Distributing those ready-made products to several local buyers.
+                          <br />
+                          Distributing those ready-made products to several
+                          local buyers.
                         </h5>
+                        
                       </div>
                     </div>
                     {/* 
