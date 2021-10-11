@@ -3,7 +3,7 @@ import axios from "axios";
 import swal from "sweetalert2";
 
 export default class EditRawFactory extends Component {
-  //Display form
+  //Consturctor define
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +18,7 @@ export default class EditRawFactory extends Component {
     };
   }
 
-  //identify which method youy input into values
+  //Form Values set for setstate
   handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -28,6 +28,8 @@ export default class EditRawFactory extends Component {
     });
   };
 
+
+  //onsubmit method
   onSubmit = (e) => {
     e.preventDefault();
     const id = this.props.match.params.id;
@@ -43,6 +45,7 @@ export default class EditRawFactory extends Component {
       matthreeqty,
     } = this.state;
 
+    //above state pass, "data" object
     const data = {
       orderid: orderid,
       rawproduct: rawproduct,
@@ -56,12 +59,14 @@ export default class EditRawFactory extends Component {
 
     console.log(data);
 
+    //update put method
     axios.put(`/factory/update/${id}`, data).then((res) => {
       if (res.data.success) {
-        //alert("Factory Details Update Successfully");
-
-        swal.fire("Updated", "Raw Factory Details Updated Successfully", "success");
-
+        swal.fire(
+          "Updated",
+          "Raw Factory Details Updated Successfully",
+          "success"
+        );
 
         this.setState({
           orderid: "",
@@ -77,6 +82,7 @@ export default class EditRawFactory extends Component {
     });
   };
 
+  //Retireve that id details
   componentDidMount() {
     const id = this.props.match.params.id;
 
@@ -99,7 +105,6 @@ export default class EditRawFactory extends Component {
   }
 
   render() {
-
     const id = this.props.match.params.id;
 
     return (
@@ -235,7 +240,5 @@ export default class EditRawFactory extends Component {
         </div>
       </div>
     );
-
-      
   }
 }

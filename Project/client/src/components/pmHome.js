@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert2";
 
-//import inventory from '../../backend/models/inventory';
-
 export default class pmHome extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +11,7 @@ export default class pmHome extends Component {
     };
   }
 
+  //Retireve that id details
   componentDidMount() {
     this.retrieveInventory();
   }
@@ -29,11 +28,11 @@ export default class pmHome extends Component {
     });
   }
 
-  //Delete command
+  //Delete function
   onDelete = (id) => {
     axios.delete(`/inventory/delete/${id}`).then((res) => {
-      //alert("Delete Factory successfully");
       swal.fire("Deleted", "Factory Deleted Successfully", "warning");
+      //Retieve othor data from DB
       this.retrieveInventory();
     });
   };
@@ -111,7 +110,10 @@ export default class pmHome extends Component {
                     <tr key={index}>
                       <th scope="row">{index + 1}</th>
                       <td>
-                        <a href={`/inventory/${inventory._id}`} style={{ textDecoration: "none" }}>
+                        <a
+                          href={`/inventory/${inventory._id}`}
+                          style={{ textDecoration: "none" }}
+                        >
                           {inventory.facname}
                         </a>
                       </td>

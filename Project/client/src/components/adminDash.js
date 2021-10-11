@@ -18,7 +18,7 @@ export default class adminDash extends Component {
                       style={{ backgroundColor: "#93a5cf" }}
                     >
                       <center>
-                        <h2 class="card-title">Customer Management</h2>
+                        <h2 class="card-title">Order Management</h2>
                         <p class="card-text"></p>
                         <a href="/admincus" class="btn btn-info">
                           <i class="fas fa-arrow-alt-circle-right"></i>
@@ -36,7 +36,7 @@ export default class adminDash extends Component {
                       <center>
                         <h2 class="card-title">Material Management</h2>
                         <p class="card-text"></p>
-                        <a href="/adminmaterial" class="btn btn-info">
+                        <a href="/adminmaterial/adminmaterialAll" class="btn btn-info">
                           <i class="fas fa-arrow-alt-circle-right"></i>
                         </a>
                       </center>

@@ -1,3 +1,5 @@
+//ServerJS --> Backend and MongoDB connection make
+
 //Import expres package & mongoose package by require
 const express = require("express");
 const mongoose = require("mongoose");
@@ -46,7 +48,10 @@ const orderRoutes = require('./routes/order');
 const postRoutes = require('./routes/postsqc');
 
 
-//middleware
+
+//middleware --> Backend routes facilates
+
+//middleware 
 app.use(bodyparser.json());
 app.use(cors());
 
@@ -95,6 +100,7 @@ mongoose
     console.log("mongodb connection Failed");
   });
 
+//port Listen
 app.listen(PORT, () => {
   console.log(`Server is Running on port No ${PORT}`);
 });
