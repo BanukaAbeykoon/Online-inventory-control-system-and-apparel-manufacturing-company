@@ -5,6 +5,8 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
+
+//report generate
 const generatePDF = (factory) => {
   const doc = new jsPDF();
   const tableColumn = [
@@ -104,26 +106,34 @@ export default class RawFactoryHome extends Component {
       <div id="wrapper" className="toggled">
         <div id="page-content-wrapper">
           <div className="container-fluid">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <a
-                href="/PMDashboard"
-                class="btn btn-primary me-md-2"
-                type="button"
-              >
-                Production Dashboard
-              </a>
-            </div>
-
-            <br />
-            <br />
-
-            <div className="row">
-              <div className="col-lg-9 mt-2 mb-2">
-                <center>
-                  <h4>Raw Factory Dashboard</h4>
-                </center>
-                <br />
+            <div className="container p-3 mb-2 bg-primary bg-gradient text-white rounded-3">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a
+                  href="/PMDashboard"
+                  class="btn btn-primary me-md-2"
+                  type="button"
+                >
+                  Production Dashboard
+                </a>
               </div>
+
+              <br />
+              <br />
+
+              <center>
+                <h1
+                  className="h3 mb-3 font-weight-normal rounded-3 "
+                  style={{
+                    backgroundColor: "#000000",
+                    padding: "10px",
+                    color: "#FFFFFF",
+                  }}
+                >
+                  <b>Raw Factory Details</b>
+                </h1>
+              </center>
+              <br />
+
               <div className=" col-lg-3 mt-2 mb-2">
                 <input
                   className="form-control"
@@ -133,6 +143,9 @@ export default class RawFactoryHome extends Component {
                   onChange={this.handleSearchArea}
                 ></input>
               </div>
+              <br />
+              <hr />
+              <br />
 
               <div>
                 <button
@@ -161,8 +174,12 @@ export default class RawFactoryHome extends Component {
                   buttonText="Download Excell"
                 />
               </div>
+              <br />
 
-              <table id="excelreport" className="table">
+              <table
+                className="table table-hover  table table-bordered border-info table table-info table-striped"
+                style={{ marginTop: "5px" }}
+              >
                 <thead>
                   <tr>
                     <th scoop="col">#</th>
@@ -218,15 +235,16 @@ export default class RawFactoryHome extends Component {
                   ))}
                 </tbody>
               </table>
+
+              <button className="btn btn-success">
+                <a
+                  href="/createrawfac"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  Ceate New Raw Details Factory Form
+                </a>
+              </button>
             </div>
-            <button className="btn btn-success">
-              <a
-                href="/createrawfac"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Ceate New Raw Details Factory Form
-              </a>
-            </button>
           </div>
         </div>
       </div>
