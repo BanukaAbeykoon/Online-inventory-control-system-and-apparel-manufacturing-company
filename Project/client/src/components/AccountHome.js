@@ -134,6 +134,7 @@ export default class AccountHome extends Component {
 
 
             <div className="container bg-info rounded-3">
+              <br/>
       <h4>ALL Account Details</h4>
       <hr/>
 
