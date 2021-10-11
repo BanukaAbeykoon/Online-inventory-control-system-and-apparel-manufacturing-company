@@ -153,7 +153,7 @@ export default class pmHome extends Component {
                     <div class="col-sm-4">
                       <div class="card" style={{ width: "18rem" }}>
                         <img
-                          src="%PUBLIC_URL%../../aw.png"
+                          src="%PUBLIC_URL%../../akl.jpeg"
                           width="100"
                           height="200"
                           position="absolute"

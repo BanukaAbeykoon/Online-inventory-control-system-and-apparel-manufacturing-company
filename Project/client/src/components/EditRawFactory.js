@@ -15,6 +15,13 @@ export default class EditRawFactory extends Component {
       mattwoqty: "",
       matthree: "",
       matthreeqty: "",
+
+      
+      rawproductError: "",
+      matoneError: "",
+      matoneqtyError: "",
+      mattwoqtyError: "",
+      matthreeqtyError: "",
     };
   }
 
@@ -29,10 +36,70 @@ export default class EditRawFactory extends Component {
   };
 
 
+
+  //validation
+  validate = () => {
+    
+    let rawproductError = "";
+    let matoneError = "";
+    let matoneqtyError = "";
+    let mattwoqtyError = "";
+    let matthreeqtyError = "";
+
+
+    if (!this.state.rawproduct) {
+      rawproductError = "* Raw Product is Required!";
+    }
+
+    if (!this.state.matone) {
+      matoneError = "* Material One is Required!";
+    }
+
+    if (!this.state.matoneqty) {
+      matoneqtyError = "* Material One Quantity is Required";
+    } else if (this.state.matoneqty.toString().match("-")) {
+      matoneqtyError = "*Units should not be Negetive!";
+    }
+
+    if (!this.state.mattwoqty) {
+      mattwoqtyError = "* Material two Quantity is Required";
+    } else if (this.state.mattwoqty.toString().match("-")) {
+      mattwoqtyError = "*Units should not be Negetive!";
+    }
+
+    if (!this.state.matthreeqty) {
+      matthreeqtyError = "* Material three Quantity is Required";
+    } else if (this.state.matthreeqty.toString().match("-")) {
+      matthreeqtyError = "*Units should not be Negetive!";
+    }
+
+    if (
+      rawproductError ||
+      matoneError ||
+      matoneqtyError ||
+      mattwoqtyError ||
+      matthreeqtyError
+    ) {
+      this.setState({
+        rawproductError,
+        matoneError,
+        matoneqtyError,
+        mattwoqtyError,
+        matthreeqtyError,
+      });
+      return false;
+    }
+
+    return true;
+  };
+
+
+
   //onsubmit method
   onSubmit = (e) => {
-    e.preventDefault();
     const id = this.props.match.params.id;
+    e.preventDefault();
+    const isValid = this.validate();
 
     const {
       orderid,
@@ -57,29 +124,31 @@ export default class EditRawFactory extends Component {
       matthreeqty: matthreeqty,
     };
 
-    console.log(data);
+    if (isValid) {
+      console.log(data);
 
-    //update put method
-    axios.put(`/factory/update/${id}`, data).then((res) => {
-      if (res.data.success) {
-        swal.fire(
-          "Updated",
-          "Raw Factory Details Updated Successfully",
-          "success"
-        );
+      //update put method
+      axios.put(`/factory/update/${id}`, data).then((res) => {
+        if (res.data.success) {
+          swal.fire(
+            "Updated",
+            "Raw Factory Details Updated Successfully",
+            "success"
+          );
 
-        this.setState({
-          orderid: "",
-          rawproduct: "",
-          matone: "",
-          matoneqty: "",
-          mattwo: "",
-          mattwoqty: "",
-          matthree: "",
-          matthreeqty: "",
-        });
-      }
-    });
+          this.setState({
+            orderid: "",
+            rawproduct: "",
+            matone: "",
+            matoneqty: "",
+            mattwo: "",
+            mattwoqty: "",
+            matthree: "",
+            matthreeqty: "",
+          });
+        }
+      });
+    }
   };
 
   //Retireve that id details
@@ -153,10 +222,13 @@ export default class EditRawFactory extends Component {
                 value={this.state.rawproduct}
                 onChange={this.handleInputChange}
               />
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.rawproductError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
-              <label style={{ marginBottom: "5px" }}>Material 1</label>
+              <label style={{ marginBottom: "5px" }}>Material 1(Fabric)</label>
               <input
                 type="text"
                 className="form-control"
@@ -165,6 +237,9 @@ export default class EditRawFactory extends Component {
                 value={this.state.matone}
                 onChange={this.handleInputChange}
               />
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.matoneError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -177,6 +252,9 @@ export default class EditRawFactory extends Component {
                 value={this.state.matoneqty}
                 onChange={this.handleInputChange}
               />
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.matoneqtyError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -201,6 +279,9 @@ export default class EditRawFactory extends Component {
                 value={this.state.mattwoqty}
                 onChange={this.handleInputChange}
               />
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.mattwoqtyError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -225,6 +306,9 @@ export default class EditRawFactory extends Component {
                 value={this.state.matthreeqty}
                 onChange={this.handleInputChange}
               />
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.matthreeqtyError}
+              </div>
             </div>
 
             <button

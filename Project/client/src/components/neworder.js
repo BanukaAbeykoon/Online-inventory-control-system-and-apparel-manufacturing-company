@@ -15,10 +15,10 @@ export default class neworder extends Component {
   }
 
   retrievePosts() {
-    axios.get("http://localhost:8000/order").then(res => {
-      if (res.data.success){
+    axios.get("http://localhost:8000/order").then((res) => {
+      if (res.data.success) {
         this.setState({
-          order:res.data.existingorder,
+          order: res.data.existingorder,
         });
 
         console.log(this.state.order);
@@ -30,69 +30,60 @@ export default class neworder extends Component {
   render() {
     return (
       <div id="wrapper" className="toggled">
-      <div id="page-content-wrapper">
-      <div className="container-fluid">
+        <div id="page-content-wrapper">
+          <div className="container-fluid">
+            <div className="container p-3 mb-2 bg-primary bg-gradient text-white rounded-3">
 
+              {/* Table Header*/}
+              <center>
+                <h1
+                  className="h3 mb-3 font-weight-normal rounded-3 "
+                  style={{
+                    backgroundColor: "#000000",
+                    padding: "10px",
+                    color: "#FFFFFF",
+                  }}
+                >
+                  <b>New Orders For production</b>
+                </h1>
+              </center>
 
-      <div className="row justify-content-center">
-              <div  class="col-9">
-          <div className="row">
-              <div className="col-lg-9 mt-2 mb-2">
-                <h4>ALL Order</h4>
-            </div>
-            <div className="col-lg-3 mt-2 mb-2">
-                <input
-                className="form-control"
-                type="search"
-                placeholder="search"
-                name="searchQuery"
-                onChange={this.handleSearchArea}>
-                </input>
-            </div>
-        </div>
-       
-        <table className="table table-hover" style={{marginTop:'400'}}>
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col"> Order ID</th>
-              <th scope="col">Product </th>
-              <th scope="col">unit price</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Total</th>
-             
-            </tr>
-          </thead>
-          <tbody>
-            {this.state.order.map((order,index) =>(
-              <tr key={index}>
-                <th scope="row">{index+1}</th>
-                <td>
-                   
-                {`OID${order._id.substr(0,5)}`}
-                   
-                    </td>
-                <td>{order.product}</td>
-                <td>Rs.{order.unprice}</td>
-                <td>{order.qty}</td>
-                <td> Rs.{Number(order.unprice) * Number(order.qty)}</td>
-                <td>
-                 
-                </td>
-              </tr>
-            ))}
-            
-          </tbody>
-        </table>
+              <br />
 
-        <button className="btn btn-success"><a href="/addOrder" style={{textDecoration:'none',color:'white'}}>Create New Post</a></button>
+              <table
+                className="table table-hover  table table-bordered border-info table table-info table-striped"
+                style={{ marginTop: "5px" }}
+              >
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col"> Order ID</th>
+                          <th scope="col">Product </th>
+                          <th scope="col">unit price</th>
+                          <th scope="col">Quantity</th>
+                          <th scope="col">Total</th>
+                        
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {this.state.order.map((order, index) => (
+                          <tr key={index}>
+                            <th scope="row">{index + 1}</th>
+                            <td>{`OID${order._id.substr(0, 5)}`}</td>
+                            <td>{order.product}</td>
+                            <td>{order.unprice}</td>
+                            <td>{order.qty}</td>
+                            <td>{Number(order.unprice) * Number(order.qty)}</td>
+                            
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
-              </div>
-
-
-      </div>
-      </div>
-      </div>
+            </div>
+         
     );
   }
 }
