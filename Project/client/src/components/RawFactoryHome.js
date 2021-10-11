@@ -32,13 +32,13 @@ const generatePDF = (factory) => {
     ];
     tableRows.push(factorydata);
   });
-  doc.text("WOOF PET CARE", 70, 8).setFontSize(13);
-  doc.text("Employee Detail Report", 14, 16).setFontSize(13);
+  doc.text("CASANOVA", 70, 8).setFontSize(13);
+  doc.text("Factory Registration Report", 14, 16).setFontSize(13);
   doc.autoTable(tableColumn, tableRows, {
     styles: { fontSize: 8 },
     startY: 35,
   });
-  doc.save("Factory details.pdf");
+  doc.save("Factory Registration Details.pdf");
 };
 
 

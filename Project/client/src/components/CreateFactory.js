@@ -5,7 +5,7 @@ import swal from "sweetalert2";
 
 
 export default class CreateFactory extends Component {
-  //Display form
+  //Consturctor define
   constructor(props) {
     super(props);
     this.state = {
@@ -28,7 +28,7 @@ export default class CreateFactory extends Component {
     };
   }
 
-  //identify which method youy input into values
+  //Form Values set for setstate
   handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -49,14 +49,14 @@ export default class CreateFactory extends Component {
     let productError = "";
     let unitsError = "";
 
+    //statements check values and patterns
     if (!this.state.facname) {
       facnameError = "*Factory Name is Required!";
     }
 
     if (!this.state.factelephone) {
       factelephoneError = "* Factory Telephone is Required!";
-    }
-    else if (!this.state.factelephone.toString().match(/^[0-9]{10}$/)) {
+    } else if (!this.state.factelephone.toString().match(/^[0-9]{10}$/)) {
       factelephoneError = "*Please Enter valid Telephone Number!";
     }
 
@@ -96,6 +96,7 @@ export default class CreateFactory extends Component {
       unitsError = "*Units should be more than 1000";
     }
 
+    //Check whether any errors,
     if (
       facnameError ||
       factelephoneError ||
@@ -122,6 +123,7 @@ export default class CreateFactory extends Component {
     return true;
   };
 
+  //onsubmit method
   onSubmit = (e) => {
     e.preventDefault();
     const isValid = this.validate();
@@ -137,6 +139,7 @@ export default class CreateFactory extends Component {
       units,
     } = this.state;
 
+    //above state pass, "data" object
     const data = {
       facname: facname,
       factelephone: factelephone,
@@ -148,15 +151,16 @@ export default class CreateFactory extends Component {
       units: units,
     };
 
+    //if validation succussesfully pass
     if (isValid) {
       console.log(data);
 
+      //Send data / Post method
       axios.post("/inventory/create", data).then((res) => {
         if (res.data.success) {
-          //alert("Create Successfully !!!");
           swal.fire("Added", "Factory Added Successfully", "success");
-          //this.retrieveInventory();
 
+          //clear fields
           this.setState({
             facname: "",
             factelephone: "",
@@ -172,8 +176,7 @@ export default class CreateFactory extends Component {
     }
   };
 
-
-
+  //Demo button
   btnDemo = (e) => {
     e.preventDefault();
 
@@ -212,9 +215,6 @@ export default class CreateFactory extends Component {
       units: "4000",
     });
   };
-
-
-
 
   render() {
     return (
@@ -390,8 +390,6 @@ export default class CreateFactory extends Component {
               >
                 Demo
               </button>
-
-
             </form>
           </form>
         </div>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import swal from "sweetalert2";
-import {validrawfactory, setErrors} from "../components/validationprocess/validrawfactory"
 
 export default class CreateRawFactory extends Component {
   //Display form
@@ -16,7 +15,13 @@ export default class CreateRawFactory extends Component {
       mattwoqty: "",
       matthree: "",
       matthreeqty: "",
-      errors: {},
+
+      orderidError: "",
+      rawproductError: "",
+      matoneError: "",
+      matoneqtyError: "",
+      mattwoqtyError: "",
+      matthreeqtyError: "",
     };
   }
 
@@ -30,35 +35,80 @@ export default class CreateRawFactory extends Component {
     });
   };
 
-  //Form Validation part
-  validate = (
-    orderid,
-    rawproduct,
-    matone,
-    matoneqty,
-    mattwo,
-    mattwoqty,
-    matthree,
-    matthreeqty
-  ) => {
-    const errors = setErrors(
-      orderid,
-      rawproduct,
-      matone,
-      matoneqty,
-      mattwo,
-      mattwoqty,
-      matthree,
-      matthreeqty
-    );
+  //validation
+  validate = () => {
+    let orderidError = "";
+    let rawproductError = "";
+    let matoneError = "";
+    let matoneqtyError = "";
+    let mattwoqtyError = "";
+    let matthreeqtyError = "";
+   
 
-    this.setState({ errors: errors });
+    if (!this.state.orderid) {
+      orderidError = "*Order ID is Required!";
+    }
 
-    return Object.values(errors).every((err) => err === "");
+    if (!this.state.rawproduct) {
+      rawproductError = "* Raw Product is Required!";
+    }
+    
+
+    if (!this.state.matone) {
+      matoneError = "* Material One is Required!";
+    }
+    
+
+
+    if (!this.state.matoneqty) {
+      matoneqtyError = "* Material One Quantity is Required";
+    }
+    else if (this.state.matoneqty.toString().match("-")) {
+      matoneqtyError = "*Units should not be Negetive!";
+    }
+
+    if (!this.state.mattwoqty) {
+      mattwoqtyError = "* Material two Quantity is Required";
+    } else if (this.state.mattwoqty.toString().match("-")) {
+      mattwoqtyError = "*Units should not be Negetive!";
+    }
+    
+    
+    if (!this.state.matthreeqty) {
+      matthreeqtyError = "* Material three Quantity is Required";
+    } else if (this.state.matthreeqty.toString().match("-")) {
+      matthreeqtyError = "*Units should not be Negetive!";
+    }
+
+
+
+    if (
+      orderidError ||
+      rawproductError ||
+      matoneError ||
+      matoneqtyError ||
+      mattwoqtyError ||
+      matthreeqtyError
+    ) {
+      this.setState({
+        orderidError,
+        rawproductError,
+        matoneError,
+        matoneqtyError,
+        mattwoqtyError,
+        matthreeqtyError,
+      });
+      return false;
+    }
+
+    return true;
   };
 
+
+  
   onSubmit = (e) => {
     e.preventDefault();
+    const isValid = this.validate();
 
     const {
       orderid,
@@ -70,18 +120,8 @@ export default class CreateRawFactory extends Component {
       matthree,
       matthreeqty,
     } = this.state;
-    if (
-      this.validate(
-        orderid,
-        rawproduct,
-        matone,
-        matoneqty,
-        mattwo,
-        mattwoqty,
-        matthree,
-        matthreeqty
-      )
-    ) {
+    
+     
       const data = {
         orderid: orderid,
         rawproduct: rawproduct,
@@ -93,6 +133,7 @@ export default class CreateRawFactory extends Component {
         matthreeqty: matthreeqty,
       };
 
+    if (isValid) {
       console.log(data);
 
       axios.post("/factory/create", data).then((res) => {
@@ -189,11 +230,9 @@ export default class CreateRawFactory extends Component {
                 onChange={this.handleInputChange}
               />
 
-              {this.state.errors.orderid && (
-                <div classNane="text-danger" style={{ color: "red" }}>
-                  {this.state.errors.orderid}
-                </div>
-              )}
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.orderidError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -207,11 +246,9 @@ export default class CreateRawFactory extends Component {
                 onChange={this.handleInputChange}
               />
 
-              {this.state.errors.rawproduct && (
-                <div classNane="text-danger" style={{ color: "red" }}>
-                  {this.state.errors.rawproduct}
-                </div>
-              )}
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.rawproductError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -225,11 +262,9 @@ export default class CreateRawFactory extends Component {
                 onChange={this.handleInputChange}
               />
 
-              {this.state.errors.matone && (
-                <div classNane="text-danger" style={{ color: "red" }}>
-                  {this.state.errors.matone}
-                </div>
-              )}
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.matoneError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -245,11 +280,9 @@ export default class CreateRawFactory extends Component {
                 onChange={this.handleInputChange}
               />
 
-              {this.state.errors.matoneqty && (
-                <div classNane="text-danger" style={{ color: "red" }}>
-                  {this.state.errors.matoneqty}
-                </div>
-              )}
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.matoneqtyError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -262,12 +295,6 @@ export default class CreateRawFactory extends Component {
                 value={this.state.mattwo}
                 onChange={this.handleInputChange}
               />
-
-              {this.state.errors.mattwo && (
-                <div classNane="text-danger" style={{ color: "red" }}>
-                  {this.state.errors.mattwo}
-                </div>
-              )}
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -280,12 +307,9 @@ export default class CreateRawFactory extends Component {
                 value={this.state.mattwoqty}
                 onChange={this.handleInputChange}
               />
-
-              {this.state.errors.mattwoqty && (
-                <div classNane="text-danger" style={{ color: "red" }}>
-                  {this.state.errors.mattwoqty}
-                </div>
-              )}
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.mattwoqtyError}
+              </div>
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -298,12 +322,6 @@ export default class CreateRawFactory extends Component {
                 value={this.state.matthree}
                 onChange={this.handleInputChange}
               />
-
-              {this.state.errors.matthree && (
-                <div classNane="text-danger" style={{ color: "red" }}>
-                  {this.state.errors.matthree}
-                </div>
-              )}
             </div>
 
             <div className="form-group" style={{ marginBottom: "15px" }}>
@@ -316,11 +334,9 @@ export default class CreateRawFactory extends Component {
                 value={this.state.matthreeqty}
                 onChange={this.handleInputChange}
               />
-              {this.state.errors.matthreeqty && (
-                <div classNane="text-danger" style={{ color: "red" }}>
-                  {this.state.errors.matthreeqty}
-                </div>
-              )}
+              <div style={{ fontSize: 12, color: "red" }}>
+                {this.state.matthreeqtyError}
+              </div>
             </div>
 
             <button
