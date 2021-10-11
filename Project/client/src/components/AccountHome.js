@@ -18,7 +18,8 @@ export default class AccountHome extends Component {
   componentDidMount(){
     this.retrieveAccount();
   }
-
+//retrieve all data
+//backend url called
   retrieveAccount(){
      axios.get("http://localhost:8000/account").then(res =>{
       if(res.data.success){ 
@@ -35,7 +36,7 @@ export default class AccountHome extends Component {
  }
 
 
-
+//delete data using specific id
  onDelete = (id) => {
 
   axios.delete(`/account/deleteaccount/${id}`).then((res)=>{
@@ -43,20 +44,20 @@ export default class AccountHome extends Component {
     swal.fire("Deleted", "Delete Successfully", "warning");
     
 
-    this.retrieveAccount();
+    this.retrieveAccount(); //after deleting retrieve data
   })
  }
-
+//filter data using customer status
  filterData(account,searchKey){
 
   const result = account.filter((account)=>
-  account.orderId.toLowerCase().includes(searchKey) ||
+  account.orderId.toLowerCase().includes(searchKey) ||  //search keys support for lower case and upper case 
   account.cusName.toLowerCase().includes(searchKey) ||
   account.cusStatus.toLowerCase().includes(searchKey) 
  
   )
 
-    this.setState({account:result})
+    this.setState({account:result}) //pass the searched values
  }
 
  handleSearchArea=(e)=>{

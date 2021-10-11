@@ -3,7 +3,7 @@ import axios from 'axios';
 import swal from 'sweetalert2';
 
 export default class AccountplanCreate extends Component {
-
+//constructor define variables
         constructor(props){
             super(props);
             this.state={
@@ -15,7 +15,7 @@ export default class AccountplanCreate extends Component {
                 
             }
         }
-
+  //handle keyboard inputs 
         handleInputChange = (e) => {
             const {name,value} = e.target;
 
@@ -40,7 +40,7 @@ export default class AccountplanCreate extends Component {
                
             }
 
-
+   //Form Validation part
             if(plan =="" )
             {
               swal.fire('WARNING','Add Plan !  ','warning')
@@ -64,8 +64,11 @@ export default class AccountplanCreate extends Component {
             axios.post("http://localhost:8000/accountplan/save",data).then((res)=>{
                 if(res.data.success){
                    // alert("Create Successfully !!!");
-                    swal.fire("Created", "Create Successfully", "success");
-                    this.setState(
+                   
+                  swal.fire("Created", "Create Successfully", "success");
+                  //clear field after inserting  
+                  this.setState(
+                    
                     {
 
                         plan:"",
@@ -84,7 +87,7 @@ export default class AccountplanCreate extends Component {
 
         }
 
-
+//Demo button
         btnDemo = (e) => {
             e.preventDefault();
     
