@@ -108,6 +108,19 @@ handlesearch=(e)=>{
 </nav> 
 <br/>
 
+          <div>
+                <button
+                  type="button"
+                  style={{ backgroundColor: "#2E4661", padding: "10px" }}
+                  class="btn btn-secondary btn-sm"
+                  onClick={() => generatePDF(this.state.driver)}
+                >
+                 <i class="fa-solid fa-file-arrow-down"></i>Generate Report of Drivers
+                </button>
+              </div>
+
+              <br/>
+
 
      
           <div className="row justify-content-center">
@@ -165,16 +178,7 @@ handlesearch=(e)=>{
         <button className="btn btn-success"><a href= "/AddDriver" style={{textDecoration:'none',color:'white'}}><i className="fas fa-plus-circle"></i>Add New Driver</a></button>
         
 
-        <div>
-                <button
-                  type="button"
-                  style={{ backgroundColor: "#2E4661", padding: "10px" }}
-                  class="btn btn-secondary btn-sm"
-                  onClick={() => generatePDF(this.state.driver)}
-                >
-                  Generate Report of Employees
-                </button>
-              </div>
+      
           </div>
 
         </div>

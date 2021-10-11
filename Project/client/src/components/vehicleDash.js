@@ -2,6 +2,32 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import swal from 'sweetalert2'
 import './vehicleDash.css'
+import jsPDF from "jspdf";
+import "jspdf-autotable"; 
+
+const generatePDF = vehicle => {
+  const doc = new jsPDF();
+  const tableColumn = [" Register No", "Engine No", "Brand Name", "Manufacture year"];
+  const tableRows = [];
+
+  vehicle.map(vehicle => {
+    const vehicledata = [
+      vehicle.regno,
+      vehicle.engno,
+      vehicle.brandname,
+      vehicle.manuyear,
+     
+ ];
+    tableRows.push(vehicledata);
+  })
+  doc.text("CASANOVA", 70,8).setFontSize(13);
+  doc.text("Vehicle Detail Report", 14, 16).setFontSize(13); 
+  doc.autoTable(tableColumn, tableRows, { styles: { fontSize: 8, }, startY: 35 });
+  doc.save("Vehicle details.pdf");
+}
+
+
+
 
 
 export default class vehicleDash extends Component {
@@ -83,6 +109,20 @@ export default class vehicleDash extends Component {
   </div>
 </nav> 
 <br/>
+
+
+            <div>
+                <button
+                  type="button"
+                  style={{ backgroundColor: "#2E4661", padding: "10px" }}
+                  class="btn btn-secondary btn-sm"
+                  onClick={() => generatePDF(this.state.vehicle)}
+                >
+                 <i class="fa-solid fa-file-arrow-down"></i>Generate Report of Drivers
+                </button>
+              </div>
+
+              <br/>
 
 
             <div class="row justify-content-evenly">
