@@ -4,7 +4,7 @@ import swal from 'sweetalert2';
 
 export default class AccountEdit extends Component {
 
-
+//constructor define variables
     constructor(props){
         super(props);
         this.state={
@@ -25,7 +25,7 @@ export default class AccountEdit extends Component {
             otherError:"",
         }
     }
-
+//handle keyboard inputs 
     handleInputChange = (e) => {
         const {name,value} = e.target;
 
@@ -48,7 +48,7 @@ export default class AccountEdit extends Component {
            let sjournalError="";
            let gjournalError="";
            let  otherError="";
-
+//check statements and pass error message
       if(!this.state.orderId){
         orderIdError="*Name is Required!"
       }
@@ -155,10 +155,10 @@ export default class AccountEdit extends Component {
 
    
    
-   
+  //get data from specific id
     componentDidMount(){
         const id = this.props.match.params.id;
-
+//backend url called
         axios.get(`http://localhost:8000/account/${id}`).then((res) =>{
 
         if(res.data.success){

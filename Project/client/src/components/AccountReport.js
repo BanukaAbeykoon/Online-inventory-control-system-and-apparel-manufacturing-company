@@ -7,7 +7,7 @@ import "jspdf-autotable";
 
 
 
-
+//generate pdf function
 const generatePDF = (account) => {
   const doc = new jsPDF();
   const tableColumn = [
@@ -29,7 +29,7 @@ const generatePDF = (account) => {
     tableRows.push(accountdata);
   });
   doc.text("CASANOVA", 70, 8).setFontSize(13);
-  doc.text("Account Detail Report", 14, 16).setFontSize(13);
+  doc.text("Account Detail Report", 14, 16).setFontSize(13); //report details
   doc.autoTable(tableColumn, tableRows, {
     styles: { fontSize: 8 },
     startY: 35,
@@ -68,7 +68,7 @@ export default class AccountReport extends Component {
          
           });
      }
-
+//filter data using customer status
      filterData(account,searchKey){
 
       const result = account.filter((account)=>
@@ -77,7 +77,7 @@ export default class AccountReport extends Component {
       account.cusStatus.toLowerCase().includes(searchKey)
       )
     
-        this.setState({account:result})
+        this.setState({account:result}) //pass the searched values
      }
     
      handleSearchArea=(e)=>{

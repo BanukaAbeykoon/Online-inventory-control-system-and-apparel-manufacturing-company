@@ -5,6 +5,7 @@ import swal from 'sweetalert2';
 
 
 export default class AccountCreate extends Component {
+ //constructor define variables
 
         constructor(props){
             super(props);
@@ -27,7 +28,7 @@ export default class AccountCreate extends Component {
               
             }
         }
-
+        //handle keyboard inputs 
         handleInputChange = (e) => {
             const {name,value} = e.target;
 
@@ -50,9 +51,7 @@ export default class AccountCreate extends Component {
                let gjournalError="";
                let  otherError="";
    
-          // if(!this.state.orderId){
-          //   orderIdError="*Name is Required!"
-          // }
+          //check statements and pass error message
           if(!this.state.cusName){
             cusNameError="* Customer Name is Required!"
           }
@@ -95,7 +94,7 @@ export default class AccountCreate extends Component {
               otherError="* other feild is Required"
              } 
                          
-   
+             //check any errors
            if(cusNameError||cusStatusError||pjournalError || sjournalError || gjournalError || otherError){
            this.setState({cusNameError,cusStatusError,pjournalError , sjournalError , gjournalError , otherError});
            return false;
@@ -111,8 +110,11 @@ export default class AccountCreate extends Component {
 
 
 
-
+        //on submit method
         onSubmit = (e) =>{
+
+          // dynamically page refresh
+
             e.preventDefault();
             const isValid = this.validate();
             const {cusName,cusStatus,pjournal,sjournal,gjournal,other} = this.state;
@@ -130,12 +132,17 @@ export default class AccountCreate extends Component {
             if (isValid) {
             console.log(data)
 
+            //backend url called
+
             axios.post("http://localhost:8000/account/save",data).then((res)=>{
                 if(res.data.success){
                    // alert("Create Successfully !!!");
-                    swal.fire("Created", "Create Successfully", "success");
+                    swal.fire("Created", "Create Successfully !!", "success");
+                     
+                    //clear field after inserting
                     this.setState(
                     {
+                       
 
                        // orderId:"",
                         cusName:"",
@@ -155,7 +162,7 @@ export default class AccountCreate extends Component {
           }
         }
 
-
+        //Demo button
         btnDemo = (e) => {
             e.preventDefault();
     

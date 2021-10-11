@@ -18,6 +18,8 @@ export default class AccountplanHome extends Component {
   componentDidMount(){
     this.retrieveAccountplan();
   }
+  //retrieve all data
+//backend url called
 
   retrieveAccountplan(){
      axios.get("http://localhost:8000/accountplan").then(res =>{
@@ -35,7 +37,7 @@ export default class AccountplanHome extends Component {
  }
 
 
-
+//delete data using specific id
  onDelete = (id) => {
 
   axios.delete(`/accountplan/deleteaccountplan/${id}`).then((res)=>{
@@ -46,17 +48,17 @@ export default class AccountplanHome extends Component {
     this.retrieveAccountplan();
   })
  }
-
+//filter data using customer status
  filterData(accountplan,searchKey){
 
   const result = accountplan.filter((accountplan)=>
-  accountplan.plan.toLowerCase().includes(searchKey) ||
+  accountplan.plan.toLowerCase().includes(searchKey) ||  //search keys support for lower case and upper case 
   accountplan.time.toLowerCase().includes(searchKey) ||
   accountplan.section.toLowerCase().includes(searchKey) 
  
   )
 
-    this.setState({accountplan:result})
+    this.setState({accountplan:result})//pass the searched values
  }
 
  handleSearchArea=(e)=>{
@@ -142,6 +144,8 @@ export default class AccountplanHome extends Component {
   <hr/>
 </div>
 <div className=" col-lg-3 mt-2 mb-2">
+
+  
 
   <input
 

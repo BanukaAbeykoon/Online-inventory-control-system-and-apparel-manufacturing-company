@@ -4,7 +4,7 @@ import swal from 'sweetalert2';
 
 export default class AccountplanEdit extends Component {
 
-
+//constructor define variables
     constructor(props){
         super(props);
         this.state={
@@ -16,7 +16,7 @@ export default class AccountplanEdit extends Component {
             
         }
     }
-
+//handle keyboard inputs 
     handleInputChange = (e) => {
         const {name,value} = e.target;
 
@@ -43,7 +43,7 @@ export default class AccountplanEdit extends Component {
            
         }
 
-
+ //Form Validation part
         if(plan =="" )
         {
           swal.fire('WARNING','Add Plan !  ','warning')
