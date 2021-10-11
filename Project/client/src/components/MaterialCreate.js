@@ -10,7 +10,7 @@ export default class MaterialCreate extends Component {
        constructor(props){
            super(props);
            this.state={
-               matID:"",
+              //  matID:"",
                matName:"",
                supID:"",
                supName:"",
@@ -47,7 +47,7 @@ export default class MaterialCreate extends Component {
        
       //validation
        validate= ()=>{
-        let matIDError="";
+        // let matIDError="";
         let matNameError="";
         let supIDError="";
         let supNameError="";
@@ -59,9 +59,9 @@ export default class MaterialCreate extends Component {
         let descriptionError="";
  
         //statements
-        if(!this.state.matID){
-          matIDError="*Material ID is Required!"
-        }
+        // if(!this.state.matID){
+        //   matIDError="*Material ID is Required!"
+        // }
 
         
 
@@ -109,8 +109,8 @@ export default class MaterialCreate extends Component {
           descriptionError="Description is Required"
         }
  
-        if(matIDError||matNameError||supIDError||supNameError||arrDateError||shipIDError||priceError||qtyError||categoryError||descriptionError){
-         this.setState({matIDError,matNameError,supIDError,supNameError,arrDateError,shipIDError,priceError,qtyError,categoryError,descriptionError});
+        if(matNameError||supIDError||supNameError||arrDateError||shipIDError||priceError||qtyError||categoryError||descriptionError){
+         this.setState({matNameError,supIDError,supNameError,arrDateError,shipIDError,priceError,qtyError,categoryError,descriptionError});
          return false;
  
         }  
@@ -123,10 +123,10 @@ export default class MaterialCreate extends Component {
       onSubmit =(e) =>{
            e.preventDefault();
            const isValid= this.validate();
-           const {matID,matName,supID,supName,arrDate,shipID,price,qty,category,description} = this.state;
+           const {matName,supID,supName,arrDate,shipID,price,qty,category,description} = this.state;
 
            const data = {
-               matID:matID,
+              //  matID:matID,
                matName:matName,
                supID:supID,
                supName:supName,
@@ -149,7 +149,7 @@ export default class MaterialCreate extends Component {
               Swal.fire('Added','Material Card Added Successfilly','success')
                    this.setState(
                        {
-                        matID:"",
+                        // matID:"",
                         matName:"",
                         supID:"",
                         supName:"",
@@ -171,10 +171,10 @@ export default class MaterialCreate extends Component {
 btnDemo = (e) => {
   e.preventDefault();
 
-  const {  matID, matName, supID, supName, arrDate, shipID, price, qty, category, description} = this.state;
+  const {matName, supID, supName, arrDate, shipID, price, qty, category, description} = this.state;
 
   const data = {
-    matID: matID,
+    // matID: matID,
     matName: matName,
     supID: supID,
     supName: supName,
@@ -190,7 +190,7 @@ btnDemo = (e) => {
 
   this.setState(
       {
-        matID: "MAT003",
+        // matID: "MAT003",
         matName: "Cashmere",
         supID: "SUP002",
         supName: "Xiong",

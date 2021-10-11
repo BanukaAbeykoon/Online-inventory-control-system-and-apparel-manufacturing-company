@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const matreportSchema = new mongoose.Schema({
 
-    matreportID:{
-        type:String,
-        required:true
-    },
+    // matreportID:{
+    //     type:String,
+    //     required:true
+    // },
 
     matID:{
         type:String,

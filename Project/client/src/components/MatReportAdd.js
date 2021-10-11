@@ -11,14 +11,14 @@ export default class MatReportAdd extends Component {
        constructor(props){
            super(props);
            this.state={
-            matreportID:"",
+            // matreportID:"",
             matID:"",
             matName:"",
             date:"",
             shipID:"",
             defect:"",
             qty:"",
-            matreportIDError:"",
+            // matreportIDError:"",
             matIDError:"",
             matNameError:"",
             dateError:"",
@@ -41,7 +41,7 @@ export default class MatReportAdd extends Component {
        } 
         //validation
        validate= ()=>{
-        let matreportIDError="";
+        // let matreportIDError="";
         let matIDError="";
         let matNameError="";
         let dateError="";
@@ -49,9 +49,9 @@ export default class MatReportAdd extends Component {
         let defectError="";
         let qtyError="";
        //statements
-        if(!this.state.matreportID){
-          matreportIDError="*Report ID is Required!"
-        }
+        // if(!this.state.matreportID){
+        //   matreportIDError="*Report ID is Required!"
+        // }
         if(!this.state.matID){
           matIDError="*Material ID is Required!"
         }
@@ -77,8 +77,8 @@ export default class MatReportAdd extends Component {
          } 
     
  
-        if(matreportIDError||matIDError||matNameError||dateError||shipIDError||defectError||qtyError){
-         this.setState({matreportIDError,matIDError,matNameError,dateError,shipIDError,defectError,qtyError});
+        if(matIDError||matNameError||dateError||shipIDError||defectError||qtyError){
+         this.setState({matIDError,matNameError,dateError,shipIDError,defectError,qtyError});
          return false;
  
      }
@@ -93,11 +93,11 @@ export default class MatReportAdd extends Component {
  onSubmit =(e) =>{
            e.preventDefault();
            const isValid= this.validate();
-           const {matreportID,matID,matName,date,shipID,defect,qty} = this.state;
+           const {matID,matName,date,shipID,defect,qty} = this.state;
           
 
            const data = {
-            matreportID:matreportID,
+            // matreportID:matreportID,
             matID:matID,
             matName:matName,
             date:date,
@@ -114,7 +114,7 @@ export default class MatReportAdd extends Component {
                 Swal.fire('Added','Report Added Successfilly','success')
                    this.setState(
                        {
-                        matreportID:"",   
+                        // matreportID:"",   
                         matID:"",
                         matName:"",
                         date:"",
@@ -133,10 +133,10 @@ export default class MatReportAdd extends Component {
        btnDemo = (e) => {
         e.preventDefault();
       
-        const {  matreportID, matID, matName, date, shipID,defect, qty} = this.state;
+        const {matID, matName, date, shipID,defect, qty} = this.state;
       
         const data = {
-          matreportID: matreportID,
+          // matreportID: matreportID,
           matID: matID,
           matName: matName,
           date: date,
@@ -149,7 +149,7 @@ export default class MatReportAdd extends Component {
       
         this.setState(
             {
-              matreportID: "RP007",
+              // matreportID: "RP007",
               matID: "MAT017",
               matName: "Clips",
               date: "	2021-09-07",

@@ -64,7 +64,7 @@ retriveLmo(){
    filterData(lmomat,searchKey){
 
     const result = lmomat.filter((lmomat) =>
-       lmomat.lmoID.toLowerCase().includes(searchKey) ||
+      //  lmomat.lmoID.toLowerCase().includes(searchKey) ||
        lmomat.matID.toLowerCase().includes(searchKey) ||
        lmomat.matName.toLowerCase().includes(searchKey) ||
        lmomat.category.toLowerCase().includes(searchKey)

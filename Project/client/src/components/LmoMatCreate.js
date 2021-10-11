@@ -9,13 +9,13 @@ export default class LmoMatCreate extends Component {
        constructor(props){
            super(props);
            this.state={
-               lmoID:"",
+              //  lmoID:"",
                matID:"",
                matName:"",
                qty:"",
                category:"",
                description:"",
-               lmoIDError:"",
+              //  lmoIDError:"",
                matIDError:"",
                matNameError:"",
                qtyError:"",
@@ -38,16 +38,16 @@ export default class LmoMatCreate extends Component {
 
        //validation
        validate= ()=>{
-        let lmoIDError="";
+        // let lmoIDError="";
         let matIDError="";
         let matNameError="";
         let qtyError="";
         let categoryError="";
         let descriptionError="";
        //statements
-        if(!this.state.lmoID){
-          lmoIDError="*LMO ID is Required!"
-        }
+        // if(!this.state.lmoID){
+        //   lmoIDError="*LMO ID is Required!"
+        // }
         if(!this.state.matID){
           matIDError="*Material ID is Required!"
         }
@@ -71,8 +71,8 @@ export default class LmoMatCreate extends Component {
         }
     
  
-        if(lmoIDError||matIDError||matNameError||qtyError||categoryError||descriptionError){
-         this.setState({lmoIDError,matIDError,matNameError,qtyError,categoryError,descriptionError});
+        if(matIDError||matNameError||qtyError||categoryError||descriptionError){
+         this.setState({matIDError,matNameError,qtyError,categoryError,descriptionError});
          return false;
  
      }
@@ -85,11 +85,11 @@ export default class LmoMatCreate extends Component {
            onSubmit =(e) =>{
            e.preventDefault();
            const isValid= this.validate();
-           const {lmoID,matID,matName,qty,category,description} = this.state;
+           const {matID,matName,qty,category,description} = this.state;
            
 
            const data = {
-               lmoID:lmoID,
+              //  lmoID:lmoID,
                matID:matID,
                matName:matName,
                qty:qty,
@@ -108,7 +108,7 @@ export default class LmoMatCreate extends Component {
                 Swal.fire('Added','LMO Card Added Successfilly','success')
                    this.setState(
                        {
-                        lmoID:"", 
+                        // lmoID:"", 
                         matID:"",
                         matName:"",
                         qty:"",
@@ -128,10 +128,10 @@ export default class LmoMatCreate extends Component {
       btnDemo = (e) => {
         e.preventDefault();
       
-        const {  lmoID, matID, matName, qty, category, description} = this.state;
+        const {matID, matName, qty, category, description} = this.state;
       
         const data = {
-          lmoID: lmoID,
+          // lmoID: lmoID,
           matID: matID,
           matName: matName,
           qty: qty,
@@ -143,7 +143,7 @@ export default class LmoMatCreate extends Component {
       
         this.setState(
             {
-              lmoID: "LMO001",
+              // lmoID: "LMO001",
               matID: "MAT020",
               matName: "Crape",
               qty: "10000",

@@ -66,7 +66,7 @@ retriveReport(){
  filterData(matreport,searchKey){
 
     const result = matreport.filter((matreport) =>
-       matreport.matreportID.toLowerCase().includes(searchKey) ||
+      //  matreport.matreportID.toLowerCase().includes(searchKey) ||
        matreport.matID.toLowerCase().includes(searchKey) ||
        matreport.date.toLowerCase().includes(searchKey)||
        matreport.defect.toLowerCase().includes(searchKey)

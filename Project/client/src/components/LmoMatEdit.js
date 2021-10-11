@@ -42,9 +42,9 @@ export default class LmoMatEdit extends Component {
       let categoryError="";
       let descriptionError="";
       //statements
-      if(!this.state.lmoID){
-        lmoIDError="*LMO ID is Required!"
-      }
+      // if(!this.state.lmoID){
+      //   lmoIDError="*LMO ID is Required!"
+      // }
       if(!this.state.matID){
         matIDError="*Material ID is Required!"
       }

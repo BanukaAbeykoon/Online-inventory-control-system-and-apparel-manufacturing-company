@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const materialSchema = new mongoose.Schema({
 
-    matID:{
-        type:String,
-        required:true
-    },
+    // matID:{
+    //     type:String,
+    //     required:true
+    // },
 
     matName:{
         type:String,
