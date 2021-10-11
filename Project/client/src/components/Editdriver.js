@@ -43,6 +43,10 @@ export default class Editdriver extends Component {
         else if (!this.state.nic.match('[0-9+]{10}[vV|xX]$')){
          nicError= '*Please Enter valid Nic!'
          }
+
+         else if (this.state.nic.match('-')){
+            nicError= '*Please Enter valid Nic!'
+            }
  
          //  else if (!this.state.nic.validate){
          // nicError= '*NIC already exists!'
@@ -57,6 +61,11 @@ export default class Editdriver extends Component {
          if(!this.state.age){
          ageError="* Age is Required"
          }
+
+         if(this.state.age.toString().match('-')){
+            ageError="* Age should not be negetive"
+            }
+  
  
          if(nameError||ageError||nicError||addressError){
          this.setState({nameError,ageError,nicError,addressError});

@@ -19,6 +19,8 @@ export default class AddDriver extends Component {
           
        }
    }
+
+ 
    handleInputChange=(e)=>{
        const {name,value}=e.target;
 
@@ -33,6 +35,8 @@ export default class AddDriver extends Component {
        let nicError="";
        let addressError="";
 
+    
+
        if(!this.state.name){
            nameError="*Name is Required!"
        }
@@ -42,9 +46,14 @@ export default class AddDriver extends Component {
        else if (!this.state.nic.match('[0-9+]{10}[vV|xX]$')){
         nicError= '*Please Enter valid Nic!'
         }
+        // else if (!this.state.nic.match('[0-9]{12}$')){
+        //   nicError= '*Please Enter valid Nic!'
+        //   }
+  
 
-        //  else if (!this.state.nic.validate){
+        //  if (!this.state.nic.match(this.validate)){
         // nicError= '*NIC already exists!'
+
 
         // }
 
@@ -56,6 +65,9 @@ export default class AddDriver extends Component {
         if(!this.state.age){
         ageError="* Age is Required"
         }
+        if(this.state.age.toString().match('-')){
+          ageError="* Age should not be negetive"
+          }
 
         if(nameError||ageError||nicError||addressError){
         this.setState({nameError,ageError,nicError,addressError});
@@ -119,7 +131,7 @@ export default class AddDriver extends Component {
         {
             name:"Sunimal lansa",
             age:"45",
-            nic:"1976123478",
+            nic:"1976123478v",
             address: "Negombo",
         }
     )

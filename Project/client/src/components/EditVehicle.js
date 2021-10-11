@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2';
+import moment from 'moment';
 
 export default class EditVehicle extends Component {
     constructor(props){
@@ -149,8 +150,8 @@ export default class EditVehicle extends Component {
                    </div>
                 
                     <lable style={{marginBottom:'15px'}}>Year of Manufacture</lable>
-                    <textarea  cols='30' rows='5' placeholder='Enter Date' className='form-control'            
-                     name="manuyear" value={this.state.manuyear} onChange={this.handleInputChange}/> <br/>
+                   <input type="date" placeholder='Enter Date' className='form-control'            
+                     name="manuyear" value={this.state.manuyear} onChange={this.handleInputChange} max={moment().format("YYYY-MM-DD")} /> <br/>
                        <div style={{fontSize:12 ,color:"red"}}>
                            {this.state.manuyearError}
                    </div>
