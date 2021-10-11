@@ -171,7 +171,7 @@ export default class AccountplanCreate extends Component {
                 </nav>
               </div>
             </div>
-
+            <div class="p-3 mb-2 bg-light text-dark rounded-3">
                 <h1 className="h3 mb-3 front-weight-normal">Create new Plan </h1>
                 <form className="needs-validation" noValidate>
                    
@@ -236,6 +236,7 @@ export default class AccountplanCreate extends Component {
 
                 </form>
                 
+            </div>
             </div>
 
 
