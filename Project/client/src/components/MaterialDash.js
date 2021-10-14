@@ -49,7 +49,7 @@ onDelete = (id) =>{
 filterData(material,searchKey){
 
 const result = material.filter((material) =>
-   material.matID.toLowerCase().includes(searchKey) ||
+  //  material.matID.toLowerCase().includes(searchKey) ||
    material.matName.toLowerCase().includes(searchKey) ||
    material.category.toLowerCase().includes(searchKey)
 )

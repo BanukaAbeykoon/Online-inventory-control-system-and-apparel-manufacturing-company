@@ -48,9 +48,9 @@ export default class MatReportEdit extends Component {
       let defectError="";
       let qtyError="";
       //statements
-      if(!this.state.matreportID){
-        matreportIDError="*Report ID is Required!"
-      }
+      // if(!this.state.matreportID){
+      //   matreportIDError="*Report ID is Required!"
+      // }
       if(!this.state.matID){
         matIDError="*Material ID is Required!"
       }

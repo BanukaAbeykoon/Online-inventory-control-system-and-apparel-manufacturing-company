@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 
 const lmomatSchema = new mongoose.Schema({
 
-    lmoID:{
-        type:String,
-        required:true
-    },
+    // lmoID:{
+    //     type:String,
+    //     required:true
+    // },
 
     matID:{
         type:String,

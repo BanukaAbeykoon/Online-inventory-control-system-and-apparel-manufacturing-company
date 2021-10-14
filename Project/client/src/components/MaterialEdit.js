@@ -56,9 +56,9 @@ export default class MaterialEdit extends Component {
       let categoryError="";
       let descriptionError="";
       //statements
-      if(!this.state.matID){
-        matIDError="*Material ID is Required!"
-      }
+      // if(!this.state.matID){
+      //   matIDError="*Material ID is Required!"
+      // }
       if(!this.state.matName){
         matNameError="*Material name is Required!"
       }
