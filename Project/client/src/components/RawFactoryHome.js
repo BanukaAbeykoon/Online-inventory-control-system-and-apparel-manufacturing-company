@@ -3,21 +3,19 @@ import axios from "axios";
 import swal from "sweetalert2";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import ReactHTMLTableToExcel from "react-html-table-to-excel";
-
 
 //report generate
 const generatePDF = (factory) => {
   const doc = new jsPDF();
   const tableColumn = [
-    "Orderid",
-    "Rawproduct",
-    "Matone",
-    "Matoneqty",
-    "Mattwo",
-    "Mattwoqty",
-    "Matthree",
-    "Matthreeqty",
+    "Order Id",
+    "Product",
+    "Material 1",
+    "Material 1 Quantity",
+    "Material 2",
+    "Material 2 Quantity",
+    "Material 3",
+    "Material 3 Quantity",
   ];
   const tableRows = [];
 
@@ -35,15 +33,13 @@ const generatePDF = (factory) => {
     tableRows.push(factorydata);
   });
   doc.text("CASANOVA", 70, 8).setFontSize(13);
-  doc.text("Factory Registration Report", 14, 16).setFontSize(13);
+  doc.text("Raw Factory Report", 14, 16).setFontSize(13);
   doc.autoTable(tableColumn, tableRows, {
     styles: { fontSize: 8 },
     startY: 35,
   });
-  doc.save("Factory Registration Details.pdf");
+  doc.save("Raw Factory Details.pdf");
 };
-
-
 
 export default class RawFactoryHome extends Component {
   constructor(props) {
@@ -74,13 +70,16 @@ export default class RawFactoryHome extends Component {
   onDelete = (id) => {
     axios.delete(`/factory/delete/${id}`).then((res) => {
       //alert("Delete Factory successfully");
-      swal.fire("Deleted", "Raw Factory details deleted Successfully", "warning");
+      swal.fire(
+        "Deleted",
+        "Raw Factory details deleted Successfully",
+        "warning"
+      );
       this.retrieveFactory();
     });
   };
 
-    
-//search 
+  //search
   filterData(factory, searchKey) {
     const result = factory.filter(
       (factory) =>
@@ -158,22 +157,12 @@ export default class RawFactoryHome extends Component {
                   class="btn btn-secondary btn-sm"
                   onClick={() => generatePDF(this.state.factory)}
                 >
-                  Generate Report of Employees
+                  Generate Report of Raw Factory Forms
                 </button>
               </div>
 
-              {/*Excell Report Generate*/}
+              <br />
 
-              <div style={{ float: "right" }}>
-                <ReactHTMLTableToExcel
-                  id="test-table-xls-button"
-                  className="btn btn-warning"
-                  table="excelreport"
-                  filename="Inventory Summary"
-                  sheet="tablexls"
-                  buttonText="Download Excell"
-                />
-              </div>
               <br />
 
               <table
